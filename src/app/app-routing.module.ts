@@ -1,30 +1,32 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { FavoritosComponent } from './favoritos/favoritos.component';
-import { BodyComponent } from './body/body.component';
-import { CVComponent } from './cv/cv.component';
-import { PerfilUsuarioComponent } from './perfil-usuario/perfil-usuario.component';
-import { BuscarOfertasComponent } from './buscar-ofertas/buscar-ofertas.component';
-import { PostulacionesComponent } from './postulaciones/postulaciones.component';
-import { VisitasPerfilComponent } from './visitas-perfil/visitas-perfil.component';
-import { NotificacionesComponent } from './notificaciones/notificaciones.component';
-import { EmpresasComponent } from './empresas/empresas.component';
-import { SalariosComponent } from './salarios/salarios.component';
-import { ConfiguracionComponent } from './configuracion/configuracion.component';
+import { FavoritosComponent } from './components/favoritos/favoritos.component';
+import { CVComponent } from './components/cv/cv.component';
+import { PerfilUsuarioComponent } from './components/perfil-usuario/perfil-usuario.component';
+import { BuscarOfertasComponent } from './components/buscar-ofertas/buscar-ofertas.component';
+import { PostulacionesComponent } from './components/postulaciones/postulaciones.component';
+import { VisitasPerfilComponent } from './components/visitas-perfil/visitas-perfil.component';
+import { NotificacionesComponent } from './components/notificaciones/notificaciones.component';
+import { ConfiguracionComponent } from './components/configuracion/configuracion.component';
+import { CerrarSesionComponent } from './components/cerrar-sesion/cerrar-sesion.component';
+import { MisAlertasComponent } from './components/mis-alertas/mis-alertas.component';
+import { ReclutadoresComponent } from './components/reclutadores/reclutadores.component';
+import { PublicarOfertasComponent } from './components/publicar-ofertas/publicar-ofertas.component';
 
 const routes: Routes = [
-
   { path: '', redirectTo: '/body', pathMatch: 'full' },
   { path: 'usuario', component: PerfilUsuarioComponent },
   { path: 'CV', component: CVComponent },
   { path: 'ofertas', component: BuscarOfertasComponent },
   { path: 'postulaciones', component: PostulacionesComponent },
-  { path: 'favoritos',component: FavoritosComponent },
+  { path: 'favoritos', component: FavoritosComponent },
+  { path: 'alertas', component: MisAlertasComponent }, // Nuevo componente
   { path: 'visitas', component: VisitasPerfilComponent },
-  { path: 'notificaciones', component: NotificacionesComponent },
-  { path: 'empresas', component: EmpresasComponent },
-  { path: 'salarios', component: SalariosComponent },
-  { path: 'configuracion', component: ConfiguracionComponent },
+  { path: 'notificaciones', component: NotificacionesComponent },// Nuevo componente
+  { path: 'reclutadores', component: ReclutadoresComponent },
+  { path: 'publicar-ofertas', component: PublicarOfertasComponent }, // Nuevo componente
+  { path: 'configuraciones', component: ConfiguracionComponent },
+  { path: 'cerrar-sesion', component: CerrarSesionComponent } // Nuevo componente
 ];
 
 @NgModule({

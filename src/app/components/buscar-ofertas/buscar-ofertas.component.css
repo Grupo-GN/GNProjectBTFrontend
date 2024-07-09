@@ -1,0 +1,137 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-image: url('img/bg-web.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.header {
+    background-color: #0D3878;
+    color: white;
+    text-align: center;
+    padding: 1rem 0;
+}
+
+.header h1 {
+    margin: 0;
+}
+
+.nav {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 1rem;
+}
+
+.nav a {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+}
+
+.nav a:hover {
+    background-color: white;
+    color: #0D3878;
+}
+
+.search-container {
+    background-color: #0D3878;
+    color: white;
+    text-align: center;
+    padding: 2rem 0;
+    position: relative;
+}
+
+.search-box {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.input-group {
+    position: relative;
+}
+
+#search-input {
+    padding: 1rem;
+    border-radius: 5px;
+    border: none;
+    flex: 1;
+}
+
+.suggestions {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    color: black;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    z-index: 1000;
+    overflow: auto;
+    max-height: 200px;
+    padding: 1rem;
+}
+
+.suggestions-section {
+    margin-bottom: 1rem;
+}
+
+.suggestions-section p {
+    margin: 0.5rem 0;
+}
+
+.search-box input {
+    padding: 1rem;
+    border-radius: 5px;
+    border: none;
+    flex: 1;
+}
+
+.search-box button {
+    background-color: #FFD700;
+    color: #0D3878;
+    border: none;
+    padding: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.search-box button:hover {
+    background-color: #FFC107;
+}
+
+.footer {
+    background-color: #F1F1F1;
+    padding: 2rem 0;
+    text-align: center;
+}
+
+.footer p {
+    margin: 0;
+}
+
+.recent-searches {
+    margin-top: 2rem;
+}
+
+.recent-searches h2 {
+    margin-bottom: 1rem;
+}
+
+.search-tag {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background-color: #E0E0E0;
+    border-radius: 5px;
+    margin-top: 0.5rem;
+}

@@ -1,1 +1,62 @@
-<h1>Buscar Ofertas</h1>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ventana de Búsqueda de Empleos</title>
+    <link rel="stylesheet" href="buscar-ofertas.component.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+</head>
+<body>
+    <header class="header">
+        <h1>¡Ahora es el momento de cambiar!</h1>
+        <nav class="nav">
+            <a href="#">Empleos</a>
+            <a href="#">Evaluaciones de empresa</a>
+            <a href="#">Salarios</a>
+        </nav>
+    </header>
+    <div class="search-container">
+        <div class="search-box">
+            <div class="input-group">
+                <input type="text" id="search-input" placeholder="Cargo o categoría" onfocus="showSuggestions()" onblur="hideSuggestions()">
+                <div id="suggestions" class="suggestions">
+                    <div class="suggestions-section">
+                        <strong>ÚLTIMAS BÚSQUEDAS</strong>
+                        <p>atencion al cliente en arequipa</p>
+                    </div>
+                    <div class="suggestions-section">
+                        <strong>EMPLEOS MÁS DEMANDADOS</strong>
+                        <p>Atención al cliente</p>
+                        <p>Asesor/a de ventas</p>
+                        <p>Agente de seguridad</p>
+                        <p>Operarios/as de limpieza</p>
+                        <p>Promotor/a de ventas</p>
+                        <p>Call center</p>
+                    </div>
+                </div>
+            </div>
+            <input type="text" placeholder="Lugar">
+            <button class="search-button"><i class="fas fa-search"></i> Buscar empleos</button>
+        </div>
+    </div>
+    <footer class="footer">
+        <p>Encuentra el empleo que encaja contigo, más de <strong>44.690</strong> ofertas</p>
+        <div class="recent-searches">
+            <h2>Últimas búsquedas</h2>
+            <div class="search-tag">atencion al cliente en arequipa</div>
+        </div>
+    </footer>
+    <script>
+        function showSuggestions() {
+            document.getElementById('suggestions').style.display = 'block';
+        }
+
+        function hideSuggestions() {
+            setTimeout(function() {
+                document.getElementById('suggestions').style.display = 'none';
+            }, 200); // Agregar un retraso para permitir que se seleccione una sugerencia
+        }
+    </script>
+</body>
+</html>

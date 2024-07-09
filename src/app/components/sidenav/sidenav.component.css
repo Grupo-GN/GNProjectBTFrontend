@@ -1,13 +1,15 @@
-.sidenav {
-    background: #263238;
-    width: 5rem;
-    height: 110vh;
+.sidenav  {
+    background: #01747c;
+    width: 6rem;
+    height: 100vh; 
     position: fixed;
     z-index: 1;
     top: 0;
     color: #fff;
-    transition: all .3s ease;
-    box-shadow: 0.06rem 0 1.25rem 0  #8690a3;
+    transition: all 0.3s ease;
+    box-shadow: 0.06rem 0 1.40rem 0 #8690a3;
+    overflow-y: auto;
+    
 
 
 .logo-container {
@@ -20,8 +22,8 @@
     .logo{
         background: #fff;
         text-align: center;
-        width: 3rem;
-        min-width: 3rem;
+        width: 2.7rem;
+        min-width: 2.7rem;
         border-radius: 0.313rem;
         padding: 0.313rem;
         font-size: 24px;
@@ -60,7 +62,7 @@
 }
 
 .sidenav-collapsed {
-    width: 16.5625rem;
+    width: 21.5625rem;
 
 }
 
@@ -113,6 +115,7 @@
 
 .active {
     background-color: #fff;
+
     .sidenav-link-icon,
     .sidenav-link-text {
         color: #000;
