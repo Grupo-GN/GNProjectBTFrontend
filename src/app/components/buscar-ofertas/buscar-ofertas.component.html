@@ -1,62 +1,989 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ventana de Búsqueda de Empleos</title>
-    <link rel="stylesheet" href="buscar-ofertas.component.css">
-    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
-</head>
-<body>
-    <header class="header">
-        <h1>¡Ahora es el momento de cambiar!</h1>
-        <nav class="nav">
-            <a href="#">Empleos</a>
-            <a href="#">Evaluaciones de empresa</a>
-            <a href="#">Salarios</a>
-        </nav>
-    </header>
-    <div class="search-container">
-        <div class="search-box">
-            <div class="input-group">
-                <input type="text" id="search-input" placeholder="Cargo o categoría" onfocus="showSuggestions()" onblur="hideSuggestions()">
-                <div id="suggestions" class="suggestions">
-                    <div class="suggestions-section">
-                        <strong>ÚLTIMAS BÚSQUEDAS</strong>
-                        <p>atencion al cliente en arequipa</p>
+<div class="buscar-ofertas">
+    <head>
+        <title>Computrabajo - Buscar Empleo</title>
+        <link rel="stylesheet" href="buscar-ofertas.component.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+
+    </head>
+    <body>
+        <header id="header_menu" class="header_web home open">
+            <div class="container"></div>
+        </header>
+        <main>
+            <div class="box_title_content">
+                <div class="box_home">
+                    <div class="container"></div>
+                </div>
+            </div>
+            <div class="container">
+                <h2 class="title">¡Ahora es el momento de cambiar!</h2>
+                <div data-box-search-container class="box_search_content ">
+                    <ul>
+                        <li data-searchbox-tab="offers" class="sel">Empleos</li>
+                        <li>
+                            <a data-searchbox-tab="companyvaluations" href="http://localhost:4200/empresas"
+                                data-searchbox-companyvaluations="">Evaluaciones <span class="hide_m">de empresa</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a data-searchbox-tab="salaries" href="http://localhost:4200/salarios"
+                                data-searchbox-salaries="">Salarios
+                            </a>
+                        </li>
+                    </ul>
+                    <br>
+                    <br>
+                    <div class="box_search slider-item sel b_radius_search_input" data-position="1">
+                        <div class="field_input_icon posRel mb0 input_focus">
+                            <form autocomplete="off" class="cont" (ngSubmit)="onSubmit()">
+                                <svg 
+                                xmlns="http://www.w3.org/2000/svg" 
+                                        class="input-icon"
+                                        width="24" height="24" 
+                                        viewBox="0 0 24 24" 
+                                        style="fill: rgba(10, 9, 9, 1)">
+                                        <path 
+                                        d="M20 6h-3V4c0-1.103-.897-2-2-2H9c-1.103 0-2 .897-2 2v2H4c-1.103 0-2 .897-2 2v11c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V8c0-1.103-.897-2-2-2zm-5-2v2H9V4h6zM4 8h16v4h-3v-2h-2v2H9v-2H7v2H4V8zm0 11v-5h3v2h2v-2h6v2h2v-2h3.001v5H4z"></path></svg>
+                    
+
+                                <div class="input-group">
+                                    <input id="prof-cat-search-input" type="search" placeholder="Cargo o categoría"
+                                        autocomplete="off" [(ngModel)]="searchTerm" name="searchTerm"
+                                        (focus)="showSuggestions('job')" (blur)="hideSuggestions()" (input)="onInput($event)">
+                                    <ul class="autocomplete" [class.visible]="suggestionsVisible === 'job'">
+                                        <li class="title_suggest">Últimas búsquedas</li>
+                                        <li *ngFor="let search of lastSearches">
+                                            <span class="icon i_clock_g"></span>
+                                            <a [href]="getSearchUrl(search)">{{ search }}</a>
+                                            <span class="b_delete">
+                                                <span class="icon i_delete" (click)="deleteSearch(search)"></span>
+                                            </span>
+                                        </li>
+                                        <li class="title_suggest">Empleos más demandados</li>
+                                        <li *ngFor="let job of filteredJobs" (click)="selectJob(job)">
+                                            
+                                            <div>
+                                                <div>{{ job }}</div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                    <span id="prof-cat-clean-button" onclick="" class="btn_click hide">
+                                        
+                                    </span>
+                                </div>
+                            </form>
+                        </div>
+
+                        <div class="field_input_icon posRel mb0 input_focus">
+                            <form autocomplete="off" class="cont" (ngSubmit)="onSubmit()">
+                                <svg 
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    class="input-icon"  
+                                    width="25" height="25" 
+                                    viewBox="0 0 24 24" 
+                                    style="fill: rgba(0, 0, 0, 1)">
+                                    <path d="M12 2C7.589 2 4 5.589 4 9.995 3.971 16.44 11.696 21.784 12 22c0 0 8.029-5.56 8-12 0-4.411-3.589-8-8-8zM9.799 14.987H8v-1.799l4.977-4.97 1.799 1.799-4.977 4.97zm5.824-5.817-1.799-1.799L15.196 6l1.799 1.799-1.372 1.371z"></path>
+                                </svg>
+                                <div class="input-group">
+                                    <input id="place-search-input" type="search" placeholder="Lugar"
+                                        autocomplete="off" [(ngModel)]="placeTerm" name="placeTerm"
+                                        (focus)="showSuggestions('place')" (blur)="hideSuggestions()" (input)="onInputPlace($event)">
+                                    <ul class="autocomplete" [class.visible]="suggestionsVisible === 'place'">
+                                        <li class="title_suggest">Últimas búsquedas</li>
+                                        <li *ngFor="let search of CountrySearches">
+                                            <span class="icon i_clock_g"></span>
+                                            <a [href]="getSearchUrl(search)">{{ search }}</a>
+                                            <span class="b_delete">
+                                                <span class="icon i_delete" (click)="deleteSearch(search)"></span>
+                                            </span>
+                                        </li>
+                                        <li class="title_suggest">Empleos más demandados</li>
+                                        <li *ngFor="let place of filteredPlaces" (click)="selectPlace(place)">
+                                            <span class="icon i_search_g"></span>
+                                            <div>
+                                                <div>{{ place }}</div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                    <span id="place-clean-button" onclick="" class="btn_click hide">
+                                        
+                                    </span>
+                                </div>
+                            </form>
+                        </div>
+                        <button id="search-button" class="b_primary rounded mlAuto">
+                            <svg xmlns="http://www.w3.org/2000/svg" 
+                            class="btn-icon"
+                            width="24" height="24" 
+                            viewBox="0 0 22 22"
+                            style="fill: rgb(240, 235, 235)">
+                            <path d="M19.023 16.977a35.13 35.13 0 0 1-1.367-1.384c-.372-.378-.596-.653-.596-.653l-2.8-1.337A6.962 6.962 0 0 0 16 9c0-3.859-3.14-7-7-7S2 5.141 2 9s3.14 7 7 7c1.763 0 3.37-.66 4.603-1.739l1.337 2.8s.275.224.653.596c.387.363.896.854 1.384 1.367l1.358 1.392.604.646 2.121-2.121-.646-.604c-.379-.372-.885-.866-1.391-1.36zM9 14c-2.757 0-5-2.243-5-5s2.243-5 5-5 5 2.243 5 5-2.243 5-5 5z"></path></svg>
+
+                            <span>Buscar empleos</span>
+                        </button>
                     </div>
-                    <div class="suggestions-section">
-                        <strong>EMPLEOS MÁS DEMANDADOS</strong>
-                        <p>Atención al cliente</p>
-                        <p>Asesor/a de ventas</p>
-                        <p>Agente de seguridad</p>
-                        <p>Operarios/as de limpieza</p>
-                        <p>Promotor/a de ventas</p>
-                        <p>Call center</p>
+                    <br>
+                    <br>
+                </div>
+            </div>
+            <div class="bg_white pbB bb1">
+                <div class="conteiner">
+                    <div data-lastsearches-container="" id="lastSearches" class="list_box">
+            <h2 class="fs21 tc mb30 w100">Últimas búsquedas</h2>
+            <div data-click-href="true" class="item_list" data-ga-lastsearches="" >
+                <svg 
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="input-icon-2"  
+                        width="24" height="24" 
+                        viewBox="0 0 24 24" 
+                        style="fill: rgb(175, 172, 172)">
+                        <path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm1 11H8v-2h4V7h2v6z"></path>
+                </svg>
+                <a href="/trabajo-de-atencion-al-cliente-en-arequipa">atencion al cliente en arequipa
+                </a>
+            </div>
+            <div data-click-href="true" data-ac-template="LatestSearch" class="item_list" data-ga-lastsearches="">
+                <svg 
+                xmlns="http://www.w3.org/2000/svg"
+                class="input-icon-2-2"  
+                width="24" height="24" 
+                viewBox="0 0 24 24" 
+                style="fill: rgb(175, 172, 172)">
+                <path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm1 11H8v-2h4V7h2v6z"></path>
+        </svg>
+                <a href="/trabajo-de-atencion-al-cliente-en-arequipa">atencion al cliente en arequipa</a>
+                
+            </div>
+        </div>
+                </div>
+            </div>
+            <div class="bg_white pbB">
+                <div class="conteiner">
+                    <div id="dfplogosh" class="tc" style="height:280px">
+                        <ul class="gtmlogosul">
+                            <li class="gtmlogosli">
+                                <a target="_top" class="gtmlogosa" href="https://pe.computrabajo.com/covisian-peru" title="covisian-peru" onclick="javascript: ga('send', 'event', 'HomeEvents', 'clickenlogo','logocovisian-peru');">
+                                <img class="gtmlogosimg" src="https://images.computrabajo.com/2024/07/02/logosPE/covisian-pe-162x88.png" alt="covisian-peru" width="108" height="58">
+                                </a>
+                            </li>
+                            <li class="gtmlogosli">
+                                <a target="_top" class="gtmlogosa" href="https://pe.computrabajo.com/unicon" title="unicon" onclick="javascript: ga('send', 'event', 'HomeEvents', 'clickenlogo','logounicon');">
+                                    <img class="gtmlogosimg" src="https://images.computrabajo.com/2024/07/02/logosPE/unicon-pe-162x88.png" alt="unicon" width="108" height="58">
+                                </a>
+                            </li>
+                            <li class="gtmlogosli">
+                                <a target="_top" class="gtmlogosa" href="https://pe.computrabajo.com/ocaglobalperu" title="ocaglobalperu" onclick="javascript: ga('send', 'event', 'HomeEvents', 'clickenlogo','logoocaglobalperu');">
+                                    <img class="gtmlogosimg" src="https://images.computrabajo.com/2024/07/02/logosPE/oca-global-pe-162x88.png" alt="ocaglobalperu" width="108" height="58">
+                                </a>
+                            </li>
+                            <li class="gtmlogosli">
+                                <a target="_top" class="gtmlogosa" href="https://pe.computrabajo.com/salesland" title="salesland" onclick="javascript: ga('send', 'event', 'HomeEvents', 'clickenlogo','logosalesland');">
+                                    <img class="gtmlogosimg" src="https://images.computrabajo.com/2024/07/02/logosPE/salesland-pe-162x88.png" alt="salesland" width="108" height="58">
+                                </a>
+                            </li>
+                            <li class="gtmlogosli">
+                                <a target="_top" class="gtmlogosa" href="https://pe.computrabajo.com/apuesta-total" title="apuesta-total" onclick="javascript: ga('send', 'event', 'HomeEvents', 'clickenlogo','logoapuesta-total');">
+                                    <img class="gtmlogosimg" src="https://images.computrabajo.com/2024/07/02/logosPE/apuestatotal-pe-162x88.png" alt="apuesta-total" width="108" height="58">
+                                </a>
+                            </li>
+                            <li class="gtmlogosli">
+                                <a target="_top" class="gtmlogosa" href="https://pe.computrabajo.com/advholdig" title="advholdig" onclick="javascript: ga('send', 'event', 'HomeEvents', 'clickenlogo','logoadvholdig');">
+                                    <img class="gtmlogosimg" src="https://images.computrabajo.com/2024/07/02/logosPE/adv-holding-la-leña-pe-162x88.png" alt="advholdig" width="108" height="58">
+                                </a>
+                            </li>
+                            <li class="gtmlogosli">
+                                <a target="_top" class="gtmlogosa" href="https://pe.computrabajo.com/boticasysalud" title="boticasysalud" onclick="javascript: ga('send', 'event', 'HomeEvents', 'clickenlogo','logoboticasysalud');">
+                                    <img class="gtmlogosimg" src="https://images.computrabajo.com/2024/07/02/logosPE/boticasysalud-pe-162x88.png" alt="boticasysalud" width="108" height="58">
+                                </a>
+                            </li>
+                            <li class="gtmlogosli">
+                                <a target="_top" class="gtmlogosa" href="https://pe.computrabajo.com/grupoefe" title="grupoefe" onclick="javascript: ga('send', 'event', 'HomeEvents', 'clickenlogo','logogrupoefe');">
+                                    <img class="gtmlogosimg" src="https://images.computrabajo.com/2024/07/02/logosPE/grupoefe-pe-162x88.png" alt="grupoefe" width="108" height="58">
+                                </a>
+                            </li>
+                            <li class="gtmlogosli">
+                                <a target="_top" class="gtmlogosa" href="https://pe.computrabajo.com/grupo-santa-elena" title="grupo-santa-elena" onclick="javascript: ga('send', 'event', 'HomeEvents', 'clickenlogo','logogrupo-santa-elena');">
+                                    <img class="gtmlogosimg" src="https://images.computrabajo.com/2024/07/02/logosPE/santaelena-pe-162x88.png" alt="grupo-santa-elena" width="108" height="58">
+                                </a>
+                            </li>
+                            <li class="gtmlogosli">
+                                <a target="_top" class="gtmlogosa" href="https://pe.computrabajo.com/casa-andina" title="casa-andina" onclick="javascript: ga('send', 'event', 'HomeEvents', 'clickenlogo','logocasa-andina');">
+                                    <img class="gtmlogosimg" src="https://images.computrabajo.com/2024/07/02/logosPE/casaandina-pe-162x88.png" alt="casa-andina" width="108" height="58">
+                                </a>
+                            </li>
+                            <li class="gtmlogosli">
+                                <a target="_top" class="gtmlogosa" href="https://pe.computrabajo.com/bitel" title="bitel" onclick="javascript: ga('send', 'event', 'HomeEvents', 'clickenlogo','logobitel');">
+                                <img class="gtmlogosimg" src="https://images.computrabajo.com/2024/07/02/logosPE/bitel-pe-162x88.png" alt="bitel" width="108" height="58">
+                                </a>
+                            </li>
+                            <li class="gtmlogosli">
+                                <a target="_top" class="gtmlogosa" href="https://pe.computrabajo.com/senati" title="senati" onclick="javascript: ga('send', 'event', 'HomeEvents', 'clickenlogo','logosenati');">
+                                    <img class="gtmlogosimg" src="https://images.computrabajo.com/2024/07/02/logosPE/senati-pe-162x88.png" alt="senati" width="108" height="58">
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="tc mt20">
+            <h2 class="w60 mAuto mb30">Hoy hay <strong>9.024</strong> empresas contratando con las mejores vacantes para ti</h2>
+            <a href="https://pe.computrabajo.com/empresas/" class="b_primary_inv big">Ver empresas</a>
+        </div>
+    
+                </div>
+            </div>
+            <div class="box b_radius_none posRel">
+                <span></span>
+                <div class="conteiner">
+                    <div class="tc mbB hide_m">
+            <h3 class="fs30">Si buscas trabajo ¡Computrabajo es tu mejor aliado!</h3>
+            <p class="fs18 fc_aux mt10">Miles de ofertas de empleo están esperándote</p>
+        </div>
+        <div class="pAllB">
+            <div class="dFlex">
+                <div class="prB hide_m" style="flex: 440px 0 0;">
+                    <picture>
+                        <source class="lazy" srcset="//cp.ct-stc.com/web/v01.04.00.24/c/img/encontrar_empleo.webp" type="image/webp" style="background-image: url(&quot;null&quot;);">
+                        <img class="lazy" src="//cp.ct-stc.com/web/v01.04.00.24/c/img/encontrar_empleo.png" alt="Encontrar empleo" height="346" width="329">
+                    </picture>
+                </div>
+                <div>
+                    <p class="fs30">Te ayudamos a encontrar un empleo mejor</p>
+                    <p class="fs18 fc_aux mb30">Haz que tu currículum sea visible para miles de empresas en nuestra bolsa de trabajo</p>
+        
+                    <div class="fs16 dFlex mb10">
+                        <svg 
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="input-icon-3"  
+                            width="24" height="24" 
+                            viewBox="0 0 24 24" 
+                            style="fill: rgba(0, 255, 0, 0.5)">
+                            <path d="M9 16.2l-3.5-3.5L4 14l5 5 12-12-1.5-1.5z"></path>
+                        </svg>
+                        <p>
+                            <span class="fwB">Registro gratuito. </span>
+                            <span class="fc_aux">Encuentra tu próximo trabajo hoy.</span>
+                        </p>
+                    </div>
+        
+                    <div class="fs16 dFlex mb10">
+                        <svg 
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="input-icon-4"  
+                            width="24" height="24" 
+                            viewBox="0 0 24 24" 
+                            style="fill: rgba(0, 255, 0, 0.5)">
+                            <path d="M9 16.2l-3.5-3.5L4 14l5 5 12-12-1.5-1.5z"></path>
+                        </svg>
+                        <p>
+                            <span class="fwB">Ofertas cada día.  </span>
+                            <span class="fc_aux">Empleos que se ajustan a tu perfil.</span>
+                        </p>
+                    </div>
+        
+                    <div class="fs16 dFlex mb10">
+                        <svg 
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="input-icon-5"  
+                            width="24" height="24" 
+                            viewBox="0 0 24 24" 
+                            style="fill: rgba(0, 255, 0, 0.5)">
+                            <path d="M9 16.2l-3.5-3.5L4 14l5 5 12-12-1.5-1.5z"></path>
+                        </svg>
+                        <p>
+                            <span class="fwB">Alertas personalizadas. </span>
+                            <span class="fc_aux">Tú crea alertas de empleo y nosotros te avisaremos.</span>
+                        </p>
+                    </div>
+        
+                    <div class="fs16 dFlex mb10">
+                        <svg 
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="input-icon-6"  
+                            width="24" height="24" 
+                            viewBox="0 0 24 24" 
+                            style="fill: rgba(0, 255, 0, 0.5)">
+                            <path d="M9 16.2l-3.5-3.5L4 14l5 5 12-12-1.5-1.5z"></path>
+                        </svg>
+                        <p>
+                            <span class="fwB">Completa tu perfil. </span>
+                            <span class="fc_aux">Muéstrate profesional y ganarás visibilidad.</span>
+                        </p>
+                    </div>
+                    <br>
+                    <br>
+        
+                    <a href="https://candidato.pe.computrabajo.com" class="b_primary big mt20">Crea tu cuenta gratis</a>
+                </div>
+        
+            </div>
+        </div>
+                </div>
+            </div>
+            <div class="bg_white bt1 ptB pbB posRel hide_m">
+                <div class="conteiner">
+                    <p class="fs30 tc w60 mAuto">Publica tus ofertas en el portal de empleo con mayor audiencia en Latinoamérica</p>
+                    <div class="dFlex equal_w_fx mtB hide_m">
+                        <div class="dFlex vm_fx pAll20">
+                            <div class="pr15">
+                                <div class="feature-item">
+                                    <svg class="feature-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                        <!-- SVG del ícono del rayo -->
+                                        <path d="M13 2L3 14h7v8l10-12h-7z" style="fill: #ff4d4d;"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div>
+                                <p class="fs18">Publica tu vacante</p>
+                                <p class="fs16 fc_aux">Crea fácilmente tu oferta de trabajo y publícala en un click.</p>
+                            </div>
+                        </div>
+                        <div class="dFlex vm_fx pAll20">
+                            <div class="pr15">
+                                <div class="feature-item">
+                                    <svg class="feature-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                        <!-- SVG del ícono del ojo -->
+                                        <path d="M12 4.5c-5 0-9.27 3.11-11 7.5 1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zm0 13c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6zm-1-6h-4v2h4v3l4-4-4-4v3z" style="fill: #4db6ac;"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div>
+                                <p class="fs18">Revisa las postulaciones</p>
+                                <p class="fs16 fc_aux">Selecciona a los mejores candidatos entre todos los CVs recibidos.</p>
+                            </div>
+                        </div>
+                        <div class="dFlex vm_fx pAll20">
+                            <div class="pr15">
+                                <div class="feature-item">
+                                    <svg class="feature-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                        <!-- SVG del ícono de la estrella -->
+                                        <path d="M12 .587l3.668 10.825h11.332l-9.17 6.665 3.667 10.825-9.166-6.668-9.166 6.668 3.666-10.825-9.17-6.665h11.332z" style="fill: #ffca28;"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div>
+                                <p class="fs18">Contrata</p>
+                                <p class="fs16 fc_aux">Encuentra al candidato que mejor se adapta al perfil buscado.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tc mtB">
+                        <a id="company-button" href="https://empresa.pe.computrabajo.com" class="b_primary big">Publica gratis tus ofertas</a>
                     </div>
                 </div>
             </div>
-            <input type="text" placeholder="Lugar">
-            <button class="search-button"><i class="fas fa-search"></i> Buscar empleos</button>
-        </div>
-    </div>
-    <footer class="footer">
-        <p>Encuentra el empleo que encaja contigo, más de <strong>44.690</strong> ofertas</p>
-        <div class="recent-searches">
-            <h2>Últimas búsquedas</h2>
-            <div class="search-tag">atencion al cliente en arequipa</div>
-        </div>
-    </footer>
-    <script>
-        function showSuggestions() {
-            document.getElementById('suggestions').style.display = 'block';
-        }
+            <div class="bg_white bt1 ptB pbB posRel hide_m">
+                <div class="conteiner">
+                        <div class="lL">
+                <div class="conteiner">
+                    <h2>
+                        Bolsa de empleo según:
+                    </h2>
+                    <ul class="sL">
+                        <li id="1" (click)="toggleView('localizacion')" [class.active]="selectedView === 'localizacion'"
+                        title="Bolsa de empleo Localización" class="active">Localización</li>
+                            <li id="2" (click)="toggleView('cargos')" [class.active]="selectedView === 'cargos'"
+                        title="Bolsa de empleo Cargos profesionales" class="">Cargos profesionales</li>
+                    </ul>
+                        <ul id="content_1" *ngIf="selectedView === 'localizacion'" class="vista-localizacion" class="lS">
+                                    <li class="cI">
+                                        <ul>
+                                            <li>
+                                                <a href="/empleos-en-lima" title="Empleos en Lima">
+                                                    Empleos en Lima
+                                                    <span class="arrowRight right">
+                                                        <span></span>
+                                                    </span>
+                                                </a>
+                                            </li>
+                                                    <li>
+                                                        <a href="/empleos-en-lima-en-lima" title="Empleos en Lima">Empleos en Lima</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="/empleos-en-lima-en-miraflores" title="Empleos en Miraflores">Empleos en Miraflores</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="/empleos-en-lima-en-san-isidro" title="Empleos en San Isidro">Empleos en San Isidro</a>
+                                                    </li>
+                                        </ul>
+                                    </li>
+                                    <li class="cI">
+                                        <ul>
+                                            <li>
+                                                <a href="/empleos-en-arequipa" title="Empleos en Arequipa">
+                                                    Empleos en Arequipa
+                                                    <span class="arrowRight right">
+                                                        <span></span>
+                                                    </span>
+                                                </a>
+                                            </li>
+                                                    <li>
+                                                        <a href="/empleos-en-arequipa-en-arequipa" title="Empleos en Arequipa">Empleos en Arequipa</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="/empleos-en-arequipa-en-cerro-colorado" title="Empleos en Cerro Colorado">Empleos en Cerro Colorado</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="/empleos-en-arequipa-en-yanahuara" title="Empleos en Yanahuara">Empleos en Yanahuara</a>
+                                                    </li>
+                                        </ul>
+                                    </li>
+                                    <li class="cI">
+                                        <ul>
+                                            <li>
+                                                <a href="/empleos-en-callao" title="Empleos en Callao">
+                                                    Empleos en Callao
+                                                    <span class="arrowRight right">
+                                                        <span></span>
+                                                    </span>
+                                                </a>
+                                            </li>
+                                                    <li>
+                                                        <a href="/empleos-en-callao-en-callao" title="Empleos en Callao">Empleos en Callao</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="/empleos-en-callao-en-bellavista" title="Empleos en Bellavista">Empleos en Bellavista</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="/empleos-en-callao-en-ventanilla" title="Empleos en Ventanilla">Empleos en Ventanilla</a>
+                                                    </li>
+                                        </ul>
+                                    </li>
+                                    <li class="cI">
+                                        <ul>
+                                            <li>
+                                                <a href="/empleos-en-la-libertad" title="Empleos en La Libertad">
+                                                    Empleos en La Libertad
+                                                    <span class="arrowRight right">
+                                                        <span></span>
+                                                    </span>
+                                                </a>
+                                            </li>
+                                                    <li>
+                                                        <a href="/empleos-en-la-libertad-en-trujillo" title="Empleos en Trujillo">Empleos en Trujillo</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="/empleos-en-la-libertad-en-pataz" title="Empleos en Pataz">Empleos en Pataz</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="/empleos-en-la-libertad-en-viru" title="Empleos en Viru">Empleos en Viru</a>
+                                                    </li>
+                                        </ul>
+                                    </li>
+                                    <li class="cI">
+                                        <ul>
+                                            <li>
+                                                <a href="/empleos-en-piura" title="Empleos en Piura">
+                                                    Empleos en Piura
+                                                    <span class="arrowRight right">
+                                                        <span></span>
+                                                    </span>
+                                                </a>
+                                            </li>
+                                                    <li>
+                                                        <a href="/empleos-en-piura-en-piura" title="Empleos en Piura">Empleos en Piura</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="/empleos-en-piura-en-sullana" title="Empleos en Sullana">Empleos en Sullana</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="/empleos-en-piura-en-paita" title="Empleos en Paita">Empleos en Paita</a>
+                                                    </li>
+                                        </ul>
+                                    </li>
+                                    <li class="cI">
+                                        <ul>
+                                            <li>
+                                                <a href="/empleos-en-ica" title="Empleos en Ica">
+                                                    Empleos en Ica
+                                                    <span class="arrowRight right">
+                                                        <span></span>
+                                                    </span>
+                                                </a>
+                                            </li>
+                                                    <li>
+                                                        <a href="/empleos-en-ica-en-ica" title="Empleos en Ica">Empleos en Ica</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="/empleos-en-ica-en-pisco" title="Empleos en Pisco">Empleos en Pisco</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="/empleos-en-ica-en-chincha-alta" title="Empleos en Chincha Alta">Empleos en Chincha Alta</a>
+                                                    </li>
+                                        </ul>
+                                    </li>
+                                    <li class="cI">
+                                        <ul>
+                                            <li>
+                                                <a href="/empleos-en-lambayeque" title="Empleos en Lambayeque">
+                                                    Empleos en Lambayeque
+                                                    <span class="arrowRight right">
+                                                        <span></span>
+                                                    </span>
+                                                </a>
+                                            </li>
+                                                    <li>
+                                                        <a href="/empleos-en-lambayeque-en-chiclayo" title="Empleos en Chiclayo">Empleos en Chiclayo</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="/empleos-en-lambayeque-en-lambayeque" title="Empleos en Lambayeque">Empleos en Lambayeque</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="/empleos-en-lambayeque-en-olmos" title="Empleos en Olmos">Empleos en Olmos</a>
+                                                    </li>
+                                        </ul>
+                                    </li>
+                                    <li class="cI">
+                                        <ul>
+                                            <li>
+                                                <a href="/empleos-en-cusco" title="Empleos en Cusco">
+                                                    Empleos en Cusco
+                                                    <span class="arrowRight right">
+                                                        <span></span>
+                                                    </span>
+                                                </a>
+                                            </li>
+                                                    <li>
+                                                        <a href="/empleos-en-cusco-en-cusco" title="Empleos en Cusco">Empleos en Cusco</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="/empleos-en-cusco-en-espinar" title="Empleos en Espinar">Empleos en Espinar</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="/empleos-en-cusco-en-machupicchu" title="Empleos en Machupicchu">Empleos en Machupicchu</a>
+                                                    </li>
+                                        </ul>
+                                    </li>
+                                    <li class="cI">
+                                        <ul>
+                                            <li>
+                                                <a href="/empleos-en-junin" title="Empleos en Junin">
+                                                    Empleos en Junin
+                                                    <span class="arrowRight right">
+                                                        <span></span>
+                                                    </span>
+                                                </a>
+                                            </li>
+                                                    <li>
+                                                        <a href="/empleos-en-junin-en-huancayo" title="Empleos en Huancayo">Empleos en Huancayo</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="/empleos-en-junin-en-el-tambo" title="Empleos en El Tambo">Empleos en El Tambo</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="/empleos-en-junin-en-chanchamayo" title="Empleos en Chanchamayo">Empleos en Chanchamayo</a>
+                                                    </li>
+                                        </ul>
+                                    </li>
+                                    <li class="cI">
+                                        <ul>
+                                            <li>
+                                                <a href="/empleos-en-ancash" title="Empleos en Ancash">
+                                                    Empleos en Ancash
+                                                    <span class="arrowRight right">
+                                                        <span></span>
+                                                    </span>
+                                                </a>
+                                            </li>
+                                                    <li>
+                                                        <a href="/empleos-en-ancash-en-chimbote" title="Empleos en Chimbote">Empleos en Chimbote</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="/empleos-en-ancash-en-huaraz" title="Empleos en Huaraz">Empleos en Huaraz</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="/empleos-en-ancash-en-nuevo-chimbote" title="Empleos en Nuevo Chimbote">Empleos en Nuevo Chimbote</a>
+                                                    </li>
+                                        </ul>
+                                    </li>
+                                    <li class="cI">
+                                        <ul>
+                                            <li>
+                                                <a href="/empleos-en-cajamarca" title="Empleos en Cajamarca">
+                                                    Empleos en Cajamarca
+                                                    <span class="arrowRight right">
+                                                        <span></span>
+                                                    </span>
+                                                </a>
+                                            </li>
+                                                    <li>
+                                                        <a href="/empleos-en-cajamarca-en-cajamarca" title="Empleos en Cajamarca">Empleos en Cajamarca</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="/empleos-en-cajamarca-en-jaen" title="Empleos en Jaen">Empleos en Jaen</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="/empleos-en-cajamarca-en-cutervo" title="Empleos en Cutervo">Empleos en Cutervo</a>
+                                                    </li>
+                                        </ul>
+                                    </li>
+                                    <li class="cI">
+                                        <ul>
+                                            <li>
+                                                <a href="/empleos-en-puno" title="Empleos en Puno">
+                                                    Empleos en Puno
+                                                    <span class="arrowRight right">
+                                                        <span></span>
+                                                    </span>
+                                                </a>
+                                            </li>
+                                                    <li>
+                                                        <a href="/empleos-en-puno-en-juliaca" title="Empleos en Juliaca">Empleos en Juliaca</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="/empleos-en-puno-en-puno" title="Empleos en Puno">Empleos en Puno</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="/empleos-en-puno-en-antauta" title="Empleos en Antauta">Empleos en Antauta</a>
+                                                    </li>
+                                        </ul>
+                                    </li>
+                        </ul>
+                        <ul id="content_2" *ngIf="selectedView === 'cargos'" class="vista-cargos" class="lS">
+                                    <li class="cI">
+                                        <ul>
+                                            <li>
+                                                <a href="/trabajo-de-atencion-al-cliente" title="Empleos de atención al cliente">
+                                                    Empleos de atención al cliente
+                                                    <span class="arrowRight right">
+                                                        <span></span>
+                                                    </span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="cI">
+                                        <ul>
+                                            <li>
+                                                <a href="/trabajo-de-asesor-de-ventas" title="Empleos de asesor/a de ventas">
+                                                    Empleos de asesor/a de ventas
+                                                    <span class="arrowRight right">
+                                                        <span></span>
+                                                    </span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="cI">
+                                        <ul>
+                                            <li>
+                                                <a href="/trabajo-de-agente-de-seguridad" title="Empleos de agente de seguridad">
+                                                    Empleos de agente de seguridad
+                                                    <span class="arrowRight right">
+                                                        <span></span>
+                                                    </span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="cI">
+                                        <ul>
+                                            <li>
+                                                <a href="/trabajo-de-promotor-de-ventas" title="Empleos de promotor/a de ventas">
+                                                    Empleos de promotor/a de ventas
+                                                    <span class="arrowRight right">
+                                                        <span></span>
+                                                    </span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="cI">
+                                        <ul>
+                                            <li>
+                                                <a href="/trabajo-de-call-center" title="Empleos de call center">
+                                                    Empleos de call center
+                                                    <span class="arrowRight right">
+                                                        <span></span>
+                                                    </span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="cI">
+                                        <ul>
+                                            <li>
+                                                <a href="/trabajo-de-operarios-de-limpieza" title="Empleos de operarios/as de limpieza">
+                                                    Empleos de operarios/as de limpieza
+                                                    <span class="arrowRight right">
+                                                        <span></span>
+                                                    </span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="cI">
+                                        <ul>
+                                            <li>
+                                                <a href="/trabajo-de-ejecutivo-de-ventas" title="Empleos de ejecutivo/a de ventas">
+                                                    Empleos de ejecutivo/a de ventas
+                                                    <span class="arrowRight right">
+                                                        <span></span>
+                                                    </span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="cI">
+                                        <ul>
+                                            <li>
+                                                <a href="/trabajo-de-asesores-de-ventas" title="Empleos de asesores/as de ventas">
+                                                    Empleos de asesores/as de ventas
+                                                    <span class="arrowRight right">
+                                                        <span></span>
+                                                    </span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="cI">
+                                        <ul>
+                                            <li>
+                                                <a href="/trabajo-de-asesor-de-negocios" title="Empleos de asesor/a de negocios">
+                                                    Empleos de asesor/a de negocios
+                                                    <span class="arrowRight right">
+                                                        <span></span>
+                                                    </span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="cI">
+                                        <ul>
+                                            <li>
+                                                <a href="/trabajo-de-ayudante-de-cocina" title="Empleos de ayudante de cocina">
+                                                    Empleos de ayudante de cocina
+                                                    <span class="arrowRight right">
+                                                        <span></span>
+                                                    </span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="cI">
+                                        <ul>
+                                            <li>
+                                                <a href="/trabajo-de-asesor-comercial" title="Empleos de asesor/a comercial">
+                                                    Empleos de asesor/a comercial
+                                                    <span class="arrowRight right">
+                                                        <span></span>
+                                                    </span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="cI">
+                                        <ul>
+                                            <li>
+                                                <a href="/trabajo-de-asistente" title="Empleos de asistente">
+                                                    Empleos de asistente
+                                                    <span class="arrowRight right">
+                                                        <span></span>
+                                                    </span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="cI">
+                                        <ul>
+                                            <li>
+                                                <a href="/trabajo-de-supervisor" title="Empleos de supervisor/a">
+                                                    Empleos de supervisor/a
+                                                    <span class="arrowRight right">
+                                                        <span></span>
+                                                    </span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="cI">
+                                        <ul>
+                                            <li>
+                                                <a href="/trabajo-de-operario-de-limpieza" title="Empleos de operario/a de limpieza">
+                                                    Empleos de operario/a de limpieza
+                                                    <span class="arrowRight right">
+                                                        <span></span>
+                                                    </span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="cI">
+                                        <ul>
+                                            <li>
+                                                <a href="/trabajo-de-asesor" title="Empleos de asesor/a">
+                                                    Empleos de asesor/a
+                                                    <span class="arrowRight right">
+                                                        <span></span>
+                                                    </span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="cI">
+                                        <ul>
+                                            <li>
+                                                <a href="/trabajo-de-auxiliar-de-almacen" title="Empleos de auxiliar de almacén">
+                                                    Empleos de auxiliar de almacén
+                                                    <span class="arrowRight right">
+                                                        <span></span>
+                                                    </span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="cI">
+                                        <ul>
+                                            <li>
+                                                <a href="/trabajo-de-vendedor" title="Empleos de vendedor/a">
+                                                    Empleos de vendedor/a
+                                                    <span class="arrowRight right">
+                                                        <span></span>
+                                                    </span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="cI">
+                                        <ul>
+                                            <li>
+                                                <a href="/trabajo-de-conductor" title="Empleos de conductor/a">
+                                                    Empleos de conductor/a
+                                                    <span class="arrowRight right">
+                                                        <span></span>
+                                                    </span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="cI">
+                                        <ul>
+                                            <li>
+                                                <a href="/trabajo-de-practicante" title="Empleos de practicante">
+                                                    Empleos de practicante
+                                                    <span class="arrowRight right">
+                                                        <span></span>
+                                                    </span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="cI">
+                                        <ul>
+                                            <li>
+                                                <a href="/trabajo-de-mercaderista" title="Empleos de mercaderista">
+                                                    Empleos de mercaderista
+                                                    <span class="arrowRight right">
+                                                        <span></span>
+                                                    </span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                        </ul>
+                </div>
+            </div>
+        
+                </div>
+            </div>
+            <div class="bt1 bg_white ptB pbB posRel hide_m">
+                <div class="conteiner">
+                    <div class="conteiner">
+                        <p class="fs21 tc">Computrabajo en otros países</p>
+                        <p class="fs16 fc_aux tc mt5">La mayor red de trabajo en lengua hispana</p>
+                        <ul class="countries">
+                                    <li>
+                                        <a href="https://co.computrabajo.com" title="Bolsa de trabajo en Colombia" target="_blank" rel="noopener">
+                                            <span class="ico_country c_co lazy" data-src="//cp.ct-stc.com/web/v01.04.00.24/c/img/sprite_countries.png" style="background: url(&quot;//cp.ct-stc.com/web/v01.04.00.24/c/img/sprite_countries.png&quot;);"></span>
+                                            <span>Colombia</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://mx.computrabajo.com" title="Bolsa de trabajo en México" target="_blank" rel="noopener">
+                                            <span class="ico_country c_mx lazy" data-src="//cp.ct-stc.com/web/v01.04.00.24/c/img/sprite_countries.png" style="background: url(&quot;//cp.ct-stc.com/web/v01.04.00.24/c/img/sprite_countries.png&quot;);"></span>
+                                            <span>México</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://cl.computrabajo.com" title="Bolsa de trabajo en Chile" target="_blank" rel="noopener">
+                                            <span class="ico_country c_cl lazy" data-src="//cp.ct-stc.com/web/v01.04.00.24/c/img/sprite_countries.png" style="background: url(&quot;//cp.ct-stc.com/web/v01.04.00.24/c/img/sprite_countries.png&quot;);"></span>
+                                            <span>Chile</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://ar.computrabajo.com" title="Bolsa de trabajo en Argentina" target="_blank" rel="noopener">
+                                            <span class="ico_country c_ar lazy" data-src="//cp.ct-stc.com/web/v01.04.00.24/c/img/sprite_countries.png" style="background: url(&quot;//cp.ct-stc.com/web/v01.04.00.24/c/img/sprite_countries.png&quot;);"></span>
+                                            <span>Argentina</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://ec.computrabajo.com" title="Bolsa de trabajo en Ecuador" target="_blank" rel="noopener">
+                                            <span class="ico_country c_ec lazy" data-src="//cp.ct-stc.com/web/v01.04.00.24/c/img/sprite_countries.png" style="background: url(&quot;//cp.ct-stc.com/web/v01.04.00.24/c/img/sprite_countries.png&quot;);"></span>
+                                            <span>Ecuador</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://ve.computrabajo.com" title="Bolsa de trabajo en Venezuela" target="_blank" rel="noopener">
+                                            <span class="ico_country c_ve lazy" data-src="//cp.ct-stc.com/web/v01.04.00.24/c/img/sprite_countries.png" style="background: url(&quot;//cp.ct-stc.com/web/v01.04.00.24/c/img/sprite_countries.png&quot;);"></span>
+                                            <span>Venezuela</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://cr.computrabajo.com" title="Bolsa de trabajo en Costa Rica" target="_blank" rel="noopener">
+                                            <span class="ico_country c_cr lazy" data-src="//cp.ct-stc.com/web/v01.04.00.24/c/img/sprite_countries.png" style="background: url(&quot;//cp.ct-stc.com/web/v01.04.00.24/c/img/sprite_countries.png&quot;);"></span>
+                                            <span>Costa Rica</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://gt.computrabajo.com" title="Bolsa de trabajo en Guatemala" target="_blank" rel="noopener">
+                                            <span class="ico_country c_gt lazy" data-src="//cp.ct-stc.com/web/v01.04.00.24/c/img/sprite_countries.png" style="background: url(&quot;//cp.ct-stc.com/web/v01.04.00.24/c/img/sprite_countries.png&quot;);"></span>
+                                            <span>Guatemala</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://sv.computrabajo.com" title="Bolsa de trabajo en El Salvador" target="_blank" rel="noopener">
+                                            <span class="ico_country c_sv lazy" data-src="//cp.ct-stc.com/web/v01.04.00.24/c/img/sprite_countries.png" style="background: url(&quot;//cp.ct-stc.com/web/v01.04.00.24/c/img/sprite_countries.png&quot;);"></span>
+                                            <span>El Salvador</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://uy.computrabajo.com" title="Bolsa de trabajo en Uruguay" target="_blank" rel="noopener">
+                                            <span class="ico_country c_uy lazy" data-src="//cp.ct-stc.com/web/v01.04.00.24/c/img/sprite_countries.png" style="background: url(&quot;//cp.ct-stc.com/web/v01.04.00.24/c/img/sprite_countries.png&quot;);"></span>
+                                            <span>Uruguay</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://py.computrabajo.com" title="Bolsa de trabajo en Paraguay" target="_blank" rel="noopener">
+                                            <span class="ico_country c_py lazy" data-src="//cp.ct-stc.com/web/v01.04.00.24/c/img/sprite_countries.png" style="background: url(&quot;//cp.ct-stc.com/web/v01.04.00.24/c/img/sprite_countries.png&quot;);"></span>
+                                            <span>Paraguay</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://pa.computrabajo.com" title="Bolsa de trabajo en Panamá" target="_blank" rel="noopener">
+                                            <span class="ico_country c_pa lazy" data-src="//cp.ct-stc.com/web/v01.04.00.24/c/img/sprite_countries.png" style="background: url(&quot;//cp.ct-stc.com/web/v01.04.00.24/c/img/sprite_countries.png&quot;);"></span>
+                                            <span>Panamá</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://hn.computrabajo.com" title="Bolsa de trabajo en Honduras" target="_blank" rel="noopener">
+                                            <span class="ico_country c_hn lazy" data-src="//cp.ct-stc.com/web/v01.04.00.24/c/img/sprite_countries.png" style="background: url(&quot;//cp.ct-stc.com/web/v01.04.00.24/c/img/sprite_countries.png&quot;);"></span>
+                                            <span>Honduras</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://ni.computrabajo.com" title="Bolsa de trabajo en Nicaragua" target="_blank" rel="noopener">
+                                            <span class="ico_country c_ni lazy" data-src="//cp.ct-stc.com/web/v01.04.00.24/c/img/sprite_countries.png" style="background: url(&quot;//cp.ct-stc.com/web/v01.04.00.24/c/img/sprite_countries.png&quot;);"></span>
+                                            <span>Nicaragua</span>
+                                        </a>
+                                    </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
 
-        function hideSuggestions() {
-            setTimeout(function() {
-                document.getElementById('suggestions').style.display = 'none';
-            }, 200); // Agregar un retraso para permitir que se seleccione una sugerencia
-        }
-    </script>
-</body>
-</html>
+            <footer>
+                <p>&copy; 2024 Computrabajo</p>
+            </footer>
+        </main>
+    </body>
+</div>

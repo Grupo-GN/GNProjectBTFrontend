@@ -12,6 +12,8 @@ import { CerrarSesionComponent } from './components/cerrar-sesion/cerrar-sesion.
 import { MisAlertasComponent } from './components/mis-alertas/mis-alertas.component';
 import { ReclutadoresComponent } from './components/reclutadores/reclutadores.component';
 import { PublicarOfertasComponent } from './components/publicar-ofertas/publicar-ofertas.component';
+import { EmpresasComponent } from './components/empresas/empresas.component';
+import { SalariosComponent } from './components/salarios/salarios.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/body', pathMatch: 'full' },
@@ -26,7 +28,9 @@ const routes: Routes = [
   { path: 'reclutadores', component: ReclutadoresComponent },
   { path: 'publicar-ofertas', component: PublicarOfertasComponent }, // Nuevo componente
   { path: 'configuraciones', component: ConfiguracionComponent },
-  { path: 'cerrar-sesion', component: CerrarSesionComponent } // Nuevo componente
+  { path: 'cerrar-sesion', component: CerrarSesionComponent },
+  { path: 'empresas', component: EmpresasComponent },
+  { path: 'salarios', component: SalariosComponent },
 ];
 
 @NgModule({
