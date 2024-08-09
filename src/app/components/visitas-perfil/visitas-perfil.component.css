@@ -20,33 +20,13 @@
 
 
 
-.barra-navegacion{
-    border-radius: 50px;
-  flex-grow: 1;
-  flex-basis: 0;
-  margin: 0 5px;
-}
-  
-.opcion {
+.barra--navegacion{
     display: flex;
+    justify-content: center;
     align-items: center;
-    gap: 8px; /* Espacio entre el icono y el texto */
-  }
-
-
-.opcion a{
-  text-decoration: none; /* Esto elimina la subrayado del enlace */
-  color: #000; /* Cambia el color del texto si es necesario */
-  font-size: 16px; 
+    min-height: 2vh;
 }
 
-.opcion i {
-    font-size: 20px; /* Ajusta el tamaño del icono */
-  }
-  
-  .opcion:hover i, .opcion:hover a {
-    color: #007bff; /* Cambia el color al pasar el cursor */
-  }
 
 
 
