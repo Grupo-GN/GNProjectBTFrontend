@@ -18,19 +18,6 @@
  
 }
 
-
-
-.barra--navegacion{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 2vh;
-}
-
-
-
-
-
 .search--box input[type="text"] {
     border: none;
     outline: none; /* Elimina el borde cuando el campo de texto está enfocado */
@@ -39,79 +26,109 @@
     font-size: 1.3rem; /* Asegura que el tamaño de la fuente sea consistente */
 }
 
-
-.contenido {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 10px;
-    margin-top: 20px;
-}
-
-.contenido i {
-    font-size: 48px; /* Ajusta el tamaño del icono */
-}
-
-.contenido .her--title {
-    font-size: 18px;
-}
-
-.contenido button {
+.ccp_menu {
     margin-top: 10px;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-}
-
-
-.contenido2 {
-    position: fixed; /* Cambiado a position fixed para mantener la posición */
-    right: 200px; /* Ajusta la distancia desde el borde derecho */
-    top: 250px; /* Ajusta la distancia desde el borde superior */
-    width: 350px; /* Ajusta el ancho según sea necesario */
-    padding: 20px;
-    background: #ffffff;
-    border-radius: 1px;
-}
-
-.contenido2 h4 {
-    margin-bottom: 20px;
-    font-size: 15px;
-}
-
-.contenido--dos {
+  }
+  
+  
+  @media only screen and (min-width: 1300px) {
+    .container {
+      width: 1500px;
+    }
+  }
+  
+  .ccp_menu ul {
+    background: #eaf3fb;
+    padding: 5px 0;
     display: flex;
-    flex-direction: column;
-    gap: 2px;
-}
-
-.paso {
+    width: 100%;
+    border-radius: 60px;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-left: 100px;
+  }
+  
+  ul {
+    list-style: none;
+  }
+  
+  .ccp_menu li {
+    border-radius: 50px;
+    flex-grow: 1;
+    flex-basis: 0;
+    margin: 0 5px;
+  }
+  
+  .ccp_menu a {
+    color: #808080;
+    text-decoration: none;
+    padding: 10px 15px;
+    line-height: 25px;
     display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.paso h5, .paso h6 {
-    margin: 0;
-    font-weight: normal;
-}
-
-.paso h5 {
-    font-size: 20px;
-}
-
-.paso h6 {
-    font-size: 20px;
-}
-
-.paso i {
-    font-size: 24px;
-}
-
-.paso .tercer--titulo {
-    background: #ffff;
-    border-radius: 10px;
-    padding: 10px;
-    max-width: 400px;
-}
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .ccp_menu ul li a {
+      display: flex;
+      align-items: center;
+      padding: 10px 20px;
+      color: #000; /* Color de texto inicial */
+      text-decoration: none;
+      background-color: #e9f3fd; /* Color de fondo inicial */
+      border-radius: 20px; /* Bordes redondeados */
+      transition: all 0.3s ease; /* Transición suave */
+    }
+    
+    /* Estilo para el ítem seleccionado */
+    .ccp_menu ul li.selec a {
+      background: linear-gradient(90deg, #d7a9db 0, #a0bfef 40%, #a28dd3 100%); /* Fondo azul oscuro */
+      color: #fff; /* Texto blanco */
+    }
+    
+    /* Estilo para el icono dentro del ítem seleccionado */
+    .ccp_menu ul li.selec a .input-icon-2,
+    .ccp_menu ul li.selec a .input-icon-3,
+    .ccp_menu ul li.selec a .input-icon-4,
+    .ccp_menu ul li.selec a .input-icon-5 {
+      fill: #fff; /* Ícono blanco */
+    }
+    
+    /* Estilo al pasar el cursor */
+    .ccp_menu ul li a:hover {
+      background: linear-gradient(90deg, #d7a9db 0, #a0bfef 40%, #a28dd3 100%); /* Fondo azul oscuro */
+      color: #fff; /* Texto blanco */
+    }
+    
+    /* Cambio de color para los iconos al pasar el cursor */
+    .ccp_menu ul li a:hover .input-icon-2,
+    .ccp_menu ul li a:hover .input-icon-3,
+    .ccp_menu ul li a:hover .input-icon-4,
+    .ccp_menu ul li a:hover .input-icon-5 {
+      fill: #fff; /* Ícono blanco */
+    }
+    
+    /* Espaciado entre icono y texto */
+    .ccp_menu ul li a div {
+      margin-right: 10px;
+    }
+  a {
+      background: transparent;
+      text-decoration: none;
+      color: #005DA9;
+      cursor: pointer;
+  }
+  
+  .header_web {
+    padding: 22px 0 25px;
+  }
+  
+  .header_web .container {
+    display: flex;
+    position: relative;
+  }
+  
+  .header_web .logo {
+    margin: 0 15px 0 0 !important;
+    height: 30px;
+  }

@@ -25,3 +25,110 @@
     color: #2653cf; /* Asegura que el texto dentro del input tenga el mismo color */
     font-size: 1.3rem; /* Asegura que el tamaño de la fuente sea consistente */
 }
+
+.ccp_menu {
+    margin-top: 10px;
+  }
+  
+  
+  @media only screen and (min-width: 1300px) {
+    .container {
+      width: 1500px;
+    }
+  }
+  
+  .ccp_menu ul {
+    background: #eaf3fb;
+    padding: 5px 0;
+    display: flex;
+    width: 100%;
+    border-radius: 60px;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-left: 100px;
+  }
+  
+  ul {
+    list-style: none;
+  }
+  
+  .ccp_menu li {
+    border-radius: 50px;
+    flex-grow: 1;
+    flex-basis: 0;
+    margin: 0 5px;
+  }
+  
+  .ccp_menu a {
+    color: #808080;
+    text-decoration: none;
+    padding: 10px 15px;
+    line-height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .ccp_menu ul li a {
+      display: flex;
+      align-items: center;
+      padding: 10px 20px;
+      color: #000; /* Color de texto inicial */
+      text-decoration: none;
+      background-color: #e9f3fd; /* Color de fondo inicial */
+      border-radius: 20px; /* Bordes redondeados */
+      transition: all 0.3s ease; /* Transición suave */
+    }
+    
+    /* Estilo para el ítem seleccionado */
+    .ccp_menu ul li.selec a {
+      background: linear-gradient(90deg, #d7a9db 0, #a0bfef 40%, #a28dd3 100%); /* Fondo azul oscuro */
+      color: #fff; /* Texto blanco */
+    }
+    
+    /* Estilo para el icono dentro del ítem seleccionado */
+    .ccp_menu ul li.selec a .input-icon-2,
+    .ccp_menu ul li.selec a .input-icon-3,
+    .ccp_menu ul li.selec a .input-icon-4,
+    .ccp_menu ul li.selec a .input-icon-5 {
+      fill: #fff; /* Ícono blanco */
+    }
+    
+    /* Estilo al pasar el cursor */
+    .ccp_menu ul li a:hover {
+      background: linear-gradient(90deg, #d7a9db 0, #a0bfef 40%, #a28dd3 100%); /* Fondo azul oscuro */
+      color: #fff; /* Texto blanco */
+    }
+    
+    /* Cambio de color para los iconos al pasar el cursor */
+    .ccp_menu ul li a:hover .input-icon-2,
+    .ccp_menu ul li a:hover .input-icon-3,
+    .ccp_menu ul li a:hover .input-icon-4,
+    .ccp_menu ul li a:hover .input-icon-5 {
+      fill: #fff; /* Ícono blanco */
+    }
+    
+    /* Espaciado entre icono y texto */
+    .ccp_menu ul li a div {
+      margin-right: 10px;
+    }
+  a {
+      background: transparent;
+      text-decoration: none;
+      color: #005DA9;
+      cursor: pointer;
+  }
+  
+  .header_web {
+    padding: 22px 0 25px;
+  }
+  
+  .header_web .container {
+    display: flex;
+    position: relative;
+  }
+  
+  .header_web .logo {
+    margin: 0 15px 0 0 !important;
+    height: 30px;
+  }
