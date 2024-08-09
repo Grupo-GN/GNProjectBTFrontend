@@ -17,3 +17,11 @@
     font-size: 1.3rem; 
  
 }
+
+.search--box input[type="text"] {
+    border: none;
+    outline: none; /* Elimina el borde cuando el campo de texto está enfocado */
+    background: transparent; /* Opcional: hace que el fondo del input sea transparente */
+    color: #2653cf; /* Asegura que el texto dentro del input tenga el mismo color */
+    font-size: 1.3rem; /* Asegura que el tamaño de la fuente sea consistente */
+}
