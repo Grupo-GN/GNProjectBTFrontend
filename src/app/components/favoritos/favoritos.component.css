@@ -1,3 +1,19 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap");
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #f6fbff;
+  color: #313944;
+  font-family: "Roboto", Arial, sans-serif;
+  font-size: 1.4rem !important;
+  line-height: 1.4;
+}
+
 .header_web .box_search {
   position: absolute;
   width: 530px;
