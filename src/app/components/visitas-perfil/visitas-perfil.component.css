@@ -19,7 +19,7 @@
 }
 
 .barra-navegacion {
-    background-color: rgb(129, 165, 243);
+    color: #005DA9;
     cursor: pointer;
     padding: 9px 2px; /* Ajusta el relleno según tu preferencia */
     border-radius: 10px;
