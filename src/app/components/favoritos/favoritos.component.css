@@ -175,7 +175,3 @@ input-icon-place {
     left: 1025px;
     
 }
-input {
-    border: none; /* Quita el borde */
-    outline: none; /* Quita el borde del foco */
-  }
