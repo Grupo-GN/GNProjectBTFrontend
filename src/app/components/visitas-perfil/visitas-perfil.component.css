@@ -20,32 +20,18 @@
 
 
 
-.barra-navegacion {
-    display: flex;
-    gap: 20px;
-  }
+.barra-navegacion{
+    border-radius: 50px;
+  flex-grow: 1;
+  flex-basis: 0;
+  margin: 0 5px;
+}
   
-  .opcion {
-    display: flex;
-    align-items: center;
-    gap: 1px; /* Espacio entre el icono y el texto */
-  }
-  
-  .opcion a {
-    text-decoration: none;
-    color: #000; /* Cambia el color del texto si es necesario */
-    font-size: 16px; /* Ajusta el tamaño del texto */
-  }
-  
-  .opcion i {
-    font-size: 20px; /* Ajusta el tamaño del icono */
-  }
-  
-  .opcion:hover i, .opcion:hover a {
-    color: #007bff; /* Cambia el color al pasar el cursor */
-  }
-  
-
+.opcion a{
+  text-decoration: none; /* Esto elimina la subrayado del enlace */
+  color: #000; /* Cambia el color del texto si es necesario */
+  font-size: 16px; 
+}
 
 
 
