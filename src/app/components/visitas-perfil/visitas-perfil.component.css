@@ -28,7 +28,7 @@
   .opcion {
     display: flex;
     align-items: center;
-    gap: 8px; /* Espacio entre el icono y el texto */
+    gap: 1px; /* Espacio entre el icono y el texto */
   }
   
   .opcion a {
