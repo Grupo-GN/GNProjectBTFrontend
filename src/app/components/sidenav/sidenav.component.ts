@@ -61,9 +61,9 @@ export class SidenavComponent implements OnInit {
   }
   navData: NavItem[] = [
     {
-      routeLink: '/usuario',
-      icon: 'fas fa-user',
-      label: 'Usuario'
+      routeLink: '/mi-area',
+      icon: "fas fa-home",
+      label: 'Mi Area'
     },
     {
       routeLink: '/CV',

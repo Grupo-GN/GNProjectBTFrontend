@@ -16,9 +16,10 @@ import { PostulacionesComponent } from './components/postulaciones/postulaciones
 import { ReclutadoresComponent } from './components/reclutadores/reclutadores.component';
 import { VisitasPerfilComponent } from './components/visitas-perfil/visitas-perfil.component';
 import { AppRoutingModule } from './app-routing.module';
-import { PerfilUsuarioComponent } from './components/perfil-usuario/perfil-usuario.component';
+import { MiAreaComponent } from './components/mi-area/mi-area.component';
 import { MisAlertasComponent } from './components/mis-alertas/mis-alertas.component';
 import { CerrarSesionComponent } from './components/cerrar-sesion/cerrar-sesion.component';
+
 
 
 @NgModule({
@@ -35,7 +36,7 @@ import { CerrarSesionComponent } from './components/cerrar-sesion/cerrar-sesion.
     PostulacionesComponent,
     ReclutadoresComponent,
     VisitasPerfilComponent,
-    PerfilUsuarioComponent,
+    MiAreaComponent,
     MisAlertasComponent,
     CerrarSesionComponent
     
