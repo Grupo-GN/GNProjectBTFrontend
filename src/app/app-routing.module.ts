@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { FavoritosComponent } from './components/favoritos/favoritos.component';
 import { CVComponent } from './components/cv/cv.component';
-import { PerfilUsuarioComponent } from './components/perfil-usuario/perfil-usuario.component';
+import { MiAreaComponent } from './components/mi-area/mi-area.component'; 
 import { BuscarOfertasComponent } from './components/buscar-ofertas/buscar-ofertas.component';
 import { PostulacionesComponent } from './components/postulaciones/postulaciones.component';
 import { VisitasPerfilComponent } from './components/visitas-perfil/visitas-perfil.component';
@@ -17,7 +17,7 @@ import { SalariosComponent } from './components/salarios/salarios.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/body', pathMatch: 'full' },
-  { path: 'usuario', component: PerfilUsuarioComponent },
+  { path: 'mi-area', component: MiAreaComponent },
   { path: 'CV', component: CVComponent },
   { path: 'ofertas', component: BuscarOfertasComponent },
   { path: 'postulaciones', component: PostulacionesComponent },
