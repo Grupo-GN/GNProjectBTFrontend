@@ -63,7 +63,7 @@ export class BuscarOfertasComponent implements OnInit {
   hideSuggestions() {
     setTimeout(() => {
       this.suggestionsVisible = null;
-    }, 200);
+    }, 10000);
   }
 
   onInput(event: Event) {

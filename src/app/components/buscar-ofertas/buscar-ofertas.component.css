@@ -38,7 +38,7 @@ body {
     height: 56.5vw;
 }
 .header_web {
-    background: linear-gradient(90deg, #79aaf5 0, #4c7dc7 40%, #92b5e9 100%);
+    background: linear-gradient(90deg, #9a729d 0, #81a4d9 40%, #7762a9 100%);
     height: 90px;
     color: #fff; 
     padding-top: 35px;
@@ -264,6 +264,11 @@ a, body, button, div, form, h1, h2, h3, h4, h5, h6, html, input, label, legend, 
     border-radius: 50px;
     cursor: pointer;
 }
+.btn-icon-2 {
+    color: #f3ecec;
+    
+    cursor: pointer;
+}
   
   .box_search button {
     margin-left: 10px;
@@ -334,7 +339,7 @@ a, body, button, div, form, h1, h2, h3, h4, h5, h6, html, input, label, legend, 
     margin: 0;
   }
   
-  /* Estilos para la lista de sugerencias */
+
   .autocomplete {
     position: absolute;
     width: 100%;
@@ -344,6 +349,12 @@ a, body, button, div, form, h1, h2, h3, h4, h5, h6, html, input, label, legend, 
     border: 1px solid #e1e5ea;
     z-index: 1000;
   }
+  input-icon-place {
+    color: #f3ecec;
+    
+    cursor: pointer;
+    
+}
   
   .autocomplete .title_suggest {
     font-weight: bold;
@@ -356,13 +367,18 @@ a, body, button, div, form, h1, h2, h3, h4, h5, h6, html, input, label, legend, 
   .autocomplete li {
     padding: 10px;
     cursor: pointer;
+    display: flex;
+    padding: 10px 15px;
+    color: #313944;
+    align-items: center;
   }
+
   
   .autocomplete li:hover {
     background-color: #f0f0f0;
   }
   
-  /* Estilos para los iconos */
+
   .icon {
     display: inline-block;
     width: 20px;
