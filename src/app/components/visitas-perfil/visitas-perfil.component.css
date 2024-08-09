@@ -18,18 +18,37 @@
  
 }
 
+
+
 .barra-navegacion {
-    color: #005DA9;
-    cursor: pointer;
-    padding: 9px 2px; /* Ajusta el relleno según tu preferencia */
-    border-radius: 10px;
-    border: 1px solid #ffffff;
     display: flex;
-    align-items: center; /* Alinea los íconos y los enlaces verticalmente */
-    justify-content: space-around;
-    font-size: 1.3rem; /* Ajusta el tamaño de los íconos según tu preferencia */
-    color: #070505;
-}
+    gap: 20px;
+  }
+  
+  .opcion {
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Espacio entre el icono y el texto */
+  }
+  
+  .opcion a {
+    text-decoration: none;
+    color: #000; /* Cambia el color del texto si es necesario */
+    font-size: 16px; /* Ajusta el tamaño del texto */
+  }
+  
+  .opcion i {
+    font-size: 20px; /* Ajusta el tamaño del icono */
+  }
+  
+  .opcion:hover i, .opcion:hover a {
+    color: #007bff; /* Cambia el color al pasar el cursor */
+  }
+  
+
+
+
+
 
 
 .search--box input[type="text"] {
@@ -38,20 +57,6 @@
     background: transparent; /* Opcional: hace que el fondo del input sea transparente */
     color: #2653cf; /* Asegura que el texto dentro del input tenga el mismo color */
     font-size: 1.3rem; /* Asegura que el tamaño de la fuente sea consistente */
-}
-
-.opcion {
-    text-decoration: none;
-    color: #070505;
-    padding: 10px 100px; /* Ajusta el relleno según tu preferencia */
-    border-radius: 15px;
-    cursor: pointer;
-}
-
-
-.opcion:hover {
-    background-color: #2653cf;
-    color: #fff;
 }
 
 
