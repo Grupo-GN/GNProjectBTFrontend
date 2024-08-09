@@ -1,0 +1,132 @@
+.user--info {
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+    height: 7vh; /* Opcional: Asegura que el contenedor ocupe toda la altura de la ventana */
+  
+}
+.search--box{
+    background: #fff;
+    border-radius: 15px;
+    color: #2653cf;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 10px 70px;
+    cursor: pointer;
+    font-size: 1.3rem; 
+ 
+}
+
+.barra-navegacion {
+    background-color: rgb(129, 165, 243);
+    cursor: pointer;
+    padding: 9px 2px; /* Ajusta el relleno según tu preferencia */
+    border-radius: 10px;
+    border: 1px solid #ffffff;
+    display: flex;
+    align-items: center; /* Alinea los íconos y los enlaces verticalmente */
+    justify-content: space-around;
+    font-size: 1.3rem; /* Ajusta el tamaño de los íconos según tu preferencia */
+    color: #070505;
+}
+
+
+.search--box input[type="text"] {
+    border: none;
+    outline: none; /* Elimina el borde cuando el campo de texto está enfocado */
+    background: transparent; /* Opcional: hace que el fondo del input sea transparente */
+    color: #2653cf; /* Asegura que el texto dentro del input tenga el mismo color */
+    font-size: 1.3rem; /* Asegura que el tamaño de la fuente sea consistente */
+}
+
+.opcion {
+    text-decoration: none;
+    color: #070505;
+    padding: 10px 100px; /* Ajusta el relleno según tu preferencia */
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+
+.opcion:hover {
+    background-color: #2653cf;
+    color: #fff;
+}
+
+
+.contenido {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.contenido i {
+    font-size: 48px; /* Ajusta el tamaño del icono */
+}
+
+.contenido .her--title {
+    font-size: 18px;
+}
+
+.contenido button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+
+.contenido2 {
+    position: fixed; /* Cambiado a position fixed para mantener la posición */
+    right: 200px; /* Ajusta la distancia desde el borde derecho */
+    top: 250px; /* Ajusta la distancia desde el borde superior */
+    width: 350px; /* Ajusta el ancho según sea necesario */
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 1px;
+}
+
+.contenido2 h4 {
+    margin-bottom: 20px;
+    font-size: 15px;
+}
+
+.contenido--dos {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.paso {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.paso h5, .paso h6 {
+    margin: 0;
+    font-weight: normal;
+}
+
+.paso h5 {
+    font-size: 20px;
+}
+
+.paso h6 {
+    font-size: 20px;
+}
+
+.paso i {
+    font-size: 24px;
+}
+
+.paso .tercer--titulo {
+    background: #ffff;
+    border-radius: 10px;
+    padding: 10px;
+    max-width: 400px;
+}
