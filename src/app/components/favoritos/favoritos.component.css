@@ -1,29 +1,108 @@
-.user--info {
-    display: flex;
-    justify-content: center; /* Centra horizontalmente */
-    align-items: center; /* Centra verticalmente */
-    height: 7vh; /* Opcional: Asegura que el contenedor ocupe toda la altura de la ventana */
-  
-}
-.search--box{
-    background: #fff;
-    border-radius: 15px;
-    color: #2653cf;
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    padding: 10px 70px;
-    cursor: pointer;
-    font-size: 1.3rem; 
- 
+.header_web .box_search {
+  position: absolute;
+  width: 530px;
+  font-size: 14px;
+  border: 1px solid #e1e5ea;
+  background-color: #fff;
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 4px 5px;
+  box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.07);
+  transition: width 0.3s ease-in-out;
+  margin-left: 210px;
+  margin-top: -40px;
 }
 
-.search--box input[type="text"] {
-    border: none;
-    outline: none; /* Elimina el borde cuando el campo de texto está enfocado */
-    background: transparent; /* Opcional: hace que el fondo del input sea transparente */
-    color: #2653cf; /* Asegura que el texto dentro del input tenga el mismo color */
-    font-size: 1.3rem; /* Asegura que el tamaño de la fuente sea consistente */
+.box_search>div {
+  display: flex;
+}
+
+.header_web .box_search>div .field_input_icon:first-of-type {
+  margin-left: -5px;
+}
+
+.posRel {
+  position: relative;
+}
+
+.field_input_icon .cont {
+  position: relative;
+  float: left;
+  width: 100%;
+}
+
+.field_input_icon .cont .icon {
+  position: absolute;
+  top: 50%;
+  left: 15px;
+  transform: translateY(-50%);
+  z-index: 1;
+}
+
+.box_search input {
+  border: 0;
+  border-radius: 30px;
+  padding: 9px 30px 9px 10px;
+  margin-left: 30px;
+}
+
+.header_web input {
+  height: auto;
+}
+
+.hide {
+  display: none !important;
+}
+
+.header_web .box_search .b_primary {
+  flex: 38px 0 0;
+  height: 38px;
+  padding: 8px;
+  background-color: #233042;
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.autocomplete {
+    display: none;
+  }
+  
+  .autocomplete.visible {
+    display: block;
+  }
+
+.b_aux.rounded,
+.b_secondary.rounded,
+.btn_close_search,
+.header_web .box_search .b_primary,
+.modal-sm .b_primary,
+.modal-sm .b_secondary,
+.ui-dialog .b_primary,
+.ui-dialog .b_secondary,
+.ui-widget button.b_primary,
+.ui-widget button.b_secondary,
+a.b_primary,
+a.b_secondary {
+  text-decoration: none;
+  border-radius: 60px;
+}
+
+input-icon{
+    margin-left: 50px;
+}
+.box_search>div .field_input_icon:first-of-type .autocomplete {
+    width: 140%;
+}
+.header_web .box_search .autocomplete {
+    top: 41px !important;
+}
+.box_search .autocomplete {
+    border-radius: 0 0 30px 30px;
+    border-color: #e1e5ea;
+    max-height: 310px;
 }
 
 .ccp_menu {
