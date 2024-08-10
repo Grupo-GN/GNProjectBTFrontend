@@ -71,9 +71,9 @@ export class SidenavComponent implements OnInit {
       label: 'Mi CV'
     },
     {
-      routeLink: '/ofertas',
+      routeLink: '/buscar-ofertas',
       icon: 'fas fa-search',
-      label: 'Buscar'
+      label: 'Buscar Ofertas'
     },
     {
       routeLink: '/postulaciones',
