@@ -380,7 +380,13 @@ h1 {
 }
 .mt20 {
   margin-top: 20px;
+  
+}img {
+  border: 0;
+  vertical-align: middle;
+  max-width: 100%;
 }
+
 .fs22 {
   font-size: 22px;
 }
