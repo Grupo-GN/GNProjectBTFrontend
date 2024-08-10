@@ -29,11 +29,11 @@ body {
   background: #eaf3fb;
   padding: 5px 0;
   display: flex;
-  width: 100%;
+  width: 130%;
   border-radius: 60px;
   align-items: center;
   justify-content: space-evenly;
-  margin-left: 20px;
+  margin-left: 50px;
 }
 
 ul {

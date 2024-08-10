@@ -421,7 +421,7 @@ a, body, button, div, form, h1, h2, h3, h4, h5, h6, html, input, label, legend, 
     display: flex;
     list-style: none;
     position: relative;
-    margin: 40px 10px 10px;
+    margin: 20px 10px 10px;
     padding: 0;
     font-family: Arial, sans-serif;
     -ms-flex-pack: distribute;
@@ -526,11 +526,13 @@ h3 {
 }
 .prB {
     padding-right: 50px;
+    flex: 600px 0 0;
+
 }
 a img, img {
     border: 0;
-    max-width: 100%;
-    vertical-align: middle;
+    max-width: 200%;
+    
 }
 .fs30 {
     font-size: 1.9rem;
@@ -852,8 +854,8 @@ a {
     position: absolute;
     width: 25px;
     height: 40px;
-    left: 460px;
-    top: 48%;
+    left: 620px;
+    top: 37%;
     transform: translateY(-55%);
   }
 
@@ -862,8 +864,8 @@ a {
     position: absolute;
     width: 25px;
     height: 40px;
-    left: 460px;
-    top: 53%;
+    left: 620px;
+    top: 41%;
     transform: translateY(-55%);
 }
 .input-icon-5 {
@@ -871,8 +873,8 @@ a {
     position: absolute;
     width: 25px;
     height: 40px;
-    left: 460px;
-    top: 58%;
+    left: 620px;
+    top: 45%;
     transform: translateY(-55%);
 }
 .input-icon-6{
@@ -880,8 +882,8 @@ a {
     position: absolute;
     width: 25px;
     height: 40px;
-    left: 460px;
-    top: 63%;
+    left: 620px;
+    top: 49%;
     transform: translateY(-55%);
 }
 
@@ -1026,5 +1028,14 @@ footer, footer a {
     background-color: #fff;
 }
 
+.cI li a:before {
+    content: "";
+    float: left;
+    border-bottom: 1px solid #b4bdca;
+    border-left: 1px solid #b4bdca;
+    width: 8px;
+    height: 6px;
+    margin: 5px 5px 0;
+}
 
 
