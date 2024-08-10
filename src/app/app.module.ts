@@ -47,7 +47,8 @@ import { CerrarSesionComponent } from './components/cerrar-sesion/cerrar-sesion.
     BrowserAnimationsModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule,
+    HttpClientModule
+
 
     
   ],
