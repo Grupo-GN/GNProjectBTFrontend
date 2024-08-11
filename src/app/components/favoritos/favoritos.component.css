@@ -384,7 +384,7 @@ h1 {
 }img {
   border: 0;
   vertical-align: middle;
-  max-width: 100%;
+  max-width: 50%;
 }
 
 .fs22 {
@@ -421,7 +421,7 @@ body p {
 
 .b_primary {
   background-color: #0d3878;
-  color: #da3d3d;
+  color: #ffffff;
   font-weight: bold;
   border-radius: 30px;
   position: relative;
@@ -436,4 +436,41 @@ body p {
 
 .w40, .w_40 {
   width: 40%;
+}
+
+/*aqui*/
+.fr {
+  float: right;
+}
+
+.w_28 {
+  width: 28%;
+}
+
+.box_info.light {
+  background: rgba(24, 26, 31, 0.07);
+  border: 0;
+  color: #333 !important;
+  -webkit-box-shadow: 0 0 9px 1px rgba(24, 26, 31, 0.07);
+  box-shadow: 0 0 9px 1px rgba(24, 26, 31, 0.07);
+}
+.box_info {
+  background: #FF9733;
+  border: 1px solid #FF9733;
+}
+.box_error, .box_info, .box_ok {
+  padding: 1001px 87px;
+  border-radius: 10px;
+  color: #fff !important;
+  position: relative;
+}
+.mb15 {
+  margin-bottom: 96px;
+}
+
+.p15 {
+  padding: 15px !important;
+}
+.fwB, .fw_b {
+  font-weight: bold;
 }
