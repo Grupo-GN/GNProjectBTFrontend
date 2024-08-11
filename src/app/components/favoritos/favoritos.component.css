@@ -346,7 +346,7 @@ input-icon-place {
 .input-icon{
   color: #191919;
   position: absolute;
-  width: 28px;
+  width: 45px;
   height: 25px;
   left: 3px;
   top: 50%;
@@ -403,7 +403,7 @@ body p {
 
 .b_primary {
   background-color: #0d3878;
-  color: #fff;
+  color: #da3d3d;
   font-weight: bold;
   border-radius: 30px;
   position: relative;
