@@ -1,16 +1,16 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { debounceTime, distinctUntilChanged, Observable, Subject, switchMap } from 'rxjs';
+
 @Component({
   selector: 'app-salarios',
   templateUrl: './salarios.component.html',
   styleUrls: ['./salarios.component.css']
-
 })
 export class SalariosComponent implements OnInit{
   suggestionsVisible: string | null = null;
-  lastSearches: string[] = [''];
-  popularJobs: string[] = [
+  lastSearches = ['atencion al cliente en arequipa'];
+  popularJobs = [
     'Atención al cliente',
     'Asesor/a de ventas',
     'Agente de seguridad',
@@ -18,8 +18,9 @@ export class SalariosComponent implements OnInit{
     'Promotor/a de ventas',
     'Call center'
   ];
-  CountrySearches: string[] = [''];
-  popularPlaces: string[] = [
+
+  CountrySearches = ['atencion al cliente en arequipa'];
+  popularPlaces = [
     'Arequipa',
     'Lima',
     'Cusco',
@@ -27,13 +28,12 @@ export class SalariosComponent implements OnInit{
     'Chiclayo',
     'Iquitos'
   ];
-  filteredPlaces: string[] = [...this.popularPlaces];
-  filteredJobs: string[] = [...this.popularJobs];
-  searchTerm: string = '';
-  placeTerm: string = '';
+  filteredPlaces = [...this.popularPlaces];
+  filteredJobs = [...this.popularJobs];
+  searchTerm = '';
+  placeTerm = '';
   private searchTerms = new Subject<string>();
   private placeTerms = new Subject<string>();
-  selectedView: string = 'localizacion';
 
   constructor(private http: HttpClient) {}
 
@@ -55,111 +55,63 @@ export class SalariosComponent implements OnInit{
     });
   }
 
-  showSuggestions(type: string): void {
+  showSuggestions(type: string) {
     this.suggestionsVisible = type;
   }
 
-  hideSuggestions(): void {
+  hideSuggestions() {
     setTimeout(() => {
       this.suggestionsVisible = null;
-    }, 1000000); // Ajusta el tiempo de espera si es necesario
+    }, 10000);
   }
 
-  onInput(event: Event): void {
+  onInput(event: Event) {
     const input = (event.target as HTMLInputElement).value;
     this.searchTerms.next(input);
   }
 
-  onInputPlace(event: Event): void {
+  onInputPlace(event: Event) {
     const input = (event.target as HTMLInputElement).value;
     this.placeTerms.next(input);
   }
 
   search(term: string): Observable<string[]> {
-    return this.http.get<string[]>(`https://api.example.com/search?query=${term}`);
+    return this.http.post<string[]>('https://pe.computrabajo.com/', { query: term });
   }
 
   getSearchUrl(search: string): string {
     return `/trabajo-de-${search.replace(/\s+/g, '-').toLowerCase()}`;
   }
 
-  searchPlace() {
-    this.search(this.placeTerm).subscribe(results => {
-      this.filteredPlaces = results;
-    });
-  }
-
-  deleteSearch(search: string): void {
+  deleteSearch(search: string) {
     this.lastSearches = this.lastSearches.filter(s => s !== search);
   }
 
-  selectPlace(place: string): void {
-    this.placeTerm = place;
+  selectPlace(place: string) {
+    
     console.log('Place selected:', place);
   }
 
-  selectJob(job: string): void {
-    this.searchTerm = job;
+  selectJob(job: string) {
+  
     console.log('Job selected:', job);
   }
 
-  onSubmit(): void {
+  onSubmit() {
+  
     console.log('Form submitted with search term:', this.searchTerm);
     console.log('Form submitted with place term:', this.placeTerm);
-    this.performSearch();
   }
-
-  closeSearchBox() {
-    console.log('Cerrando cuadro de búsqueda');
-    this.suggestionsVisible = null;
-  }
-
-  clearSearchTerm() {
-    this.searchTerm = '';
-  }
-
-  clearPlaceTerm() {
-    this.placeTerm = '';
-  }
-
-  performSearch() {
-    console.log('Realizando búsqueda con los términos:');
-    console.log('Término de búsqueda:', this.searchTerm);
-    console.log('Término de lugar:', this.placeTerm);
-
-    this.search(this.searchTerm).subscribe(results => {
-      this.filteredJobs = results;
-    });
-
-    this.searchPlace();
-  }
-
-  trackMenuClick(section: string) {
-    console.log(`Navegando a ${section}`);
-  }
-
-  @HostListener('document:click', ['$event'])
-  handleClickOutside(event: MouseEvent) {
-    const target = event.target as HTMLElement;
-    const isInsideJobSearch = target.closest('#prof-cat-search-input') || target.closest('.autocomplete.job');
-    const isInsidePlaceSearch = target.closest('#place-search-input') || target.closest('.autocomplete.place');
-    if (!isInsideJobSearch) {
-      this.suggestionsVisible = this.suggestionsVisible === 'job' ? null : this.suggestionsVisible;
-    }
-    if (!isInsidePlaceSearch) {
-      this.suggestionsVisible = this.suggestionsVisible === 'place' ? null : this.suggestionsVisible;
-    }
-  }
-
-  onInputClick(event: MouseEvent) {
-    event.stopPropagation();
-  }
-
-  onMenuClick(event: MouseEvent) {
-    event.stopPropagation();
-  }
+  selectedView: string = 'localizacion'; 
 
   toggleView(view: string): void {
-    this.selectedView = this.selectedView === view ? '' : view;
+    if (this.selectedView === view) {
+    
+      this.selectedView = '';
+    } else {
+      
+      this.selectedView = view;
+    }
   }
+
 }

@@ -772,13 +772,21 @@ a {
 
 .input-icon {
   color: #191919;
-  position: absolute;
   width: 28px;
   height: 25px;
   left: 12px;
   top: 50%;
-  transform: translateY(-50%);
+  transform: translateY(-55%);
+  position: absolute;
+  
 
+}
+.input-icon-flecha {
+  color: #191919;
+  width: 28px;
+  height: 25px;
+  left: 12px;
+  top: 50%;
 }
 
 .btn-icon {
@@ -999,5 +1007,136 @@ footer, footer a {
   height: 6px;
   margin: 5px 5px 0;
 }
+
+/* Sectores*/
+.Rates {
+  margin-top: 10px;
+}
+
+@media only screen and (min-width: 1300px) {
+  .container {
+      width: 1240px;
+  }
+}
+.container {
+  margin: 0 auto;
+  padding: 0 20px;
+}
+.Blue {
+  padding: 0 0 15px !important;
+  float: left;
+  width: 100%;
+  margin-top: 30px;
+}
+.box_title_content~.Rates .salarios {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+.empresas {
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+.boxWhite {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  -webkit-box-shadow: 0 0 9px 1px rgba(24, 26, 31, 0.07);
+  box-shadow: 0 0 9px 1px rgba(24, 26, 31, 0.07);
+  margin-bottom: 20px;
+  border: 0;
+  margin-left: -40px;
+  
+}
+.mr2 {
+  margin-right: 5%;
+}
+.fl {
+  float: left;
+}
+.w32, .w_32 {
+  width: 32%;
+}
+.box_title_content~.Rates .boxWhite {
+  -webkit-box-flex: 32%;
+  -ms-flex: 32% 0 0px;
+  flex: 32% 0 0;
+}
+.box_title_content~.Rates .boxWhite h2 {
+  font-size: 21px;
+}
+.mt0 {
+  margin-top: 0 !important;
+}
+.fs18, .fs_18 {
+  font-size: 18px;
+}
+.fwN, .fw_n {
+  font-weight: normal !important;
+}
+
+.box_title_content~.Rates .boxWhite .links {
+  padding: 0;
+}
+.empresas .boxWhite .links {
+  padding: 10px 20px;
+}
+.salarios .boxWhite .links {
+  padding: 10px 20px 10px 64px;
+}
+.box_title_content~.Rates .boxWhite .links a {
+  padding: 8px 0;
+}
+.box_title_content~.Rates .boxWhite a {
+  font-size: 16px;
+}
+.salarios .boxWhite .links a {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding: 8px 0;
+  color: #313944;
+  width: 100%;
+  height: 41px;
+}
+.salarios .boxWhite .links a span:first-child {
+  margin-left: 0;
+}
+.salarios .boxWhite .links a span {
+  display: inline-block;
+  max-width: 60%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  margin-left: auto;
+}
+.salarios .boxWhite .links a span {
+  display: inline-block;
+  max-width: 60%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  margin-left: auto;
+}
+.salarios .boxWhite .links a:after {
+  
+  font-size: 2.2rem;
+  color: #005DA9;
+}
+.salarios .boxWhite .links.logos a span img {
+  height: 20px;
+
+}
+.lazy {
+  background: transparent;
+}
+
+
 
 
