@@ -401,6 +401,24 @@ body p {
   margin: 0;
 }
 
+
+.b_aux:not(.small), .b_inv:not(.small), .b_primary:not(.small), .b_primary_inv:not(.small), .b_transparent:not(.small) {
+  font-size: 18px;
+}
+
+
+.b_aux, .b_inv, .b_primary, .b_primary_inv, .b_transparent {
+  border-radius: 30px;
+  position: relative;
+  text-align: center;
+  border: 1px solid #79ba59;
+  cursor: pointer;
+  display: inline-block;
+  padding: 13px 17px;
+  float: none;
+  height: auto;
+}
+
 .b_primary {
   background-color: #0d3878;
   color: #da3d3d;
@@ -414,4 +432,8 @@ body p {
   padding: 13px 17px;
   float: none;
   height: auto;
+}
+
+.w40, .w_40 {
+  width: 40%;
 }
