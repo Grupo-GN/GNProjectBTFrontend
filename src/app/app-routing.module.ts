@@ -19,7 +19,7 @@ const routes: Routes = [
   { path: '', redirectTo: '/body', pathMatch: 'full' },
   { path: 'mi-area', component: MiAreaComponent },
   { path: 'CV', component: CVComponent },
-  { path: 'ofertas', component: BuscarOfertasComponent },
+  { path: 'buscar-ofertas', component: BuscarOfertasComponent },
   { path: 'postulaciones', component: PostulacionesComponent },
   { path: 'favoritos', component: FavoritosComponent },
   { path: 'alertas', component: MisAlertasComponent }, // Nuevo componente

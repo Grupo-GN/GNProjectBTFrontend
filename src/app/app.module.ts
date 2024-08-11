@@ -20,8 +20,6 @@ import { MiAreaComponent } from './components/mi-area/mi-area.component';
 import { MisAlertasComponent } from './components/mis-alertas/mis-alertas.component';
 import { CerrarSesionComponent } from './components/cerrar-sesion/cerrar-sesion.component';
 
-
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,17 +37,13 @@ import { CerrarSesionComponent } from './components/cerrar-sesion/cerrar-sesion.
     MiAreaComponent,
     MisAlertasComponent,
     CerrarSesionComponent
-    
-    
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule,
-
-    
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
