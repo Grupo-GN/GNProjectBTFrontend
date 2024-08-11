@@ -19,6 +19,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { MiAreaComponent } from './components/mi-area/mi-area.component';
 import { MisAlertasComponent } from './components/mis-alertas/mis-alertas.component';
 import { CerrarSesionComponent } from './components/cerrar-sesion/cerrar-sesion.component';
+import { SalariosComponent } from './components/salarios/salarios.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { CerrarSesionComponent } from './components/cerrar-sesion/cerrar-sesion.
     VisitasPerfilComponent,
     MiAreaComponent,
     MisAlertasComponent,
-    CerrarSesionComponent
+    CerrarSesionComponent,
+    SalariosComponent
   ],
   imports: [
     BrowserModule,
