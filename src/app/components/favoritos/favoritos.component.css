@@ -382,9 +382,9 @@ h1 {
   margin-top: 20px;
   
 }img {
-  border: 0;
+  border: 10px;
   vertical-align: middle;
-  max-width: 50%;
+  max-width: 25%;
 }
 
 .fs22 {

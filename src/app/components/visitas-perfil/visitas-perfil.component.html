@@ -1,69 +1,181 @@
 <h1>GN ProjectBT</h1>
+<header menu-scroll id="header_menu" class="header_web">
+  <div class="container">
+    
+    <div data-box-search-container="" class="box_search_content">
+      <span data-box-search-close="" class="icon i_close_w cp" (click)="closeSearchBox()"></span>
+      <div id="slider-container-outer">
+        <div id="slider-container">
+          <div class="box_search slider-item sel" data-position="1" data-box-search-inputs-container="" data-autocomplete-add-classes-when-opening-target="">
+            <div>
+<div class="field_input_icon posRel mb0" data-type-search="prof-cat" data-input-focusable-container="">
+  <form autocomplete="off" class="cont" (ngSubmit)="onSubmit()">
+    <svg xmlns="http://www.w3.org/2000/svg" class="input-icon" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(10, 9, 9, 1)">
+      <path d="M20 6h-3V4c0-1.103-.897-2-2-2H9c-1.103 0-2 .897-2 2v2H4c-1.103 0-2 .897-2 2v11c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V8c0-1.103-.897-2-2-2zm-5-2v2H9V4h6zM4 8h16v4h-3v-2h-2v2H9v-2H7v2H4V8zm0 11v-5h3v2h2v-2h6v2h2v-2h3.001v5H4z"></path>
+    </svg>
+  <input id="prof-cat-search-input" type="search" placeholder="Cargo o categoría" autocomplete="off" [(ngModel)]="searchTerm" name="searchTerm" (focus)="showSuggestions('job')" (blur)="hideSuggestions()" (input)="onInput($event)">
+  <ul class="autocomplete job" [class.visible]="suggestionsVisible === 'job'">
+    <li class="title_suggest">Últimas búsquedas
+    <li *ngFor="let search of lastSearches">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 22 22" class="btn-icon" style="fill: rgb(117, 116, 116);">
+            <path d="M19.023 16.977a35.13 35.13 0 0 1-1.367-1.384c-.372-.378-.596-.653-.596-.653l-2.8-1.337A6.962 6.962 0 0 0 16 9c0-3.859-3.14-7-7-7S2 5.141 2 9s3.14 7 7 7c1.763 0 3.37-.66 4.603-1.739l1.337 2.8s.275.224.653.596c.387.363.896.854 1.384 1.367l1.358 1.392.604.646 2.121-2.121-.646-.604c-.379-.372-.885-.866-1.391-1.36zM9 14c-2.757 0-5-2.243-5-5s2.243-5 5-5 5 2.243 5 5-2.243 5-5 5z"></path>
+          </svg>
+    <a [href]="getSearchUrl(search)">{{ search }}</a>
+    <span class="b_delete">
+    <span class="icon i_delete" (click)="deleteSearch(search)"></span>
+    </span>
+</li>
+<li class="title_suggest">Empleos más demandados
+<li *ngFor="let job of filteredJobs" (click)="selectJob(job)">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 22 22" class="btn-icon" style="fill: rgb(240, 235, 235);">
+        <path d="M19.023 16.977a35.13 35.13 0 0 1-1.367-1.384c-.372-.378-.596-.653-.596-.653l-2.8-1.337A6.962 6.962 0 0 0 16 9c0-3.859-3.14-7-7-7S2 5.141 2 9s3.14 7 7 7c1.763 0 3.37-.66 4.603-1.739l1.337 2.8s.275.224.653.596c.387.363.896.854 1.384 1.367l1.358 1.392.604.646 2.121-2.121-.646-.604c-.379-.372-.885-.866-1.391-1.36zM9 14c-2.757 0-5-2.243-5-5s2.243-5 5-5 5 2.243 5 5-2.243 5-5 5z"></path>
+      </svg>
+<div>{{ job }}</div>
+</li>
+</ul>
+  <span id="prof-cat-clean-button" class="btn_click hide" (click)="clearSearchTerm()">
+    <span class="icon i_close"></span>
+  </span>
+</form>
+</div>
+<div class="field_input_icon posRel bl1 mb0" data-type-search="place" data-input-focusable-container="">
+<form autocomplete="off" class="cont" (ngSubmit)="onSubmit()">
+  <svg xmlns="http://www.w3.org/2000/svg" class="input-icon" width="25" height="25" viewBox="0 0 24 24" style="fill: rgb(5, 5, 5)">
+    <path d="M12 2C7.589 2 4 5.589 4 9.995 3.971 16.44 11.696 21.784 12 22c0 0 8.029-5.56 8-12 0-4.411-3.589-8-8-8zM9.799 14.987H8v-1.799l4.977-4.97 1.799 1.799-4.977 4.97zm5.824-5.817-1.799-1.799L15.196 6l1.799 1.799-1.372 1.371z"></path>
+  </svg>
+  <input id="place-search-input" type="search" placeholder="Lugar" autocomplete="off" [(ngModel)]="placeTerm" name="placeTerm" (focus)="showSuggestions('place')" (blur)="hideSuggestions()" (input)="onInputPlace($event)">
+  <ul class="autocomplete place" [class.visible]="suggestionsVisible === 'place'">
+    <li class="title_suggest">Últimas búsquedas</li>
+    <li *ngFor="let search of CountrySearches">
+        <svg xmlns="http://www.w3.org/2000/svg" class="input-icon-place" width="25" height="25" viewBox="0 0 24 24" style="fill: rgb(138, 137, 137)">
+            <path d="M12 2C7.589 2 4 5.589 4 9.995 3.971 16.44 11.696 21.784 12 22c0 0 8.029-5.56 8-12 0-4.411-3.589-8-8-8zM9.799 14.987H8v-1.799l4.977-4.97 1.799 1.799-4.977 4.97zm5.824-5.817-1.799-1.799L15.196 6l1.799 1.799-1.372 1.371z"></path>
+          </svg>
+      <a [href]="getSearchUrl(search)">{{ search }}</a>
+      <span class="b_delete">
+        <span class="icon i_delete" (click)="deleteSearch(search)"></span>
+      </span>
+    </li>
+    <li class="title_suggest">Empleos más demandados</li>
+    <li *ngFor="let place of filteredPlaces" (click)="selectPlace(place)">
+        <svg xmlns="http://www.w3.org/2000/svg" class="input-icon-place" width="25" height="25" viewBox="0 0 24 24" style="fill: rgb(180, 178, 178)">
+            <path d="M12 2C7.589 2 4 5.589 4 9.995 3.971 16.44 11.696 21.784 12 22c0 0 8.029-5.56 8-12 0-4.411-3.589-8-8-8zM9.799 14.987H8v-1.799l4.977-4.97 1.799 1.799-4.977 4.97zm5.824-5.817-1.799-1.799L15.196 6l1.799 1.799-1.372 1.371z"></path>
+          </svg>
+      <div>
+        {{ place }}</div>
+    </li>
+  </ul>
+  <span id="place-clean-button" class="btn_click hide" (click)="clearPlaceTerm()">
+    <span class="icon i_close"></span>
+  </span>
+</form>
+</div>
+</div>
+<button id="search-button" class="b_primary rounded mlAuto" (click)="performSearch()">
+                    
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 22 22" class="btn-icon" style="fill: rgb(240, 235, 235);">
+    <path d="M19.023 16.977a35.13 35.13 0 0 1-1.367-1.384c-.372-.378-.596-.653-.596-.653l-2.8-1.337A6.962 6.962 0 0 0 16 9c0-3.859-3.14-7-7-7S2 5.141 2 9s3.14 7 7 7c1.763 0 3.37-.66 4.603-1.739l1.337 2.8s.275.224.653.596c.387.363.896.854 1.384 1.367l1.358 1.392.604.646 2.121-2.121-.646-.604c-.379-.372-.885-.866-1.391-1.36zM9 14c-2.757 0-5-2.243-5-5s2.243-5 5-5 5 2.243 5 5-2.243 5-5 5z"></path>
+  </svg>
+</button>
+</div>
+</div>
+</div>
 
-        <div class="user--info">
-        <div class="search--box">
-            <i class="fa-solid fa-briefcase"></i>
-            <input type="text" placeholder="Cargo o ctaegoria">
-            <i class="fa-solid fa-location-dot"></i>
-            <input type="text" placeholder="Lugar">
-            <i class="fa-solid fa-magnifying-glass"></i>
-        </div>
-        </div>
 
 
+<br>  
+<div class="container">
+<section class="ccp_menu" id="secMenu">
+  <ul>
+    <li>
+      <a href="http://localhost:4200/mi-area"  title="Mi área" >
+        <div class="ccp_imgm1">
+          <svg xmlns="http://www.w3.org/2000/svg" class="input-icon-2" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 9.5L12 3l9 6.5v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-10z"></path>
+              <polyline points="9 22 9 12 15 12 15 22"></polyline>
+            </svg>
+        </div>Mi área
+      </a>
+      <div class="ccp_flecha"></div>
+    </li>
+    <li>
+      <a href="http://localhost:4200/CV"  >
+        <div class="ccp_imgm4">
+          <svg xmlns="http://www.w3.org/2000/svg" class="input-icon-3" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="8" y1="9" x2="16" y2="9"></line>
+              <line x1="8" y1="13" x2="16" y2="13"></line>
+              <line x1="8" y1="17" x2="16" y2="17"></line>
+              <circle cx="12" cy="6" r="1"></circle>
+            </svg>
+        </div>Mi currículum
+      </a>
+      <div class="ccp_flecha"></div>
+    </li>
+    <li>
+      <a data-path="/candidate/test/list?tlo=7A02BC8BFD169A2F" title="Test y evaluaciones" >
+        <div class="ccp_imgm10">
+          <svg xmlns="http://www.w3.org/2000/svg" class="input-icon-4" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="8" y1="9" x2="14" y2="9"></line>
+              <line x1="8" y1="13" x2="14" y2="13"></line>
+              <line x1="8" y1="17" x2="14" y2="17"></line>
+              <circle cx="16" cy="9" r="1"></circle>
+              <circle cx="16" cy="13" r="1"></circle>
+              <circle cx="16" cy="17" r="1"></circle>
+            </svg>
+        </div>Test y evaluaciones
+      </a>
+      <div class="ccp_flecha"></div>
+    </li>
+    <li class="selec">
+      <a href="http://localhost:4200/configuraciones"  title="Configuración" >
+        <div class="ccp_imgm6">
+          <svg xmlns="http://www.w3.org/2000/svg" class="input-icon-5" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="3"></circle>
+              <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-.99 1.51V20a2 2 0 0 1-2 2h-2a2 2 0 0 1-2-2v-.09a1.65 1.65 0 0 0-.99-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-.99H4a2 2 0 0 1-2-2v-2a2 2 0 0 1 2-2h.09c.73 0 1.39-.39 1.51-.99a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06c.43.43 1.04.57 1.82.33H12a1.65 1.65 0 0 0 1.51-.99 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H20a2 2 0 0 1 2 2v.09c0 .73-.39 1.39-.99 1.51a1.65 1.65 0 0 0-.33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33H12z"></path>
+            </svg>
+        </div>Configuración
+      </a>
+      <div class="ccp_flecha"></div>
+    </li>
+  </ul>
+</section>
+</div>
 
-    <div class="container">
-        <section class="ccp_menu" id="secMenu">
-          <ul>
-            <li>
-              <a href="http://localhost:4200/mi-area"  title="Mi área" >
-                <div class="ccp_imgm1">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="input-icon-2" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                      <path d="M3 9.5L12 3l9 6.5v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-10z"></path>
-                      <polyline points="9 22 9 12 15 12 15 22"></polyline>
-                    </svg>
-                </div>Mi área
-              </a>
-              <div class="ccp_flecha"></div>
-            </li>
-            <li>
-              <a href="http://localhost:4200/CV"  >
-                <div class="ccp_imgm4">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="input-icon-3" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                      <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                      <line x1="8" y1="9" x2="16" y2="9"></line>
-                      <line x1="8" y1="13" x2="16" y2="13"></line>
-                      <line x1="8" y1="17" x2="16" y2="17"></line>
-                      <circle cx="12" cy="6" r="1"></circle>
-                    </svg>
-                </div>Mi currículum
-              </a>
-              <div class="ccp_flecha"></div>
-            </li>
-            <li>
-              <a data-path="/candidate/test/list?tlo=7A02BC8BFD169A2F" title="Test y evaluaciones" >
-                <div class="ccp_imgm10">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="input-icon-4" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                      <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                      <line x1="8" y1="9" x2="14" y2="9"></line>
-                      <line x1="8" y1="13" x2="14" y2="13"></line>
-                      <line x1="8" y1="17" x2="14" y2="17"></line>
-                      <circle cx="16" cy="9" r="1"></circle>
-                      <circle cx="16" cy="13" r="1"></circle>
-                      <circle cx="16" cy="17" r="1"></circle>
-                    </svg>
-                </div>Test y evaluaciones
-              </a>
-              <div class="ccp_flecha"></div>
-            </li>
-            <li class="selec">
-              <a href="http://localhost:4200/configuraciones"  title="Configuración" >
-                <div class="ccp_imgm6">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="input-icon-5" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                      <circle cx="12" cy="12" r="3"></circle>
-                      <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-.99 1.51V20a2 2 0 0 1-2 2h-2a2 2 0 0 1-2-2v-.09a1.65 1.65 0 0 0-.99-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-.99H4a2 2 0 0 1-2-2v-2a2 2 0 0 1 2-2h.09c.73 0 1.39-.39 1.51-.99a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06c.43.43 1.04.57 1.82.33H12a1.65 1.65 0 0 0 1.51-.99 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H20a2 2 0 0 1 2 2v.09c0 .73-.39 1.39-.99 1.51a1.65 1.65 0 0 0-.33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33H12z"></path>
-                    </svg>
-                </div>Configuración
+<div id="MainContainer" class="container">
+<h1 class="favoritos-home">Visitas a mi perfil</h1>
+<div class="dFlex">
+  <div class="w_70 w_100r prB">
+      <div class="boxx tc">
+          <img src="assets/img/persona.png" class="mbB">
+          <p class="fwB fs18 mb10">Todavía no tienes visitas a tu perfil</p>
+          <p class="mb25">Postúlate y gana más visibilidad</p>
+          <a href="https://pe.computrabajo.com" class="b_primary">Buscar empleos</a>
+      </div>
+  </div>
+  <div class="w_100r w_30">
+<div class="boxx posStickyi top15">
+  <p class="fs18 mb15">Cómo conseguir visitas</p>
+  <p class="mb15">Las visitas a tu perfil son muy importantes. Cuántas más recibas, más posibilidades tendrás de que las empresas te contraten.</p>
+  <ul>
+      <li class="cols mb15">
+          <div class="vt pr15"><span class="count_visitas small blue_dark">1</span></div>
+          <div>
+              <p class="fwB mb5 fs16">Postúlate</p>
+              <p>Postúlate a todas las ofertas profesionales que encajen con lo que estás buscando</p>
+          </div>
+      </li>
+      <li class="cols">
+          <div class="vt pr15"><span class="count_visitas small">2</span></div>
+          <div>
+              <p class="fwB mb5 fs16">Mantén al día tu CV</p>
+              <p>Actualiza tu CV con información reciente: foto de perfil, última experiencia profesional, formación, habilidades, idiomas, etc.</p>
+          </div>
+      </li>
+  </ul>
+</div>
+</div>
+</div>
                 
 
 
