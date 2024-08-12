@@ -87,7 +87,7 @@ export class SidenavComponent implements OnInit {
     },
     {
       routeLink: '/alertas',
-      icon: 'far fa-bell',
+      icon: 'fas fa-bell fa-shake',
       label: 'Mis alertas'
     },
     {
@@ -97,7 +97,7 @@ export class SidenavComponent implements OnInit {
     },
     {
       routeLink: '/notificaciones',
-      icon: 'far fa-bell',
+      icon: 'fas fa-envelope fa-beat',
       label: 'Notificaciones'
     },
 

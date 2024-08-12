@@ -854,9 +854,9 @@ a {
     position: absolute;
     width: 25px;
     height: 40px;
-    left: 620px;
+    left: 830px;
     top: 37%;
-    transform: translateY(-55%);
+    transform: translateY(20%);
   }
 
   .input-icon-4 {
@@ -864,28 +864,30 @@ a {
     position: absolute;
     width: 25px;
     height: 40px;
-    left: 620px;
+    left: 830px;
     top: 41%;
-    transform: translateY(-55%);
+    transform: translateY(10%);
 }
 .input-icon-5 {
     color: #5319f3;
     position: absolute;
     width: 25px;
     height: 40px;
-    left: 620px;
+    left: 830px;
     top: 45%;
-    transform: translateY(-55%);
+    transform: translateY(-1%);
 }
 .input-icon-6{
     color: #5319f3;
     position: absolute;
     width: 25px;
     height: 40px;
-    left: 620px;
+    left: 830px;
     top: 49%;
-    transform: translateY(-55%);
+    transform: translateY(-10%);
+
 }
+
 
 
 .feature-item {
