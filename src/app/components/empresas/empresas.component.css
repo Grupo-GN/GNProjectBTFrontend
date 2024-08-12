@@ -1136,7 +1136,141 @@ footer, footer a {
 .lazy {
   background: transparent;
 }
+.box_comp {
+  background-color: #fff;
+  padding: 30px 10px;
+  border-top: 1px solid #e1e5ea;
+}
+.box_comp .tit {
+  margin: 0 0 30px;
+  font-size: 30px;
+  text-align: center;
+  font-weight: normal !important;
+}
 
+.grid {
+  padding-right: 0;
+}
+.grid3 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-flow: row wrap;
+  flex-flow: row wrap;
+}
 
+.box_comp .grid>div {
+  -webkit-box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+.grid3>:not(script):not(:nth-of-type(3n)) {
+  margin-right: 30px;
+}
+.grid3>:not(script) {
+  vertical-align: top;
+  display: inline-block;
+  width: calc((100% -(3 - 1)* 30px) / 3);
+}
+a {
+  background: transparent;
+  text-decoration: none;
+  color: #005DA9;
+  cursor: pointer;
+}
+.box_comp .grid>div>a>img {
+  border-radius: 10px 10px 0 0;
+}
+.w100, .w_100 {
+  width: 100% !important;
+}
+img {
+  border: 0;
+  vertical-align: middle;
+  max-width: 100%;
+}
+.p20 {
+  padding: 20px !important;
+}
+.vm_fx {
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+.dFlex {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.w70_fx {
+  -webkit-box-flex: 70%;
+  -ms-flex: 70% 0 0px;
+  flex: 70% 0 0;
+}
+a.fc_base, a.fc_base:hover {
+  color: #313944;
+}
+.fc_base {
+  color: #313944;
+}
+.fs21 {
+  font-size: 21px;
+}
+.fs16 {
+  font-size: 16px;
+}
+.fs16 {
+  font-size: 16px;
+}
+.fwB, .fw_b {
+  font-weight: bold;
+}
+.mlAuto {
+  margin-left: auto;
+}
+.lazy {
+  background: transparent;
+}
+.img_comp_empresas {
+  max-height: 50px;
+  max-width: 100%;
+}
+.tj_fx {
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+.dFlex {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.mt30 {
+  margin-top: 30px;
+}
+.fs18, .fs_18 {
+  font-size: 18px;
+}
 
+body p {
+  margin: 0;
+}
+
+.footer_c {
+  clear: both;
+  position: relative;
+}
+.footer_c {
+  background: #fff;
+  padding: 15px 0;
+  border-top: 1px solid #ddd;
+}
+
+.info_footer {
+  float: left;
+  color: #4B5968;
+  font-size: 14px;
+}
 
