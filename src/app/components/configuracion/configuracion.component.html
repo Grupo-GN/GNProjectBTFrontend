@@ -1,4 +1,5 @@
 <div class="configuracion">
+  <div class="body">
     <header menu-scroll id="header_menu" class="header_web">
       <div class="container">
         <a class="logo" title="Computrabajo" href="https://pe.computrabajo.com" alt="Computrabajo Perú"></a>
@@ -140,5 +141,83 @@
           </li>
         </ul>
       </section>
+      <div class="container">
+        <div class="config">
+            <div class="c">
+        <div class="h">
+            <h2>Modificar e-mail y clave</h2>
+            <a href="/configuration/edit" class="en_gestof">Editar</a>
+        </div>
+        <div class="bx">
+            Estás registrado con el e-mail <a href="#">pamelaestefani2005gmail.com</a>. A este e-mail te enviaremos las notificaciones sobre nuevos avisos y tus postulaciones.
+        </div>
     </div>
+    <form (ngSubmit)="onPrivacySubmit()" [formGroup]="privacyForm">
+      <div class="c">
+        <div class="h">
+          <h2>Modificar nivel de privacidad</h2>
+        </div>
+        <ul class="bx">
+          <li>
+            <input id="rdbVisi" formControlName="privacyLevel" type="radio" value="1">
+            <label for="rdbVisi">Currículum <span>visible</span> para las empresas</label>
+          </li>
+          <li>
+            <input id="rdbNoVisi" formControlName="privacyLevel" type="radio" value="2">
+            <label for="rdbNoVisi">Currículum <span>no visible</span> para las empresas</label>
+          </li>
+        </ul>
+        <input type="submit" value="Modificar mi privacidad" class="pd1 submit_n">
+      </div>
+    </form>
+    
+            <div class="c">
+        <div class="h">
+            <h2>Eliminar cuenta</h2>
+        </div>
+        <ul class="bx">
+            <li>
+                <form id="form-delete-cv" novalidate="novalidate">
+                    <input data-val="true" data-val-requiredliteral="Obligatorio" id="CheckDeleteUser" name="CheckDeleteUser" type="checkbox" value="true"><input name="CheckDeleteUser" type="hidden" value="false">
+                    <label for="CheckDeleteUser">Eliminar cuenta <span class="fw_b">pamelaestefani2005gmail.com</span><br>Esta opción hace que tu cuenta <span class="fw_b">pamelaestefani2005gmail.com</span> se elimine de manera definitiva junto con toda tu actividad en Computrabajo y todos los servicios contratados hasta la fecha.</label>
+                    <span class="field-validation-valid" data-valmsg-for="CheckDeleteUser" data-valmsg-replace="true"></span>
+                </form>
+            </li>
+            <input type="button" class="submit_n" value="Eliminar cuenta" delete-cv="">
+        </ul>
+    
+        <div class="popup flex hide" popup-delete-cv-confirm="">
+            <div>
+                <div>
+    <form action="/configuration/deletecv" enctype="multipart/form-data" method="post" novalidate="novalidate"><input name="__RequestVerificationToken" type="hidden" value="Z2ESLtce5SPWKTrMh32l-bU8OS8G8YGQOBG0bzuaUZnGEA0awHRtdEqX5GhEifiDRyOiY-yXdaYmXpEl0tqucCPKTQQvSSfXU3YStj8YWu2l-VDL0">                    <h2>Eliminar la cuenta</h2>
+                        <p class="tc"><span class="fw_b">¿Estás seguro de que quieres eliminar la cuenta pamelaestefani2005gmail.com?</span><br><br>Toda tu actividad en Computrabajo, además de otros servicios contratados, quedarán eliminados de forma definitiva.</p>
+                        <footer class="form_action">
+                            <button type="submit" class="b_primary" delete-cv-confirm="">Eliminar cuenta</button>
+                            <a class="b_transparent" close-popup="">Cancelar</a>
+                        </footer>
+    </form>            </div>
+                <a class="icon i_close" close-popup=""></a>
+            </div>
+        </div>
+    </div>
+            
+        </div>
+    </div>
+    </div>
+    <footer class="fl w100 w_100 tc new">
+      <div class="footer_c" id="secfooter">
+          <div>
+                  <div class="info_footer w_100 tc">
+                      <p>
+                          Copyright 2024.
+                      </p>
+                          
+                  </div>
+                      <div class="clear mb10"></div>
+                      <div class="icons_app">
+                      </div>
+          </div>
+      </div>
+  </footer>
+</div>
   </div>
