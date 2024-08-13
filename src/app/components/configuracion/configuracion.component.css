@@ -15,7 +15,6 @@ body {
 }
 .body {
   width: calc(100% - 5rem);
-  margin-left: 5rem;
   height: 160vh;
   z-index: 0;
   position: relative;
