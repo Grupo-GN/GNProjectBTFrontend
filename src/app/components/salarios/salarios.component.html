@@ -43,125 +43,555 @@
                 </ul>
                 <br>
                 <br>
-                <div class="box_search slider-item sel b_radius_search_input" data-position="1">
-                  <div class="field_input_icon posRel mb0 input_focus">
-                      <form autocomplete="off" class="cont" (ngSubmit)="onSubmit()">
-                          <svg 
-                          xmlns="http://www.w3.org/2000/svg" 
-                                  class="input-icon"
-                                  width="24" height="24" 
-                                  viewBox="0 0 24 24" 
-                                  style="fill: rgba(10, 9, 9, 1)">
-                                  <path 
-                                  d="M20 6h-3V4c0-1.103-.897-2-2-2H9c-1.103 0-2 .897-2 2v2H4c-1.103 0-2 .897-2 2v11c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V8c0-1.103-.897-2-2-2zm-5-2v2H9V4h6zM4 8h16v4h-3v-2h-2v2H9v-2H7v2H4V8zm0 11v-5h3v2h2v-2h6v2h2v-2h3.001v5H4z"></path></svg>
-              
-
-                          <div class="input-group">
-                              <input id="prof-cat-search-input" type="search" placeholder="Cargo o categoría"
-                                  autocomplete="off" [(ngModel)]="searchTerm" name="searchTerm"
-                                  (focus)="showSuggestions('job')" (blur)="hideSuggestions()" (input)="onInput($event)">
-                              <ul class="autocomplete" [class.visible]="suggestionsVisible === 'job'">
-                                  <li class="title_suggest">Últimas búsquedas</li>
-                                  <li *ngFor="let search of lastSearches">
-                                      <svg xmlns="http://www.w3.org/2000/svg" 
-                      class="btn-icon-2"
-                      width="24" height="24" 
-                      viewBox="0 0 22 22"
-                      style="fill: rgb(240, 235, 235)">
-                      <path d="M19.023 16.977a35.13 35.13 0 0 1-1.367-1.384c-.372-.378-.596-.653-.596-.653l-2.8-1.337A6.962 6.962 0 0 0 16 9c0-3.859-3.14-7-7-7S2 5.141 2 9s3.14 7 7 7c1.763 0 3.37-.66 4.603-1.739l1.337 2.8s.275.224.653.596c.387.363.896.854 1.384 1.367l1.358 1.392.604.646 2.121-2.121-.646-.604c-.379-.372-.885-.866-1.391-1.36zM9 14c-2.757 0-5-2.243-5-5s2.243-5 5-5 5 2.243 5 5-2.243 5-5 5z"></path></svg>
-
-                                      <a [href]="getSearchUrl(search)">{{ search }}</a>
-                                      <span class="b_delete">
-                                          <span class="icon i_delete" (click)="deleteSearch(search)"></span>
-                                      </span>
-                                  </li>
-                                  <li class="title_suggest">Empleos más demandados</li>
-                                  <li *ngFor="let job of filteredJobs" (click)="selectJob(job)">
-                                      <svg xmlns="http://www.w3.org/2000/svg" 
-                      class="btn-icon-2"
-                      width="24" height="24" 
-                      viewBox="0 0 22 22"
-                      style="fill: rgb(199, 199, 199)">
-                      <path d="M19.023 16.977a35.13 35.13 0 0 1-1.367-1.384c-.372-.378-.596-.653-.596-.653l-2.8-1.337A6.962 6.962 0 0 0 16 9c0-3.859-3.14-7-7-7S2 5.141 2 9s3.14 7 7 7c1.763 0 3.37-.66 4.603-1.739l1.337 2.8s.275.224.653.596c.387.363.896.854 1.384 1.367l1.358 1.392.604.646 2.121-2.121-.646-.604c-.379-.372-.885-.866-1.391-1.36zM9 14c-2.757 0-5-2.243-5-5s2.243-5 5-5 5 2.243 5 5-2.243 5-5 5z"></path></svg>
-
-                                      <div>
-                                          <div>{{ job }}</div>
-                                      </div>
-                                  </li>
-                              </ul>
-                              <span id="prof-cat-clean-button" onclick="" class="btn_click hide">
-                                  
-                              </span>
+                <div class="box_search slider-item sel" data-position="1" data-box-search-inputs-container="">
+                  <div>
+                      <div class="field_input_icon posRel mb0">
+                          <div class="cont">
+                              <span class="icon i_company"></span>
+                              <input data-val="true" data-val-number="El campo SelectedId debe ser un número." id="SelectedId" name="SelectedId" type="hidden" value="0">
+                              <input autocomplete="off" class="it-search" id="SelectedName" maxlength="200" name="SelectedName" placeholder="Busca tu puesto" type="text" value="">
                           </div>
-                      </form>
+                      </div>
                   </div>
-
-                  <div class="field_input_icon posRel mb0 input_focus">
-                      <form autocomplete="off" class="cont" (ngSubmit)="onSubmit()">
-                          <svg 
-                              xmlns="http://www.w3.org/2000/svg"
-                              class="input-icon"  
-                              width="25" height="25" 
-                              viewBox="0 0 24 24" 
-                              style="fill: rgba(0, 0, 0, 1)">
-                              <path d="M12 2C7.589 2 4 5.589 4 9.995 3.971 16.44 11.696 21.784 12 22c0 0 8.029-5.56 8-12 0-4.411-3.589-8-8-8zM9.799 14.987H8v-1.799l4.977-4.97 1.799 1.799-4.977 4.97zm5.824-5.817-1.799-1.799L15.196 6l1.799 1.799-1.372 1.371z"></path>
-                          </svg>
-                          <div class="input-group">
-                              <input id="place-search-input" type="search" placeholder="Lugar"
-                                  autocomplete="off" [(ngModel)]="placeTerm" name="placeTerm"
-                                  (focus)="showSuggestions('place')" (blur)="hideSuggestions()" (input)="onInputPlace($event)">
-                              <ul class="autocomplete" [class.visible]="suggestionsVisible === 'place'">
-                                  <li class="title_suggest">Últimas búsquedas</li>
-                                  <li *ngFor="let search of CountrySearches">
-                                      <svg 
-                              xmlns="http://www.w3.org/2000/svg"
-                              class="input-icon-place"  
-                              width="25" height="25" 
-                              viewBox="0 0 24 24" 
-                              style="fill: rgb(141, 138, 138)">
-                              <path d="M12 2C7.589 2 4 5.589 4 9.995 3.971 16.44 11.696 21.784 12 22c0 0 8.029-5.56 8-12 0-4.411-3.589-8-8-8zM9.799 14.987H8v-1.799l4.977-4.97 1.799 1.799-4.977 4.97zm5.824-5.817-1.799-1.799L15.196 6l1.799 1.799-1.372 1.371z"></path>
-                          </svg>
-                                      <a [href]="getSearchUrl(search)">{{ search }}</a>
-                                      <span class="b_delete">
-                                          <span class="icon i_delete" (click)="deleteSearch(search)"></span>
-                                      </span>
-                                  </li>
-                                  <li class="title_suggest">Empleos más demandados</li>
-                                  <li *ngFor="let place of filteredPlaces" (click)="selectPlace(place)">
-                                      <svg 
-                              xmlns="http://www.w3.org/2000/svg"
-                              class="input-icon-place"  
-                              width="25" height="25" 
-                              viewBox="0 0 24 24" 
-                              style="fill: rgb(184, 181, 181)">
-                              <path d="M12 2C7.589 2 4 5.589 4 9.995 3.971 16.44 11.696 21.784 12 22c0 0 8.029-5.56 8-12 0-4.411-3.589-8-8-8zM9.799 14.987H8v-1.799l4.977-4.97 1.799 1.799-4.977 4.97zm5.824-5.817-1.799-1.799L15.196 6l1.799 1.799-1.372 1.371z"></path>
-                          </svg>
-                                      <div>
-                                          <div>{{ place }}</div>
-                                      </div>
-                                  </li>
-                              </ul>
-                              <span id="place-clean-button" onclick="" class="btn_click hide">
-                                  
-                              </span>
-                          </div>
-                      </form>
-                  </div>
-                  <button id="search-button" class="b_primary rounded mlAuto">
-                      <svg xmlns="http://www.w3.org/2000/svg" 
-                      class="btn-icon"
-                      width="24" height="24" 
-                      viewBox="0 0 22 22"
-                      style="fill: rgb(240, 235, 235)">
-                      <path d="M19.023 16.977a35.13 35.13 0 0 1-1.367-1.384c-.372-.378-.596-.653-.596-.653l-2.8-1.337A6.962 6.962 0 0 0 16 9c0-3.859-3.14-7-7-7S2 5.141 2 9s3.14 7 7 7c1.763 0 3.37-.66 4.603-1.739l1.337 2.8s.275.224.653.596c.387.363.896.854 1.384 1.367l1.358 1.392.604.646 2.121-2.121-.646-.604c-.379-.372-.885-.866-1.391-1.36zM9 14c-2.757 0-5-2.243-5-5s2.243-5 5-5 5 2.243 5 5-2.243 5-5 5z"></path></svg>
-
-                      <span>Buscar empleos</span>
+                  <button class="b_primary rounded mlAuto" suggester-search-button="companies">
+                      <span class="icon i_search"></span>
+                      <span>Buscar</span>
                   </button>
               </div>
                 <br>
                 <br>
             </div>
         </div>
+        <section class="Rates">
+          <div class="container">
+              <div class="Blue">
+                  <div class="salarios mtb40 mt15_r mb15_r clearfix">
+                      <div class="boxWhite fl w_32 w_100r">
+                          <h2 class="fs18 fw_n mt0">Salarios por categoría</h2>
+                          <br>
+                          <div class="links">
+                              <a href="/salarios/Salarios-de-Marketing-y-venta" title="Salarios de Marketing y venta">
+                                  <span> Ventas </span>
+                                  <span> 
+                                      <svg 
+                                      xmlns="http://www.w3.org/2000/svg" 
+                                      class="input-icon-flecha"
+                                      width="24" height="24" 
+                                      viewBox="0 0 24 24" 
+                                      style="fill: none; stroke: rgb(78, 39, 128); stroke-width: 2;">
+                                      <path 
+                                          d="M8 4 L16 12 L8 20" 
+                                          stroke-linecap="round" 
+                                          stroke-linejoin="round"/>
+
+                                      </svg>
+                                  </span>
+                              </a>
+                              <a href="/salarios/salarios-de-almacen-logistica" title="Salarios de Almacen / Logistica / Transporte">
+                                  <span> Alamcen / Logistica / Transporte </span>
+                                  <span> 
+                                      <svg 
+                                      xmlns="http://www.w3.org/2000/svg" 
+                                      class="input-icon-flecha"
+                                      width="24" height="24" 
+                                      viewBox="0 0 24 24" 
+                                      style="fill: none; stroke: rgb(78, 39, 128); stroke-width: 2;">
+                                      <path 
+                                          d="M8 4 L16 12 L8 20" 
+                                          stroke-linecap="round" 
+                                          stroke-linejoin="round"/>
+
+                                      </svg>
+                                  </span>
+                              </a>
+                              <a href="/salarios/salarios-de-atencion-a-clientes" title="Salarios de Atencion a clientes">
+                                  <span> Atencion a clientes </span>
+                                  <span> 
+                                      <svg 
+                                      xmlns="http://www.w3.org/2000/svg" 
+                                      class="input-icon-flecha"
+                                      width="24" height="24" 
+                                      viewBox="0 0 24 24" 
+                                      style="fill: none; stroke: rgb(78, 39, 128); stroke-width: 2;">
+                                      <path 
+                                          d="M8 4 L16 12 L8 20" 
+                                          stroke-linecap="round" 
+                                          stroke-linejoin="round"/>
+
+                                      </svg>
+                                  </span>
+                              </a>
+                              <a href="/salarios/salarios-de-administracion-y-oficina" title="Salarios de Administracion / Oficina">
+                                  <span> Administracion / Oficina </span>
+                                  <span>
+                                      <svg 
+                                      xmlns="http://www.w3.org/2000/svg" 
+                                      class="input-icon-flecha"
+                                      width="24" height="24" 
+                                      viewBox="0 0 24 24" 
+                                      style="fill: none; stroke: rgb(78, 39, 128); stroke-width: 2;">
+                                      <path 
+                                          d="M8 4 L16 12 L8 20" 
+                                          stroke-linecap="round" 
+                                          stroke-linejoin="round"/>
+
+                                      </svg>
+
+                                  </span>
+                              </a>
+                              <a href="/salarios/salarios-de-callcenter-telemercadeo" title="Salarios CallCente / Telemercadeo">
+                                  <span> CallCenter / Telemercadeo </span>
+                                  <span> 
+                                      <svg 
+                                      xmlns="http://www.w3.org/2000/svg" 
+                                      class="input-icon-flecha"
+                                      width="24" height="24" 
+                                      viewBox="0 0 24 24" 
+                                      style="fill: none; stroke: rgb(78, 39, 128); stroke-width: 2;">
+                                      <path 
+                                          d="M8 4 L16 12 L8 20" 
+                                          stroke-linecap="round" 
+                                          stroke-linejoin="round"/>
+
+                                      </svg>
+                                  </span>
+                              </a>
+                              <a href="/salarios/salarios-de-informatica-y-telecomunicaciones" title="Salarios de Informatica / Telecomunicaciones">
+                                  <span> Informatica / Telecomunicaciones </span>
+                                  <span> 
+                                      <svg 
+                                      xmlns="http://www.w3.org/2000/svg" 
+                                      class="input-icon-flecha"
+                                      width="24" height="24" 
+                                      viewBox="0 0 24 24" 
+                                      style="fill: none; stroke: rgb(78, 39, 128); stroke-width: 2;">
+                                      <path 
+                                          d="M8 4 L16 12 L8 20" 
+                                          stroke-linecap="round" 
+                                          stroke-linejoin="round"/>
+
+                                      </svg>
+                                  </span>
+                              </a>
+                              <a href="/salarios/salarios-de-hosteleria-y-turismo" title="Salarios de Hosteleria / Turismo">
+                                  <span> Hosteleria / Turismo </span>
+                                  <span> 
+                                      <svg 
+                                      xmlns="http://www.w3.org/2000/svg" 
+                                      class="input-icon-flecha"
+                                      width="24" height="24" 
+                                      viewBox="0 0 24 24" 
+                                      style="fill: none; stroke: rgb(78, 39, 128); stroke-width: 2;">
+                                      <path 
+                                          d="M8 4 L16 12 L8 20" 
+                                          stroke-linecap="round" 
+                                          stroke-linejoin="round"/>
+
+                                      </svg>
+                                  </span>
+                              </a>
+                              <a href="/salarios/salarios-de-produccion-operaciones" title="Salarios de Produccion / Operarios / Manufactura">
+                                <span> Produccion / Operarios / Manufactura </span>
+                                <span> 
+                                    <svg 
+                                    xmlns="http://www.w3.org/2000/svg" 
+                                    class="input-icon-flecha"
+                                    width="24" height="24" 
+                                    viewBox="0 0 24 24" 
+                                    style="fill: none; stroke: rgb(78, 39, 128); stroke-width: 2;">
+                                    <path 
+                                        d="M8 4 L16 12 L8 20" 
+                                        stroke-linecap="round" 
+                                        stroke-linejoin="round"/>
+
+                                    </svg>
+                                </span>
+                            </a>
+                              <a class="fw_b" href="/salarios/salarios-de-perú" title="Ver todos las categorías">
+                                  <span>Ver todos las categorías </span>
+                                  <span>
+                                      <svg 
+                                      xmlns="http://www.w3.org/2000/svg" 
+                                      class="input-icon-flecha"
+                                      width="24" height="24" 
+                                      viewBox="0 0 24 24" 
+                                      style="fill: none; stroke: rgb(78, 39, 128); stroke-width: 2;">
+                                      <path 
+                                          d="M8 4 L16 12 L8 20" 
+                                          stroke-linecap="round" 
+                                          stroke-linejoin="round"/>
+
+                                      </svg>
+                                  </span>
+                                  
+                              </a>
+                          </div>
+                      </div>
+                      <div class="boxWhite fl w_32 w_100r">
+                          <h2 class="fs18 fw_n mt0">Salarios más buscados</h2>
+                          <br>
+                          <div class="links logos">
+                              <a href="/salarios/asesora-de-ventas" title="Salarios de Asesor/a de ventas">
+                                  <span>Asesor/a de ventas </span>
+                                  <span>
+                                      
+                                  </span>
+                                  <svg 
+                                      xmlns="http://www.w3.org/2000/svg" 
+                                      class="input-icon-flecha"
+                                      width="24" height="24" 
+                                      viewBox="0 0 24 24" 
+                                      style="fill: none; stroke: rgb(78, 39, 128); stroke-width: 2;">
+                                      <path 
+                                          d="M8 4 L16 12 L8 20" 
+                                          stroke-linecap="round" 
+                                          stroke-linejoin="round"/>
+
+                                      </svg>
+                              </a>
+                              <a href="/salarios/auxiliar-de-almacen" title="Salarios de Auxilar de almacén">
+                                  <span> Auxiliar de Almacén </span>
+                                  <span>
+                                  </span>
+                                  <svg 
+                                      xmlns="http://www.w3.org/2000/svg" 
+                                      class="input-icon-flecha"
+                                      width="24" height="24" 
+                                      viewBox="0 0 24 24" 
+                                      style="fill: none; stroke: rgb(78, 39, 128); stroke-width: 2;">
+                                      <path 
+                                          d="M8 4 L16 12 L8 20" 
+                                          stroke-linecap="round" 
+                                          stroke-linejoin="round"/>
+
+                                      </svg>
+                              </a>
+                              <a href="/salarios/atencion-al-cliente" title="Salarios de Atencion al cliente">
+                                  <span> Atención a clientes </span>
+                                  <span>
+                                  </span>
+                                  <svg 
+                                      xmlns="http://www.w3.org/2000/svg" 
+                                      class="input-icon-flecha"
+                                      width="24" height="24" 
+                                      viewBox="0 0 24 24" 
+                                      style="fill: none; stroke: rgb(78, 39, 128); stroke-width: 2;">
+                                      <path 
+                                          d="M8 4 L16 12 L8 20" 
+                                          stroke-linecap="round" 
+                                          stroke-linejoin="round"/>
+                                      </svg>
+                              </a>
+                              <a href="/salarios/asistente" title="Salarios de Asistente">
+                                  <span> Asistente </span>
+                                  <span>
+                                  </span>
+                                  <svg 
+                                      xmlns="http://www.w3.org/2000/svg" 
+                                      class="input-icon-flecha"
+                                      width="24" height="24" 
+                                      viewBox="0 0 24 24" 
+                                      style="fill: none; stroke: rgb(78, 39, 128); stroke-width: 2;">
+                                      <path 
+                                          d="M8 4 L16 12 L8 20" 
+                                          stroke-linecap="round" 
+                                          stroke-linejoin="round"/>
+
+                                      </svg>
+                              </a>
+                              <a href="/salarios/teleoperadores" title="Salarios de Teleoperadores/as">
+                                  <span> Teleoperadores/as </span>
+                                  <span>
+                                  </span>
+                                  <svg 
+                                      xmlns="http://www.w3.org/2000/svg" 
+                                      class="input-icon-flecha"
+                                      width="24" height="24" 
+                                      viewBox="0 0 24 24" 
+                                      style="fill: none; stroke: rgb(78, 39, 128); stroke-width: 2;">
+                                      <path 
+                                          d="M8 4 L16 12 L8 20" 
+                                          stroke-linecap="round" 
+                                          stroke-linejoin="round"/>
+
+                                      </svg>
+                              </a>
+                              <a href="/salarios/supervisora" title="Salarios de Supervisor/a">
+                                  <span> Supervisor/a </span>
+                                  <span>
+                                  </span>
+                                  <svg 
+                                      xmlns="http://www.w3.org/2000/svg" 
+                                      class="input-icon-flecha"
+                                      width="24" height="24" 
+                                      viewBox="0 0 24 24" 
+                                      style="fill: none; stroke: rgb(78, 39, 128); stroke-width: 2;">
+                                      <path 
+                                          d="M8 4 L16 12 L8 20" 
+                                          stroke-linecap="round" 
+                                          stroke-linejoin="round"/>
+
+                                      </svg>
+                              </a>
+                              <a href="/salarios/ayudante-de-cocina" title="Salarios de Ayudante de cocina">
+                                  <span> Ayudante de cocina </span>
+                                  <span>
+                                  </span>
+                                  <svg 
+                                      xmlns="http://www.w3.org/2000/svg" 
+                                      class="input-icon-flecha"
+                                      width="24" height="24" 
+                                      viewBox="0 0 24 24" 
+                                      style="fill: none; stroke: rgb(78, 39, 128); stroke-width: 2;">
+                                      <path 
+                                          d="M8 4 L16 12 L8 20" 
+                                          stroke-linecap="round" 
+                                          stroke-linejoin="round"/>
+
+                                      </svg>
+                              </a>
+                              <a href="/salarios/operario-de-produccion" title="Salarios de Operario/a de produccion">
+                                  <span> Operario/a de producción </span>
+                                  <span>
+                                  </span>
+                                  <svg 
+                                      xmlns="http://www.w3.org/2000/svg" 
+                                      class="input-icon-flecha"
+                                      width="24" height="24" 
+                                      viewBox="0 0 24 24" 
+                                      style="fill: none; stroke: rgb(78, 39, 128); stroke-width: 2;">
+                                      <path 
+                                          d="M8 4 L16 12 L8 20" 
+                                          stroke-linecap="round" 
+                                          stroke-linejoin="round"/>
+
+                                      </svg>
+                              </a>
+                              <a href="/salarios/operario-de-limpieza" title="Salarios de Operario de limpieza">
+                                <span> Operario de limpieza </span>
+                                <span>
+                                </span>
+                                <svg 
+                                    xmlns="http://www.w3.org/2000/svg" 
+                                    class="input-icon-flecha"
+                                    width="24" height="24" 
+                                    viewBox="0 0 24 24" 
+                                    style="fill: none; stroke: rgb(78, 39, 128); stroke-width: 2;">
+                                    <path 
+                                        d="M8 4 L16 12 L8 20" 
+                                        stroke-linecap="round" 
+                                        stroke-linejoin="round"/>
+
+                                    </svg>
+                            </a>
+                            <a href="/salarios/operarios-de-limpieza" title="Salarios de Operarios/as de limpieza">
+                              <span> Operarios/as de limpieza </span>
+                              <span>
+                              </span>
+                              <svg 
+                                  xmlns="http://www.w3.org/2000/svg" 
+                                  class="input-icon-flecha"
+                                  width="24" height="24" 
+                                  viewBox="0 0 24 24" 
+                                  style="fill: none; stroke: rgb(78, 39, 128); stroke-width: 2;">
+                                  <path 
+                                      d="M8 4 L16 12 L8 20" 
+                                      stroke-linecap="round" 
+                                      stroke-linejoin="round"/>
+
+                                  </svg>
+                          </a>
+                          </div>
+                      </div>
+                      <div class="boxWhite fl w_32 w_100r">
+                          <h2 class="fs18 fw_n mt0"> Salarios ejecutivos </h2>
+                          <br>
+                          <div class="links logos">
+                              <a href="/salarios/medico-epidemiologo" title="Salarios de Médico epidemiologo">
+                                  <span> Médico epidemiólogo </span>
+                                  <span>
+                                  </span>
+                                  <svg 
+                                      xmlns="http://www.w3.org/2000/svg" 
+                                      class="input-icon-flecha"
+                                      width="24" height="24" 
+                                      viewBox="0 0 24 24" 
+                                      style="fill: none; stroke: rgb(78, 39, 128); stroke-width: 2;">
+                                      <path 
+                                          d="M8 4 L16 12 L8 20" 
+                                          stroke-linecap="round" 
+                                          stroke-linejoin="round"/>
+
+                                      </svg>
+                              </a>
+                              <a href="/salarios/jefea-de-obra" title="Salarios de Jefe/a de obra">
+                                  <span> Jefe/a de obra </span>
+                                  <span>
+                                  </span>
+                                  <svg 
+                                      xmlns="http://www.w3.org/2000/svg" 
+                                      class="input-icon-flecha"
+                                      width="24" height="24" 
+                                      viewBox="0 0 24 24" 
+                                      style="fill: none; stroke: rgb(78, 39, 128); stroke-width: 2;">
+                                      <path 
+                                          d="M8 4 L16 12 L8 20" 
+                                          stroke-linecap="round" 
+                                          stroke-linejoin="round"/>
+
+                                      </svg>
+                              </a>
+                              <a href="/salarios/medico-encargado" title="Salarios de Medico/a encargado">
+                                  <span> Medico/a encargado </span>
+                                  <span>
+                                  </span>
+                                  <svg 
+                                      xmlns="http://www.w3.org/2000/svg" 
+                                      class="input-icon-flecha"
+                                      width="24" height="24" 
+                                      viewBox="0 0 24 24" 
+                                      style="fill: none; stroke: rgb(78, 39, 128); stroke-width: 2;">
+                                      <path 
+                                          d="M8 4 L16 12 L8 20" 
+                                          stroke-linecap="round" 
+                                          stroke-linejoin="round"/>
+
+                                      </svg>
+                              </a>
+                              <a href="/salarios/chef-de-partie" title="Salarios de Chef de parties">
+                                  <span> Chef de parties </span>
+                                  <span>
+                                  </span>
+                                  <svg 
+                                      xmlns="http://www.w3.org/2000/svg" 
+                                      class="input-icon-flecha"
+                                      width="24" height="24" 
+                                      viewBox="0 0 24 24" 
+                                      style="fill: none; stroke: rgb(78, 39, 128); stroke-width: 2;">
+                                      <path 
+                                          d="M8 4 L16 12 L8 20" 
+                                          stroke-linecap="round" 
+                                          stroke-linejoin="round"/>
+
+                                      </svg>
+                              </a>
+                              <a href="/salarios/consultor-sap" title="Salarios de Consultor de SAP">
+                                  <span> Consultor de SAP </span>
+                                  <span>
+                                  </span>
+                                  <svg 
+                                      xmlns="http://www.w3.org/2000/svg" 
+                                      class="input-icon-flecha"
+                                      width="24" height="24" 
+                                      viewBox="0 0 24 24" 
+                                      style="fill: none; stroke: rgb(78, 39, 128); stroke-width: 2;">
+                                      <path 
+                                          d="M8 4 L16 12 L8 20" 
+                                          stroke-linecap="round" 
+                                          stroke-linejoin="round"/>
+
+                                      </svg>
+                              </a>
+                              <a href="/salarios/jefe-de-guardia" title="Salarios de Jefe de guardia">
+                                  <span> Jefe de guardia </span>
+                                  <span>
+                                  </span>
+                                  <svg 
+                                      xmlns="http://www.w3.org/2000/svg" 
+                                      class="input-icon-flecha"
+                                      width="24" height="24" 
+                                      viewBox="0 0 24 24" 
+                                      style="fill: none; stroke: rgb(78, 39, 128); stroke-width: 2;">
+                                      <path 
+                                          d="M8 4 L16 12 L8 20" 
+                                          stroke-linecap="round" 
+                                          stroke-linejoin="round"/>
+
+                                      </svg>
+                              </a>
+                              <a href="/salarios/jefea-de-guardia" title="Salarios de Jefe/a de guardia">
+                                  <span> Jefe/a de guardia </span>
+                                  <span>
+                                  </span>
+                                  <svg 
+                                      xmlns="http://www.w3.org/2000/svg" 
+                                      class="input-icon-flecha"
+                                      width="24" height="24" 
+                                      viewBox="0 0 24 24" 
+                                      style="fill: none; stroke: rgb(78, 39, 128); stroke-width: 2;">
+                                      <path 
+                                          d="M8 4 L16 12 L8 20" 
+                                          stroke-linecap="round" 
+                                          stroke-linejoin="round"/>
+
+                                      </svg>
+                              </a>
+                              <a href="/salarios/ingeniero-residente" title="Salarios de Ingeniero residente">
+                                  <span> ingeniero residente </span>
+                                  <span>
+                                  </span>
+                                  <svg 
+                                      xmlns="http://www.w3.org/2000/svg" 
+                                      class="input-icon-flecha"
+                                      width="24" height="24" 
+                                      viewBox="0 0 24 24" 
+                                      style="fill: none; stroke: rgb(78, 39, 128); stroke-width: 2;">
+                                      <path 
+                                          d="M8 4 L16 12 L8 20" 
+                                          stroke-linecap="round" 
+                                          stroke-linejoin="round"/>
+
+                                      </svg>
+                              </a>
+                              <a href="/salarios/medicoa-ocupacional" title="Salarios de Medico/a ocupacional">
+                                <span> Medico/a ocupacional </span>
+                                <span>
+                                </span>
+                                <svg 
+                                    xmlns="http://www.w3.org/2000/svg" 
+                                    class="input-icon-flecha"
+                                    width="24" height="24" 
+                                    viewBox="0 0 24 24" 
+                                    style="fill: none; stroke: rgb(78, 39, 128); stroke-width: 2;">
+                                    <path 
+                                        d="M8 4 L16 12 L8 20" 
+                                        stroke-linecap="round" 
+                                        stroke-linejoin="round"/>
+
+                                    </svg>
+                            </a>
+                            <a href="/salarios/medico-estetico" title="Salarios de Medico/a estetico">
+                              <span> Medico/a estetica </span>
+                              <span>
+                              </span>
+                              <svg 
+                                  xmlns="http://www.w3.org/2000/svg" 
+                                  class="input-icon-flecha"
+                                  width="24" height="24" 
+                                  viewBox="0 0 24 24" 
+                                  style="fill: none; stroke: rgb(78, 39, 128); stroke-width: 2;">
+                                  <path 
+                                      d="M8 4 L16 12 L8 20" 
+                                      stroke-linecap="round" 
+                                      stroke-linejoin="round"/>
+
+                                  </svg>
+                          </a>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </section>
+      <div class="footer_c" id="secfooter">
+        <div class="container">
+                <div class="info_footer">
+                    Copyright 2024
+                    <br>
+                    <br>
+                </div>
+        </div>
+      </div> 
     </main>            
 </body>
 </div>
