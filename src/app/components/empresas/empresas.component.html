@@ -47,17 +47,22 @@
                         <div>
                             <div class="field_input_icon posRel mb0">
                                 <div class="cont">
-                                    <span class="icon i_company"></span>
-                                    <input data-val="true" data-val-number="El campo SelectedId debe ser un número." id="SelectedId" name="SelectedId" type="hidden" value="0">
-                                    <input autocomplete="off" class="it-search" id="SelectedName" maxlength="200" name="SelectedName" placeholder="Nombre de la empresa" type="text" value="">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="input-icon" style="fill: rgb(30, 34, 99);">
+                                        <path d="M12 2C9.79 2 8 3.79 8 6v10h4V6h2v10h4V6c0-2.21-1.79-4-4-4zM12 0c3.31 0 6 2.69 6 6v12H6V6c0-3.31 2.69-6 6-6zm2 22v-4h-4v4h4zm6-4h-4v4h-8v-4H4v4H2v2h20v-2h-2v-4z"/>
+                                    </svg>
+                                    <input [(ngModel)]="selectedId" type="hidden" value="0">
+                                    <input [(ngModel)]="selectedName" autocomplete="off" class="it-search" maxlength="200" placeholder="Nombre de la empresa" type="text">
                                 </div>
                             </div>
                         </div>
-                        <button class="b_primary rounded mlAuto" suggester-search-button="companies">
-                            <span class="icon i_search"></span>
+                        <button (click)="searchCompanies()" class="b_primary rounded mlAuto">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 22 22" class="btn-icon" style="fill: rgb(255, 255, 255);">
+                                <path d="M19.023 16.977a35.13 35.13 0 0 1-1.367-1.384c-.372-.378-.596-.653-.596-.653l-2.8-1.337A6.962 6.962 0 0 0 16 9c0-3.859-3.14-7-7-7S2 5.141 2 9s3.14 7 7 7c1.763 0 3.37-.66 4.603-1.739l1.337 2.8s.275.224.653.596c.387.363.896.854 1.384 1.367l1.358 1.392.604.646 2.121-2.121-.646-.604c-.379-.372-.885-.866-1.391-1.36zM9 14c-2.757 0-5-2.243-5-5s2.243-5 5-5 5 2.243 5 5-2.243 5-5 5z"></path>
+                            </svg>
                             <span>Buscar</span>
                         </button>
                     </div>
+                    
                     <br>
                     <br>
                 </div>
@@ -526,7 +531,11 @@
                                         <div class="w70_fx">
                                             <a href="/grupo_scotiabank" title="Grupo Scotiabank" class="fs21 fc_base">Grupo Scotiabank</a>
                                             <div>
-                                                <span class="fs16 fw_b"><span class="icon i_star"></span> 4,33</span>
+                                                  <span class="fs16 fw_b"> 
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 25 25" class="icon i_star" style="fill:  rgb(250, 213, 6);">
+                                                        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                                                        <path d="M0 0h24v24H0z" fill="none"/>
+                                                      </svg> 4,33</span>
                                             </div>
                                         </div>
                                         <div class="mlAuto">
@@ -566,7 +575,10 @@
                                         <div class="w70_fx">
                                             <a href="/empresas/acerca-de-lucky-sac-816F05FFDB62BCE1" title="LUCKY SAC" class="fs21 fc_base">LUCKY SAC</a>
                                             <div>
-                                                <span class="fs16 fw_b"><span class="icon i_star"></span> 4,06</span>
+                                                <span class="fs16 fw_b"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 25 25" class="icon i_star" style="fill:  rgb(250, 213, 6);">
+                                                    <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                                                    <path d="M0 0h24v24H0z" fill="none"/>
+                                                  </svg> 4,06</span>
                                             </div>
                                         </div>
                                         <div class="mlAuto">
@@ -606,7 +618,10 @@
                                         <div class="w70_fx">
                                             <a href="/oechsle" title="Oechsle 	" class="fs21 fc_base">Oechsle 	</a>
                                             <div>
-                                                <span class="fs16 fw_b"><span class="icon i_star"></span> 4,33</span>
+                                                <span class="fs16 fw_b"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 25 25" class="icon i_star" style="fill:  rgb(250, 213, 6);">
+                                                    <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                                                    <path d="M0 0h24v24H0z" fill="none"/>
+                                                  </svg> 4,33</span>
                                             </div>
                                         </div>
                                         <div class="mlAuto">
