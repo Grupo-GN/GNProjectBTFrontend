@@ -373,3 +373,10 @@ h1 {
   vertical-align: middle;
   max-width: 1%;
 }
+.prB {
+  padding-right: 46px;
+}
+
+.w70, .w_70 {
+  width: 999%;
+}
