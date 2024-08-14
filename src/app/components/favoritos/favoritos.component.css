@@ -13,6 +13,8 @@ body {
   font-size: 1.4rem !important;
   line-height: 1.4;
 }
+
+
 .premium_bg {
   background: #ffffff;
 }
@@ -146,11 +148,11 @@ input-icon{
     background: #eaf3fb;
     padding: 5px 0;
     display: flex;
-    width: 180%;
+    width: 80%;
     border-radius: 60px;
     align-items: center;
     justify-content: space-evenly;
-    margin-left: 100px;
+    margin-left: 40px;
   }
   
   ul {

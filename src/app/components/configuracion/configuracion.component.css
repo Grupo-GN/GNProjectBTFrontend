@@ -15,7 +15,7 @@ body {
 }
 .body {
   width: calc(100% - 5rem);
-  height: 160vh;
+  height: 85vh;
   z-index: 0;
   position: relative;
   top: 0;
