@@ -177,15 +177,15 @@ h1, h2, h3, h4, h5, h6 {
     flex-flow: column;
 }
 .box_search {
-    width: 900px;
-    height: 70px;
+    width: 980px;
+    height: 60px;
     left: calc(50% - 450px);
     background-color: #fff;
     border: 1px solid #e1e5ea;
     border-radius: 50px;
     display: flex;
     align-items: center;
-    border: 1px solid #e1e5ea
+    border: 1px solid #e1e5ea;
   }
   .box_search.sel {
     opacity: 1;
@@ -271,14 +271,14 @@ a, body, button, div, form, h1, h2, h3, h4, h5, h6, html, input, label, legend, 
 }
   
   .box_search button {
-        margin-left: 5px;
-        margin-right: 5px;
-        padding: 20px 50px;
-        border: none;
-        border-radius: 50px;
-        background-color: #005DA9;
-        color: #fff;
-        cursor: pointer;
+    margin-left: 5px;
+    margin-right: 5px;
+    padding: 17px 60px;
+    border: none;
+    border-radius: 50px;
+    background-color: #005DA9;
+    color: #fff;
+    cursor: pointer;
     }
   
   .box_search input {
@@ -823,9 +823,9 @@ a {
     color: #f3ecec;
     position: absolute;
     width: 82px;
-    height: 25px;
-    left: -8px;
-    top: 28%;
+    height: 37px;
+    left: 1px;
+    top: 15%;
     transform: translateY(-50%, -50%);
     cursor: pointer;
   }

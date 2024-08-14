@@ -140,15 +140,15 @@ h1, h2, h3, h4, h5, h6 {
   flex-flow: column;
 }
 .box_search {
-  width: 900px;
-  height: 70px;
-  left: calc(50% - 450px);
-  background-color: #fff;
-  border: 1px solid #e1e5ea;
-  border-radius: 50px;
-  display: flex;
-  align-items: center;
-  border: 1px solid #e1e5ea
+  width: 960px;
+    height: 60px;
+    left: calc(50% - 450px);
+    background-color: #fff;
+    border: 1px solid #e1e5ea;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    border: 1px solid #e1e5ea;
 }
 .box_search.sel {
   opacity: 1;
@@ -234,14 +234,15 @@ a, body, button, div, form, h1, h2, h3, h4, h5, h6, html, input, label, legend, 
 }
 
 .box_search button {
-      margin-left: 5px;
-      margin-right: 5px;
-      padding: 20px 50px;
-      border: none;
-      border-radius: 50px;
-      background-color: #005DA9;
-      color: #fff;
-      cursor: pointer;
+  margin-left: 5px;
+  margin-right: 5px;
+  padding: 15px 70px;
+  border: none;
+  border-radius: 50px;
+  background-color: #005DA9;
+  color: #fff;
+  cursor: pointer;
+
   }
 
 .box_search input {
@@ -774,9 +775,9 @@ a {
 .input-icon {
   color: #191919;
   position: absolute;
-  width: 28px;
-  height: 25px;
-  left: 12px;
+  width: 30px;
+    height: 30px;
+    left: 30px;
   top: 50%;
   transform: translateY(-50%);
 
@@ -784,13 +785,13 @@ a {
 
 .btn-icon {
   color: #f3ecec;
-  position: absolute;
-  width: 82px;
-  height: 25px;
-  left: -8px;
-  top: 28%;
-  transform: translateY(-50%, -50%);
-  cursor: pointer;
+    position: absolute;
+    width: 82px;
+    height: 35px;
+    left: 11px;
+    top: 13%;
+    transform: translateY(-50%, -50%);
+    cursor: pointer;
 }
 
 .input-icon-2 {
@@ -1264,6 +1265,25 @@ body p {
   float: left;
   color: #4B5968;
   font-size: 14px;
+}
+
+.box_search input {
+  border: 0;
+  border-radius: 30px;
+  padding: 9px 25px 9px 45px;
+}
+.box_search input {
+    border: 0;
+    display: block;
+    width: 100%;
+    line-height: 1.4;
+    padding: 15px 500px 15px 70px;
+    height: auto;
+    border-radius: 50px;
+    margin-left: 20px;
+}
+.box_search input {
+  height: auto;
 }
 
 

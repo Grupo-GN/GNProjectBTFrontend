@@ -2,6 +2,7 @@ import { Component, HostListener, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { debounceTime, distinctUntilChanged, switchMap, catchError } from 'rxjs/operators';
 import { Observable, Subject, of } from 'rxjs';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 
 @Component({
@@ -10,6 +11,7 @@ import { Observable, Subject, of } from 'rxjs';
   styleUrls: ['./configuracion.component.css']
 })
 export class ConfiguracionComponent implements OnInit {
+  privacyForm: FormGroup;
 
   suggestionsVisible: string | null = null;
   lastSearches: string[] = [''];
@@ -38,7 +40,18 @@ export class ConfiguracionComponent implements OnInit {
   private placeTerms = new Subject<string>();
   selectedView: string = 'localizacion';
 
-  constructor(private http: HttpClient) {}
+  confirmDelete: boolean = false;
+  
+
+
+  constructor(private http: HttpClient , private fb: FormBuilder) {
+
+    this.privacyForm = this.fb.group({
+      privacyLevel: ['1']  // valor por defecto
+    });
+  }
+  
+
 
   ngOnInit() {
     this.searchTerms.pipe(
@@ -137,8 +150,10 @@ export class ConfiguracionComponent implements OnInit {
     this.searchPlace();
   }
 
-  trackMenuClick(section: string) {
-    console.log(`Navegando a ${section}`);
+  
+  trackMenuClick(item: string) {
+    console.log(`Menú seleccionado: ${item}`);
+    
   }
 
   @HostListener('document:click', ['$event'])
@@ -164,5 +179,24 @@ export class ConfiguracionComponent implements OnInit {
 
   toggleView(view: string): void {
     this.selectedView = this.selectedView === view ? '' : view;
+  }
+  onDeleteAccount(): void {
+    if (this.confirmDelete) {
+      console.log('Account deletion confirmed');
+      // Lógica para eliminar la cuenta
+    } else {
+      console.log('Please confirm account deletion');
+    }
+  }
+
+  toggleConfirmDelete(): void {
+    this.confirmDelete = !this.confirmDelete;
+  }
+
+
+  onPrivacySubmit(): void {
+    const privacyLevel = this.privacyForm.get('privacyLevel')?.value;
+    console.log(`Selected privacy level: ${privacyLevel}`);
+    // Aquí puedes agregar la lógica para cambiar el nivel de privacidad
   }
 }

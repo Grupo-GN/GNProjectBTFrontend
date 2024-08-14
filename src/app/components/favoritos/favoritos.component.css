@@ -13,6 +13,8 @@ body {
   font-size: 1.4rem !important;
   line-height: 1.4;
 }
+
+
 .premium_bg {
   background: #ffffff;
 }
@@ -417,6 +419,18 @@ body p {
       position: relative;
   }
 }
+.ccp_menu ul {
+    background: #eaf3fb;
+    padding: 5px 0;
+    display: flex;
+    width: 80%;
+    border-radius: 60px;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-left: 40px;
+  }
+
+
 .posRel, .pos_rel {
   position: relative;
 }

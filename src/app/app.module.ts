@@ -20,6 +20,7 @@ import { MiAreaComponent } from './components/mi-area/mi-area.component';
 import { MisAlertasComponent } from './components/mis-alertas/mis-alertas.component';
 import { CerrarSesionComponent } from './components/cerrar-sesion/cerrar-sesion.component';
 import { SalariosComponent } from './components/salarios/salarios.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { SalariosComponent } from './components/salarios/salarios.component';
     BrowserAnimationsModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule
   ],
   providers: [],
