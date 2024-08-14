@@ -27,7 +27,8 @@ export class FavoritosComponent implements OnInit {
     'Cusco',
     'Trujillo',
     'Chiclayo',
-    'Iquitos'
+    'Iquitos',
+    'Apurimac'
   ];
   filteredPlaces: string[] = [...this.popularPlaces];
   filteredJobs: string[] = [...this.popularJobs];
