@@ -142,89 +142,222 @@
       </ul>
     </section>
     </div>
-    <div class="container">
-      <div class="alert">
-        <div class="h">
-          <h2 class="fw_n p15_r">Mis alertas</h2>
-          <a (click)="showNewAlertForm()" title="Crear nueva alerta"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="input-icon-mas">
-            <path d="M12 5V19M5 12H19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>Crear nueva alerta</a>
-        </div>
     
-        <div *ngIf="showForm" class="form">
-          <h2>Nueva alerta</h2>
-    
-          <div class="line">
-            <p>Cargo</p>
-            <input [(ngModel)]="alertData.cargo" type="text" maxlength="30" name="kw" autocomplete="off">
-          </div>
-    
-          <div class="line">
-            <p>Categoría<span class="fcred">*</span></p>
-            <ul>
-              <li *ngFor="let category of categories">
-                <input type="checkbox" [value]="category.id" (change)="onCategoryChange($event)">
-                <label>{{ category.name }}</label>
-              </li>
-            </ul>
-          </div>
-    
-          <div class="line">
-            <p>Región<span class="fcred">*</span></p>
-            <ul>
-              <li *ngFor="let region of regions">
-                <input type="checkbox" [value]="region.id" (change)="onRegionChange($event)">
-                <label>{{ region.name }}</label>
-              </li>
-            </ul>
-          </div>
-    
-          <div class="line">
-            <input type="submit" class="submit_n" (click)="saveAlert()" value="Guardar">
-            <a (click)="cancelAlert()">Cancelar</a>
-          </div>
-        </div>
-    
-        <div *ngIf="!hasAlerts" class="sin_info">
-          <ul>
-            <li class="icono"><span class="icon info"></span></li>
-            <li class="info">
-              <p><span>Mis alertas</span></p>
-              <p>Recibe por e-mail las ofertas que más te interesan en base a los criterios que definas en tus alertas.</p>
-            </li>
-          </ul>
-        </div>
-      </div>
-    
-      <!-- Popup de confirmación de guardado -->
-      <div *ngIf="showSuccessPopup" id="popup_alert_ok">
-        <div class="blockUI blockOverlay"></div>
-        <div class="blockUI blockMsg blockPage">
-          <div class="popup_gestof popup_gestcan">
-            <div class="md-content">
-              <p class="mtb15 green fs15">
-                <span class="icon estado_verde"></span>
-                Alerta guardada correctamente
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    
-    
-      <div *ngIf="showErrorPopup" id="popup_alert_ko">
-        <div class="blockUI blockOverlay"></div>
-        <div class="blockUI blockMsg blockPage">
-          <div class="popup_gestof popup_gestcan">
-            <div class="md-content">
-              <p class="mtb15 fc_red fs15">
-                <span class="icon estado_rojo"></span>
-                Ya tienes una alerta similar guardada.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
+    <div id="postulaciones-section">
+      <p>Mis alertas</p>
     </div>
+
+
+    <!-- Botón para crear nueva alerta -->
+    <div class="create-new-alert">
+        <button (click)="toggleNewAlertBox()">+ Crear nueva alerta</button>
+      </div>
+  
+      <!-- Cuadro de Nueva Alerta -->
+      <div *ngIf="showNewAlertBox && !editMode" class="alert-container">
+        <div class="new-alert-box">
+          <h2>{{ editMode ? 'Editar alerta' : 'Nueva alerta' }}</h2>
+          <form (ngSubmit)="guardarAlerta()">
+            <div class="form-group">
+                <label for="cargo">Cargo</label>
+                <input type="text" id="cargo" [(ngModel)]="newAlert.cargo" name="cargo">
+             </div>
+  
+            <label>Categoría*</label>
+            <div class="categories">
+              <label><input type="checkbox" (change)="onCheckboxChange($event, 'categoria')" [checked]="newAlert.categorias.includes('Administración / Oficina')" value="Administración / Oficina"> Administración / Oficina</label>
+              <label><input type="checkbox" (change)="onCheckboxChange($event, 'categoria')" [checked]="newAlert.categorias.includes('Almacén / Logística / Transporte')"  value="Almacén / Logística / Transporte"> Almacén / Logística / Transporte</label>
+              <label><input type="checkbox" (change)="onCheckboxChange($event, 'categoria')" [checked]="newAlert.categorias.includes('Atención a clientes')"  value="Atención a clientes"> Atención a clientes</label>
+              <label><input type="checkbox" (change)="onCheckboxChange($event, 'categoria')" [checked]="newAlert.categorias.includes('CallCenter / Telemercadeo')"   value="CallCenter / Telemercadeo"> CallCenter / Telemercadeo</label>
+              <label><input type="checkbox" (change)="onCheckboxChange($event, 'categoria')" [checked]="newAlert.categorias.includes('Compras / Comercio Exterior')"  value="Compras / Comercio Exterior"> Compras / Comercio Exterior </label>
+              <label><input type="checkbox" (change)="onCheckboxChange($event, 'categoria')" [checked]="newAlert.categorias.includes('Construcción y obra')"  value="Construcción y obra"> Construcción y obra</label>
+              <label><input type="checkbox" (change)="onCheckboxChange($event, 'categoria')" [checked]="newAlert.categorias.includes('Contabilidad / Finanzas')"  value="Contabilidad / Finanzas"> Contabilidad / Finanzas </label>
+              <label><input type="checkbox" (change)="onCheckboxChange($event, 'categoria')" [checked]="newAlert.categorias.includes('Dirección / Gerencia')"  value="Dirección / Gerencia"> Dirección / Gerencia </label>
+              <label><input type="checkbox" (change)="onCheckboxChange($event, 'categoria')" [checked]="newAlert.categorias.includes('Diseño / Artes gráficas')"  value="Diseño / Artes gráficas"> Diseño / Artes gráficas </label>
+              <label><input type="checkbox" (change)="onCheckboxChange($event, 'categoria')" [checked]="newAlert.categorias.includes('Docencia')"  value="Docencia"> Docencia </label>
+              <label><input type="checkbox" (change)="onCheckboxChange($event, 'categoria')" [checked]="newAlert.categorias.includes('Hostelería / Turismo')"  value="Hostelería / Turismo"> Hostelería / Turismo </label>
+              <label><input type="checkbox" (change)="onCheckboxChange($event, 'categoria')" [checked]="newAlert.categorias.includes('Informatíca / Telecomunicaciones')"  value="Informatíca / Telecomunicaciones"> Informatíca / Telecomunicaciones </label>
+              <label><input type="checkbox" (change)="onCheckboxChange($event, 'categoria')" [checked]="newAlert.categorias.includes('Ingeniería')"  value="Ingeniería"> Ingeniería </label>
+              <label><input type="checkbox" (change)="onCheckboxChange($event, 'categoria')" [checked]="newAlert.categorias.includes('Investigación y Calidad')"  value="Investigación y Calidad"> Investigación y Calidad </label>
+              <label><input type="checkbox" (change)="onCheckboxChange($event, 'categoria')" [checked]="newAlert.categorias.includes('Ventas')"  value="Ventas"> Ventas </label>
+              <label><input type="checkbox" (change)="onCheckboxChange($event, 'categoria')" [checked]="newAlert.categorias.includes('Mantenimiento y Reparaciones Técnicas, Ventas')" value="Mantenimiento y Reparaciones Técnicas, Ventas "> Mantenimiento y Reparaciones Técnicas, Ventas </label>
+              <label><input type="checkbox" (change)="onCheckboxChange($event, 'categoria')" [checked]="newAlert.categorias.includes('Legal / Asesoría')" value="Legal / Asesoría"> Legal / Asesoría </label>
+              <label><input type="checkbox" (change)="onCheckboxChange($event, 'categoria')" [checked]="newAlert.categorias.includes('Producción / Operarios / Manufactura')" value="Producción / Operarios / Manufactura"> Producción / Operarios / Manufactura </label>
+              <label><input type="checkbox" (change)="onCheckboxChange($event, 'categoria')" [checked]="newAlert.categorias.includes('Servicios Generales, Aseo y Seguridad')" value="Servicios Generales, Aseo y Seguridad"> Servicios Generales, Aseo y Seguridad </label>
+              <!-- Añade más categorías aquí -->
+            </div>
+  
+            <label>Región*</label>
+            <div class="regions">
+              <label><input type="checkbox" (change)="onCheckboxChange($event, 'region')" [checked]="newAlert.regiones.includes('Lima')" value="Lima"> Lima</label>
+              <label><input type="checkbox" (change)="onCheckboxChange($event, 'region')" [checked]="newAlert.regiones.includes('Amazonas')" value="Amazonas"> Amazonas</label>
+              <label><input type="checkbox" (change)="onCheckboxChange($event, 'region')" [checked]="newAlert.regiones.includes('Ancash')" value="Ancash"> Ancash</label>
+              <label><input type="checkbox" (change)="onCheckboxChange($event, 'region')" [checked]="newAlert.regiones.includes('Apurimac')" value="Apurimac"> Apurimac</label>
+              <label><input type="checkbox" (change)="onCheckboxChange($event, 'region')" [checked]="newAlert.regiones.includes('Arequipa')" value="Arequipa"> Arequipa</label>
+              <label><input type="checkbox" (change)="onCheckboxChange($event, 'region')" [checked]="newAlert.regiones.includes('Callao')" value="Callao"> Callao</label>
+              <label><input type="checkbox" (change)="onCheckboxChange($event, 'region')" [checked]="newAlert.regiones.includes('Junin')" value="Junin"> Junin</label>
+              <label><input type="checkbox" (change)="onCheckboxChange($event, 'region')" [checked]="newAlert.regiones.includes('Loreto')" value="Loreto"> Loreto</label>
+              <label><input type="checkbox" (change)="onCheckboxChange($event, 'region')" [checked]="newAlert.regiones.includes('Cusco')" value="Cusco"> Cusco</label>
+              <label><input type="checkbox" (change)="onCheckboxChange($event, 'region')" [checked]="newAlert.regiones.includes('Ica')" value="Ica"> Ica</label>
+              <label><input type="checkbox" (change)="onCheckboxChange($event, 'region')" [checked]="newAlert.regiones.includes('Puno')" value="Puno"> Puno</label>
+              <label><input type="checkbox" (change)="onCheckboxChange($event, 'region')" [checked]="newAlert.regiones.includes('Tumbes')" value="Tumbes"> Tumbes</label>
+              <label><input type="checkbox" (change)="onCheckboxChange($event, 'region')" [checked]="newAlert.regiones.includes('Cajamarca')" value="Cajamarca"> Cajamarca</label>
+              <label><input type="checkbox" (change)="onCheckboxChange($event, 'region')" [checked]="newAlert.regiones.includes('Huancavelica')" value="Huancavelica"> Huancavelica</label>
+              <label><input type="checkbox" (change)="onCheckboxChange($event, 'region')" [checked]="newAlert.regiones.includes('Pasco')" value="Pasco"> Pasco</label>
+              <label><input type="checkbox" (change)="onCheckboxChange($event, 'region')" [checked]="newAlert.regiones.includes('SanMartin')" value="SanMartin"> San Martin</label>
+              <label><input type="checkbox" (change)="onCheckboxChange($event, 'region')" [checked]="newAlert.regiones.includes('Ucayali')" value="Ucayali"> Ucayali</label>
+              <label><input type="checkbox" (change)="onCheckboxChange($event, 'region')" [checked]="newAlert.regiones.includes('Huanuco')" value="Huanuco"> Huanuco</label>
+              <label><input type="checkbox" (change)="onCheckboxChange($event, 'region')" [checked]="newAlert.regiones.includes('Lambayeque')" value="Lambayeque"> Lambayeque</label>
+              <label><input type="checkbox" (change)="onCheckboxChange($event, 'region')" [checked]="newAlert.regiones.includes('MadreDeDios')" value="MadreDeDios"> Madre De Dios</label>
+              <label><input type="checkbox" (change)="onCheckboxChange($event, 'region')" [checked]="newAlert.regiones.includes('Piura')" value="Piura"> Piura</label>
+              <label><input type="checkbox" (change)="onCheckboxChange($event, 'region')" [checked]="newAlert.regiones.includes('Tacna')" value="Tacna"> Tacna</label>
+              <label><input type="checkbox" (change)="onCheckboxChange($event, 'region')" [checked]="newAlert.regiones.includes('Extranjero')" value="Extranjero"> Extranjero</label>
+              <label><input type="checkbox" (change)="onCheckboxChange($event, 'region')" [checked]="newAlert.regiones.includes('Ayacucho')" value="Ayacucho"> Ayacucho</label>
+              <label><input type="checkbox" (change)="onCheckboxChange($event, 'region')" [checked]="newAlert.regiones.includes('LaLibertad')" value="LaLibertad"> La Libertad</label>
+              <label><input type="checkbox" (change)="onCheckboxChange($event, 'region')" [checked]="newAlert.regiones.includes('Moquegua')" value="Moquegua"> Moquegua</label>
+
+
+              <!-- Añade más regiones aquí -->
+            </div>
+  
+            <div class="button-container">
+              <button type="submit">{{ editMode ? 'Actualizar' : 'Guardar' }}</button>
+              <button type="button" (click)="toggleNewAlertBox()">Cancelar</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- Mensaje de éxito -->
+     <div class="success-message" *ngIf="showSuccessMessage">
+        <div class="message-box">
+            <p>La alerta ha sido {{ editMode ? 'actualizada' : 'creada' }} con éxito</p>
+            <button (click)="closeSuccessMessage()">Aceptar</button>
+        </div>
+    </div>
+  
+<!-- Lista de alertas -->
+<div class="alerts-list">
+    <div *ngFor="let alert of paginatedAlertas; let i = index" [class.selected]="alertaSeleccionada === alert">
+      <div class="alert-content">
+        <div class="alert-info">
+          <h3>{{ alert.cargo }}</h3>
+          <p>{{ alert.categorias.join(', ') }}</p>
+          <p>{{ alert.regiones.join(', ') }}</p>
+        </div>
+        <div class="actions">
+          <button (click)="editAlerta(alert, i)" class="edit-btn" title="Edición de alerta"><i class="fa fa-pencil"></i></button>
+          <button (click)="deleteAlerta(alert.id)" class="delete-btn" title="Eliminar"><i class="fa fa-trash"></i></button>
+        </div>
+      </div>
+        <!-- Mostrar el cuadro de edición debajo de la alerta seleccionada -->
+        <div *ngIf="editMode && editingIndex === i" class="edit-box">
+            <h2>{{ editMode ? 'Editar alerta' : 'Nueva alerta' }}</h2>
+            <form (ngSubmit)="guardarAlerta()">
+              <div class="form-groop">
+                <label for="cargo">Cargo</label>
+                <input type="text" id="cargo" [(ngModel)]="newAlert.cargo" name="cargo">
+             </div>
+  
+            <label>Categoría*</label>
+            <div class="categories">
+              <label><input type="checkbox" (change)="onCheckboxChange($event, 'categoria')" [checked]="newAlert.categorias.includes('Administración / Oficina')" value="Administración / Oficina"> Administración / Oficina</label>
+              <label><input type="checkbox" (change)="onCheckboxChange($event, 'categoria')" [checked]="newAlert.categorias.includes('Almacén / Logística / Transporte')"  value="Almacén / Logística / Transporte"> Almacén / Logística / Transporte</label>
+              <label><input type="checkbox" (change)="onCheckboxChange($event, 'categoria')" [checked]="newAlert.categorias.includes('Atención a clientes')"  value="Atención a clientes"> Atención a clientes</label>
+              <label><input type="checkbox" (change)="onCheckboxChange($event, 'categoria')" [checked]="newAlert.categorias.includes('CallCenter / Telemercadeo')"   value="CallCenter / Telemercadeo"> CallCenter / Telemercadeo</label>
+              <label><input type="checkbox" (change)="onCheckboxChange($event, 'categoria')" [checked]="newAlert.categorias.includes('Compras / Comercio Exterior')"  value="Compras / Comercio Exterior"> Compras / Comercio Exterior </label>
+              <label><input type="checkbox" (change)="onCheckboxChange($event, 'categoria')" [checked]="newAlert.categorias.includes('Construcción y obra')"  value="Construcción y obra"> Construcción y obra</label>
+              <label><input type="checkbox" (change)="onCheckboxChange($event, 'categoria')" [checked]="newAlert.categorias.includes('Contabilidad / Finanzas')"  value="Contabilidad / Finanzas"> Contabilidad / Finanzas </label>
+              <label><input type="checkbox" (change)="onCheckboxChange($event, 'categoria')" [checked]="newAlert.categorias.includes('Dirección / Gerencia')"  value="Dirección / Gerencia"> Dirección / Gerencia </label>
+              <label><input type="checkbox" (change)="onCheckboxChange($event, 'categoria')" [checked]="newAlert.categorias.includes('Diseño / Artes gráficas')"  value="Diseño / Artes gráficas"> Diseño / Artes gráficas </label>
+              <label><input type="checkbox" (change)="onCheckboxChange($event, 'categoria')" [checked]="newAlert.categorias.includes('Docencia')"  value="Docencia"> Docencia </label>
+              <label><input type="checkbox" (change)="onCheckboxChange($event, 'categoria')" [checked]="newAlert.categorias.includes('Hostelería / Turismo')"  value="Hostelería / Turismo"> Hostelería / Turismo </label>
+              <label><input type="checkbox" (change)="onCheckboxChange($event, 'categoria')" [checked]="newAlert.categorias.includes('Informatíca / Telecomunicaciones')"  value="Informatíca / Telecomunicaciones"> Informatíca / Telecomunicaciones </label>
+              <label><input type="checkbox" (change)="onCheckboxChange($event, 'categoria')" [checked]="newAlert.categorias.includes('Ingeniería')"  value="Ingeniería"> Ingeniería </label>
+              <label><input type="checkbox" (change)="onCheckboxChange($event, 'categoria')" [checked]="newAlert.categorias.includes('Investigación y Calidad')"  value="Investigación y Calidad"> Investigación y Calidad </label>
+              <label><input type="checkbox" (change)="onCheckboxChange($event, 'categoria')" [checked]="newAlert.categorias.includes('Ventas')"  value="Ventas"> Ventas </label>
+              <label><input type="checkbox" (change)="onCheckboxChange($event, 'categoria')" [checked]="newAlert.categorias.includes('Recursos Humanos')" value="Recursos Humanos"> Recursos Humanos </label>
+              <label><input type="checkbox" (change)="onCheckboxChange($event, 'categoria')" [checked]="newAlert.categorias.includes('Mantenimiento y Reparaciones Técnicas, Ventas')" value="Mantenimiento y Reparaciones Técnicas, Ventas "> Mantenimiento y Reparaciones Técnicas, Ventas </label>
+              <label><input type="checkbox" (change)="onCheckboxChange($event, 'categoria')" [checked]="newAlert.categorias.includes('Legal / Asesoría')" value="Legal / Asesoría"> Legal / Asesoría </label>
+              <label><input type="checkbox" (change)="onCheckboxChange($event, 'categoria')" [checked]="newAlert.categorias.includes('Producción / Operarios / Manufactura')" value="Producción / Operarios / Manufactura"> Producción / Operarios / Manufactura </label>
+              <label><input type="checkbox" (change)="onCheckboxChange($event, 'categoria')" [checked]="newAlert.categorias.includes('Servicios Generales, Aseo y Seguridad')" value="Servicios Generales, Aseo y Seguridad"> Servicios Generales, Aseo y Seguridad </label>
+              <!-- Añade más categorías aquí -->
+            </div>
+  
+            <label>Región*</label>
+            <div class="regions">
+              <label><input type="checkbox" (change)="onCheckboxChange($event, 'region')" [checked]="newAlert.regiones.includes('Lima')" value="Lima"> Lima</label>
+              <label><input type="checkbox" (change)="onCheckboxChange($event, 'region')" [checked]="newAlert.regiones.includes('Amazonas')" value="Amazonas"> Amazonas</label>
+              <label><input type="checkbox" (change)="onCheckboxChange($event, 'region')" [checked]="newAlert.regiones.includes('Ancash')" value="Ancash"> Ancash</label>
+              <label><input type="checkbox" (change)="onCheckboxChange($event, 'region')" [checked]="newAlert.regiones.includes('Apurimac')" value="Apurimac"> Apurimac</label>
+              <label><input type="checkbox" (change)="onCheckboxChange($event, 'region')" [checked]="newAlert.regiones.includes('Arequipa')" value="Arequipa"> Arequipa</label>
+              <label><input type="checkbox" (change)="onCheckboxChange($event, 'region')" [checked]="newAlert.regiones.includes('Callao')" value="Callao"> Callao</label>
+              <label><input type="checkbox" (change)="onCheckboxChange($event, 'region')" [checked]="newAlert.regiones.includes('Junin')" value="Junin"> Junin</label>
+              <label><input type="checkbox" (change)="onCheckboxChange($event, 'region')" [checked]="newAlert.regiones.includes('Loreto')" value="Loreto"> Loreto</label>
+              <label><input type="checkbox" (change)="onCheckboxChange($event, 'region')" [checked]="newAlert.regiones.includes('Cusco')" value="Cusco"> Cusco</label>
+              <label><input type="checkbox" (change)="onCheckboxChange($event, 'region')" [checked]="newAlert.regiones.includes('Ica')" value="Ica"> Ica</label>
+              <label><input type="checkbox" (change)="onCheckboxChange($event, 'region')" [checked]="newAlert.regiones.includes('Puno')" value="Puno"> Puno</label>
+              <label><input type="checkbox" (change)="onCheckboxChange($event, 'region')" [checked]="newAlert.regiones.includes('Tumbes')" value="Tumbes"> Tumbes</label>
+              <label><input type="checkbox" (change)="onCheckboxChange($event, 'region')" [checked]="newAlert.regiones.includes('Cajamarca')" value="Cajamarca"> Cajamarca</label>
+              <label><input type="checkbox" (change)="onCheckboxChange($event, 'region')" [checked]="newAlert.regiones.includes('Huancavelica')" value="Huancavelica"> Huancavelica</label>
+              <label><input type="checkbox" (change)="onCheckboxChange($event, 'region')" [checked]="newAlert.regiones.includes('Pasco')" value="Pasco"> Pasco</label>
+              <label><input type="checkbox" (change)="onCheckboxChange($event, 'region')" [checked]="newAlert.regiones.includes('SanMartin')" value="SanMartin"> San Martin</label>
+              <label><input type="checkbox" (change)="onCheckboxChange($event, 'region')" [checked]="newAlert.regiones.includes('Ucayali')" value="Ucayali"> Ucayali</label>
+              <label><input type="checkbox" (change)="onCheckboxChange($event, 'region')" [checked]="newAlert.regiones.includes('Huanuco')" value="Huanuco"> Huanuco</label>
+              <label><input type="checkbox" (change)="onCheckboxChange($event, 'region')" [checked]="newAlert.regiones.includes('Lambayeque')" value="Lambayeque"> Lambayeque</label>               
+              <label><input type="checkbox" (change)="onCheckboxChange($event, 'region')" [checked]="newAlert.regiones.includes('MadreDeDios')" value="MadreDeDios"> Madre De Dios</label>
+              <label><input type="checkbox" (change)="onCheckboxChange($event, 'region')" [checked]="newAlert.regiones.includes('Piura')" value="Piura"> Piura</label>
+              <label><input type="checkbox" (change)="onCheckboxChange($event, 'region')" [checked]="newAlert.regiones.includes('Tacna')" value="Tacna"> Tacna</label>
+              <label><input type="checkbox" (change)="onCheckboxChange($event, 'region')" [checked]="newAlert.regiones.includes('Extranjero')" value="Extranjero"> Extranjero</label>
+             <label><input type="checkbox" (change)="onCheckboxChange($event, 'region')" [checked]="newAlert.regiones.includes('Ayacucho')" value="Ayacucho"> Ayacucho</label>
+             <label><input type="checkbox" (change)="onCheckboxChange($event, 'region')" [checked]="newAlert.regiones.includes('LaLibertad')" value="LaLibertad"> La Libertad</label>
+            <label><input type="checkbox" (change)="onCheckboxChange($event, 'region')" [checked]="newAlert.regiones.includes('Moquegua')" value="Moquegua"> Moquegua</label>
+              <!-- Añade más regiones aquí -->
+            </div>
+                <div class="button-container">
+                    <button type="submit">Actualizar</button>
+                    <button type="button" (click)="cancelEdit()">Cancelar</button>
+                </div>
+            </form>
+          
+        </div>
+    </div>
+</div>
+
+<div class="sin_info">
+  <ul>
+      <li class="icono">
+          <span class="icon info"></span>
+      </li>
+      <li class="info">
+          <p><span>Mis alertas</span></p>
+          <p>Recibe por e-mail las ofertas que más te interesan en base a los criterios que definas en tus alertas.</p>
+      </li>
+  </ul>
+</div>
+
+
+  
+  <!-- Controles de paginación -->
+  <div class="pagination"  *ngIf="alertas.length > itemsPerPage">
+    <!-- Botón Anterior -->
+    <button (click)="changePage(currentPage - 1)" [disabled]="currentPage === 1">Anterior</button>
+  
+    <!-- Números de página -->
+    <button *ngFor="let page of totalPagesArray" (click)="changePage(page)" [class.active]="currentPage === page" class="page-number">
+      {{ page }}
+    </button>
+  
+    <!-- Botón Siguiente -->
+    <button (click)="changePage(currentPage + 1)" [disabled]="currentPage === totalPages">Siguiente</button>
+  </div>
+
+  <!-- Footer -->
+<footer class="footer">
+  <div class="footer-content">
+    <p>Copyright 2024 DGNET LTD.</p>
+    <p><a href="#">Contacto de candidato</a> / <a href="#">Ayuda de candidato</a></p>
+  </div>
+  </footer>
   </div>
 </div>
