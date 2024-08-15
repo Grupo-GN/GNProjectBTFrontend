@@ -54,7 +54,8 @@
     
 
     <div class="tabs">
-      <div class="tab" id="mi-area">
+      <div class="tab" [routerLink]="'/mi-area'">
+        <a href="http://localhost:4200/mi-area"></a>
         <span class="icon">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -84,7 +85,7 @@
         <span class="label">Mi currículum</span>
       </div>
 
-      <div class="tab">
+      <div class="tab" >
         <span class="icon">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -103,7 +104,7 @@
         <span class="label">Test y Evaluaciones</span>
       </div>
 
-      <div class="tab" id="configuracion">
+      <div class="tab" [routerLink]="'/configuraciones'">
         <span class="icon">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -132,23 +133,49 @@
       </div>
     </div>
   
-    <div class="sidebar">
-      <div class="sidebar-item">
-        <div class="image-container">
-        <img src="assets/img/ima2.jpg" alt="imagen de una computadora"/></div>
-        <p>
-          Estos son los estados en los que puede estar tu candidatura.<br />
-          * Postulado<br />
-          * CV Visto<br />
-          * Finalista<br />
-          * Proceso finalizado<br />
-        </p>
-      </div>
+    <div class="main-container">
+        <div class="postulaciones-container">
+            <div class="postulaciones-header">
+                <h2>Mis postulaciones</h2>
+            </div>
+            <div class="postulaciones-content">
+                <div class="no-postulaciones">
+                    <div class="image-container">
+                        <img src="assets/img/buscar.png" alt="Imagen de postulaciones">
+                    </div>
+                    <h3>Todavía no te has postulado en ninguna oferta</h3>
+                    <p>En esta sección podrás ver todas tus postulaciones y seguir el estado de los procesos de selección en todo momento.</p>
+                    <button class="buscar-empleos-btn" [routerLink]="'/buscar-ofertas'">Buscar empleos</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="sidebar">
+            <div class="sidebar-item">
+              <div class="image-container">
+              <img src="assets/img/ima2.jpg" alt="imagen de una computadora"/></div>
+              <p>
+                Estos son los estados en los que puede estar tu candidatura.<br />
+                * Postulado<br />
+                * CV Visto<br />
+                * Finalista<br />
+                * Proceso finalizado<br />
+              </p>
+            </div>
+          </div>
     </div>
   </div>
     <!-- Footer -->
+     <br>
+     <br>
+     <br>
+     <br>
+     <br>
+     <br>
+     <br>
     <footer class="footer">
       <div class="footer-content">
+        
         <p>Copyright 2024 DGNET LTD.</p>
         <p>
           <a href="#">Contacto de candidato</a> /

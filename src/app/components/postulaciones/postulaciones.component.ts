@@ -10,7 +10,8 @@ export class PostulacionesComponent {
     cargo: '',
     lugar: ''
   };
-  selectedTab = 'CV';
+  selectedTab = 'CV'
+
 
   selectTab(tabId: string) {
     this.selectedTab = tabId;
