@@ -1,0 +1,622 @@
+.body{
+    background: #000000;
+  }
+  .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      padding: 10px;
+      
+    }
+    
+    .search-bar {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px;
+      border-radius: 25px;
+      background-color: #c8c8c8;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      margin-top: 10px; /*distancia entre el borde y la barra*/
+  
+    }
+    
+    .search-item {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    
+    .search-icon {
+      width: 25px;
+      height: 25px;
+      color: #191919;
+    }
+    
+    input[type="text"] {
+      border: none;
+      outline: none;
+      padding: 10px;
+      font-size: 14px;
+      border-radius: 25px;
+      background-color: #fffdfd;
+      width: 200px;
+    }
+    
+    .search-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px;
+      border: none;
+      border-radius: 50%;
+      background-color: #4CAF50;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    
+    .search-button:hover {
+      background-color: #45a049;
+    }
+  
+  
+  
+  /*estilos de las pestañas*/
+  
+  .tabs {
+      display: flex;
+      border-radius: 50px;
+      background-color:  #917248;
+      padding: 5px; /*ancho de la barra*/
+      width: 1200px; /* largo específico */
+      margin: 0 auto; /* Centrar la barra */
+  }
+  
+  .tab {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 20px; /*ancho de la barra sin alterar la selecion de adentro*/
+      border-radius: 25px;
+      cursor: pointer;
+      transition: background-color 0.3s, color 0.3s;
+      
+  }
+  
+  .tab:hover {
+      background-color: #624f35;
+      border-radius: 50px;
+      width: 60px; /* Ancho específico */
+    
+  }
+  
+  .tab.selected {
+      background-color: #d46ee1;
+  }
+  
+  .icon {
+      margin-right: 8px; /*margen entre el icono y las letras*/
+  }
+  
+  
+  #postulaciones-section {
+      display: flex;
+      margin-top: 25px;
+      margin-left: 120px;
+      flex-direction: column;
+      align-items: flex-start; /* Alinear elementos a la izquierda*/
+      margin-bottom: 10px;
+      width: 90%; /* asegurar que ocupe todo el ancho*/
+      
+    }
+    
+    #postulaciones-section p {
+      font-size: 25px;
+      margin: 5px 0;
+    }
+  
+  
+    /* Botón para crear nueva alerta */
+  .create-new-alert {
+      margin-top: -50px;
+      margin-bottom: 25px;
+      display: flex;
+      justify-content: flex-end;
+      width: 91%;
+      margin-left: 0px;
+    }
+    
+    .create-new-alert button {
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 25px;
+      background-color: #cbcecb;
+      color: rgb(0, 0, 0);
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    
+    .create-new-alert button:hover {
+      background-color: #8dbeec;
+    }
+    
+    /* Cuadro de Nueva Alerta */
+    .alert-container {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      margin-top: 20px;
+    }
+    
+    .new-alert-box{
+      width: 85%;
+      background-color: #c8e0b7;
+      border-radius: 15px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+     
+    }
+    
+    .new-alert-box h2{
+      margin-top: 0;
+      font-size: 20px;
+      color: #333;
+      
+    }
+    
+    .new-alert-box form{
+      display: flex;
+      flex-direction: column;
+      padding-left: 140px;
+  
+    }
+  
+    .form-group {
+      display: flex;
+      align-items: center;
+      margin-bottom: 5px;
+    }
+    
+    .form-group label {
+      margin-top: 30px; 
+      font-size: 16px;
+      color: #555;
+      min-width: 70px;
+    }
+    
+    .form-group input[type="text"] {
+      padding: 10px;
+      font-size: 14px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      width: 100%;
+      max-width: 700px; /*largo del cuadro de busqueda*/
+    }
+  
+    .new-alert-box label {
+      font-size: 16px;
+      margin: 10px 0 5px;
+      color: #555;
+    }
+    
+    .new-alert-box input[type="text"] {
+      padding: 10px;
+      font-size: 14px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      width: 100%;
+      margin-bottom: 15px;
+    }
+    
+    .new-alert-box .categories,
+    .new-alert-box .regions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+    }
+    
+    .new-alert-box .categories label,
+    .new-alert-box .regions label {
+      width: calc(33.333% - 9px);
+      margin-bottom: 10px;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+    }
+   
+    
+    .new-alert-box .categories input,
+    .new-alert-box .regions input {
+      margin-right: 10px;
+    }
+  
+    .new-alert-box button[type="submit"] {
+      padding: 10px;
+      font-size: 16px;
+      background-color: #4f67c3;
+      border: none;
+      border-radius: 25px;
+      color: rgb(0, 0, 0);
+      cursor: pointer;
+      margin-top: 10px;
+      width: 150PX;
+    }
+    
+    .new-alert-box button[type="button"] {
+      padding: 10px;
+      font-size: 16px;
+      background-color:  #4f67c3;;
+      border: none;
+      border-radius: 25px;
+      color: rgb(5, 5, 5);
+      cursor: pointer;
+      margin-top: 10px;
+      margin-left: 10px;
+      width: 150px;
+    }
+    
+    .new-alert-box button[type="submit"]:hover,
+    .new-alert-box button[type="button"]:hover {
+      opacity: 0.9;
+    }
+  
+  
+  
+  /*PARA LOS BOTONES*/
+    .button-container {
+      display: flex;             /* Usar flexbox para alinear los botones en fila */
+      justify-content: center;   /* Centrar los botones horizontalmente */
+      gap: 10px;                 /* Espacio entre los botones */
+      margin-top: 20px;          /* Espacio superior */
+    }
+    
+    button {
+      padding: 70px ;        /* Tamaño del botón */
+      border-radius: 25px;        /* Bordes redondeados */
+      border: none;              /* Sin borde */
+      cursor: pointer;           /* Cursor de puntero */
+      font-size: 16px;           /* Tamaño de la fuente */
+    }
+    
+    button[type="submit"] {
+      background-color: #4CAF50; /* Color de fondo del botón Guardar */
+      color: white;              /* Color del texto */
+    }
+    
+    button[type="button"] {
+      background-color: #f44336; /* Color de fondo del botón Cancelar */
+      color: white;              /* Color del texto */
+    }
+  
+    /* Estilo para la lista de alertas */
+    .alerts-list {
+      width: 80%;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 8px; /* Espacio entre alertas */
+    }
+    
+    .alert-item {
+      background-color: #f5f5f5;
+      padding: 2px 10px;
+      border-radius: 8px;
+      border: 1px solid black;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      height: 40px; /* Define una altura específica */
+  }
+  .alerts-list .alert-item {
+    height: 80px ; /*altura de las barras*/
+    padding: 2px 10px ;
+    border: 1px solid rgb(144, 141, 141) ;
+  }
+  
+  .alert-content {
+    background-color: #f5f5f5;
+    border: 2px solid #ccc; /* Agrega un borde de 2px y color gris claro */
+    padding: 10px;
+    border-radius: 8px; /* Bordes redondeados */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+    
+    .alert-info {
+      flex-grow: 1;
+      text-align: left;
+      margin: 0;
+    }
+    .alert-info p{
+      margin: 0;
+      font-size: 14px; /*tamaño de las letras menos del cargo*/
+      line-height: 1.2;
+    }
+    .alerts-list .alert-info h3 {
+      font-weight: bold;
+      font-size: 1em; /* Ajusta este valor según tus necesidades */
+      line-height: 1.5;
+    }
+  
+  .alerts-list .alert-info p {
+    font-size: 0.9em; /* Ajusta este valor según tus necesidades */
+    line-height: 1.4; /* Ajusta este valor para la separación entre líneas */
+  }
+  /* -----------------------------------------------Estilo para el cuadro de edición debajo de la alerta */
+  .edit-box {
+    width: 85%;
+    background-color: #c8e0b7;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-top: 10px; /* Espacio entre la alerta y el cuadro de edición */
+  }
+  
+  .edit-box h2 {
+    margin-top: 0;
+    font-size: 20px;
+    color: #333;
+  }
+  
+  .edit-box form {
+    display: flex;
+    flex-direction: column;
+    padding-left: 140px; /* Ajusta si es necesario */
+  }
+  
+  .form-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+  }
+  
+  .form-group label {
+    margin-top: 30px; 
+    font-size: 16px;
+    color: #555;
+    min-width: 70px;
+  }
+  
+  .edit-box input[type="text"] {
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+    margin-bottom: 15px;
+  }
+  
+  .edit-box .categories,
+  .edit-box .regions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+  }
+  
+  .edit-box .categories label,
+  .edit-box .regions label {
+    width: calc(33.333% - 9px);
+    margin-bottom: 10px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .edit-box .categories input,
+  .edit-box .regions input {
+    margin-right: 10px;
+  }
+  
+  .edit-box button[type="submit"],
+  .edit-box button[type="button"] {
+    padding: 10px;
+    font-size: 16px;
+    background-color: #4f67c3;
+    border: none;
+    border-radius: 25px;
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+    margin-top: 10px;
+    width: 150px;
+  }
+  
+  .edit-box button[type="button"] {
+    background-color: #4f67c3; /* Mismo color de fondo para ambos botones */
+    color: rgb(5, 5, 5);
+    margin-left: 10px;
+  }
+  
+  .edit-box button[type="submit"]:hover,
+  .edit-box button[type="button"]:hover {
+    opacity: 0.9;
+  }
+  
+  /*----------------------------------------botones de eliminar y editar*/ 
+  .actions {
+    position: relative;
+    gap: 30px;
+    display: flex;
+  }
+  .actions .delete-btn {
+    margin-right: 15px;
+  }
+  
+  .actions button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    z-index: 1;
+    padding: 0;
+    width: 40px; /* Ajusta esto para que coincida con el tamaño del círculo */
+    height: 40px; /* Ajusta esto para que coincida con el tamaño del círculo */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%; /* Hace que el botón sea redondo */
+    overflow: hidden; /* Asegura que el círculo no se desborde */
+  }
+  
+  .actions button i {
+    font-size: 20px; /* Tamaño del ícono */
+  }
+  
+  .actions button::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%; /* Asegura que el círculo cubra todo el botón */
+    height: 100%; /* Asegura que el círculo cubra todo el botón */
+   
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.3s ease;
+    z-index: -1;
+  }
+  
+  .actions button:hover::after {
+    transform: translate(-50%, -50%) scale(1); /* Muestra el círculo en hover */
+  }
+  
+  
+  
+  .actions .edit-btn:hover {
+    background-color: #e0f7fa; /* Color de fondo al hacer hover en el botón de edición */
+    pointer-events: auto; /* Activa clic al hacer hover */
+  }
+  
+  .actions .edit-btn:hover i {
+    color: #007bff; /* Mantén el color del ícono en hover */
+  }
+  
+  .actions .delete-btn:hover {
+    background-color: #ffebee; /* Color de fondo al hacer hover en el botón de eliminar */
+    pointer-events: auto; /* Activa clic al hacer hover */
+  }
+  
+  .actions .delete-btn:hover i {
+    color: #ff5252; /* Cambia el color del ícono al hacer hover */
+  }
+  
+  
+    /* Estilo para el mensaje de éxito */
+    .success-message {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: white;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      z-index: 1000;
+    }
+  
+    .success-message p {
+      margin: 0 0 20px 0;
+    }
+  
+    .success-message button {
+      background-color: #060606;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  
+    .success-message button:hover {
+      background-color: #000000;
+    }
+  /*-----------------BOTONES NUMERICOS*/
+    .pagination {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    
+    .pagination .page-number {
+      margin: 0 5px;
+      padding: 5px 10px;
+      width: 40px; /* Ancho del botón */
+      height: 40px; /* Alto del botón */
+      border: 1px solid #ccc;
+      background-color: #f5f5f5;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  
+  .pagination .page-number:hover {
+    background-color: #c9ade0c1; /* Color de fondo al pasar el mouse */
+  }
+    
+    .pagination .page-number.active {
+      background-color: #78608d;
+      color: white;
+      border-color: #ffffff; /*color del borde*/
+    }
+    
+    .pagination button:disabled {
+      background-color: #e9ecef;
+      cursor: not-allowed;
+    }
+    /* Estilos para los botones "Siguiente" y "Anterior" */
+  .pagination button:not(.page-number) {
+    background-color: #ccced1; /* Fondo gris claro */
+    color: #000000; /* Color del texto */
+    border-radius: 25px; /* Bordes ligeramente redondeados */
+    width: auto; /* Ancho automático */
+    height: auto; /* Alto automático */
+    padding: 0 15px; /* Espaciado interno */
+    font-size: 16px; /* Tamaño de fuente */
+    transition: background-color 0.3s ease;
+  }
+  
+  .pagination button:not(.page-number):hover {
+    background-color: #c9ade0c1; /* Fondo un poco más oscuro al pasar el mouse */
+  }
+  
+  /*.------------------ FIN DE PAGINA*/
+    .footer {
+      background-color: #f8f9fa; /* Color de fondo similar al de la imagen */
+      padding: 20px;
+      text-align: center;
+      border-top: 1px solid #e9ecef; /* Línea superior para separar del contenido */
+      margin-top: 20px; /* Espacio entre los botones y el footer */
+      position: relative;
+      bottom: 0;
+      width: 100%;
+    }
+    
+    .footer-content p {
+      margin: 5px 0;
+      color: #6c757d; /* Color del texto */
+      font-size: 14px; /* Tamaño del texto */
+    }
+    
+    .footer-content a {
+      color: #464647; /* Color de los enlaces */
+      text-decoration: none; /* Sin subrayado */
+    }
+  
+  
+  
+    
+    
+  
+  
+  
+    

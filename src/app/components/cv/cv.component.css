@@ -1,0 +1,192 @@
+body, html{
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+  }
+  body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    box-sizing: border-box;
+  
+  
+  }
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    
+  }
+  
+  .search-bar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    border-radius: 25px;
+    background-color: #c8c8c8;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 10px; /*distancia entre el borde y la barra*/
+  }
+  
+  .search-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  
+  .search-icon {
+    width: 25px;
+    height: 25px;
+    color: #191919;
+  }
+  
+  input[type="text"] {
+    border: none;
+    outline: none;
+    padding: 10px;
+    font-size: 14px;
+    border-radius: 25px;
+    background-color: #fffdfd;
+    width: 200px;
+  }
+  
+  .search-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    border: none;
+    border-radius: 50%;
+    background-color: #4CAF50;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .search-button:hover {
+    background-color: #45a049;
+  }
+  
+  
+  
+  
+  
+  .tabs {
+    display: flex;
+    border-radius: 50px;
+    background-color:  #917248;
+    padding: 5px; /*ancho de la barra*/
+    width: 1200px; /* largo específico */
+    margin: 0 auto; /* Centrar la barra */
+  }
+  
+  .tab {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px; /*ancho de la barra sin alterar la selecion de adentro*/
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    
+  }
+  
+  .tab:hover {
+    background-color: #624f35;
+    border-radius: 50px;
+    width: 60px; /* Ancho específico */
+  
+  }
+  
+  .tab.selected {
+    background-color: #f5f4f5;
+  }
+  
+  .icon {
+    margin-right: 8px; /*margen entre el icono y las letras*/
+  }
+  
+  
+  
+  /*cuadro con texto*/
+  .sidebar {
+    position: absolute; /*fija la barra en la pantalla*/
+    top: 150px;
+    right: 100px;
+    width: 250px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+  }
+  
+  .sidebar-item {
+    background-color: #f5f5f5;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.642);
+    margin-bottom: 20px;
+    width: 100%;
+  }
+  
+  .sidebar-item h3 {
+    margin-top: 0;
+    font-size: 18px;
+  }
+  
+  .sidebar-item p {
+    font-size: 14px;
+    color: #000000;
+  }
+  
+  .sidebar-item .nuevo {
+    background-color: #FFD700;
+    color: white;
+    padding: 2px 5px;
+    border-radius: 3px;
+    font-size: 12px;
+    margin-left: 10px;
+  }
+  
+  .sidebar-item button {
+    background-color: #07213d;
+    color: rgb(253, 252, 252);
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 14px;
+    border-radius: 25px;
+    width: 100%;/*hace que el boton ocupe todo el ancho del cuadro*/
+    margin-top: 10px;
+  }
+  
+  .sidebar-item button:hover {
+    background-color: #367ed0;
+  }
+  
+  .sidebar-item ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .sidebar-item ul li {
+    margin-top: 10px;
+  }
+  
+  .sidebar-item ul li a {
+    color: #be0808;
+    text-decoration: none;
+    font-size: 14px;
+  }
+  
+  .sidebar-item ul li a:hover {
+    text-decoration: underline;
+  }
+  
