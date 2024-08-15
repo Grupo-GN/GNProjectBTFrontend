@@ -1,14 +1,22 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
-import { debounceTime, distinctUntilChanged, Observable, Subject, switchMap } from 'rxjs';
+import { debounceTime, distinctUntilChanged, of, Subject, switchMap } from 'rxjs';
+import { Observable } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
+import { OfertaService } from 'src/app/oferta.service';
+import { PokemonService } from 'src/app/pokemon.service';
 
 @Component({
   selector: 'app-mi-area',
   templateUrl: './mi-area.component.html',
   styleUrls: ['./mi-area.component.css']
 })
-export class MiAreaComponent {
+export class MiAreaComponent implements OnInit{
+  pokemons: any[] = [];
+
+  
+
   suggestionsVisible: string | null = null;
   lastSearches: string[] = [''];
   popularJobs: string[] = [
@@ -41,7 +49,7 @@ export class MiAreaComponent {
   
 
 
-  constructor(private http: HttpClient , private fb: FormBuilder) {
+  constructor(private http: HttpClient , private fb: FormBuilder , private pokemonService: PokemonService) {
 
     this.privacyForm = this.fb.group({
       privacyLevel: ['1']  // valor por defecto
@@ -50,22 +58,42 @@ export class MiAreaComponent {
   
 
 
-  ngOnInit() {
+  ngOnInit() : void {
+    this.pokemonService.getPokemons().subscribe((data: { results: any[]; }) => {
+      this.pokemons = data.results; // PokeAPI devuelve los datos en la propiedad 'results'
+    });
     this.searchTerms.pipe(
       debounceTime(300),
       distinctUntilChanged(),
-      switchMap((term: string) => this.search(term))
+      switchMap((term: string) => this.search(term).pipe(
+        catchError(err => {
+          console.error('Error in job search:', err);
+          return of([]); // Devuelve un array vacío en caso de error
+        })
+      ))
     ).subscribe(results => {
       this.filteredJobs = results;
     });
-
+  
     this.placeTerms.pipe(
       debounceTime(300),
       distinctUntilChanged(),
-      switchMap((term: string) => this.search(term))
+      switchMap((term: string) => this.search(term).pipe(
+        catchError(err => {
+          console.error('Error in place search:', err);
+          return of([]); // Devuelve un array vacío en caso de error
+        })
+      ))
     ).subscribe(results => {
       this.filteredPlaces = results;
     });
+    
+
+  
+  }
+  getPokemonImage(url: string): string {
+    const id = url.split('/')[6];
+    return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`;
   }
 
   showSuggestions(type: string): void {
@@ -89,7 +117,14 @@ export class MiAreaComponent {
   }
 
   search(term: string): Observable<string[]> {
-    return this.http.get<string[]>(`https://api.example.com/search?query=${term}`);
+    const apiUrl = `https://pokeapi.co/api/v2/pokemon?limit=100`; // Puedes ajustar el límite
+    return this.http.get<any>(apiUrl).pipe(
+      map(response => 
+        response.results
+          .filter((item: any) => item.name.includes(term.toLowerCase())) // Filtrar por término
+          .map((item: any) => item.name) // Mapear nombres
+      )
+    );
   }
 
   getSearchUrl(search: string): string {
@@ -106,14 +141,16 @@ export class MiAreaComponent {
     this.lastSearches = this.lastSearches.filter(s => s !== search);
   }
 
-  selectPlace(place: string): void {
-    this.placeTerm = place;
-    console.log('Place selected:', place);
-  }
-
   selectJob(job: string): void {
     this.searchTerm = job;
+    this.suggestionsVisible = null; // Ocultar sugerencias después de la selección
     console.log('Job selected:', job);
+  }
+  
+  selectPlace(place: string): void {
+    this.placeTerm = place;
+    this.suggestionsVisible = null; // Ocultar sugerencias después de la selección
+    console.log('Place selected:', place);
   }
 
   onSubmit(): void {
@@ -139,14 +176,16 @@ export class MiAreaComponent {
     console.log('Realizando búsqueda con los términos:');
     console.log('Término de búsqueda:', this.searchTerm);
     console.log('Término de lugar:', this.placeTerm);
-
+  
+    // Mostrar mensaje de cargando
+    this.filteredJobs = ['Cargando resultados...'];
+  
     this.search(this.searchTerm).subscribe(results => {
-      this.filteredJobs = results;
+      this.filteredJobs = results.length > 0 ? results : ['No se encontraron resultados'];
     });
-
+  
     this.searchPlace();
   }
-
   
   trackMenuClick(item: string) {
     console.log(`Menú seleccionado: ${item}`);
@@ -154,17 +193,17 @@ export class MiAreaComponent {
   }
 
   @HostListener('document:click', ['$event'])
-  handleClickOutside(event: MouseEvent) {
-    const target = event.target as HTMLElement;
-    const isInsideJobSearch = target.closest('#prof-cat-search-input') || target.closest('.autocomplete.job');
-    const isInsidePlaceSearch = target.closest('#place-search-input') || target.closest('.autocomplete.place');
-    if (!isInsideJobSearch) {
-      this.suggestionsVisible = this.suggestionsVisible === 'job' ? null : this.suggestionsVisible;
-    }
-    if (!isInsidePlaceSearch) {
-      this.suggestionsVisible = this.suggestionsVisible === 'place' ? null : this.suggestionsVisible;
-    }
+handleClickOutside(event: MouseEvent) {
+  const target = event.target as HTMLElement;
+  const isInsideJobSearch = target.closest('#prof-cat-search-input') || target.closest('.autocomplete.job');
+  const isInsidePlaceSearch = target.closest('#place-search-input') || target.closest('.autocomplete.place');
+  if (!isInsideJobSearch && this.suggestionsVisible === 'job') {
+    this.suggestionsVisible = null;
   }
+  if (!isInsidePlaceSearch && this.suggestionsVisible === 'place') {
+    this.suggestionsVisible = null;
+  }
+}
 
   onInputClick(event: MouseEvent) {
     event.stopPropagation();
@@ -188,6 +227,9 @@ export class MiAreaComponent {
 
   toggleConfirmDelete(): void {
     this.confirmDelete = !this.confirmDelete;
+    if (this.confirmDelete) {
+      // Mostrar modal de confirmación aquí
+    }
   }
 
 
@@ -196,5 +238,6 @@ export class MiAreaComponent {
     console.log(`Selected privacy level: ${privacyLevel}`);
     // Aquí puedes agregar la lógica para cambiar el nivel de privacidad
   }
+  
 
 }

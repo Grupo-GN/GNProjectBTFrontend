@@ -530,6 +530,30 @@ button, input, optgroup, select, textarea {
     margin: 0;
     outline: none;
 }
+.b_primary_inv {
+    background-color: #fcfdff; /* Color de fondo inicial */
+    color: rgb(8, 11, 54); /* Color del texto inicial */
+    padding: 10px 20px; /* Espaciado interno */
+    text-decoration: none; /* Sin subrayado */
+    border-radius: 5px; /* Bordes redondeados */
+    display: inline-block; /* Para que los enlaces se comporten como botones */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Transición suave */
+}
+
+/* Estilos cuando se pasa el cursor sobre los enlaces */
+.b_primary_inv:hover {
+    background: linear-gradient(90deg, #d7a9db 0, #a0bfef 40%, #a28dd3 100%); /* Nuevo color de fondo */
+    color: #fffffffb; /* Nuevo color del texto */
+}
+
+/* Otros estilos opcionales */
+.tiny {
+    font-size: 14px; /* Tamaño de fuente pequeño */
+}
+
+.mr10 {
+    margin-right: 10px; /* Margen derecho para separación entre botones */
+}
 button, html input[type=button], input[type=reset], input[type=submit] {
     appearance: button;
     cursor: pointer;
@@ -549,7 +573,7 @@ button, html input[type=button], input[type=reset], input[type=submit] {
 img {
     border: 0;
     vertical-align: middle;
-    max-width: 100%;
+    
 }
 .hide {
     display: none !important;
@@ -973,7 +997,6 @@ a.fc_aux {
     border-bottom: 1px solid #e1e5ea;
 }
 .box_grid .title_page {
-    margin-top: 28px;
     width: calc(100% - 300px);
 }
 .box_grid h1 {
@@ -1054,7 +1077,7 @@ article.box_offer h2.fwB {
 
 .b_primary_inv {
     color: #0D3878;
-    border-color: #0D3878;
+    border-color: #d7e7ff
 }
 
 .mt5 {
@@ -1069,3 +1092,54 @@ article.box_offer h2.fwB {
 .fs13 {
     font-size: 13px;
 }
+
+.pokemon-container {
+    padding: 20px;
+    background-color: #f4f4f4;
+  }
+  
+  .pokemon-title {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .pokemon-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+  }
+  
+  .pokemon-card {
+   
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        text-align: center;
+        padding: 15px;
+        margin-left: 95px;
+    }
+  
+  
+  .pokemon-image img {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+  }
+  
+  .pokemon-info {
+    margin-top: 10px;
+  }
+  
+  .pokemon-name {
+    font-size: 1.2rem;
+    color: #333;
+    margin: 0;
+  }
+  
+  .pokemon-id {
+    color: #888;
+  }
+  
