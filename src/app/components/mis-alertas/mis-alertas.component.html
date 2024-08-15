@@ -142,589 +142,140 @@
 </section>
 </div>
 
+<div id="ContainerGeneralOverWrite_MainContainer" class="container">
+                
+  <div class="alert">
+      <div class="h">
+          <h2 class="fw_n p15_r">Mis alertas</h2>
+          <a id="btn_crear_alerta" title="Crear nueva alerta"><span class="icon mas vm"></span>Crear nueva alerta</a>
+      </div>
+
+      <div id="frm_0" class="form ocultar">
+          <h2>Nueva alerta</h2>
+
+          <div class="line">
+              <p>Cargo</p>
+              <input id="kw" type="text" class="cm-12 js-cargos-suggest ui-autocomplete-input" maxlength="30" clientidmode="static" name="kw_0" value="" autocomplete="off">
+          </div>
 
 
-<form method="post" action="./?c=true&amp;ia=1C3C79D33D58A078469814F59E4D6F04" id="f1" novalidate="novalidate">
-  <div class="aspNetHidden">
-  <input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="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" />
+          <div class="line">
+              <p>Categoría<span class="fcred">*</span></p>
+              <ul><li><input id="cat_0_1" type="checkbox" value="1" name="cat_0"><label for="cat_0_1">Administración / Oficina</label></li><li><input id="cat_0_15" type="checkbox" value="15" name="cat_0"><label for="cat_0_15">Almacén / Logística / Transporte</label></li><li><input id="cat_0_16" type="checkbox" value="16" name="cat_0"><label for="cat_0_16">Atención a clientes</label></li><li><input id="cat_0_17" type="checkbox" value="17" name="cat_0"><label for="cat_0_17">CallCenter / Telemercadeo</label></li><li><input id="cat_0_18" type="checkbox" value="18" name="cat_0"><label for="cat_0_18">Compras / Comercio Exterior</label></li><li><input id="cat_0_19" type="checkbox" value="19" name="cat_0"><label for="cat_0_19">Construcción y obra</label></li><li><input id="cat_0_6" type="checkbox" value="6" name="cat_0"><label for="cat_0_6">Contabilidad / Finanzas</label></li><li><input id="cat_0_5" type="checkbox" value="5" name="cat_0"><label for="cat_0_5">Dirección / Gerencia</label></li><li><input id="cat_0_2" type="checkbox" value="2" name="cat_0"><label for="cat_0_2">Diseño / Artes gráficas</label></li><li><input id="cat_0_7" type="checkbox" value="7" name="cat_0"><label for="cat_0_7">Docencia</label></li><li><input id="cat_0_8" type="checkbox" value="8" name="cat_0"><label for="cat_0_8">Hostelería / Turismo</label></li><li><input id="cat_0_4" type="checkbox" value="4" name="cat_0"><label for="cat_0_4">Informática / Telecomunicaciones</label></li><li><input id="cat_0_9" type="checkbox" value="9" name="cat_0"><label for="cat_0_9">Ingeniería</label></li><li><input id="cat_0_3" type="checkbox" value="3" name="cat_0"><label for="cat_0_3">Investigación y Calidad</label></li><li><input id="cat_0_10" type="checkbox" value="10" name="cat_0"><label for="cat_0_10">Legal / Asesoría</label></li><li><input id="cat_0_20" type="checkbox" value="20" name="cat_0"><label for="cat_0_20">Mantenimiento y Reparaciones Técnicas</label></li><li><input id="cat_0_12" type="checkbox" value="12" name="cat_0"><label for="cat_0_12">Medicina / Salud</label></li><li><input id="cat_0_21" type="checkbox" value="21" name="cat_0"><label for="cat_0_21">Mercadotecnia / Publicidad / Comunicación</label></li><li><input id="cat_0_22" type="checkbox" value="22" name="cat_0"><label for="cat_0_22">Producción / Operarios / Manufactura</label></li><li><input id="cat_0_13" type="checkbox" value="13" name="cat_0"><label for="cat_0_13">Recursos Humanos</label></li><li><input id="cat_0_23" type="checkbox" value="23" name="cat_0"><label for="cat_0_23">Servicios Generales, Aseo y Seguridad </label></li><li><input id="cat_0_11" type="checkbox" value="11" name="cat_0"><label for="cat_0_11">Ventas</label></li></ul>
+          </div>
+
+
+          <div class="line">
+              <p>Región<span class="fcred">*</span></p>
+              <ul><li><input id="loc_0_16" type="checkbox" value="16" name="loc_0"><label for="loc_0_16">Lima</label></li><li><input id="loc_0_2" type="checkbox" value="2" name="loc_0"><label for="loc_0_2">Amazonas</label></li><li><input id="loc_0_3" type="checkbox" value="3" name="loc_0"><label for="loc_0_3">Ancash</label></li><li><input id="loc_0_4" type="checkbox" value="4" name="loc_0"><label for="loc_0_4">Apurimac</label></li><li><input id="loc_0_5" type="checkbox" value="5" name="loc_0"><label for="loc_0_5">Arequipa</label></li><li><input id="loc_0_6" type="checkbox" value="6" name="loc_0"><label for="loc_0_6">Ayacucho</label></li><li><input id="loc_0_7" type="checkbox" value="7" name="loc_0"><label for="loc_0_7">Cajamarca</label></li><li><input id="loc_0_8" type="checkbox" value="8" name="loc_0"><label for="loc_0_8">Callao</label></li><li><input id="loc_0_9" type="checkbox" value="9" name="loc_0"><label for="loc_0_9">Cusco</label></li><li><input id="loc_0_10" type="checkbox" value="10" name="loc_0"><label for="loc_0_10">Huancavelica</label></li><li><input id="loc_0_11" type="checkbox" value="11" name="loc_0"><label for="loc_0_11">Huanuco</label></li><li><input id="loc_0_12" type="checkbox" value="12" name="loc_0"><label for="loc_0_12">Ica</label></li><li><input id="loc_0_13" type="checkbox" value="13" name="loc_0"><label for="loc_0_13">Junin</label></li><li><input id="loc_0_14" type="checkbox" value="14" name="loc_0"><label for="loc_0_14">Lambayeque</label></li><li><input id="loc_0_15" type="checkbox" value="15" name="loc_0"><label for="loc_0_15">La Libertad</label></li><li><input id="loc_0_17" type="checkbox" value="17" name="loc_0"><label for="loc_0_17">Loreto</label></li><li><input id="loc_0_18" type="checkbox" value="18" name="loc_0"><label for="loc_0_18">Madre De Dios</label></li><li><input id="loc_0_19" type="checkbox" value="19" name="loc_0"><label for="loc_0_19">Moquegua</label></li><li><input id="loc_0_20" type="checkbox" value="20" name="loc_0"><label for="loc_0_20">Pasco</label></li><li><input id="loc_0_21" type="checkbox" value="21" name="loc_0"><label for="loc_0_21">Piura</label></li><li><input id="loc_0_22" type="checkbox" value="22" name="loc_0"><label for="loc_0_22">Puno</label></li><li><input id="loc_0_23" type="checkbox" value="23" name="loc_0"><label for="loc_0_23">San Martin</label></li><li><input id="loc_0_24" type="checkbox" value="24" name="loc_0"><label for="loc_0_24">Tacna</label></li><li><input id="loc_0_25" type="checkbox" value="25" name="loc_0"><label for="loc_0_25">Tumbes</label></li><li><input id="loc_0_26" type="checkbox" value="26" name="loc_0"><label for="loc_0_26">Ucayali</label></li><li><input id="loc_0_1" type="checkbox" value="1" name="loc_0"><label for="loc_0_1">Extranjero</label></li></ul>
+          </div>
+
+          <div class="line">
+              <input type="submit" class="submit_n" name="gAlert" value="Guardar" data-id="0">
+              <a class="cancel" data-id="0">Cancelar</a>
+          </div>
+      </div>
+
+      
+          <div class="sin_info">
+              <ul>
+                  <li class="icono">
+                      <span class="icon info"></span>
+                  </li>
+                  <li class="info">
+                      <p><span>Mis alertas</span></p>
+                      <p>Recibe por e-mail las ofertas que más te interesan en base a los criterios que definas en tus alertas.</p>
+                  </li>
+              </ul>
+          </div>
+      
+
+      
+          
   </div>
+
   
-  <div class="aspNetHidden">
-  
-    <input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="997F5780" />
+
+  <input name="ctl00$ContainerGeneralOverWrite$ContainerGeneral$idcargo" type="hidden" id="idcargo" class="js-result-cargos-suggest" value="0">
+
+  <div class="ocultar">
+      <div class="blockUI blockOverlay"></div>
+      <div class="blockUI blockMsg blockPage">
+          <div style="cursor: default;" id="frmDelete" class="popup_gestof popup_gestcan content_popup">
+              <div class="md-modal md-effect-3 md-show">
+                  <div class="md-content c_t">
+                      <span class="icon ico_close" onclick="closePopup(); return false;"></span>
+                      <span class="title">Eliminar alerta</span>
+                      <p>¿Estás seguro que deseas eliminar la alerta? </p>
+                      <input class="submit_n boton" type="button" value="Eliminar" id="btDelete">
+                      <a id="aClose" onclick="closePopup(); return false;">Cancelar</a>
+                  </div>
+              </div>
+          </div>
+      </div>
   </div>
-          <header>
-              <script>
-                  window.setInterval("renewSession();", 30000);
-                  function renewSession() {
-                      $("#imgalive").prop("src", $("#imgalive").prop("src").substr(0, $("#imgalive").prop("src").lastIndexOf("/")) + "/keepalive.aspx?par=" + Math.random());
-                  };
-              </script>
-              <img src="/Acceso/KeepAlive.aspx" id="imgalive" style="height: 1px; width: 1px; visibility: hidden; display: none;" />
-          </header>
-  
-          
-  
-          
-              <div id="NoContainerGeneral_MainNoContainer">
-                  
-                  
-              </div>
-          
-  
-          
-              <div id="ContainerGeneralOverWrite_MainContainer" class="container">
-                  
-      <div class="alert">
-          <div class="h">
-              <h1 class="fw_n p15_r">Mis alertas</h1>
-              <a id="btn_crear_alerta" title="Crear nueva alerta"><span class="icon mas vm"></span>Crear nueva alerta</a>
-          </div>
-  
-          <div id="frm_0" class="form ocultar">
-              <h2>Nueva alerta</h2>
-  
-              <div class="line">
-                  <p>Cargo</p>
-                  <input id="kw" type="text" class="cm-12 js-cargos-suggest ui-autocomplete-input" maxlength="30" clientidmode="static" name="kw_0" value="" />
-              </div>
-  
-  
-              <div class="line">
-                  <p>Categoría<span class="fcred">*</span></p>
-                  <ul><li><input id="cat_0_1" type="checkbox" value="1" name="cat_0" /><label for="cat_0_1">Administración / Oficina</label></li><li><input id="cat_0_15" type="checkbox" value="15" name="cat_0" /><label for="cat_0_15">Almacén / Logística / Transporte</label></li><li><input id="cat_0_16" type="checkbox" value="16" name="cat_0" /><label for="cat_0_16">Atención a clientes</label></li><li><input id="cat_0_17" type="checkbox" value="17" name="cat_0" /><label for="cat_0_17">CallCenter / Telemercadeo</label></li><li><input id="cat_0_18" type="checkbox" value="18" name="cat_0" /><label for="cat_0_18">Compras / Comercio Exterior</label></li><li><input id="cat_0_19" type="checkbox" value="19" name="cat_0" /><label for="cat_0_19">Construcción y obra</label></li><li><input id="cat_0_6" type="checkbox" value="6" name="cat_0" /><label for="cat_0_6">Contabilidad / Finanzas</label></li><li><input id="cat_0_5" type="checkbox" value="5" name="cat_0" /><label for="cat_0_5">Dirección / Gerencia</label></li><li><input id="cat_0_2" type="checkbox" value="2" name="cat_0" /><label for="cat_0_2">Diseño / Artes gráficas</label></li><li><input id="cat_0_7" type="checkbox" value="7" name="cat_0" /><label for="cat_0_7">Docencia</label></li><li><input id="cat_0_8" type="checkbox" value="8" name="cat_0" /><label for="cat_0_8">Hostelería / Turismo</label></li><li><input id="cat_0_4" type="checkbox" value="4" name="cat_0" /><label for="cat_0_4">Informática / Telecomunicaciones</label></li><li><input id="cat_0_9" type="checkbox" value="9" name="cat_0" /><label for="cat_0_9">Ingeniería</label></li><li><input id="cat_0_3" type="checkbox" value="3" name="cat_0" /><label for="cat_0_3">Investigación y Calidad</label></li><li><input id="cat_0_10" type="checkbox" value="10" name="cat_0" /><label for="cat_0_10">Legal / Asesoría</label></li><li><input id="cat_0_20" type="checkbox" value="20" name="cat_0" /><label for="cat_0_20">Mantenimiento y Reparaciones Técnicas</label></li><li><input id="cat_0_12" type="checkbox" value="12" name="cat_0" /><label for="cat_0_12">Medicina / Salud</label></li><li><input id="cat_0_21" type="checkbox" value="21" name="cat_0" /><label for="cat_0_21">Mercadotecnia / Publicidad / Comunicación</label></li><li><input id="cat_0_22" type="checkbox" value="22" name="cat_0" /><label for="cat_0_22">Producción / Operarios / Manufactura</label></li><li><input id="cat_0_13" type="checkbox" value="13" name="cat_0" /><label for="cat_0_13">Recursos Humanos</label></li><li><input id="cat_0_23" type="checkbox" value="23" name="cat_0" /><label for="cat_0_23">Servicios Generales, Aseo y Seguridad </label></li><li><input id="cat_0_11" type="checkbox" value="11" name="cat_0" /><label for="cat_0_11">Ventas</label></li></ul>
-              </div>
-  
-  
-              <div class="line">
-                  <p>Región<span class="fcred">*</span></p>
-                  <ul><li><input id="loc_0_16" type="checkbox" value="16"  name="loc_0" /><label for="loc_0_16">Lima</label></li><li><input id="loc_0_2" type="checkbox" value="2"  name="loc_0" /><label for="loc_0_2">Amazonas</label></li><li><input id="loc_0_3" type="checkbox" value="3"  name="loc_0" /><label for="loc_0_3">Ancash</label></li><li><input id="loc_0_4" type="checkbox" value="4"  name="loc_0" /><label for="loc_0_4">Apurimac</label></li><li><input id="loc_0_5" type="checkbox" value="5"  name="loc_0" /><label for="loc_0_5">Arequipa</label></li><li><input id="loc_0_6" type="checkbox" value="6"  name="loc_0" /><label for="loc_0_6">Ayacucho</label></li><li><input id="loc_0_7" type="checkbox" value="7"  name="loc_0" /><label for="loc_0_7">Cajamarca</label></li><li><input id="loc_0_8" type="checkbox" value="8"  name="loc_0" /><label for="loc_0_8">Callao</label></li><li><input id="loc_0_9" type="checkbox" value="9"  name="loc_0" /><label for="loc_0_9">Cusco</label></li><li><input id="loc_0_10" type="checkbox" value="10"  name="loc_0" /><label for="loc_0_10">Huancavelica</label></li><li><input id="loc_0_11" type="checkbox" value="11"  name="loc_0" /><label for="loc_0_11">Huanuco</label></li><li><input id="loc_0_12" type="checkbox" value="12"  name="loc_0" /><label for="loc_0_12">Ica</label></li><li><input id="loc_0_13" type="checkbox" value="13"  name="loc_0" /><label for="loc_0_13">Junin</label></li><li><input id="loc_0_14" type="checkbox" value="14"  name="loc_0" /><label for="loc_0_14">Lambayeque</label></li><li><input id="loc_0_15" type="checkbox" value="15"  name="loc_0" /><label for="loc_0_15">La Libertad</label></li><li><input id="loc_0_17" type="checkbox" value="17"  name="loc_0" /><label for="loc_0_17">Loreto</label></li><li><input id="loc_0_18" type="checkbox" value="18"  name="loc_0" /><label for="loc_0_18">Madre De Dios</label></li><li><input id="loc_0_19" type="checkbox" value="19"  name="loc_0" /><label for="loc_0_19">Moquegua</label></li><li><input id="loc_0_20" type="checkbox" value="20"  name="loc_0" /><label for="loc_0_20">Pasco</label></li><li><input id="loc_0_21" type="checkbox" value="21"  name="loc_0" /><label for="loc_0_21">Piura</label></li><li><input id="loc_0_22" type="checkbox" value="22"  name="loc_0" /><label for="loc_0_22">Puno</label></li><li><input id="loc_0_23" type="checkbox" value="23"  name="loc_0" /><label for="loc_0_23">San Martin</label></li><li><input id="loc_0_24" type="checkbox" value="24"  name="loc_0" /><label for="loc_0_24">Tacna</label></li><li><input id="loc_0_25" type="checkbox" value="25"  name="loc_0" /><label for="loc_0_25">Tumbes</label></li><li><input id="loc_0_26" type="checkbox" value="26"  name="loc_0" /><label for="loc_0_26">Ucayali</label></li><li><input id="loc_0_1" type="checkbox" value="1"  name="loc_0" /><label for="loc_0_1">Extranjero</label></li></ul>
-              </div>
-  
-              <div class="line">
-                  <input type="submit" class="submit_n" name="gAlert" value="Guardar" data-id="0" />
-                  <a class="cancel" data-id="0">Cancelar</a>
-              </div>
-          </div>
-  
-          
-              <div class="sin_info">
-                  <ul>
-                      <li class="icono">
-                          <span class="icon info"></span>
-                      </li>
-                      <li class="info">
-                          <p><span>Mis alertas</span></p>
-                          <p>Recibe por e-mail las ofertas que más te interesan en base a los criterios que definas en tus alertas.</p>
-                      </li>
-                  </ul>
-              </div>
-          
-  
-          
-              
-      </div>
-  
-      
-  
-      <input name="ctl00$ContainerGeneralOverWrite$ContainerGeneral$idcargo" type="hidden" id="idcargo" class="js-result-cargos-suggest" value="0" />
-  
-      <div class="ocultar">
-          <div class="blockUI blockOverlay"></div>
-          <div class="blockUI blockMsg blockPage">
-              <div style="cursor: default;" id="frmDelete" class="popup_gestof popup_gestcan content_popup">
-                  <div class="md-modal md-effect-3 md-show">
-                      <div class="md-content c_t">
-                          <span class="icon ico_close" onclick="closePopup(); return false;"></span>
-                          <span class="title">Eliminar alerta</span>
-                          <p>¿Estás seguro que deseas eliminar la alerta? </p>
-                          <input class="submit_n boton" type="button" value="Eliminar" id="btDelete" />
-                          <a id="aClose" onclick="closePopup(); return false;">Cancelar</a>
+
+  <div id="popup_alert_ok" class="ocultar" data-refresh="true">
+      <div class="blockUI blockOverlay" style="z-index: 9999; border: none; margin: 0px; padding: 0px; width: 100%; height: 100%; top: 0px; left: 0px; opacity: 0.6; position: fixed; background-color: rgb(0, 0, 0);"></div>
+      <div class="blockUI blockMsg blockPage" style="z-index: 99999; position: fixed; padding: 0px; margin: 0px; width: 50%; top: 35%; left: 25%; text-align: center; color: rgb(0, 0, 0); border: 3px solid rgb(170, 170, 170); background-color: rgb(255, 255, 255);">
+          <div style="cursor: default;" id="frmAlertOk" class="popup_gestof popup_gestcan">
+              <div class="md-modal md-effect-3 md-show box_popup">
+                  <div class="md-content">
+                      <div>
+                          <p class="mtb15 green fs15">
+                              <span class="icon estado_verde"></span>
+                              Alerta guardada correctamente
+                          </p>
                       </div>
                   </div>
               </div>
           </div>
       </div>
-  
-      <div id="popup_alert_ok" class="ocultar" data-refresh="true">
-          <div class="blockUI blockOverlay" style="z-index: 9999; border: none; margin: 0px; padding: 0px; width: 100%; height: 100%; top: 0px; left: 0px; opacity: 0.6; position: fixed; background-color: rgb(0, 0, 0);"></div>
-          <div class="blockUI blockMsg blockPage" style="z-index: 99999; position: fixed; padding: 0px; margin: 0px; width: 50%; top: 35%; left: 25%; text-align: center; color: rgb(0, 0, 0); border: 3px solid rgb(170, 170, 170); background-color: rgb(255, 255, 255);">
-              <div style="cursor: default;" id="frmAlertOk" class="popup_gestof popup_gestcan">
-                  <div class="md-modal md-effect-3 md-show box_popup">
-                      <div class="md-content">
-                          <div>
-                              <p class="mtb15 green fs15">
-                                  <span class="icon estado_verde"></span>
-                                  Alerta guardada correctamente
-                              </p>
-                          </div>
+  </div>
+
+  <div id="popup_alert_ko" class="ocultar">
+      <div class="blockUI blockOverlay" style="z-index: 9999; border: none; margin: 0px; padding: 0px; width: 100%; height: 100%; top: 0px; left: 0px; opacity: 0.6; position: fixed; background-color: rgb(0, 0, 0);"></div>
+      <div class="blockUI blockMsg blockPage" style="z-index: 9999; position: fixed; padding: 0px; margin: 0px; width: 50%; top: 35%; left: 25%; text-align: center; color: rgb(0, 0, 0); border: 3px solid rgb(170, 170, 170); background-color: rgb(255, 255, 255);">
+          <div style="cursor: default;" id="frmAlertKo" class="popup_gestof popup_gestcan">
+              <div class="md-modal md-effect-3 md-show box_popup">
+                  <div class="md-content">
+                      <div>
+                          <p class="mtb15 fc_red fs15">
+                              <span class="icon estado_rojo"></span>
+                              Ya tienes una alerta similar guardada.
+                          </p>
                       </div>
                   </div>
               </div>
           </div>
       </div>
-  
-      <div id="popup_alert_ko" class="ocultar">
-          <div class="blockUI blockOverlay" style="z-index: 9999; border: none; margin: 0px; padding: 0px; width: 100%; height: 100%; top: 0px; left: 0px; opacity: 0.6; position: fixed; background-color: rgb(0, 0, 0);"></div>
-          <div class="blockUI blockMsg blockPage" style="z-index: 9999; position: fixed; padding: 0px; margin: 0px; width: 50%; top: 35%; left: 25%; text-align: center; color: rgb(0, 0, 0); border: 3px solid rgb(170, 170, 170); background-color: rgb(255, 255, 255);">
-              <div style="cursor: default;" id="frmAlertKo" class="popup_gestof popup_gestcan">
-                  <div class="md-modal md-effect-3 md-show box_popup">
-                      <div class="md-content">
-                          <div>
-                              <p class="mtb15 fc_red fs15">
-                                  <span class="icon estado_rojo"></span>
-                                  Ya tienes una alerta similar guardada.
-                              </p>
-                          </div>
-                      </div>
+  </div>
+
+  <div id="divAlert" style="display: none;">
+      <div class="blockUI blockOverlay" style="z-index: 99999; border: none; margin: 0px; padding: 0px; width: 100%; height: 100%; top: 0px; left: 0px; background-color: rgb(0, 0, 0); opacity: 0.6; cursor: wait; position: fixed;"></div>
+      <div class="blockUI blockMsg blockPage" style="z-index: 99999; position: fixed; padding: 0px; margin: 0px; width: 35%; top: 27%; left: 32.5%; text-align: center; color: rgb(0, 0, 0); border: 3px solid rgb(170, 170, 170); cursor: wait; background-color: rgb(255, 255, 255);">
+          <div style="cursor: default;" class="popup_gestof popup_gestcan content_popup">
+              <div class="md-modal md-effect-3 md-show">
+                  <div class="md-content c_t">
+                      <span class="icon ico_close"></span>
+                      <span class="title">Aviso</span>
+                      <p id="alert_message"><b></b></p>
+                      <input class="submit_n boton" type="button" value="Aceptar" id="btAccept">
                   </div>
               </div>
           </div>
       </div>
-  
-      <div id="divAlert" style="display: none;">
-          <div class="blockUI blockOverlay" style="z-index: 99999; border: none; margin: 0px; padding: 0px; width: 100%; height: 100%; top: 0px; left: 0px; background-color: rgb(0, 0, 0); opacity: 0.6; cursor: wait; position: fixed;"></div>
-          <div class="blockUI blockMsg blockPage" style="z-index: 99999; position: fixed; padding: 0px; margin: 0px; width: 35%; top: 27%; left: 32.5%; text-align: center; color: rgb(0, 0, 0); border: 3px solid rgb(170, 170, 170); cursor: wait; background-color: rgb(255, 255, 255);">
-              <div style="cursor: default;" class="popup_gestof popup_gestcan content_popup">
-                  <div class="md-modal md-effect-3 md-show">
-                      <div class="md-content c_t">
-                          <span class="icon ico_close"></span>
-                          <span class="title">Aviso</span>
-                          <p id="alert_message"><b></b></p>
-                          <input class="submit_n boton" type="button" value="Aceptar" id="btAccept" />
-                      </div>
-                  </div>
-              </div>
+  </div>
+
+  <input type="hidden" name="ctl00$ContainerGeneralOverWrite$ContainerGeneral$hk" id="hk">
+  <input type="hidden" name="ctl00$ContainerGeneralOverWrite$ContainerGeneral$hc" id="hc">
+  <input type="hidden" name="ctl00$ContainerGeneralOverWrite$ContainerGeneral$hl" id="hl">
+  <input type="hidden" name="ctl00$ContainerGeneralOverWrite$ContainerGeneral$hidp" id="hidp">
+
           </div>
-      </div>
-  
-      <input type="hidden" name="ctl00$ContainerGeneralOverWrite$ContainerGeneral$hk" id="hk" />
-      <input type="hidden" name="ctl00$ContainerGeneralOverWrite$ContainerGeneral$hc" id="hc" />
-      <input type="hidden" name="ctl00$ContainerGeneralOverWrite$ContainerGeneral$hl" id="hl" />
-      <input type="hidden" name="ctl00$ContainerGeneralOverWrite$ContainerGeneral$hidp" id="hidp" />
-  
-              </div>
-          
-          <footer menu_bottom_padding>
-              <div id="secfooter" class="footer_c">
-                  <div class="container">
-                      
-                          <div class="info_footer">
-                              Copyright 2024 DGNET LTD.<br />
-                              <div class="menu_footer"><a class="buildLink" data-path="/contacto/">Contacto de candidato</a> / <a class="buildLink" data-path="https://csccslhelp.zendesk.com/hc/es/categories/15409134220434">Ayuda de candidato</a></div>
-                          </div>                 
-                      
-                      
-                  </div>
-              </div>
-              <input type="hidden" name="ctl00$hdResp" id="hdResp" />
-          </footer>
-      </form>
+
+
       
-      <script src="//cp.ct-stc.com/ac/v02.01.00.07/c/bundles/js/site.master.v2.bundle.min.js"></script>
-      
-      <script src="//cp.ct-stc.com/ac/v02.01.00.07/c/bundles/js/headerbox.bundle.min.js"></script>
   
-      
-      <script>
-          $(document).ready(function () {
-              var accesoCandidate = window.location.pathname;
-              if (accesoCandidate === "/Acceso/" && $(window).width() <= 768) {
-                  $('.icon.mvlicon').addClass('ocultar');
-              }
+
   
-              $("#it-app-google.footer").click(function () {
-                  ga("send", "event", "InstallAndroidApp", "button_footer", "candidato");
-  
-                  if ($(window).width() <= 768) {
-                      kpi({ kpi: '088AEC62538497A4' });
-                  } else {
-                      kpi({ kpi: '345833EF3E9679CA' });
-                  }
-              });
-              $("#it-app-itunes.footer").click(function () {
-                  ga("send", "event", "InstallIphoneApp", "button_footer", "candidato");
-  
-                  if ($(window).width() <= 768) {
-                      kpi({ kpi: 'FA3E7DE9E272D574' });
-                  } else {
-                      kpi({ kpi: 'E9B9BE5E0801CB7A' });
-                  }
-              });
-  
-              var positionScroll = $(window).scrollTop();
-              $(window).scroll(function () {
-                  var scroll = $(window).scrollTop();
-                  if (scroll < positionScroll && scroll > 0) {
-                      $("[menu-scroll-up]").addClass("shadow");
-                  } else {
-                      $("[menu-scroll-up]").removeClass("shadow");
-                  }
-                  positionScroll = scroll;
-              });
-          });
-  
-          $(window).resize(function () {
-              var accesoCandidate = window.location.pathname;
-              if (accesoCandidate === "/Acceso/" && $(window).width() <= 768) {
-                  $('.icon.mvlicon').addClass('ocultar');
-              }
-  
-  
-              if ($(window).width() <= 768 && $('#m_mbl').hasClass('menu_visible')) {
-                  $('#m_mbl').show();
-              } else if ($(window).width() > 768) {
-                  $('#m_mbl').show();
-                  $('#m_mbl').removeClass('menu_visible');
-                  $('#js-navabierto').hide();
-              }
-              else {
-                  $('#m_mbl').hide();
-              }
-          });
-  
-          
-              window.searchBox = {
-                  originKinesis: "AlertCandidate",
-                  originGAEvent: "AlertCandidate",
-                  originGADevice: "DESK",
-                  liteText: '¿Qué empleo buscas?',
-                  baseUrl: 'https://pe.computrabajo.com'
-              };
-          
-      </script>
-      <script>
-          $(document).ready(function () {
-              var width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
-              if (width > 768) {
-                  $("#hdResp").val(1);
-              } else {
-                  $("#hdResp").val(2);
-              }
-  
-          });
-      </script>
-  
-      <link id='lnkCss' type='text/css' rel='stylesheet' href='//cp.ct-stc.com/ac/v02.01.00.07/c/css/cookies.css?v=3.59'>
-      
-      <script>
-          var cookieConsent = getCookie("ct_consent");
-          if (!cookieConsent) {
-              
-              function SetCookieConsent(location) {
-                  var cookieOptions = {
-                      "palette": {
-                          "popup": {
-                              "background": "#0D3878"
-                          },
-                          "button": {
-                              "background": "#fff",
-                              "text": "#0D3878"
-                          }
-                      },
-                      "revokeBtn": "<div style='display:none;'><div class='cc-revoke {{classes}}'></div></div>",
-                      "cookie": {
-                          "domain": ""
-                      },
-                      "theme": "classic",
-                      "content": {
-                          "message": "Utilizamos cookies propias necesarias para el funcionamiento correcto y personalización del sitio web. También utilizamos cookies de terceros para fines analíticos y mostrarte publicidad relacionada según tus preferencias. Para más información sobre las cookies y configurar tus preferencias, consulta nuestra ",
-                          "dismiss": "Acepto",
-                          "link": "Política de Cookies",
-                          "href": "https://pe.computrabajo.com/privacidad/#cookies"
-                      },
-                      "law": {
-                          "countryCode": location.country_code
-                      },
-                      "dismissOnTimeout": true
-                  }
-            
-                  cookieOptions.onStatusChange = function (status, chosenBefore) {
-                      if (status == "dismiss") {
-                          setCookie("ct_consent", "1", 365);
-                      }
-                  };
-                  cookieOptions.content.href = "/privacidad/#cookies";
-                  var cookiesPeru = new cookieconsent.Popup(cookieOptions);
-                  document.body.appendChild(cookiesPeru.element);
-            
-              };
-          }
-          function setCookie(cname, cvalue, exdays) {
-              var d = new Date();
-              d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
-              var expires = "expires=" + d.toUTCString();
-              document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/" + "domain=pe.computrabajo.com;";
-          }
-          function getCookie(cname) {
-              var name = cname + "=";
-              var ca = document.cookie.split(';');
-              for (var i = 0; i < ca.length; i++) {
-                  var c = ca[i];
-                  while (c.charAt(0) == ' ') {
-                      c = c.substring(1);
-                  }
-                  if (c.indexOf(name) == 0) {
-                      return c.substring(name.length, c.length);
-                  }
-              }
-              return "";
-          }
-      </script>
-  
-      
-      
-      <script>
-          (function () {
-              const _collectorURL = 'https://collector.dgnet.ltd.uk';
-              const _portalId = '3';
-              const _impressionType = '1';
-              const _promotionPointDisabled = '' === "true";
-              let _ucaCandidateCookie = '';
-  
-              $(document).ready(function () {
-                  $.ajax({
-                      url: '/ajax/getusercookie',
-                      type: "GET",
-                      datatype: "json",
-                      success: function (data) {
-                          if (data != null) {
-                              _ucaCandidateCookie = JSON.parse('{"' + data.Value.replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g, '":"') + '"}');
-                              if (_ucaCandidateCookie != null && _ucaCandidateCookie != undefined && _ucaCandidateCookie.i != "" && _ucaCandidateCookie.c != "") {
-                                  trackCandidateEventImpressionAllVisible();
-                                  trackCandidateEventGenericsAllVisible();
-                                  window.setInterval(impressionsInterval, 500);
-                              }
-                          }
-                      }
-                  });
-  
-                  var clickElements = document.querySelectorAll("[data-track-ct-event-click='true']");
-                  for (let i = 0; i < clickElements.length; i++) {
-                      clickElements[i].addEventListener("click", function () {
-                          trackCandidateEventClick(clickElements[i]);
-                      });
-                  }
-  
-                  function impressionsInterval() {
-                      var impressionsElements = document.querySelectorAll("[data-track-ct-event-impression='true']:not([data-track-ct-event-impression-send])");
-                      for (let i = 0; i < impressionsElements.length; i++) {
-                          if ($(impressionsElements[i]).is(':visible')) {
-                              trackCandidateEventImpression(impressionsElements[i]);
-                          }
-                      }
-                  }
-              });
-  
-              function trackCandidateEventImpressionAllVisible() {
-                  var impressionsElements = document.querySelectorAll("[data-track-ct-event-impression='true']");
-                  let items = [];
-                  for (let i in impressionsElements) {
-                      if (impressionsElements.hasOwnProperty(i) && $(impressionsElements[i]).is(':visible')) {
-                          items.push({
-                              IdPromotionPoint: impressionsElements[i].getAttribute('data-track-ct-event-promotion-point'),
-                              IdUser: _ucaCandidateCookie.i,
-                              IdPortal: _portalId,
-                              IdEventType: _impressionType
-                          });
-                          impressionsElements[i].dataset.trackCtEventImpressionSend = true;
-                      }
-                  }
-                  if (items.length > 0) {
-                      if (!_promotionPointDisabled) {
-                          window.trackCandidateEvents.sendPromotionPoint(items, _collectorURL, _portalId);
-                      }
-                  }
-              }
-  
-              function trackCandidateEventGenericsAllVisible() {
-                  var elements = document.querySelectorAll("[data-track-ct-event-generic='true']");
-                  let items = [];
-                  for (let i in elements) {
-                      if (elements.hasOwnProperty(i)) {
-                          items.push({
-                              IdPromotionPoint: elements[i].getAttribute('data-track-ct-event-promotion-point'),
-                              IdUser: _ucaCandidateCookie.i,
-                              IdPortal: _portalId,
-                              IdEventType: elements[i].getAttribute('data-track-ct-event-type'),
-                          });
-                          elements[i].dataset.trackCtEventImpressionSend = true;
-                      }
-                  }
-                  if (items.length > 0) {
-                      if (!_promotionPointDisabled) {
-                          window.trackCandidateEvents.sendPromotionPoint(items, _collectorURL, _portalId);
-                      }
-                  }
-              }
-  
-              function trackCandidateEventImpression(el) {
-                  const promotionPoint = el.dataset.trackCtEventPromotionPoint;
-                  if (_ucaCandidateCookie != null && _ucaCandidateCookie != undefined && _ucaCandidateCookie.i != "" && _ucaCandidateCookie.c != "") {
-                      if (!_promotionPointDisabled) {
-                          window.trackCandidateEvents.sendOne(_ucaCandidateCookie.i, _portalId, _impressionType, promotionPoint, _collectorURL);
-                      }
-                  }
-                  el.dataset.trackCtEventImpressionSend = true;
-              }
-  
-              function trackCandidateEventClick(el) {
-                  const eventType = el.dataset.trackCtEventType;
-                  const promotionPoint = el.dataset.trackCtEventPromotionPoint;
-                  if (_ucaCandidateCookie != null && _ucaCandidateCookie != undefined && _ucaCandidateCookie.i != "" && _ucaCandidateCookie.c != "") {
-                      if (!_promotionPointDisabled) {
-                          window.trackCandidateEvents.sendOne(_ucaCandidateCookie.i, _portalId, eventType, promotionPoint, _collectorURL);
-                      }
-                  }
-              }
-          })();
-  
-          function DisableAutoSelect() {
-              createCookie('lout', 'true', 1);
-              window.location.href = "/_services/logout.aspx ";
-          };
-  
-          function createCookie(name, value, days) {
-              if (days) {
-                  var date = new Date();
-                  date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-                  var expires = "; expires=" + date.toGMTString();
-              }
-              else var expires = "";
-              document.cookie = name + "=" + value + expires + ";path=/;" + "domain=pe.computrabajo.com;";
-          };
-  
-  
-      </script>
-  
-      
-      <script> 
-  
-          $(document).ready(function () {
-              $("input[name='gAlert']").click(function (event) {
-                  event.preventDefault();
-                  $("#hl").val('')
-                  $("#hc").val('')
-                  $("#hca").val('')
-  
-                  var idpush = $(this).data("id")
-                  $("#hidp").val(idpush)
-  
-                  var locselected = []
-                  $("input[id^='loc_" + idpush + "']:checked").each(function () {
-                      locselected.push($(this).val())
-                  });
-  
-                  $("#hl").val(JSON.stringify(locselected))
-  
-                  var catselected = []
-                  $("input[id^='cat_" + idpush + "']:checked").each(function () {
-                      catselected.push($(this).val())
-                  });
-  
-                  $("#hc").val(JSON.stringify(catselected))
-                  $("#hk").val($("input[name='kw_" + idpush + "']").val())
-  
-                  if ((locselected.length > 0 && catselected.length > 0) || ($("#hk").val() != "" && locselected.length > 0)) {
-                      managealertbox(event, '7', '1960');
-                  }
-                  else {
-                      openAlertModal('Debes seleccionar al menos un estado y una entre categoría o palabra clave');
-                  }
-              });
-  
-              $("#btAccept, .ico_close").click(function () {
-                  if ($("#alert_message").data("ok")) {
-                      window.location.href = window.location.href.split("?")[0];
-                  }
-              });
-          });
-  
-          function ConfirmDelete(actionUrl) {
-              $.blockUI(
-                  {
-                      message: $("#frmDelete"),
-                      css: { 'z-index': '9999', 'position': 'fixed', padding: '0px', margin: '0px', width: '30%', top: '27%', left: '35%', 'text-align': 'center', 'color': 'rgb(0, 0, 0)', 'border': '3px solid rgb(170, 170, 170)', backgroundColor: 'rgb(255, 255, 255)', cursor: 'wait' }
-  
-                  });
-              $("#btDelete").click(function () {
-                  $.unblockUI();
-                  window.location = actionUrl;
-              });
-          }
-  
-          function closePopup() {
-              $.unblockUI();
-              return false;
-          }
-  
-          function Delete(id) {
-              var r = confirm('Deseas eliminar la alerta?');
-              if (!r) {
-                  return false;
-              }
-          };
-  
-          function Save(element) {
-              var idpush = $(element).data('id');
-  
-              var kws = $('input[name="kw_' + idpush + '"]').val();
-              var cats = $('input[type="checkbox"][name="cat_' + idpush + '"]:checked').length;
-              var locs = $('input[type="checkbox"][name="loc_' + idpush + '"]:checked').length;
-  
-              if ((cats > 0 && locs > 0) || (kws != null && kws != "" && locs > 0)) {
-                  return true;
-              }
-              else {
-                  alert("Debes seleccionar al menos un estado y una entre categoría o palabra clave");
-                  return false;
-              }
-          };
-  
-          function setvalues(h, d) {
-              $("#" + h).val("");
-              $("#" + d).find("input:checked").each(function () {
-                  $("#" + h).val($("#" + h).val() + this.value + "|");
-              });
-              $("#" + h).val($("#" + h).val().substr(0, $("#" + h).val().length - 1));
-          };
-  
-          $(function () {
-              cargosAutoComplete('41E3AF25F453A68D', 
-                                 '96D1C1E18881EABE',
-                                  1);
-          });
-  
-          $('.edit_frm').click(function () {
-              $('#frm_' + $(this).data("id")).removeClass('ocultar');
-          });
-  
-          $('.cancel').click(function () {
-              $('#frm_' + $(this).data("id")).addClass('ocultar');
-              if ($(this).data("id") == 0) {
-                  $("input[name='loc_0']:checkbox").prop('checked', false);
-                  $("input[name='cat_0']:checkbox").prop('checked', false);
-                  $("input[name='kw_0']").val('');
-              }
-          });
-  
-          $('#btn_crear_alerta').click(function () {
-              
-              $('#frm_0').removeClass('ocultar');
-                  
-          });
-      </script>
-  
-      
-   <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=true;a.defer=true;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-  ga('create', 'UA-2335793-6', 'auto');
-  ga('set', 'anonymizeIp', true);
-  ga('send', 'pageview', {'dimension1':'Privada - Mis alertas'});
-  </script>
-      
-          
-      
