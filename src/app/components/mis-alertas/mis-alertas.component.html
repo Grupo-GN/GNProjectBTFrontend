@@ -1,281 +1,229 @@
-<h1>Mis alertas</h1>               
-<header menu-scroll id="header_menu" class="header_web">
-  <div class="container">
-    
-    <div data-box-search-container="" class="box_search_content">
-      <span data-box-search-close="" class="icon i_close_w cp" (click)="closeSearchBox()"></span>
-      <div id="slider-container-outer">
-        <div id="slider-container">
-          <div class="box_search slider-item sel" data-position="1" data-box-search-inputs-container="" data-autocomplete-add-classes-when-opening-target="">
-            <div>
-<div class="field_input_icon posRel mb0" data-type-search="prof-cat" data-input-focusable-container="">
-  <form autocomplete="off" class="cont" (ngSubmit)="onSubmit()">
-    <svg xmlns="http://www.w3.org/2000/svg" class="input-icon" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(10, 9, 9, 1)">
-      <path d="M20 6h-3V4c0-1.103-.897-2-2-2H9c-1.103 0-2 .897-2 2v2H4c-1.103 0-2 .897-2 2v11c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V8c0-1.103-.897-2-2-2zm-5-2v2H9V4h6zM4 8h16v4h-3v-2h-2v2H9v-2H7v2H4V8zm0 11v-5h3v2h2v-2h6v2h2v-2h3.001v5H4z"></path>
-    </svg>
-  <input id="prof-cat-search-input" type="search" placeholder="Cargo o categoría" autocomplete="off" [(ngModel)]="searchTerm" name="searchTerm" (focus)="showSuggestions('job')" (blur)="hideSuggestions()" (input)="onInput($event)">
-  <ul class="autocomplete job" [class.visible]="suggestionsVisible === 'job'">
-    <li class="title_suggest">Últimas búsquedas
-    <li *ngFor="let search of lastSearches">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 22 22" class="btn-icon" style="fill: rgb(117, 116, 116);">
-            <path d="M19.023 16.977a35.13 35.13 0 0 1-1.367-1.384c-.372-.378-.596-.653-.596-.653l-2.8-1.337A6.962 6.962 0 0 0 16 9c0-3.859-3.14-7-7-7S2 5.141 2 9s3.14 7 7 7c1.763 0 3.37-.66 4.603-1.739l1.337 2.8s.275.224.653.596c.387.363.896.854 1.384 1.367l1.358 1.392.604.646 2.121-2.121-.646-.604c-.379-.372-.885-.866-1.391-1.36zM9 14c-2.757 0-5-2.243-5-5s2.243-5 5-5 5 2.243 5 5-2.243 5-5 5z"></path>
-          </svg>
-    <a [href]="getSearchUrl(search)">{{ search }}</a>
-    <span class="b_delete">
-    <span class="icon i_delete" (click)="deleteSearch(search)"></span>
-    </span>
-</li>
-<li class="title_suggest">Empleos más demandados
-<li *ngFor="let job of filteredJobs" (click)="selectJob(job)">
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 22 22" class="btn-icon" style="fill: rgb(240, 235, 235);">
-        <path d="M19.023 16.977a35.13 35.13 0 0 1-1.367-1.384c-.372-.378-.596-.653-.596-.653l-2.8-1.337A6.962 6.962 0 0 0 16 9c0-3.859-3.14-7-7-7S2 5.141 2 9s3.14 7 7 7c1.763 0 3.37-.66 4.603-1.739l1.337 2.8s.275.224.653.596c.387.363.896.854 1.384 1.367l1.358 1.392.604.646 2.121-2.121-.646-.604c-.379-.372-.885-.866-1.391-1.36zM9 14c-2.757 0-5-2.243-5-5s2.243-5 5-5 5 2.243 5 5-2.243 5-5 5z"></path>
-      </svg>
-<div>{{ job }}</div>
-</li>
-</ul>
-  <span id="prof-cat-clean-button" class="btn_click hide" (click)="clearSearchTerm()">
-    <span class="icon i_close"></span>
-  </span>
-</form>
-</div>
-<div class="field_input_icon posRel bl1 mb0" data-type-search="place" data-input-focusable-container="">
-<form autocomplete="off" class="cont" (ngSubmit)="onSubmit()">
-  <svg xmlns="http://www.w3.org/2000/svg" class="input-icon" width="25" height="25" viewBox="0 0 24 24" style="fill: rgb(5, 5, 5)">
-    <path d="M12 2C7.589 2 4 5.589 4 9.995 3.971 16.44 11.696 21.784 12 22c0 0 8.029-5.56 8-12 0-4.411-3.589-8-8-8zM9.799 14.987H8v-1.799l4.977-4.97 1.799 1.799-4.977 4.97zm5.824-5.817-1.799-1.799L15.196 6l1.799 1.799-1.372 1.371z"></path>
-  </svg>
-  <input id="place-search-input" type="search" placeholder="Lugar" autocomplete="off" [(ngModel)]="placeTerm" name="placeTerm" (focus)="showSuggestions('place')" (blur)="hideSuggestions()" (input)="onInputPlace($event)">
-  <ul class="autocomplete place" [class.visible]="suggestionsVisible === 'place'">
-    <li class="title_suggest">Últimas búsquedas</li>
-    <li *ngFor="let search of CountrySearches">
-        <svg xmlns="http://www.w3.org/2000/svg" class="input-icon-place" width="25" height="25" viewBox="0 0 24 24" style="fill: rgb(138, 137, 137)">
-            <path d="M12 2C7.589 2 4 5.589 4 9.995 3.971 16.44 11.696 21.784 12 22c0 0 8.029-5.56 8-12 0-4.411-3.589-8-8-8zM9.799 14.987H8v-1.799l4.977-4.97 1.799 1.799-4.977 4.97zm5.824-5.817-1.799-1.799L15.196 6l1.799 1.799-1.372 1.371z"></path>
-          </svg>
-      <a [href]="getSearchUrl(search)">{{ search }}</a>
-      <span class="b_delete">
-        <span class="icon i_delete" (click)="deleteSearch(search)"></span>
-      </span>
-    </li>
-    <li class="title_suggest">Empleos más demandados</li>
-    <li *ngFor="let place of filteredPlaces" (click)="selectPlace(place)">
-        <svg xmlns="http://www.w3.org/2000/svg" class="input-icon-place" width="25" height="25" viewBox="0 0 24 24" style="fill: rgb(180, 178, 178)">
-            <path d="M12 2C7.589 2 4 5.589 4 9.995 3.971 16.44 11.696 21.784 12 22c0 0 8.029-5.56 8-12 0-4.411-3.589-8-8-8zM9.799 14.987H8v-1.799l4.977-4.97 1.799 1.799-4.977 4.97zm5.824-5.817-1.799-1.799L15.196 6l1.799 1.799-1.372 1.371z"></path>
-          </svg>
-      <div>
-        {{ place }}</div>
-    </li>
-  </ul>
-  <span id="place-clean-button" class="btn_click hide" (click)="clearPlaceTerm()">
-    <span class="icon i_close"></span>
-  </span>
-</form>
-</div>
-</div>
-<button id="search-button" class="b_primary rounded mlAuto" (click)="performSearch()">
-                    
-  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 22 22" class="btn-icon" style="fill: rgb(240, 235, 235);">
-    <path d="M19.023 16.977a35.13 35.13 0 0 1-1.367-1.384c-.372-.378-.596-.653-.596-.653l-2.8-1.337A6.962 6.962 0 0 0 16 9c0-3.859-3.14-7-7-7S2 5.141 2 9s3.14 7 7 7c1.763 0 3.37-.66 4.603-1.739l1.337 2.8s.275.224.653.596c.387.363.896.854 1.384 1.367l1.358 1.392.604.646 2.121-2.121-.646-.604c-.379-.372-.885-.866-1.391-1.36zM9 14c-2.757 0-5-2.243-5-5s2.243-5 5-5 5 2.243 5 5-2.243 5-5 5z"></path>
-  </svg>
-</button>
-</div>
-</div>
-</div>
-
-
-
-<br>  
-<div class="container">
-<section class="ccp_menu" id="secMenu">
-  <ul>
-    <li>
-      <a href="http://localhost:4200/mi-area"  title="Mi área" >
-        <div class="ccp_imgm1">
-          <svg xmlns="http://www.w3.org/2000/svg" class="input-icon-2" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M3 9.5L12 3l9 6.5v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-10z"></path>
-              <polyline points="9 22 9 12 15 12 15 22"></polyline>
-            </svg>
-        </div>Mi área
-      </a>
-      <div class="ccp_flecha"></div>
-    </li>
-    <li>
-      <a href="http://localhost:4200/CV"  >
-        <div class="ccp_imgm4">
-          <svg xmlns="http://www.w3.org/2000/svg" class="input-icon-3" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-              <line x1="8" y1="9" x2="16" y2="9"></line>
-              <line x1="8" y1="13" x2="16" y2="13"></line>
-              <line x1="8" y1="17" x2="16" y2="17"></line>
-              <circle cx="12" cy="6" r="1"></circle>
-            </svg>
-        </div>Mi currículum
-      </a>
-      <div class="ccp_flecha"></div>
-    </li>
-    <li>
-      <a data-path="/candidate/test/list?tlo=7A02BC8BFD169A2F" title="Test y evaluaciones" >
-        <div class="ccp_imgm10">
-          <svg xmlns="http://www.w3.org/2000/svg" class="input-icon-4" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-              <line x1="8" y1="9" x2="14" y2="9"></line>
-              <line x1="8" y1="13" x2="14" y2="13"></line>
-              <line x1="8" y1="17" x2="14" y2="17"></line>
-              <circle cx="16" cy="9" r="1"></circle>
-              <circle cx="16" cy="13" r="1"></circle>
-              <circle cx="16" cy="17" r="1"></circle>
-            </svg>
-        </div>Test y evaluaciones
-      </a>
-      <div class="ccp_flecha"></div>
-    </li>
-    <li class="selec">
-      <a href="http://localhost:4200/configuraciones"  title="Configuración" >
-        <div class="ccp_imgm6">
-          <svg xmlns="http://www.w3.org/2000/svg" class="input-icon-5" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="3"></circle>
-              <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-.99 1.51V20a2 2 0 0 1-2 2h-2a2 2 0 0 1-2-2v-.09a1.65 1.65 0 0 0-.99-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-.99H4a2 2 0 0 1-2-2v-2a2 2 0 0 1 2-2h.09c.73 0 1.39-.39 1.51-.99a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06c.43.43 1.04.57 1.82.33H12a1.65 1.65 0 0 0 1.51-.99 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H20a2 2 0 0 1 2 2v.09c0 .73-.39 1.39-.99 1.51a1.65 1.65 0 0 0-.33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33H12z"></path>
-            </svg>
-        </div>Configuración
-      </a>
-      <div class="ccp_flecha"></div>
-    </li>
-  </ul>
-</section>
-</div>
-
-<div id="ContainerGeneralOverWrite_MainContainer" class="container">
-                
-  <div class="alert">
-      <div class="h">
+<div class="mis-alertas">
+  <div class="body">
+    <header menu-scroll id="header_menu" class="header_web">
+      <div class="container">
+        <div data-box-search-container="" class="box_search_content">
+          <span data-box-search-close="" class="icon i_close_w cp" (click)="closeSearchBox()"></span>
+          <div id="slider-container-outer">
+            <div id="slider-container">
+              <div class="box_search slider-item sel" data-position="1" data-box-search-inputs-container="" data-autocomplete-add-classes-when-opening-target="">
+                <div>
+                  <div class="field_input_icon posRel mb0" data-type-search="prof-cat" data-input-focusable-container="">
+                  <form autocomplete="off" class="cont" (ngSubmit)="onSubmit()">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="input-icon" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(10, 9, 9, 1)">
+                      <path d="M20 6h-3V4c0-1.103-.897-2-2-2H9c-1.103 0-2 .897-2 2v2H4c-1.103 0-2 .897-2 2v11c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V8c0-1.103-.897-2-2-2zm-5-2v2H9V4h6zM4 8h16v4h-3v-2h-2v2H9v-2H7v2H4V8zm0 11v-5h3v2h2v-2h6v2h2v-2h3.001v5H4z"></path>
+                    </svg>
+                  <input id="prof-cat-search-input" type="search" placeholder="Cargo o categoría" autocomplete="off" [(ngModel)]="searchTerm" name="searchTerm" (focus)="showSuggestions('job')" (blur)="hideSuggestions()" (input)="onInput($event)">
+                  <ul class="autocomplete job" [class.visible]="suggestionsVisible === 'job'">
+                    <li class="title_suggest">Últimas búsquedas
+                    <li *ngFor="let search of lastSearches">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 22 22" class="btn-icon" style="fill: rgb(117, 116, 116);">
+                            <path d="M19.023 16.977a35.13 35.13 0 0 1-1.367-1.384c-.372-.378-.596-.653-.596-.653l-2.8-1.337A6.962 6.962 0 0 0 16 9c0-3.859-3.14-7-7-7S2 5.141 2 9s3.14 7 7 7c1.763 0 3.37-.66 4.603-1.739l1.337 2.8s.275.224.653.596c.387.363.896.854 1.384 1.367l1.358 1.392.604.646 2.121-2.121-.646-.604c-.379-.372-.885-.866-1.391-1.36zM9 14c-2.757 0-5-2.243-5-5s2.243-5 5-5 5 2.243 5 5-2.243 5-5 5z"></path>
+                          </svg>
+                    <a [href]="getSearchUrl(search)">{{ search }}</a>
+                    <span class="b_delete">
+                    <span class="icon i_delete" (click)="deleteSearch(search)"></span>
+                    </span>
+                </li>
+                <li class="title_suggest">Empleos más demandados
+                <li *ngFor="let job of filteredJobs" (click)="selectJob(job)">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 22 22" class="btn-icon" style="fill: rgb(240, 235, 235);">
+                        <path d="M19.023 16.977a35.13 35.13 0 0 1-1.367-1.384c-.372-.378-.596-.653-.596-.653l-2.8-1.337A6.962 6.962 0 0 0 16 9c0-3.859-3.14-7-7-7S2 5.141 2 9s3.14 7 7 7c1.763 0 3.37-.66 4.603-1.739l1.337 2.8s.275.224.653.596c.387.363.896.854 1.384 1.367l1.358 1.392.604.646 2.121-2.121-.646-.604c-.379-.372-.885-.866-1.391-1.36zM9 14c-2.757 0-5-2.243-5-5s2.243-5 5-5 5 2.243 5 5-2.243 5-5 5z"></path>
+                      </svg>
+                <div>{{ job }}</div>
+                </li>
+                </ul>
+                  <span id="prof-cat-clean-button" class="btn_click hide" (click)="clearSearchTerm()">
+                    <span class="icon i_close"></span>
+                  </span>
+                  </form>
+                  </div>
+                  <div class="field_input_icon posRel bl1 mb0" data-type-search="place" data-input-focusable-container="">
+                  <form autocomplete="off" class="cont" (ngSubmit)="onSubmit()">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="input-icon" width="25" height="25" viewBox="0 0 24 24" style="fill: rgb(5, 5, 5)">
+                    <path d="M12 2C7.589 2 4 5.589 4 9.995 3.971 16.44 11.696 21.784 12 22c0 0 8.029-5.56 8-12 0-4.411-3.589-8-8-8zM9.799 14.987H8v-1.799l4.977-4.97 1.799 1.799-4.977 4.97zm5.824-5.817-1.799-1.799L15.196 6l1.799 1.799-1.372 1.371z"></path>
+                  </svg>
+                  <input id="place-search-input" type="search" placeholder="Lugar" autocomplete="off" [(ngModel)]="placeTerm" name="placeTerm" (focus)="showSuggestions('place')" (blur)="hideSuggestions()" (input)="onInputPlace($event)">
+                  <ul class="autocomplete place" [class.visible]="suggestionsVisible === 'place'">
+                    <li class="title_suggest">Últimas búsquedas</li>
+                    <li *ngFor="let search of CountrySearches">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="input-icon-place" width="25" height="25" viewBox="0 0 24 24" style="fill: rgb(138, 137, 137)">
+                            <path d="M12 2C7.589 2 4 5.589 4 9.995 3.971 16.44 11.696 21.784 12 22c0 0 8.029-5.56 8-12 0-4.411-3.589-8-8-8zM9.799 14.987H8v-1.799l4.977-4.97 1.799 1.799-4.977 4.97zm5.824-5.817-1.799-1.799L15.196 6l1.799 1.799-1.372 1.371z"></path>
+                          </svg>
+                      <a [href]="getSearchUrl(search)">{{ search }}</a>
+                      <span class="b_delete">
+                        <span class="icon i_delete" (click)="deleteSearch(search)"></span>
+                      </span>
+                    </li>
+                    <li class="title_suggest">Empleos más demandados</li>
+                    <li *ngFor="let place of filteredPlaces" (click)="selectPlace(place)">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="input-icon-place" width="25" height="25" viewBox="0 0 24 24" style="fill: rgb(180, 178, 178)">
+                            <path d="M12 2C7.589 2 4 5.589 4 9.995 3.971 16.44 11.696 21.784 12 22c0 0 8.029-5.56 8-12 0-4.411-3.589-8-8-8zM9.799 14.987H8v-1.799l4.977-4.97 1.799 1.799-4.977 4.97zm5.824-5.817-1.799-1.799L15.196 6l1.799 1.799-1.372 1.371z"></path>
+                          </svg>
+                      <div>
+                        {{ place }}</div>
+                    </li>
+                  </ul>
+                  <span id="place-clean-button" class="btn_click hide" (click)="clearPlaceTerm()">
+                    <span class="icon i_close"></span>
+                  </span>
+                  </form>
+                  </div>
+                </div>
+                <button id="search-button" class="b_primary rounded mlAuto" (click)="performSearch()">
+                        
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 22 22" class="btn-icon" style="fill: rgb(240, 235, 235);">
+                      <path d="M19.023 16.977a35.13 35.13 0 0 1-1.367-1.384c-.372-.378-.596-.653-.596-.653l-2.8-1.337A6.962 6.962 0 0 0 16 9c0-3.859-3.14-7-7-7S2 5.141 2 9s3.14 7 7 7c1.763 0 3.37-.66 4.603-1.739l1.337 2.8s.275.224.653.596c.387.363.896.854 1.384 1.367l1.358 1.392.604.646 2.121-2.121-.646-.604c-.379-.372-.885-.866-1.391-1.36zM9 14c-2.757 0-5-2.243-5-5s2.243-5 5-5 5 2.243 5 5-2.243 5-5 5z"></path>
+                  </svg>
+              </button>
+              </div>
+            
+          </div>
+        </div>
+      </div>
+      </div>
+    </header>
+    <br>  
+    <div class="container">
+    <section class="ccp_menu" id="secMenu">
+      <ul>
+        <li>
+          <a href="http://localhost:4200/mi-area"  title="Mi área" >
+            <div class="ccp_imgm1">
+              <svg xmlns="http://www.w3.org/2000/svg" class="input-icon-2" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M3 9.5L12 3l9 6.5v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-10z"></path>
+                  <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                </svg>
+            </div>Mi área
+          </a>
+          <div class="ccp_flecha"></div>
+        </li>
+        <li>
+          <a href="http://localhost:4200/CV"  >
+            <div class="ccp_imgm4">
+              <svg xmlns="http://www.w3.org/2000/svg" class="input-icon-3" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                  <line x1="8" y1="9" x2="16" y2="9"></line>
+                  <line x1="8" y1="13" x2="16" y2="13"></line>
+                  <line x1="8" y1="17" x2="16" y2="17"></line>
+                  <circle cx="12" cy="6" r="1"></circle>
+                </svg>
+            </div>Mi currículum
+          </a>
+          <div class="ccp_flecha"></div>
+        </li>
+        <li>
+          <a data-path="/candidate/test/list?tlo=7A02BC8BFD169A2F" title="Test y evaluaciones" >
+            <div class="ccp_imgm10">
+              <svg xmlns="http://www.w3.org/2000/svg" class="input-icon-4" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                  <line x1="8" y1="9" x2="14" y2="9"></line>
+                  <line x1="8" y1="13" x2="14" y2="13"></line>
+                  <line x1="8" y1="17" x2="14" y2="17"></line>
+                  <circle cx="16" cy="9" r="1"></circle>
+                  <circle cx="16" cy="13" r="1"></circle>
+                  <circle cx="16" cy="17" r="1"></circle>
+                </svg>
+            </div>Test y evaluaciones
+          </a>
+          <div class="ccp_flecha"></div>
+        </li>
+        <li class="selec">
+          <a href="http://localhost:4200/configuraciones"  title="Configuración" >
+            <div class="ccp_imgm6">
+              <svg xmlns="http://www.w3.org/2000/svg" class="input-icon-5" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="3"></circle>
+                  <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-.99 1.51V20a2 2 0 0 1-2 2h-2a2 2 0 0 1-2-2v-.09a1.65 1.65 0 0 0-.99-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-.99H4a2 2 0 0 1-2-2v-2a2 2 0 0 1 2-2h.09c.73 0 1.39-.39 1.51-.99a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06c.43.43 1.04.57 1.82.33H12a1.65 1.65 0 0 0 1.51-.99 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H20a2 2 0 0 1 2 2v.09c0 .73-.39 1.39-.99 1.51a1.65 1.65 0 0 0-.33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33H12z"></path>
+                </svg>
+            </div>Configuración
+          </a>
+          <div class="ccp_flecha"></div>
+        </li>
+      </ul>
+    </section>
+    </div>
+    <div class="container">
+      <div class="alert">
+        <div class="h">
           <h2 class="fw_n p15_r">Mis alertas</h2>
-          <a id="btn_crear_alerta" title="Crear nueva alerta"><span class="icon mas vm"></span>Crear nueva alerta</a>
-      </div>
-
-      <div id="frm_0" class="form ocultar">
+          <a (click)="showNewAlertForm()" title="Crear nueva alerta"><span class="icon mas vm"></span>Crear nueva alerta</a>
+        </div>
+    
+        <div *ngIf="showForm" class="form">
           <h2>Nueva alerta</h2>
-
+    
           <div class="line">
-              <p>Cargo</p>
-              <input id="kw" type="text" class="cm-12 js-cargos-suggest ui-autocomplete-input" maxlength="30" clientidmode="static" name="kw_0" value="" autocomplete="off">
+            <p>Cargo</p>
+            <input [(ngModel)]="alertData.cargo" type="text" maxlength="30" name="kw" autocomplete="off">
           </div>
-
-
+    
           <div class="line">
-              <p>Categoría<span class="fcred">*</span></p>
-              <ul><li><input id="cat_0_1" type="checkbox" value="1" name="cat_0"><label for="cat_0_1">Administración / Oficina</label></li><li><input id="cat_0_15" type="checkbox" value="15" name="cat_0"><label for="cat_0_15">Almacén / Logística / Transporte</label></li><li><input id="cat_0_16" type="checkbox" value="16" name="cat_0"><label for="cat_0_16">Atención a clientes</label></li><li><input id="cat_0_17" type="checkbox" value="17" name="cat_0"><label for="cat_0_17">CallCenter / Telemercadeo</label></li><li><input id="cat_0_18" type="checkbox" value="18" name="cat_0"><label for="cat_0_18">Compras / Comercio Exterior</label></li><li><input id="cat_0_19" type="checkbox" value="19" name="cat_0"><label for="cat_0_19">Construcción y obra</label></li><li><input id="cat_0_6" type="checkbox" value="6" name="cat_0"><label for="cat_0_6">Contabilidad / Finanzas</label></li><li><input id="cat_0_5" type="checkbox" value="5" name="cat_0"><label for="cat_0_5">Dirección / Gerencia</label></li><li><input id="cat_0_2" type="checkbox" value="2" name="cat_0"><label for="cat_0_2">Diseño / Artes gráficas</label></li><li><input id="cat_0_7" type="checkbox" value="7" name="cat_0"><label for="cat_0_7">Docencia</label></li><li><input id="cat_0_8" type="checkbox" value="8" name="cat_0"><label for="cat_0_8">Hostelería / Turismo</label></li><li><input id="cat_0_4" type="checkbox" value="4" name="cat_0"><label for="cat_0_4">Informática / Telecomunicaciones</label></li><li><input id="cat_0_9" type="checkbox" value="9" name="cat_0"><label for="cat_0_9">Ingeniería</label></li><li><input id="cat_0_3" type="checkbox" value="3" name="cat_0"><label for="cat_0_3">Investigación y Calidad</label></li><li><input id="cat_0_10" type="checkbox" value="10" name="cat_0"><label for="cat_0_10">Legal / Asesoría</label></li><li><input id="cat_0_20" type="checkbox" value="20" name="cat_0"><label for="cat_0_20">Mantenimiento y Reparaciones Técnicas</label></li><li><input id="cat_0_12" type="checkbox" value="12" name="cat_0"><label for="cat_0_12">Medicina / Salud</label></li><li><input id="cat_0_21" type="checkbox" value="21" name="cat_0"><label for="cat_0_21">Mercadotecnia / Publicidad / Comunicación</label></li><li><input id="cat_0_22" type="checkbox" value="22" name="cat_0"><label for="cat_0_22">Producción / Operarios / Manufactura</label></li><li><input id="cat_0_13" type="checkbox" value="13" name="cat_0"><label for="cat_0_13">Recursos Humanos</label></li><li><input id="cat_0_23" type="checkbox" value="23" name="cat_0"><label for="cat_0_23">Servicios Generales, Aseo y Seguridad </label></li><li><input id="cat_0_11" type="checkbox" value="11" name="cat_0"><label for="cat_0_11">Ventas</label></li></ul>
+            <p>Categoría<span class="fcred">*</span></p>
+            <ul>
+              <li *ngFor="let category of categories">
+                <input type="checkbox" [value]="category.id" (change)="onCategoryChange($event)">
+                <label>{{ category.name }}</label>
+              </li>
+            </ul>
           </div>
-
-
+    
           <div class="line">
-              <p>Región<span class="fcred">*</span></p>
-              <ul><li><input id="loc_0_16" type="checkbox" value="16" name="loc_0"><label for="loc_0_16">Lima</label></li><li><input id="loc_0_2" type="checkbox" value="2" name="loc_0"><label for="loc_0_2">Amazonas</label></li><li><input id="loc_0_3" type="checkbox" value="3" name="loc_0"><label for="loc_0_3">Ancash</label></li><li><input id="loc_0_4" type="checkbox" value="4" name="loc_0"><label for="loc_0_4">Apurimac</label></li><li><input id="loc_0_5" type="checkbox" value="5" name="loc_0"><label for="loc_0_5">Arequipa</label></li><li><input id="loc_0_6" type="checkbox" value="6" name="loc_0"><label for="loc_0_6">Ayacucho</label></li><li><input id="loc_0_7" type="checkbox" value="7" name="loc_0"><label for="loc_0_7">Cajamarca</label></li><li><input id="loc_0_8" type="checkbox" value="8" name="loc_0"><label for="loc_0_8">Callao</label></li><li><input id="loc_0_9" type="checkbox" value="9" name="loc_0"><label for="loc_0_9">Cusco</label></li><li><input id="loc_0_10" type="checkbox" value="10" name="loc_0"><label for="loc_0_10">Huancavelica</label></li><li><input id="loc_0_11" type="checkbox" value="11" name="loc_0"><label for="loc_0_11">Huanuco</label></li><li><input id="loc_0_12" type="checkbox" value="12" name="loc_0"><label for="loc_0_12">Ica</label></li><li><input id="loc_0_13" type="checkbox" value="13" name="loc_0"><label for="loc_0_13">Junin</label></li><li><input id="loc_0_14" type="checkbox" value="14" name="loc_0"><label for="loc_0_14">Lambayeque</label></li><li><input id="loc_0_15" type="checkbox" value="15" name="loc_0"><label for="loc_0_15">La Libertad</label></li><li><input id="loc_0_17" type="checkbox" value="17" name="loc_0"><label for="loc_0_17">Loreto</label></li><li><input id="loc_0_18" type="checkbox" value="18" name="loc_0"><label for="loc_0_18">Madre De Dios</label></li><li><input id="loc_0_19" type="checkbox" value="19" name="loc_0"><label for="loc_0_19">Moquegua</label></li><li><input id="loc_0_20" type="checkbox" value="20" name="loc_0"><label for="loc_0_20">Pasco</label></li><li><input id="loc_0_21" type="checkbox" value="21" name="loc_0"><label for="loc_0_21">Piura</label></li><li><input id="loc_0_22" type="checkbox" value="22" name="loc_0"><label for="loc_0_22">Puno</label></li><li><input id="loc_0_23" type="checkbox" value="23" name="loc_0"><label for="loc_0_23">San Martin</label></li><li><input id="loc_0_24" type="checkbox" value="24" name="loc_0"><label for="loc_0_24">Tacna</label></li><li><input id="loc_0_25" type="checkbox" value="25" name="loc_0"><label for="loc_0_25">Tumbes</label></li><li><input id="loc_0_26" type="checkbox" value="26" name="loc_0"><label for="loc_0_26">Ucayali</label></li><li><input id="loc_0_1" type="checkbox" value="1" name="loc_0"><label for="loc_0_1">Extranjero</label></li></ul>
+            <p>Región<span class="fcred">*</span></p>
+            <ul>
+              <li *ngFor="let region of regions">
+                <input type="checkbox" [value]="region.id" (change)="onRegionChange($event)">
+                <label>{{ region.name }}</label>
+              </li>
+            </ul>
           </div>
-
+    
           <div class="line">
-              <input type="submit" class="submit_n" name="gAlert" value="Guardar" data-id="0">
-              <a class="cancel" data-id="0">Cancelar</a>
+            <input type="submit" class="submit_n" (click)="saveAlert()" value="Guardar">
+            <a (click)="cancelAlert()">Cancelar</a>
           </div>
+        </div>
+    
+        <div *ngIf="!hasAlerts" class="sin_info">
+          <ul>
+            <li class="icono"><span class="icon info"></span></li>
+            <li class="info">
+              <p><span>Mis alertas</span></p>
+              <p>Recibe por e-mail las ofertas que más te interesan en base a los criterios que definas en tus alertas.</p>
+            </li>
+          </ul>
+        </div>
       </div>
-
-      
-          <div class="sin_info">
-              <ul>
-                  <li class="icono">
-                      <span class="icon info"></span>
-                  </li>
-                  <li class="info">
-                      <p><span>Mis alertas</span></p>
-                      <p>Recibe por e-mail las ofertas que más te interesan en base a los criterios que definas en tus alertas.</p>
-                  </li>
-              </ul>
+    
+      <!-- Popup de confirmación de guardado -->
+      <div *ngIf="showSuccessPopup" id="popup_alert_ok">
+        <div class="blockUI blockOverlay"></div>
+        <div class="blockUI blockMsg blockPage">
+          <div class="popup_gestof popup_gestcan">
+            <div class="md-content">
+              <p class="mtb15 green fs15">
+                <span class="icon estado_verde"></span>
+                Alerta guardada correctamente
+              </p>
+            </div>
           </div>
-      
-
-      
-          
-  </div>
-
-  
-
-  <input name="ctl00$ContainerGeneralOverWrite$ContainerGeneral$idcargo" type="hidden" id="idcargo" class="js-result-cargos-suggest" value="0">
-
-  <div class="ocultar">
-      <div class="blockUI blockOverlay"></div>
-      <div class="blockUI blockMsg blockPage">
-          <div style="cursor: default;" id="frmDelete" class="popup_gestof popup_gestcan content_popup">
-              <div class="md-modal md-effect-3 md-show">
-                  <div class="md-content c_t">
-                      <span class="icon ico_close" onclick="closePopup(); return false;"></span>
-                      <span class="title">Eliminar alerta</span>
-                      <p>¿Estás seguro que deseas eliminar la alerta? </p>
-                      <input class="submit_n boton" type="button" value="Eliminar" id="btDelete">
-                      <a id="aClose" onclick="closePopup(); return false;">Cancelar</a>
-                  </div>
-              </div>
-          </div>
+        </div>
       </div>
-  </div>
-
-  <div id="popup_alert_ok" class="ocultar" data-refresh="true">
-      <div class="blockUI blockOverlay" style="z-index: 9999; border: none; margin: 0px; padding: 0px; width: 100%; height: 100%; top: 0px; left: 0px; opacity: 0.6; position: fixed; background-color: rgb(0, 0, 0);"></div>
-      <div class="blockUI blockMsg blockPage" style="z-index: 99999; position: fixed; padding: 0px; margin: 0px; width: 50%; top: 35%; left: 25%; text-align: center; color: rgb(0, 0, 0); border: 3px solid rgb(170, 170, 170); background-color: rgb(255, 255, 255);">
-          <div style="cursor: default;" id="frmAlertOk" class="popup_gestof popup_gestcan">
-              <div class="md-modal md-effect-3 md-show box_popup">
-                  <div class="md-content">
-                      <div>
-                          <p class="mtb15 green fs15">
-                              <span class="icon estado_verde"></span>
-                              Alerta guardada correctamente
-                          </p>
-                      </div>
-                  </div>
-              </div>
+    
+    
+      <div *ngIf="showErrorPopup" id="popup_alert_ko">
+        <div class="blockUI blockOverlay"></div>
+        <div class="blockUI blockMsg blockPage">
+          <div class="popup_gestof popup_gestcan">
+            <div class="md-content">
+              <p class="mtb15 fc_red fs15">
+                <span class="icon estado_rojo"></span>
+                Ya tienes una alerta similar guardada.
+              </p>
+            </div>
           </div>
+        </div>
       </div>
+    </div>
   </div>
+</div>
 
-  <div id="popup_alert_ko" class="ocultar">
-      <div class="blockUI blockOverlay" style="z-index: 9999; border: none; margin: 0px; padding: 0px; width: 100%; height: 100%; top: 0px; left: 0px; opacity: 0.6; position: fixed; background-color: rgb(0, 0, 0);"></div>
-      <div class="blockUI blockMsg blockPage" style="z-index: 9999; position: fixed; padding: 0px; margin: 0px; width: 50%; top: 35%; left: 25%; text-align: center; color: rgb(0, 0, 0); border: 3px solid rgb(170, 170, 170); background-color: rgb(255, 255, 255);">
-          <div style="cursor: default;" id="frmAlertKo" class="popup_gestof popup_gestcan">
-              <div class="md-modal md-effect-3 md-show box_popup">
-                  <div class="md-content">
-                      <div>
-                          <p class="mtb15 fc_red fs15">
-                              <span class="icon estado_rojo"></span>
-                              Ya tienes una alerta similar guardada.
-                          </p>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </div>
-
-  <div id="divAlert" style="display: none;">
-      <div class="blockUI blockOverlay" style="z-index: 99999; border: none; margin: 0px; padding: 0px; width: 100%; height: 100%; top: 0px; left: 0px; background-color: rgb(0, 0, 0); opacity: 0.6; cursor: wait; position: fixed;"></div>
-      <div class="blockUI blockMsg blockPage" style="z-index: 99999; position: fixed; padding: 0px; margin: 0px; width: 35%; top: 27%; left: 32.5%; text-align: center; color: rgb(0, 0, 0); border: 3px solid rgb(170, 170, 170); cursor: wait; background-color: rgb(255, 255, 255);">
-          <div style="cursor: default;" class="popup_gestof popup_gestcan content_popup">
-              <div class="md-modal md-effect-3 md-show">
-                  <div class="md-content c_t">
-                      <span class="icon ico_close"></span>
-                      <span class="title">Aviso</span>
-                      <p id="alert_message"><b></b></p>
-                      <input class="submit_n boton" type="button" value="Aceptar" id="btAccept">
-                  </div>
-              </div>
-          </div>
-      </div>
-  </div>
-
-  <input type="hidden" name="ctl00$ContainerGeneralOverWrite$ContainerGeneral$hk" id="hk">
-  <input type="hidden" name="ctl00$ContainerGeneralOverWrite$ContainerGeneral$hc" id="hc">
-  <input type="hidden" name="ctl00$ContainerGeneralOverWrite$ContainerGeneral$hl" id="hl">
-  <input type="hidden" name="ctl00$ContainerGeneralOverWrite$ContainerGeneral$hidp" id="hidp">
-
-          </div>
-
-
-      
-  
-
-  

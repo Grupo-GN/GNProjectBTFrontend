@@ -1,7 +1,7 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit, Renderer2 } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { debounceTime, distinctUntilChanged, switchMap, catchError } from 'rxjs/operators';
-import { Observable, Subject, of } from 'rxjs';
+import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
+import { Observable, Subject } from 'rxjs';
 
 @Component({
   selector: 'app-mis-alertas',
@@ -10,9 +10,17 @@ import { Observable, Subject, of } from 'rxjs';
 })
 export class MisAlertasComponent implements OnInit {
 
+  showSuccessPopup: boolean = false;
+  showErrorPopup: boolean = false;
+  showForm: boolean = false;
+  alertData = { cargo: '', categories: [] as string[], regions: [] as string[] };
+  categories = [{ id: '1', name: 'Administracion / Oficina' }, { id: '2', name:'CallCenter / Telemercadeo' }, { id: '3', name:'CallCenter / Telemercadeo' }, { id: '2', name:'CallCenter / Telemercadeo' } ,{ id: '2', name:'CallCenter / Telemercadeo' }, { id: '2', name:'CallCenter / Telemercadeo' }, { id: '2', name:'CallCenter / Telemercadeo' }, { id: '2', name:'CallCenter / Telemercadeo' }, { id: '2', name:'CallCenter / Telemercadeo'}, { id: '2', name:'CallCenter / Telemercadeo' }, { id: '2', name:'CallCenter / Telemercadeo' }, { id: '2', name:'CallCenter / Telemercadeo' }, { id: '2', name:'CallCenter / Telemercadeo' }, { id: '2', name:'CallCenter / Telemercadeo' }, { id: '2', name:'CallCenter / Telemercadeo' }, { id: '2', name:'CallCenter / Telemercadeo' } ,{ id: '2', name:'CallCenter / Telemercadeo' } ,{ id: '2', name:'CallCenter / Telemercadeo' },{ id: '2', name:'CallCenter / Telemercadeo' } ,{ id: '2', name:'CallCenter / Telemercadeo' } ,{ id: '2', name:'CallCenter / Telemercadeo' }, { id: '2', name:'CallCenter / Telemercadeo' },{ id: '2', name:'CallCenter / Telemercadeo' }];
+  regions = [{ id: '1', name: 'Lima' }, { id: '2', name: 'Apurimac' }, { id: '3', name: 'Apurimac' }, { id: '4', name: 'Apurimac' }, { id: '5', name: 'Apurimac' }, { id: '6', name: 'Apurimac' }, { id: '7', name: 'Apurimac' } , { id: '8', name: 'Apurimac' }, { id: '9', name: 'Apurimac' }, { id: '10', name: 'Apurimac' }, { id: '11', name: 'Apurimac' },{ id: '12', name: 'Apurimac' },{ id: '13', name: 'Apurimac' },{ id: '14', name: 'Apurimac' },{ id: '2', name: 'Apurimac' },{ id: '2', name: 'Apurimac' },{ id: '2', name: 'Apurimac' },{ id: '2', name: 'Apurimac' },{ id: '2', name: 'Apurimac' },{ id: '2', name: 'Apurimac' },{ id: '2', name: 'Apurimac' },{ id: '2', name: 'Apurimac' },{ id: '2', name: 'Apurimac' },{ id: '2', name: 'Apurimac' }];
+  hasAlerts: boolean = false;
+  
   suggestionsVisible: string | null = null;
-  lastSearches: string[] = [''];
-  popularJobs: string[] = [
+  lastSearches = ['atencion al cliente en arequipa'];
+  popularJobs = [
     'Atención al cliente',
     'Asesor/a de ventas',
     'Agente de seguridad',
@@ -20,8 +28,9 @@ export class MisAlertasComponent implements OnInit {
     'Promotor/a de ventas',
     'Call center'
   ];
-  CountrySearches: string[] = [''];
-  popularPlaces: string[] = [
+
+  CountrySearches = ['atencion al cliente en arequipa'];
+  popularPlaces = [
     'Arequipa',
     'Lima',
     'Cusco',
@@ -29,13 +38,12 @@ export class MisAlertasComponent implements OnInit {
     'Chiclayo',
     'Iquitos'
   ];
-  filteredPlaces: string[] = [...this.popularPlaces];
-  filteredJobs: string[] = [...this.popularJobs];
-  searchTerm: string = '';
-  placeTerm: string = '';
+  filteredPlaces = [...this.popularPlaces];
+  filteredJobs = [...this.popularJobs];
+  searchTerm = '';
+  placeTerm = '';
   private searchTerms = new Subject<string>();
   private placeTerms = new Subject<string>();
-  selectedView: string = 'localizacion';
 
   constructor(private http: HttpClient) {}
 
@@ -57,73 +65,113 @@ export class MisAlertasComponent implements OnInit {
     });
   }
 
-  showSuggestions(type: string): void {
+  showSuggestions(type: string) {
     this.suggestionsVisible = type;
   }
-
-  hideSuggestions(): void {
-    setTimeout(() => {
-      this.suggestionsVisible = null;
-    }, 1000000); // Ajusta el tiempo de espera si es necesario
+  showNewAlertForm(): void {
+    this.showForm = true;
   }
 
-  onInput(event: Event): void {
+  hideSuggestions() {
+    setTimeout(() => {
+      this.suggestionsVisible = null;
+    }, 10000);
+  }
+
+  onInput(event: Event) {
     const input = (event.target as HTMLInputElement).value;
     this.searchTerms.next(input);
   }
 
-  onInputPlace(event: Event): void {
+  onInputPlace(event: Event) {
     const input = (event.target as HTMLInputElement).value;
     this.placeTerms.next(input);
   }
+  onCategoryChange(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    if (input.checked) {
+      this.alertData.categories.push(input.value);
+    } else {
+      this.alertData.categories = this.alertData.categories.filter(cat => cat !== input.value);
+    }
+  }
+
+  onRegionChange(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    const value = input.value; // Capturamos el valor del input
+
+    if (input.checked) {
+      this.alertData.regions.push(value);
+    } else {
+      this.alertData.regions = this.alertData.regions.filter(reg => reg !== value);
+    }
+  }
 
   search(term: string): Observable<string[]> {
-    return this.http.get<string[]>(`https://api.example.com/search?query=${term}`);
+    return this.http.post<string[]>('https://pe.computrabajo.com/', { query: term });
   }
 
   getSearchUrl(search: string): string {
     return `/trabajo-de-${search.replace(/\s+/g, '-').toLowerCase()}`;
   }
 
-  searchPlace() {
-    this.search(this.placeTerm).subscribe(results => {
-      this.filteredPlaces = results;
-    });
-  }
-
-  deleteSearch(search: string): void {
+  deleteSearch(search: string) {
     this.lastSearches = this.lastSearches.filter(s => s !== search);
   }
 
-  selectPlace(place: string): void {
-    this.placeTerm = place;
+  selectPlace(place: string) {
+    
     console.log('Place selected:', place);
   }
 
-  selectJob(job: string): void {
-    this.searchTerm = job;
+  selectJob(job: string) {
+  
     console.log('Job selected:', job);
   }
 
-  onSubmit(): void {
+
+  onSubmit() {
+  
     console.log('Form submitted with search term:', this.searchTerm);
     console.log('Form submitted with place term:', this.placeTerm);
-    this.performSearch();
+  }
+  selectedView: string = 'localizacion'; 
+
+  toggleView(view: string): void {
+    if (this.selectedView === view) {
+    
+      this.selectedView = '';
+    } else {
+      
+      this.selectedView = view;
+    }
   }
 
+  saveAlert(): void {
+    // Aquí se realizaría la lógica para guardar la alerta
+    const isDuplicate = false; // Aquí debes implementar la lógica para detectar duplicados
+
+    if (isDuplicate) {
+      this.showErrorPopup = true;
+      setTimeout(() => {
+        this.showErrorPopup = false;
+      }, 3000); // El popup de error se oculta después de 3 segundos
+    } else {
+      this.showSuccessPopup = true;
+      setTimeout(() => {
+        this.showSuccessPopup = false;
+      }, 3000); // El popup de éxito se oculta después de 3 segundos
+      this.hasAlerts = true;
+      this.showForm = false; // Ocultar el formulario después de guardar
+    }
+  }
+  cancelAlert(): void {
+    this.showForm = false;
+  }
   closeSearchBox() {
     console.log('Cerrando cuadro de búsqueda');
     this.suggestionsVisible = null;
   }
-
-  clearSearchTerm() {
-    this.searchTerm = '';
-  }
-
-  clearPlaceTerm() {
-    this.placeTerm = '';
-  }
-
   performSearch() {
     console.log('Realizando búsqueda con los términos:');
     console.log('Término de búsqueda:', this.searchTerm);
@@ -132,36 +180,13 @@ export class MisAlertasComponent implements OnInit {
     this.search(this.searchTerm).subscribe(results => {
       this.filteredJobs = results;
     });
-
-    this.searchPlace();
+  }
+  clearSearchTerm() {
+    this.searchTerm = '';
+  }
+  
+  clearPlaceTerm() {
+    this.placeTerm = '';
   }
 
-  trackMenuClick(section: string) {
-    console.log(`Navegando a ${section}`);
-  }
-
-  @HostListener('document:click', ['$event'])
-  handleClickOutside(event: MouseEvent) {
-    const target = event.target as HTMLElement;
-    const isInsideJobSearch = target.closest('#prof-cat-search-input') || target.closest('.autocomplete.job');
-    const isInsidePlaceSearch = target.closest('#place-search-input') || target.closest('.autocomplete.place');
-    if (!isInsideJobSearch) {
-      this.suggestionsVisible = this.suggestionsVisible === 'job' ? null : this.suggestionsVisible;
-    }
-    if (!isInsidePlaceSearch) {
-      this.suggestionsVisible = this.suggestionsVisible === 'place' ? null : this.suggestionsVisible;
-    }
-  }
-
-  onInputClick(event: MouseEvent) {
-    event.stopPropagation();
-  }
-
-  onMenuClick(event: MouseEvent) {
-    event.stopPropagation();
-  }
-
-  toggleView(view: string): void {
-    this.selectedView = this.selectedView === view ? '' : view;
-  }
 }
