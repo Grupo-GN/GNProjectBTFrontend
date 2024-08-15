@@ -7,77 +7,31 @@
               <span data-box-search-close="" class="icon i_close_w cp" (click)="closeSearchBox()"></span>
               <div id="slider-container-outer">
                 <div id="slider-container">
-                  <div class="box_search slider-item sel" data-position="1" data-box-search-inputs-container="" data-autocomplete-add-classes-when-opening-target="">
-                    <div>
-                      <div class="field_input_icon posRel mb0" data-type-search="prof-cat" data-input-focusable-container="">
-                        <form autocomplete="off" class="cont" (ngSubmit)="onSubmit()">
-                          <svg xmlns="http://www.w3.org/2000/svg" class="input-icon" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(10, 9, 9, 1)">
-                            <path d="M20 6h-3V4c0-1.103-.897-2-2-2H9c-1.103 0-2 .897-2 2v2H4c-1.103 0-2 .897-2 2v11c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V8c0-1.103-.897-2-2-2zm-5-2v2H9V4h6zM4 8h16v4h-3v-2h-2v2H9v-2H7v2H4V8zm0 11v-5h3v2h2v-2h6v2h2v-2h3.001v5H4z"></path>
-                          </svg>
-                          <input id="prof-cat-search-input" type="search" placeholder="Cargo o categoría" autocomplete="off" [(ngModel)]="searchTerm" name="searchTerm" (focus)="showSuggestions('job')" (blur)="hideSuggestions()" (input)="onInput($event)">
-                          <ul class="autocomplete job" [class.visible]="suggestionsVisible === 'job'">
-                            <li class="title_suggest">Últimas búsquedas
-                            <li *ngFor="let search of lastSearches">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 22 22" class="btn-icon" style="fill: rgb(117, 116, 116);">
-                                    <path d="M19.023 16.977a35.13 35.13 0 0 1-1.367-1.384c-.372-.378-.596-.653-.596-.653l-2.8-1.337A6.962 6.962 0 0 0 16 9c0-3.859-3.14-7-7-7S2 5.141 2 9s3.14 7 7 7c1.763 0 3.37-.66 4.603-1.739l1.337 2.8s.275.224.653.596c.387.363.896.854 1.384 1.367l1.358 1.392.604.646 2.121-2.121-.646-.604c-.379-.372-.885-.866-1.391-1.36zM9 14c-2.757 0-5-2.243-5-5s2.243-5 5-5 5 2.243 5 5-2.243 5-5 5z"></path>
-                                  </svg>
-                            <a [href]="getSearchUrl(search)">{{ search }}</a>
-                            <span class="b_delete">
-                            <span class="icon i_delete" (click)="deleteSearch(search)"></span>
-                            </span>
-                        </li>
-                        <li class="title_suggest">Empleos más demandados
-                        <li *ngFor="let job of filteredJobs" (click)="selectJob(job)">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 22 22" class="btn-icon" style="fill: rgb(240, 235, 235);">
-                                <path d="M19.023 16.977a35.13 35.13 0 0 1-1.367-1.384c-.372-.378-.596-.653-.596-.653l-2.8-1.337A6.962 6.962 0 0 0 16 9c0-3.859-3.14-7-7-7S2 5.141 2 9s3.14 7 7 7c1.763 0 3.37-.66 4.603-1.739l1.337 2.8s.275.224.653.596c.387.363.896.854 1.384 1.367l1.358 1.392.604.646 2.121-2.121-.646-.604c-.379-.372-.885-.866-1.391-1.36zM9 14c-2.757 0-5-2.243-5-5s2.243-5 5-5 5 2.243 5 5-2.243 5-5 5z"></path>
-                              </svg>
-                        <div>{{ job }}</div>
-                        </li>
-                        </ul>
-                          <span id="prof-cat-clean-button" class="btn_click hide" (click)="clearSearchTerm()">
-                            <span class="icon i_close"></span>
-                          </span>
-                        </form>
-                      </div>
-                      <div class="field_input_icon posRel bl1 mb0" data-type-search="place" data-input-focusable-container="">
-                        <form autocomplete="off" class="cont" (ngSubmit)="onSubmit()">
-                          <svg xmlns="http://www.w3.org/2000/svg" class="input-icon" width="25" height="25" viewBox="0 0 24 24" style="fill: rgb(5, 5, 5)">
-                            <path d="M12 2C7.589 2 4 5.589 4 9.995 3.971 16.44 11.696 21.784 12 22c0 0 8.029-5.56 8-12 0-4.411-3.589-8-8-8zM9.799 14.987H8v-1.799l4.977-4.97 1.799 1.799-4.977 4.97zm5.824-5.817-1.799-1.799L15.196 6l1.799 1.799-1.372 1.371z"></path>
-                          </svg>
-                          <input id="place-search-input" type="search" placeholder="Lugar" autocomplete="off" [(ngModel)]="placeTerm" name="placeTerm" (focus)="showSuggestions('place')" (blur)="hideSuggestions()" (input)="onInputPlace($event)">
-                          <ul class="autocomplete place" [class.visible]="suggestionsVisible === 'place'">
-                            <li class="title_suggest">Últimas búsquedas</li>
-                            <li *ngFor="let search of CountrySearches">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="input-icon-place" width="25" height="25" viewBox="0 0 24 24" style="fill: rgb(138, 137, 137)">
-                                    <path d="M12 2C7.589 2 4 5.589 4 9.995 3.971 16.44 11.696 21.784 12 22c0 0 8.029-5.56 8-12 0-4.411-3.589-8-8-8zM9.799 14.987H8v-1.799l4.977-4.97 1.799 1.799-4.977 4.97zm5.824-5.817-1.799-1.799L15.196 6l1.799 1.799-1.372 1.371z"></path>
-                                  </svg>
-                              <a [href]="getSearchUrl(search)">{{ search }}</a>
-                              <span class="b_delete">
-                                <span class="icon i_delete" (click)="deleteSearch(search)"></span>
-                              </span>
-                            </li>
-                            <li class="title_suggest">Empleos más demandados</li>
-                            <li *ngFor="let place of filteredPlaces" (click)="selectPlace(place)">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="input-icon-place" width="25" height="25" viewBox="0 0 24 24" style="fill: rgb(180, 178, 178)">
-                                    <path d="M12 2C7.589 2 4 5.589 4 9.995 3.971 16.44 11.696 21.784 12 22c0 0 8.029-5.56 8-12 0-4.411-3.589-8-8-8zM9.799 14.987H8v-1.799l4.977-4.97 1.799 1.799-4.977 4.97zm5.824-5.817-1.799-1.799L15.196 6l1.799 1.799-1.372 1.371z"></path>
-                                  </svg>
-                              <div>
-                                {{ place }}</div>
-                            </li>
-                          </ul>
-                          <span id="place-clean-button" class="btn_click hide" (click)="clearPlaceTerm()">
-                            <span class="icon i_close"></span>
-                          </span>
-                        </form>
-                      </div>
-                    </div>
-                    <button id="search-button" class="b_primary rounded mlAuto" (click)="performSearch()">
-                        
-                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 22 22" class="btn-icon" style="fill: rgb(240, 235, 235);">
-                        <path d="M19.023 16.977a35.13 35.13 0 0 1-1.367-1.384c-.372-.378-.596-.653-.596-.653l-2.8-1.337A6.962 6.962 0 0 0 16 9c0-3.859-3.14-7-7-7S2 5.141 2 9s3.14 7 7 7c1.763 0 3.37-.66 4.603-1.739l1.337 2.8s.275.224.653.596c.387.363.896.854 1.384 1.367l1.358 1.392.604.646 2.121-2.121-.646-.604c-.379-.372-.885-.866-1.391-1.36zM9 14c-2.757 0-5-2.243-5-5s2.243-5 5-5 5 2.243 5 5-2.243 5-5 5z"></path>
+                  <div class="box_search slider-item sel" data-position="1" data-box-search-inputs-container="">
+                    <form autocomplete="off" class="cont" (ngSubmit)="onSearch()">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="input-icon" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(10, 9, 9, 1)">
+                        <path d="M20 6h-3V4c0-1.103-.897-2-2-2H9c-1.103 0-2 .897-2 2v2H4c-1.103 0-2 .897-2 2v11c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V8c0-1.103-.897-2-2-2zm-5-2v2H9V4h6zM4 8h16v4h-3v-2h-2v2H9v-2H7v2H4V8zm0 11v-5h3v2h2v-2h6v2h2v-2h3.001v5H4z"></path>
                       </svg>
+                      <input id="prof-cat-search-input" type="search" placeholder="Nombre del Pokémon" autocomplete="off" [(ngModel)]="searchTerm" name="searchTerm">
+                      <button id="search-button" class="b_primary rounded mlAuto" type="submit">
+                        Buscar
+                      </button>
+                    </form>
+                    <button id="clear-button" class="b_secondary rounded mlAuto" (click)="clearSearchTerm()">
+                      Limpiar
                     </button>
                   </div>
+                  <div *ngIf="pokemon" class="pokemon-info">
+                    <h2>{{ pokemon.name | titlecase }}</h2>
+                    <img [src]="pokemon.sprites.front_default" alt="{{ pokemon.name }}">
+                    <p>Altura: {{ pokemon.height / 10 }} m</p>
+                    <p>Peso: {{ pokemon.weight / 10 }} kg</p>
+                    <p>Tipo: <span class="type-list" *ngFor="let type of pokemon.types">{{ type.type.name }}</span></p>
+                  </div>
+                  <div *ngIf="pokemon === null" class="no-pokemon-message">
+                    <p>No se encontró el Pokémon.</p>
+                  </div>
+
                 </div>
               </div>
             </div>
@@ -85,60 +39,69 @@
         </header>
         <div class="container">
             <section class="ccp_menu" id="secMenu">
-              <ul>
-                <li class="selec">
-                  <a href="http://localhost:4200/mi-area"  title="Mi área" (click)="trackMenuClick('Home')">
-                    <div class="ccp_imgm1">
-                      <svg xmlns="http://www.w3.org/2000/svg" class="input-icon-2" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                          <path d="M3 9.5L12 3l9 6.5v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-10z"></path>
-                          <polyline points="9 22 9 12 15 12 15 22"></polyline>
-                        </svg>
-                    </div>Mi área
-                  </a>
-                  <div class="ccp_flecha"></div>
-                </li>
-                <li>
-                  <a href="http://localhost:4200/CV"  (click)="trackMenuClick('CV')">
-                    <div class="ccp_imgm4">
-                      <svg xmlns="http://www.w3.org/2000/svg" class="input-icon-3" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                          <line x1="8" y1="9" x2="16" y2="9"></line>
-                          <line x1="8" y1="13" x2="16" y2="13"></line>
-                          <line x1="8" y1="17" x2="16" y2="17"></line>
-                          <circle cx="12" cy="6" r="1"></circle>
-                        </svg>
-                    </div>Mi currículum
-                  </a>
-                  <div class="ccp_flecha"></div>
-                </li>
-                <li>
-                  <a data-path="/candidate/test/list?tlo=7A02BC8BFD169A2F" title="Test y evaluaciones" (click)="trackMenuClick('Tests')">
-                    <div class="ccp_imgm10">
-                      <svg xmlns="http://www.w3.org/2000/svg" class="input-icon-4" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                          <line x1="8" y1="9" x2="14" y2="9"></line>
-                          <line x1="8" y1="13" x2="14" y2="13"></line>
-                          <line x1="8" y1="17" x2="14" y2="17"></line>
-                          <circle cx="16" cy="9" r="1"></circle>
-                          <circle cx="16" cy="13" r="1"></circle>
-                          <circle cx="16" cy="17" r="1"></circle>
-                        </svg>
-                    </div>Test y evaluaciones
-                  </a>
-                  <div class="ccp_flecha"></div>
-                </li>
-                <li>
-                  <a href="http://localhost:4200/configuraciones"  title="Configuración" (click)="trackMenuClick('Configuracion')">
-                    <div class="ccp_imgm6">
-                      <svg xmlns="http://www.w3.org/2000/svg" class="input-icon-5" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                          <circle cx="12" cy="12" r="3"></circle>
-                          <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-.99 1.51V20a2 2 0 0 1-2 2h-2a2 2 0 0 1-2-2v-.09a1.65 1.65 0 0 0-.99-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-.99H4a2 2 0 0 1-2-2v-2a2 2 0 0 1 2-2h.09c.73 0 1.39-.39 1.51-.99a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06c.43.43 1.04.57 1.82.33H12a1.65 1.65 0 0 0 1.51-.99 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H20a2 2 0 0 1 2 2v.09c0 .73-.39 1.39-.99 1.51a1.65 1.65 0 0 0-.33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33H12z"></path>
-                        </svg>
-                    </div>Configuración
-                  </a>
-                  <div class="ccp_flecha"></div>
-                </li>
-              </ul>
+                <ul>
+                    <li class="selec">
+                        <a href="http://localhost:4200/mi-area"  title="Mi área" (click)="trackMenuClick('Home')">
+                            <div class="ccp_imgm1">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="input-icon-2" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M3 9.5L12 3l9 6.5v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-10z"></path>
+                                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                            </svg>
+                        </div>Mi área
+                        </a>
+                        <div class="ccp_flecha"></div>
+                    </li>
+                    <li>
+                        <a href="http://localhost:4200/CV"  (click)="trackMenuClick('CV')">
+                            <div class="ccp_imgm4">
+                              <svg xmlns="http://www.w3.org/2000/svg" class="input-icon-3" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                  <line x1="8" y1="9" x2="16" y2="9"></line>
+                                  <line x1="8" y1="13" x2="16" y2="13"></line>
+                                  <line x1="8" y1="17" x2="16" y2="17"></line>
+                                  <circle cx="12" cy="6" r="1"></circle>
+                                </svg>
+                            </div>Mi currículum
+                          </a>
+                          <div class="ccp_flecha"></div>
+                        </li>
+                        <li>
+                          <a data-path="/candidate/test/list?tlo=7A02BC8BFD169A2F" title="Test y evaluaciones" (click)="trackMenuClick('Tests')">
+                            <div class="ccp_imgm10">
+                              <svg xmlns="http://www.w3.org/2000/svg" class="input-icon-4" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                  <line x1="8" y1="9" x2="14" y2="9"></line>
+                                  <line x1="8" y1="13" x2="14" y2="13"></line>
+                                  <line x1="8" y1="17" x2="14" y2="17"></line>
+                                  <circle cx="16" cy="9" r="1"></circle>
+                                  <circle cx="16" cy="13" r="1"></circle>
+                                  <circle cx="16" cy="17" r="1"></circle>
+                                </svg>
+                            </div>Test y evaluaciones
+                          </a>
+                          <div class="ccp_flecha"></div>
+                        </li>
+                        <li>
+                          <a href="http://localhost:4200/configuraciones"  title="Configuración" (click)="trackMenuClick('Configuracion')">
+                            <div class="ccp_imgm6">
+                                <svg
+                                class="input-icon-5"
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="24"
+                                height="24"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                            >
+                                <path
+                                d="m2.344 15.271 2 3.46a1 1 0 0 0 1.366.365l1.396-.806c.58.457 1.221.832 1.895 1.112V21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1.598a8.094 8.094 0 0 0 1.895-1.112l1.396.806c.477.275 1.091.11 1.366-.365l2-3.46a1.004 1.004 0 0 0-.365-1.366l-1.372-.793a7.683 7.683 0 0 0-.002-2.224l1.372-.793c.476-.275.641-.89.365-1.366l-2-3.46a1 1 0 0 0-1.366-.365l-1.396.806A8.034 8.034 0 0 0 15 4.598V3a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v1.598A8.094 8.094 0 0 0 7.105 5.71L5.71 4.904a.999.999 0 0 0-1.366.365l-2 3.46a1.004 1.004 0 0 0 .365 1.366l1.372.793a7.683 7.683 0 0 0 0 2.224l-1.372.793c-.476.275-.641.89-.365 1.366zM12 8c2.206 0 4 1.794 4 4s-1.794 4-4 4-4-1.794-4-4 1.794-4 4-4z"
+                                ></path>
+                            </svg>
+                            </div>Configuración
+                        </a>
+                    
+                      <div class="ccp_flecha"></div>
+                    </li>
+                  </ul>
             </section>
         </div>
         <div id="MainContainer" class="conteiner">
@@ -146,19 +109,19 @@
                 <div class="box_border mb30">
         <div class="cols tLayoutFix">
             <div class="user_info">
-                <h1>Pamela Figueroa</h1>
-                <h2>ingenieria de Software</h2>
+                <h1>Usuario</h1>
+                <h2>Carrera u Oficio</h2>
                 <div class="mt10">
                     <a href="/CV/" class="b_primary_inv tiny mr10">Acceder al CV</a>
-                    <a href="/CV/?design=1" class="b_primary_inv tiny">Diseñar CV</a>
+                    <a href="/CV/designer" class="b_primary_inv tiny">Diseñar CV</a>
                 </div>
             </div>
             <div class="user_photo">
         <form action="/candidate/home/uploadphoto" enctype="multipart/form-data" method="post" novalidate="novalidate"><input name="__RequestVerificationToken" type="hidden" value="_qG7bfCar6HsfZ79qzgrWRh5WFJxTl4rmJaJNXgpjE4rUYsNLl1UHI6YCJQLbxA2teR-Mb8RxN1I_np-wK1TsV0r-kaADEbvaHjGwULPgKLko8cf0">        <input type="file" id="uploadpic" name="uploadpic" style="display: none">
                 <input type="submit" id="uploadpicSubmit" style="display: none">
         </form>        <div id="uploadImage">
-                    <div title="Pamela Figueroa" id="up-img">
-                        <img src="https://ii.ct-stc.com/3/logos/candidates/2024/06/24/1651323601293thumbnail.jpeg" alt="Pamela Figueroa">
+                    <div title="Usuario" id="up-img">
+                        <img src="assets/img/usuario.png" alt="usuario">
                         <span>
                             <span title="Sube tu foto"></span>
                         </span>
@@ -169,26 +132,11 @@
                     <div class="overlay hide" home-candidate-overlay=""></div>
                 </div>
                 
-            <div class="box_info_aux bg_cup mb30" super-candidate-card="" home-candidate-popup-show="">
-                <div>
-                    <p class="fs18 fwB">Configura tu perfil</p>
-                    <p class="fs14 mt10">
-                        Estás cerca de ser un <span class="dB fwB">
-                        Super candidato
-                        </span>
-                    </p>
-                </div>
-                <div class="mlAuto">
-                    <div class="doughnut small border">
-                        <div class="portion" style="background-image: conic-gradient( #FCC73B 0 180deg, #eaf3fb 0);"></div>
-                        <p class="center">3/6</p>
-                    </div>
-                </div>
-            </div>
+            
         
                 
         
-            <a class="fc_base dIB box_border hover w100 mb30" href="https://candidato.pe.computrabajo.com/candidate/match/">
+            <a class="fc_base dIB box_border hover w100 mb30" href="http://localhost:4200/mi-area/candidate/match/">
                 <div class="dFlex vm_fx mb15">
                     <p class="fs20 fwB">Mis postulaciones</p>
                 </div>
@@ -229,7 +177,7 @@
                     </p>
                 </div>
                 <div class="mlAuto">
-                    <img class="lazy" src="//cp.ct-stc.com/ac/v02.01.00.07/c/img/bg_plan_career.png" alt="Planificador de carrera" width="170">
+                    <img class="lazy" src="assets/img/women1.png" alt="Planificador de carrera" width="170">
                 </div>
             </a>
         
@@ -259,7 +207,7 @@
                                                             </span>
                                     <span class="icon i_arrow_black"></span>
                                 </a>
-                            <a class="fc_aux cols hover pl25 pt15 pb15 pr25" href="https://candidato.pe.computrabajo.com/candidate/test/list?tlo=7A02BC8BFD169A2F" alt="Test y evaluaciones">
+                            <a class="fc_aux cols hover pl25 pt15 pb15 pr25" href="http://localhost:4200/candidate/test/list?tlo=7A02BC8BFD169A2F" alt="Test y evaluaciones">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="input-icon-4" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#052641" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                     <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
                                     <line x1="8" y1="9" x2="14" y2="9"></line>
@@ -304,470 +252,27 @@
                                                             </span>
                                     <span class="icon i_arrow_black"></span>
                                 </a>
-       </div>
-            </div>
-        
-                <div class="box_right home_user mt30 mb30 w100_m">
-                    <div id="offersGridOfferContainer" class="box_grid parrilla_oferta">
-                        <h1 class="title_page">
-                            <span class="fwB">Ofertas que encajan con tu perfil</span>
-                        </h1>
-        <article class="box_offer bClick" onclick="ga('send', 'event', 'Recommender', 'Desktop', 'Click');">
-            <div class="w100">
-                    <div class="list_dot mb15">
-                            <span class="fc_urgent">Se precisa urgente</span>
-        
-                            <span class="fc_dest">Empleo destacado</span>
-                    </div>
-                <h2 class="fs18 fwB"><a class="js-o-link fc_base" href="https://pe.computrabajo.com/empleos-de-atencion-a-clientes-en-arequipa-en-la-joya#5E0B9ADE833F1E7861373E686DCF3405&amp;lc=CandidateHome-Suggested-0-Similars-0-O2Ov3" title="Recepcionista con experiencia en atencion al cliente  Arequipa ( La Joya )">Recepcionista con experiencia en atencion al cliente  Arequipa ( La Joya )</a></h2>
-                <p class="fs16 fc_base mt5 mb10">
-                    <a class="fc_base hover it-blank" href="https://pe.computrabajo.com/act-gestiones-y-servicios-sac">Act Gestiones y Servicios S.A.C.</a>
-                    Arequipa
-                </p>
-                <p class="fc_aux t_word_wrap mb10 hide_m">Planta de revisiones tecnicas vehiculares requiere recepcionista con: * Experiencia en atención al cliente mínimo 2...</p>
-                <p class="fs13 fc_aux">Hace  7  días</p>
-            </div>
-        </article><article class="box_offer bClick" onclick="ga('send', 'event', 'Recommender', 'Desktop', 'Click');">
-            <div class="w100">
-                <h2 class="fs18 fwB"><a class="js-o-link fc_base" href="https://pe.computrabajo.com/trabajo-de-atencion-al-cliente-en-arequipa-en-arequipa#5B6E552850D4563661373E686DCF3405&amp;lc=CandidateHome-Suggested-0-Similars-1-O2Ov3" title="Atención al cliente en Joyería Arequipa">Atención al cliente en Joyería Arequipa</a></h2>
-                <p class="fs16 fc_base mt5 mb10">
-                    <a class="fc_base hover it-blank" href="https://pe.computrabajo.com/empresas/ofertas-de-trabajo-de-akaly-concept-ACB8AE795ECB27BF">AKALY CONCEPT E.I.R.L.</a>
-                    Arequipa
-                </p>
-                <p class="fc_aux t_word_wrap mb10 hide_m">Beneficios: -Sueldo base + comisiones - ingreso a planilla + beneficios de ley Requisitos: -Experiencia en atención al...</p>
-                <p class="fs13 fc_aux">Más de 30 días</p>
-            </div>
-        </article><article class="box_offer bClick" onclick="ga('send', 'event', 'Recommender', 'Desktop', 'Click');">
-            <div class="w100">
-                    <div class="list_dot mb15">
-                            <span class="fc_urgent">Se precisa urgente</span>
-        
-                            <span class="fc_dest">Empleo destacado</span>
-                    </div>
-                <h2 class="fs18 fwB"><a class="js-o-link fc_base" href="https://pe.computrabajo.com/trabajo-de-atencion-al-cliente-en-arequipa-en-arequipa#5EA2FEDED2F5798B61373E686DCF3405&amp;lc=CandidateHome-Suggested-0-Similars-2-O2Ov3" title="Atención al Cliente">Atención al Cliente</a></h2>
-                <p class="fs16 fc_base mt5 mb10">
-                    <a class="fc_base hover it-blank" href="">Importante empresa </a>
-                    Arequipa
-                </p>
-                <p class="fc_aux t_word_wrap mb10 hide_m">Actualmente estamos en la búsqueda de nuevos talentos deseosos de formar parte de la organización ocupando el puesto...</p>
-                <p class="fs13 fc_aux">Hace  15  horas</p>
-            </div>
-        </article><article class="box_offer bClick" onclick="ga('send', 'event', 'Recommender', 'Desktop', 'Click');">
-            <div class="w100">
-                <h2 class="fs18 fwB"><a class="js-o-link fc_base" href="https://pe.computrabajo.com/trabajo-de-atencion-al-cliente-en-arequipa-en-arequipa#1FB7299E22879AFE61373E686DCF3405&amp;lc=CandidateHome-Suggested-0-Similars-3-O2Ov3" title="Atención al cliente  Estilos Mercaderes">Atención al cliente  Estilos Mercaderes</a></h2>
-                <p class="fs16 fc_base mt5 mb10">
-                    <a class="fc_base hover it-blank" href="https://pe.computrabajo.com/estilossrl">Estilos S.R.L.  </a>
-                    Arequipa
-                </p>
-                <p class="fc_aux t_word_wrap mb10 hide_m">Estilos, empresa peruana líder en el rubro Retail con más de 27 tiendas a nivel nacional requiere incorporar a su...</p>
-                <p class="fs13 fc_aux">Hace  3  días</p>
-            </div>
-                <div class="w_15 pl15px">
-                    <img class="lazy" data-src="https://ii.ct-stc.com/3/logos/empresas/2016/05/31/estilos-srl-F645C936B505800Ethumbnail.jpeg" title="Estilos S.R.L.  " src="https://ii.ct-stc.com/3/logos/empresas/2016/05/31/estilos-srl-F645C936B505800Ethumbnail.jpeg" style="max-width: 80px;">
-                </div>
-        </article><article class="box_offer bClick" onclick="ga('send', 'event', 'Recommender', 'Desktop', 'Click');">
-            <div class="w100">
-                <h2 class="fs18 fwB"><a class="js-o-link fc_base" href="https://pe.computrabajo.com/empleos-de-atencion-a-clientes-en-arequipa-en-arequipa#248D43969018316761373E686DCF3405&amp;lc=CandidateHome-Suggested-0-Similars-4-O2Ov3" title="Atención al cliente   Estilos Ejercito">Atención al cliente   Estilos Ejercito</a></h2>
-                <p class="fs16 fc_base mt5 mb10">
-                    <a class="fc_base hover it-blank" href="https://pe.computrabajo.com/estilossrl">Estilos S.R.L.  </a>
-                    Arequipa
-                </p>
-                <p class="fc_aux t_word_wrap mb10 hide_m">Estilos, empresa peruana líder en el rubro Retail con más de 27 tiendas a nivel nacional requiere incorporar a su...</p>
-                <p class="fs13 fc_aux">Hace  3  días</p>
-            </div>
-                <div class="w_15 pl15px">
-                    <img class="lazy" data-src="https://ii.ct-stc.com/3/logos/empresas/2016/05/31/estilos-srl-F645C936B505800Ethumbnail.jpeg" title="Estilos S.R.L.  " src="https://ii.ct-stc.com/3/logos/empresas/2016/05/31/estilos-srl-F645C936B505800Ethumbnail.jpeg" style="max-width: 80px;">
-                </div>
-        </article><article class="box_offer bClick" onclick="ga('send', 'event', 'Recommender', 'Desktop', 'Click');">
-            <div class="w100">
-                    <div class="list_dot mb15">
-                            <span class="fc_urgent">Se precisa urgente</span>
-        
-                    </div>
-                <h2 class="fs18 fwB"><a class="js-o-link fc_base" href="https://pe.computrabajo.com/empleos-de-callcenter-telemercadeo-en-lima-en-lima#43065181586612E261373E686DCF3405&amp;lc=CandidateHome-Suggested-1-Similars-0-O2Ov3" title="Trabaja solo 37h descanso fijo">Trabaja solo 37h descanso fijo</a></h2>
-                <p class="fs16 fc_base mt5 mb10">
-                    <a class="fc_base hover it-blank" href="https://pe.computrabajo.com/empresas/ofertas-de-trabajo-de-grupo-velagur-5351CDE39ABB0F64">Grupo Velagur</a>
-                    Lima
-                </p>
-                <p class="fc_aux t_word_wrap mb10 hide_m">¡Tenemos una emocionante oportunidad de trabajo para ti como teleoperador en nuestra empresa! Estamos buscando a...</p>
-                <p class="fs13 fc_aux">Hace  6  días</p>
-            </div>
-                <div class="w_15 pl15px">
-                    <img class="lazy" data-src="https://ii.ct-stc.com/3/logos/empresas/2021/03/25/9c4a40413c7c4a3aa245160947157thumbnail.jpeg" title="Grupo Velagur" src="https://ii.ct-stc.com/3/logos/empresas/2021/03/25/9c4a40413c7c4a3aa245160947157thumbnail.jpeg" style="max-width: 80px;">
-                </div>
-        </article><article class="box_offer bClick" onclick="ga('send', 'event', 'Recommender', 'Desktop', 'Click');">
-            <div class="w100">
-                <h2 class="fs18 fwB"><a class="js-o-link fc_base" href="https://pe.computrabajo.com/empleos-de-callcenter-telemercadeo-en-lima-en-lima#9C01E7B6DEEED39561373E686DCF3405&amp;lc=CandidateHome-Suggested-2-Similars-0-O2Ov3" title="Trabaja de 8am a 4pm / Atención al cliente  1100 S/ Planilla Completa">Trabaja de 8am a 4pm / Atención al cliente  1100 S/ Planilla Completa</a></h2>
-                <p class="fs16 fc_base mt5 mb10">
-                    <a class="fc_base hover it-blank" href="https://pe.computrabajo.com/covisian-peru">Covisian Perú</a>
-                    Lima
-                </p>
-                <p class="fc_aux t_word_wrap mb10 hide_m">¡Buscamos COVISIANlovers con ganas de crecer! Únete a uno de los mejores lugares para trabajar en Perú, puesto 16° del...</p>
-                <p class="fs13 fc_aux">Hace  10  horas</p>
-            </div>
-                <div class="w_15 pl15px">
-                    <img class="lazy" data-src="https://ii.ct-stc.com/3/logos/empresas/2024/06/10//empresas/covisian144703thumbnail.jpeg" title="Covisian Perú" src="https://ii.ct-stc.com/3/logos/empresas/2024/06/10//empresas/covisian144703thumbnail.jpeg" style="max-width: 80px;">
-                </div>
-        </article><article class="box_offer bClick" onclick="ga('send', 'event', 'Recommender', 'Desktop', 'Click');">
-            <div class="w100">
-                    <div class="list_dot mb15">
-                            <span class="fc_urgent">Se precisa urgente</span>
-        
-                            <span class="fc_dest">Empleo destacado</span>
-                    </div>
-                <h2 class="fs18 fwB"><a class="js-o-link fc_base" href="https://pe.computrabajo.com/empleos-de-callcenter-telemercadeo-en-callao-en-callao#939AF09F1756253161373E686DCF3405&amp;lc=CandidateHome-Suggested-2-Similars-1-O2Ov3" title="Trabaja de 9 am a 6pm / Sin experiencia / Planilla Completa/">Trabaja de 9 am a 6pm / Sin experiencia / Planilla Completa/</a></h2>
-                <p class="fs16 fc_base mt5 mb10">
-                    <a class="fc_base hover it-blank" href="https://pe.computrabajo.com/mdy">MDY Contact Center</a>
-                    Callao
-                </p>
-                <p class="fc_aux t_word_wrap mb10 hide_m">¡ÚNETE AL EQUIPO DE CLARO PERÚ, AUSPICIADOR DE LA SELECCIÓN PERUANA!!! Somos MDY, empresa Call Center con 26 años en...</p>
-                <p class="fs13 fc_aux">Hace  1  hora</p>
-            </div>
-                <div class="w_15 pl15px">
-                    <img class="lazy" data-src="https://ii.ct-stc.com/3/logos/empresas/2021/08/12/f73122fc6cc24f0aa60a173845608thumbnail.png" title="MDY Contact Center" src="https://ii.ct-stc.com/3/logos/empresas/2021/08/12/f73122fc6cc24f0aa60a173845608thumbnail.png" style="max-width: 80px;">
-                </div>
-        </article><article class="box_offer bClick" onclick="ga('send', 'event', 'Recommender', 'Desktop', 'Click');">
-            <div class="w100">
-                <h2 class="fs18 fwB"><a class="js-o-link fc_base" href="https://pe.computrabajo.com/trabajo-de-programador-java-en-lima-en-san-isidro#AFD61E02140E326061373E686DCF3405&amp;lc=CandidateHome-Suggested-3-Similars-0-O2Ov3" title="Programador Java Angular JavaScript Spring Boot">Programador Java Angular JavaScript Spring Boot</a></h2>
-                <p class="fs16 fc_base mt5 mb10">
-                    <a class="fc_base hover it-blank" href="https://pe.computrabajo.com/empresas/ofertas-de-trabajo-de-topstrategic-sac-EE456BE6DAA1F25E">Topstrategic  S.A.C.</a>
-                    Lima
-                </p>
-                <p class="fc_aux t_word_wrap mb10 hide_m">Requerimos contratar a un Analista Programador con más de 3 años de experiencia en Desarrollo de Software FULL STACK...</p>
-                <p class="fs13 fc_aux">Hace  5  días</p>
-            </div>
-                <div class="w_15 pl15px">
-                    <img class="lazy" data-src="https://ii.ct-stc.com/3/logos/empresas/2018/11/21/0974388c4ba44f919d11153002650thumbnail.jpg" title="Topstrategic  S.A.C." src="https://ii.ct-stc.com/3/logos/empresas/2018/11/21/0974388c4ba44f919d11153002650thumbnail.jpg" style="max-width: 80px;">
-                </div>
-        </article><article class="box_offer bClick" onclick="ga('send', 'event', 'Recommender', 'Desktop', 'Click');">
-            <div class="w100">
-                <h2 class="fs18 fwB"><a class="js-o-link fc_base" href="https://pe.computrabajo.com/empleos-de-informatica-y-telecom-en-lima-en-san-isidro#EAB2A3D0AA914A7461373E686DCF3405&amp;lc=CandidateHome-Suggested-3-Similars-1-O2Ov3" title="Backend Java Microservicios">Backend Java Microservicios</a></h2>
-                <p class="fs16 fc_base mt5 mb10">
-                    <a class="fc_base hover it-blank" href="https://pe.computrabajo.com/empresas/ofertas-de-trabajo-de-teayudo-100D5CD75B4C8001">SILUPU MAZA JUAN JOSE</a>
-                    Lima
-                </p>
-                <p class="fc_aux t_word_wrap mb10 hide_m">REQUISITOS: Indispensable: - 3 años de experiencia desarrollando con JAVA - 1 Año creando microservicios con Sprint...</p>
-                <p class="fs13 fc_aux">Más de 30 días</p>
-            </div>
-        </article><article class="box_offer bClick" onclick="ga('send', 'event', 'Recommender', 'Desktop', 'Click');">
-            <div class="w100">
-                    <div class="list_dot mb15">
-                            <span class="fc_urgent">Se precisa urgente</span>
-        
-                            <span class="fc_dest">Empleo destacado</span>
-                    </div>
-                <h2 class="fs18 fwB"><a class="js-o-link fc_base" href="https://pe.computrabajo.com/empleos-de-informatica-y-telecom-en-extranjero#6CB2D0B30964464661373E686DCF3405&amp;lc=CandidateHome-Suggested-3-Similars-2-O2Ov3" title="Desarrollador IT">Desarrollador IT</a></h2>
-                <p class="fs16 fc_base mt5 mb10">
-                    <a class="fc_base hover it-blank" href="https://pe.computrabajo.com/empresas/ofertas-de-trabajo-de-memorandum-multimedia-sl-83520EA83B204E24">Memorandum Multimedia S.L.</a>
-                    Perú
-                </p>
-                <p class="fc_aux t_word_wrap mb10 hide_m">Memorándum Multimedia somos una empresa española especializada en Desarrollo de Software y Factoría IT con más de 25...</p>
-                <p class="fs13 fc_aux">Hace  3  días</p>
-            </div>
-                <div class="w_15 pl15px">
-                    <img class="lazy" data-src="https://ii.ct-stc.com/3/logos/empresas/2023/10/19/0496d0f5b4314f2b92d5084850687thumbnail.png" title="Memorandum Multimedia S.L." src="//cp.ct-stc.com/ac/v02.01.00.07/c/img/p.gif" style="max-width: 80px;">
-                </div>
-        </article><article class="box_offer bClick" onclick="ga('send', 'event', 'Recommender', 'Desktop', 'Click');">
-            <div class="w100">
-                <h2 class="fs18 fwB"><a class="js-o-link fc_base" href="https://pe.computrabajo.com/trabajo-de-desarrollador-net-en-lima-en-san-isidro#E9194534C6B643FC61373E686DCF3405&amp;lc=CandidateHome-Suggested-3-Similars-3-O2Ov3" title="desarrollador .net">desarrollador .net</a></h2>
-                <p class="fs16 fc_base mt5 mb10">
-                    <a class="fc_base hover it-blank" href="https://pe.computrabajo.com/empresas/ofertas-de-trabajo-de-global-tpa-sa-E0AB380222D0D8DC">GLOBAL TPA S.A</a>
-                    Lima
-                </p>
-                <p class="fc_aux t_word_wrap mb10 hide_m">Desarrollo de APP Web y APIS Creación de querys, procedimientos almacenados, vistas, tablas. Manejo de base de datos...</p>
-                <p class="fs13 fc_aux">Más de 30 días</p>
-            </div>
-        </article><article class="box_offer bClick" onclick="ga('send', 'event', 'Recommender', 'Desktop', 'Click');">
-            <div class="w100">
-                <h2 class="fs18 fwB"><a class="js-o-link fc_base" href="https://pe.computrabajo.com/trabajo-de-analista-programador-en-lima-en-san-isidro#3C4247C12740D2DA61373E686DCF3405&amp;lc=CandidateHome-Suggested-3-Similars-4-O2Ov3" title="analista programador">analista programador</a></h2>
-                <p class="fs16 fc_base mt5 mb10">
-                    <a class="fc_base hover it-blank" href="https://pe.computrabajo.com/geosolution">Geosolution</a>
-                    Lima
-                </p>
-                <p class="fc_aux t_word_wrap mb10 hide_m">Conocimientos de programacion en web, React, Node.js y Phyton. Experiencia de desarrollo en API en Node y Phyton,...</p>
-                <p class="fs13 fc_aux">Más de 30 días</p>
-            </div>
-        </article><article class="box_offer bClick" onclick="ga('send', 'event', 'Recommender', 'Desktop', 'Click');">
-            <div class="w100">
-                    <div class="list_dot mb15">
-                            <span class="fc_urgent">Se precisa urgente</span>
-        
-                            <span class="fc_dest">Empleo destacado</span>
-                    </div>
-                <h2 class="fs18 fwB"><a class="js-o-link fc_base" href="https://pe.computrabajo.com/trabajo-de-asistente-en-lima-en-independencia#0C6282692AEAC4F361373E686DCF3405&amp;lc=CandidateHome-Suggested-5-Similars-0-O2Ov3" title="Asistente de tecnologia de la información">Asistente de tecnologia de la información</a></h2>
-                <p class="fs16 fc_base mt5 mb10">
-                    <a class="fc_base hover it-blank" href="https://pe.computrabajo.com/empresas/ofertas-de-trabajo-de-solandra-sac-C9EA53446CFDF9BD">SOLANDRA S.A.C</a>
-                    Lima
-                </p>
-                <p class="fc_aux t_word_wrap mb10 hide_m">¡SUMA TU TALENTO CON NOSOTROS! En el grupo EIL CORP con más de 14 años de experiencia en el mercado, dedicada a...</p>
-                <p class="fs13 fc_aux">Hace  2  días</p>
-            </div>
-        </article><article class="box_offer bClick" onclick="ga('send', 'event', 'Recommender', 'Desktop', 'Click');">
-            <div class="w100">
-                    <div class="list_dot mb15">
-                            <span class="fc_urgent">Se precisa urgente</span>
-        
-                            <span class="fc_dest">Empleo destacado</span>
-                    </div>
-                <h2 class="fs18 fwB"><a class="js-o-link fc_base" href="https://pe.computrabajo.com/empleos-de-informatica-y-telecom-en-lima-en-san-isidro#76A283CD71CE1E1B61373E686DCF3405&amp;lc=CandidateHome-Suggested-5-Similars-1-O2Ov3" title="Analista Informatico">Analista Informatico</a></h2>
-                <p class="fs16 fc_base mt5 mb10">
-                    <a class="fc_base hover it-blank" href="">Importante empresa del sector Informatico</a>
-                    Lima
-                </p>
-                <p class="fc_aux t_word_wrap mb10 hide_m">ANALISTA Y GESTION DE PROCESOS Analistay GestiónProcesos Junior - Informáticos: REQUISITOS Contar con 1 año de...</p>
-                <p class="fs13 fc_aux">Ayer</p>
-            </div>
-        </article><article class="box_offer bClick" onclick="ga('send', 'event', 'Recommender', 'Desktop', 'Click');">
-            <div class="w100">
-                <h2 class="fs18 fwB"><a class="js-o-link fc_base" href="https://pe.computrabajo.com/trabajo-de-asistente-en-lima-en-lima#F5A2927EC1E98CC261373E686DCF3405&amp;lc=CandidateHome-Suggested-5-Similars-2-O2Ov3" title="Operador de computo / Asistente o Analista de  Redes Ti">Operador de computo / Asistente o Analista de  Redes Ti</a></h2>
-                <p class="fs16 fc_base mt5 mb10">
-                    <a class="fc_base hover it-blank" href="https://pe.computrabajo.com/grupo-tawa">Grupo Tawa</a>
-                    Lima
-                </p>
-                <p class="fc_aux t_word_wrap mb10 hide_m">Por encargo de nuestro cliente, nos encontramos en la búsqueda de:  01 Operador de computo / Asistente o Analista...</p>
-                <p class="fs13 fc_aux">Hace  3  días</p>
-            </div>
-                <div class="w_15 pl15px">
-                    <img class="lazy" data-src="https://ii.ct-stc.com/3/logos/empresas/2021/10/04//grupo-tawa162735thumbnail.png" title="Grupo Tawa" src="//cp.ct-stc.com/ac/v02.01.00.07/c/img/p.gif" style="max-width: 80px;">
-                </div>
-        </article><article class="box_offer bClick" onclick="ga('send', 'event', 'Recommender', 'Desktop', 'Click');">
-            <div class="w100">
-                <h2 class="fs18 fwB"><a class="js-o-link fc_base" href="https://pe.computrabajo.com/trabajo-de-asistente-de-sistemas-en-lima-en-san-juan-de-lurigancho#7B3B10A6C957239E61373E686DCF3405&amp;lc=CandidateHome-Suggested-5-Similars-3-O2Ov3" title="Asistente de sistemas">Asistente de sistemas</a></h2>
-                <p class="fs16 fc_base mt5 mb10">
-                    <a class="fc_base hover it-blank" href="https://pe.computrabajo.com/empresas/ofertas-de-trabajo-de-xtrategia-soluciones-informaticas-sac-9109F05F8499AA74">Xtrategia Soluciones Informaticas S.A.C.</a>
-                    Lima
-                </p>
-                <p class="fc_aux t_word_wrap mb10 hide_m">Nos encontramos en búsqueda de un programador .net Requisitos: * Programación de software cliente servidor en .NET con...</p>
-                <p class="fs13 fc_aux">29 de julio</p>
-            </div>
-                <div class="w_15 pl15px">
-                    <img class="lazy" data-src="https://ii.ct-stc.com/3/logos/empresas/2014/02/03/xtrategia-soluciones-informaticas-sac-9109F05F8499AA74thumbnail.gif" title="Xtrategia Soluciones Informaticas S.A.C." src="//cp.ct-stc.com/ac/v02.01.00.07/c/img/p.gif" style="max-width: 80px;">
-                </div>
-        </article><article class="box_offer bClick" onclick="ga('send', 'event', 'Recommender', 'Desktop', 'Click');">
-            <div class="w100">
-                <h2 class="fs18 fwB"><a class="js-o-link fc_base" href="https://pe.computrabajo.com/empleos-de-informatica-y-telecom-en-lima-en-san-isidro#AEDC51F8A631EC3461373E686DCF3405&amp;lc=CandidateHome-Suggested-5-Similars-4-O2Ov3" title="Ingeniero Junior de sistemas  Front Office IT">Ingeniero Junior de sistemas  Front Office IT</a></h2>
-                <p class="fs16 fc_base mt5 mb10">
-                    <a class="fc_base hover it-blank" href="https://pe.computrabajo.com/bitel">Bitel</a>
-                    Lima
-                </p>
-                <p class="fc_aux t_word_wrap mb10 hide_m">FUNCIONES: - Detección, seguimiento de alarmas y eventos en los dispositivos pertenecientes a IT- Analizar la causa de...</p>
-                <p class="fs13 fc_aux">Hace  2  días</p>
-            </div>
-                <div class="w_15 pl15px">
-                    <img class="lazy" data-src="https://ii.ct-stc.com/3/logos/empresas/2021/09/20//bitel171636thumbnail.jpeg" title="Bitel" src="//cp.ct-stc.com/ac/v02.01.00.07/c/img/p.gif" style="max-width: 80px;">
-                </div>
-        </article><article class="box_offer bClick" onclick="ga('send', 'event', 'Recommender', 'Desktop', 'Click');">
-            <div class="w100">
-                    <div class="list_dot mb15">
-                            <span class="fc_urgent">Se precisa urgente</span>
-        
-                    </div>
-                <h2 class="fs18 fwB"><a class="js-o-link fc_base" href="https://pe.computrabajo.com/empleos-de-informatica-y-telecom-en-lima-en-lima#E6297D0813BA293C61373E686DCF3405&amp;lc=CandidateHome-Suggested-5-Similars-5-O2Ov3" title="Técnico de Sistemas">Técnico de Sistemas</a></h2>
-                <p class="fs16 fc_base mt5 mb10">
-                    <a class="fc_base hover it-blank" href="https://pe.computrabajo.com/empresas/ofertas-de-trabajo-de-obiettivo-lavoro-los-andes-66A87B233643FD3C">Lavoro Perú</a>
-                    Lima
-                </p>
-                <p class="fc_aux t_word_wrap mb10 hide_m">Por encargo de uno de nuestros clientes, una importante empresa embotelladora de consumo masivo, nos encontramos en la...</p>
-                <p class="fs13 fc_aux">Hace  6  días</p>
-            </div>
-                <div class="w_15 pl15px">
-                    <img class="lazy" data-src="https://ii.ct-stc.com/3/logos/empresas/2022/10/20/40d17642a02d4f39a957175335000thumbnail.png" title="Lavoro Perú" src="//cp.ct-stc.com/ac/v02.01.00.07/c/img/p.gif" style="max-width: 80px;">
-                </div>
-        </article><article class="box_offer bClick" onclick="ga('send', 'event', 'Recommender', 'Desktop', 'Click');">
-            <div class="w100">
-                <h2 class="fs18 fwB"><a class="js-o-link fc_base" href="https://pe.computrabajo.com/empleos-de-informatica-y-telecom-en-lima-en-san-luis#5F14EA52BBE7959361373E686DCF3405&amp;lc=CandidateHome-Suggested-5-Similars-6-O2Ov3" title="Asistente de Programación">Asistente de Programación</a></h2>
-                <p class="fs16 fc_base mt5 mb10">
-                    <a class="fc_base hover it-blank" href="https://pe.computrabajo.com/empresas/ofertas-de-trabajo-de-ceva-logistics-peru-srl-637958F0C13F3437">Ceva Logistics Perú S.R.L.</a>
-                    Lima
-                </p>
-                <p class="fc_aux t_word_wrap mb10 hide_m">TU ROL ¿Te atreves a desarrollarte profesionalmente en uno de los operadores logísticos más importante del país?...</p>
-                <p class="fs13 fc_aux">Hace  4  días</p>
-            </div>
-                <div class="w_15 pl15px">
-                    <img class="lazy" data-src="https://ii.ct-stc.com/3/logos/empresas/2020/03/03/ad48cfd5f3a947999398165107717thumbnail.png" title="Ceva Logistics Perú S.R.L." src="//cp.ct-stc.com/ac/v02.01.00.07/c/img/p.gif" style="max-width: 80px;">
-                </div>
-        </article><article class="box_offer bClick" onclick="ga('send', 'event', 'Recommender', 'Desktop', 'Click');">
-            <div class="w100">
-                <h2 class="fs18 fwB"><a class="js-o-link fc_base" href="https://pe.computrabajo.com/trabajo-de-desarrollos-en-lima-en-surco#3AFBE84A139B910F61373E686DCF3405&amp;lc=CandidateHome-Suggested-5-Similars-7-O2Ov3" title="Asistente de Desarrollo de TI">Asistente de Desarrollo de TI</a></h2>
-                <p class="fs16 fc_base mt5 mb10">
-                    <a class="fc_base hover it-blank" href="https://pe.computrabajo.com/empresas/ofertas-de-trabajo-de-madrid-ingenieros-288F583E194CABB2">Madrid Ingenieros</a>
-                    Lima
-                </p>
-                <p class="fc_aux t_word_wrap mb10 hide_m">MADRID INMOBILIARIA, empresa líder en su rubro con más de 20 años de experiencia en el mercado y reconocida con la...</p>
-                <p class="fs13 fc_aux">Más de 30 días</p>
-            </div>
-                <div class="w_15 pl15px">
-                    <img class="lazy" data-src="https://ii.ct-stc.com/3/logos/empresas/2024/07/25/ecec4e0057254e16aeb2165105229thumbnail.jpeg" title="Madrid Ingenieros" src="//cp.ct-stc.com/ac/v02.01.00.07/c/img/p.gif" style="max-width: 80px;">
-                </div>
-        </article><article class="box_offer bClick" onclick="ga('send', 'event', 'Recommender', 'Desktop', 'Click');">
-            <div class="w100">
-                <h2 class="fs18 fwB"><a class="js-o-link fc_base" href="https://pe.computrabajo.com/trabajo-de-analista-de-soporte-en-lima-en-lima#BCEDF6DA94383B1A61373E686DCF3405&amp;lc=CandidateHome-Suggested-5-Similars-8-O2Ov3" title="Analista/Asistente de soporte técnico">Analista/Asistente de soporte técnico</a></h2>
-                <p class="fs16 fc_base mt5 mb10">
-                    <a class="fc_base hover it-blank" href="https://pe.computrabajo.com/manpower">Manpower</a>
-                    Lima
-                </p>
-                <p class="fc_aux t_word_wrap mb10 hide_m">En Manpower Perú buscamos al mejor talento para asumir un nuevo reto laboral como Analista/Asistente de soporte...</p>
-                <p class="fs13 fc_aux">31 de julio</p>
-            </div>
-                <div class="w_15 pl15px">
-                    <img class="lazy" data-src="https://ii.ct-stc.com/3/logos/empresas/2021/08/09/48d94b622e90498f9098223646955thumbnail.jpg" title="Manpower" src="//cp.ct-stc.com/ac/v02.01.00.07/c/img/p.gif" style="max-width: 80px;">
-                </div>
-        </article><article class="box_offer bClick" onclick="ga('send', 'event', 'Recommender', 'Desktop', 'Click');">
-            <div class="w100">
-                    <div class="list_dot mb15">
-                            <span class="fc_urgent">Se precisa urgente</span>
-        
-                            <span class="fc_dest">Empleo destacado</span>
-                    </div>
-                <h2 class="fs18 fwB"><a class="js-o-link fc_base" href="https://pe.computrabajo.com/trabajo-de-asistente-de-sistemas-en-lima-en-lima#802DFEA6937EC27961373E686DCF3405&amp;lc=CandidateHome-Suggested-5-Similars-9-O2Ov3" title="Asistente de Sistemas / zona Sur">Asistente de Sistemas / zona Sur</a></h2>
-                <p class="fs16 fc_base mt5 mb10">
-                    <a class="fc_base hover it-blank" href="https://pe.computrabajo.com/empresas/ofertas-de-trabajo-de-zedina-sac--5A3A1AD3B7887039">Zedina Alimentos S.A.C.  </a>
-                    Lima
-                </p>
-                <p class="fc_aux t_word_wrap mb10 hide_m">¡Únete a la familia ZEDINA y sé parte del nuestro equipo!  Con más de 20 años liderando el sector de productos...</p>
-                <p class="fs13 fc_aux">Hace  5  días</p>
-            </div>
-                <div class="w_15 pl15px">
-                    <img class="lazy" data-src="https://ii.ct-stc.com/3/logos/empresas/2021/12/21/07480fbb92a24df28bf1144806927thumbnail.jpg" title="Zedina Alimentos S.A.C.  " src="//cp.ct-stc.com/ac/v02.01.00.07/c/img/p.gif" style="max-width: 80px;">
-                </div>
-        </article><article class="box_offer bClick" onclick="ga('send', 'event', 'Recommender', 'Desktop', 'Click');">
-            <div class="w100">
-                <h2 class="fs18 fwB"><a class="js-o-link fc_base" href="https://pe.computrabajo.com/trabajo-de-asistente-en-lima-en-lima#D7F8691B60C62BC661373E686DCF3405&amp;lc=CandidateHome-Suggested-5-Similars-10-O2Ov3" title="Asistente de TI">Asistente de TI</a></h2>
-                <p class="fs16 fc_base mt5 mb10">
-                    <a class="fc_base hover it-blank" href="https://pe.computrabajo.com/empresas/ofertas-de-trabajo-de-koplast-industrial-E9E915311C82E2C2">Koplast Industrial</a>
-                    Lima
-                </p>
-                <p class="fc_aux t_word_wrap mb10 hide_m">Koplast Industrial empresa 100% peruana, encargada de brindar soluciones de tuberías plásticas con más de 22 años en...</p>
-                <p class="fs13 fc_aux">Hace  5  días</p>
-            </div>
-                <div class="w_15 pl15px">
-                    <img class="lazy" data-src="https://ii.ct-stc.com/3/logos/empresas/2022/12/05/koplast-industrial-E9E915311C82E2C2163109014thumbnail.jpg" title="Koplast Industrial" src="//cp.ct-stc.com/ac/v02.01.00.07/c/img/p.gif" style="max-width: 80px;">
-                </div>
-        </article><article class="box_offer bClick" onclick="ga('send', 'event', 'Recommender', 'Desktop', 'Click');">
-            <div class="w100">
-                <h2 class="fs18 fwB"><a class="js-o-link fc_base" href="https://pe.computrabajo.com/trabajo-de-sistemas-en-lima-en-lima#E4A120CD24B7017861373E686DCF3405&amp;lc=CandidateHome-Suggested-5-Similars-11-O2Ov3" title="Personal para área sistemas">Personal para área sistemas</a></h2>
-                <p class="fs16 fc_base mt5 mb10">
-                    <a class="fc_base hover it-blank" href="">Importante empresa del sector</a>
-                    Lima
-                </p>
-                <p class="fc_aux t_word_wrap mb10 hide_m">Personal para área de sistemas Perfil requerido: • - Titulado técnico o universitario en Ingeniería de sistemas,...</p>
-                <p class="fs13 fc_aux">Hace  4  días</p>
-            </div>
-        </article>            </div>
-                </div>
-            <div id="loadingModal" class="loading_full hide"><div class="loading"><div><span></span><span></span><span></span><span></span></div><div><span></span><span></span><span></span><span></span></div><div><span></span><span></span><span></span><span></span></div></div></div>
-            <div id="divUploadPhoto" style="display:none;">
-            <div class="blockUI blockOverlay" style="z-index: 9999; border: none; margin: 0px; padding: 0px; width: 100%; height: 100%; top: 0px; left: 0px; opacity: 0.6; cursor: wait; position: fixed; background-color: rgb(0, 0, 0);"></div>
-            <div class="blockUI blockMsg blockPage" style="z-index: 9999; position: fixed; padding: 0px; margin: 0px; width: 50%; top: 5%; left: 25%; text-align: center; color: rgb(0, 0, 0); border: 3px solid rgb(170, 170, 170); cursor: wait; background-color: rgb(255, 255, 255);">
-                <div style="cursor: default;" id="" class="popup_gestof popup_gestcan content_popup">
-                    <div class="md-modal md-effect-3 md-show">
-                        <div class="md-content c_t">
-                            <span class="icon ico_close" closepopup-uploadphoto=""></span>
-                            <span class="title">Recortar imagen</span>
-                            <div class="mt30 mb30 pos_rel">
-                                <img id="uploadPhotoimg" class="js_photo_perfil js_cropper" style="max-height: 320px">
-                                <div class="cropper-tools">
-                                    <button data-method="rotate" data-option="-90" type="button">
-                                        <span class="icon i_rotate"></span>
-                                    </button>
-                                </div>
-                            </div>
-                            <a class="submit_n boton" id="uploadPhotoBtn">Guardar cambios</a>
-                            <a class="tc" closepopup-uploadphoto="">Cancelar</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-            <div class="popup hide" super-candidate-popup="" home-candidate-popup="">
-                <div class="w50">
-                    <div class="header_top">
-                        <div class="bg_yellow tc bg_cup">
-        Estás cerca de ser un                    <p class="fwB">
-                                Super candidato
-                            </p>
-                            <div class="out_box">
-                                <div class="doughnut small border">
-                                    <div class="portion" style="background-image: conic-gradient( #FCC73B 0 180deg, #eaf3fb 0);"></div>
-                                    <p class="center">3/6</p>
-                                </div>
                             </div>
                         </div>
-                        <div class="box_top_radius">
-                                    <a id="super-candidate-link1" href="/candidate/cv/?tlo=96D1C1E18881EABE" class="fc_aux hover cols" onclick="ga('send', 'event', 'Gamificacion', 'Click', 'LIT_SUPERCANDIDATE_CVCOMPLETED_TITLE')">
-                                        <div class="w100 pr15">
-                                            <p class="fs18 fwB">Completa tu CV</p>
-                                                <p class="fs16">Los completos tienen más probabilidad de ser vistos</p>
-                                                                                    <div class="progress_bar big bg_brand_light mt10">
-                                                    <span style="width: 72%" class="bg_brand"></span>
-                                                    <span class="info">72%</span>
-                                                </div>
-                                        </div>
-                                        <div>
-                                                <span class="icon i_arrow_black"></span>
-                                        </div>
-                                    </a>
-                                    <a id="super-candidate-link8" href="/candidate/test/list?tlo=96D1C1E18881EABE" class="fc_aux hover cols" onclick="ga('send', 'event', 'Gamificacion', 'Click', 'LIT_SUPERCANDIDATE_TRIPLE_TEST_TITLE')">
-                                        <div class="w100 pr15">
-                                            <p class="fs18 fwB">Talentview 3D</p>
-                                                <p class="fs16">Consigue una evaluación detallada de tu perfil profesional</p>
-                                                                            </div>
-                                        <div>
-                                                <span class="icon i_arrow_black"></span>
-                                        </div>
-                                    </a>
-                                    <a id="super-candidate-link7" href="/download/app?tlo=96D1C1E18881EABE" class="fc_aux hover cols" onclick="ga('send', 'event', 'Gamificacion', 'Click', 'LIT_SUPERCANDIDATE_DOWNLOADED_APP_TITLE')">
-                                        <div class="w100 pr15">
-                                            <p class="fs18 fwB">APP Computrabajo instalada</p>
-                                                <p class="fs16">Disfruta de una mejor experiencia</p>
-                                                                            </div>
-                                        <div>
-                                                <span class="icon i_arrow_black"></span>
-                                        </div>
-                                    </a>
-                                    <a id="super-candidate-link3" href="/candidate/test/list?tlo=96D1C1E18881EABE" class="fc_aux hover cols" onclick="ga('send', 'event', 'Gamificacion', 'Click', 'LIT_SUPERCANDIDATE_TEST_IDIOMS_TITLE')">
-                                        <div class="w100 pr15">
-                                            <p class="fs18 fwB">Test de idiomas</p>
-                                                <p class="fs16">Certifica tu nivel de idiomas</p>
-                                                                            </div>
-                                        <div>
-                                                <svg class="bullet_icon checkmark small" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
-                                                    <circle class="checkmark_circle" cx="26" cy="26" r="25" fill="none"></circle>
-                                                    <path class="checkmark_tick" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"></path>
-                                                </svg>
-                                        </div>
-                                    </a>
-                                    <a id="super-candidate-link4" href="/candidate/cv/?tlo=96D1C1E18881EABE" class="fc_aux hover cols" onclick="ga('send', 'event', 'Gamificacion', 'Click', 'LIT_SUPERCANDIDATE_PHOTO_PROFILE_TITLE')">
-                                        <div class="w100 pr15">
-                                            <p class="fs18 fwB">Foto de perfil</p>
-                                                <p class="fs16">Añade tu foto de perfil y transmite profesionalidad y confianza</p>
-                                                                            </div>
-                                        <div>
-                                                <svg class="bullet_icon checkmark small" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
-                                                    <circle class="checkmark_circle" cx="26" cy="26" r="25" fill="none"></circle>
-                                                    <path class="checkmark_tick" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"></path>
-                                                </svg>
-                                        </div>
-                                    </a>
-                                    <a id="super-candidate-link5" href="/candidate/alert/?tlo=96D1C1E18881EABE" class="fc_aux hover cols" onclick="ga('send', 'event', 'Gamificacion', 'Click', 'LIT_SUPERCANDIDATE_ALERTS_TITLE')">
-                                        <div class="w100 pr15">
-                                            <p class="fs18 fwB">Alertas guardadas</p>
-                                                                            </div>
-                                        <div>
-                                                <svg class="bullet_icon checkmark small" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
-                                                    <circle class="checkmark_circle" cx="26" cy="26" r="25" fill="none"></circle>
-                                                    <path class="checkmark_tick" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"></path>
-                                                </svg>
-                                        </div>
-                                    </a>
+
+
+                    
+                        <div class="pokemon-container">
+                            <h1 class="pokemon-title">Pokémon List</h1>
+                            <div class="pokemon-grid">
+                              <div *ngFor="let pokemon of pokemons" class="pokemon-card">
+                                <div class="pokemon-image">
+                                <img [src]="getPokemonImage(pokemon.url)" alt="{{ pokemon.name }}">
+                                </div>
+                                <div class="pokemon-info">
+                                    <h2 class="pokemon-name">{{ pokemon.name | titlecase }}</h2>
+                                    <p class="pokemon-id">ID: {{ pokemon.url.split('/')[6] }}</p>
+                                </div>
+                            </div>
+                            </div>
                         </div>
+                        
                     </div>
-                    <button class="icon i_close" home-candidate-popup-close=""></button>
-                    <div id="partial-popup-qrcode"></div>
-                </div>
             </div>
-        
-        </div>
-</div>
 </div>
 
