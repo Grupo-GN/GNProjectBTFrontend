@@ -4,7 +4,6 @@ import { FormBuilder } from '@angular/forms';
 import { debounceTime, distinctUntilChanged, of, Subject, switchMap } from 'rxjs';
 import { Observable } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
-import { OfertaService } from 'src/app/oferta.service';
 import { PokemonService } from 'src/app/pokemon.service';
 
 @Component({
@@ -13,8 +12,11 @@ import { PokemonService } from 'src/app/pokemon.service';
   styleUrls: ['./mi-area.component.css']
 })
 export class MiAreaComponent implements OnInit{
-  pokemons: any[] = [];
 
+  searchTerm: string = '';
+  pokemons: any[] = [];
+  pokemon: any;
+  error: string | null = null;
   
 
   suggestionsVisible: string | null = null;
@@ -38,7 +40,7 @@ export class MiAreaComponent implements OnInit{
   ];
   filteredPlaces: string[] = [...this.popularPlaces];
   filteredJobs: string[] = [...this.popularJobs];
-  searchTerm: string = '';
+
   placeTerm: string = '';
   private searchTerms = new Subject<string>();
   private placeTerms = new Subject<string>();
@@ -56,9 +58,43 @@ export class MiAreaComponent implements OnInit{
     });
   }
   
+  onSearch(): void {
+    if (this.searchTerm.trim()) {
+      this.fetchPokemonData(this.searchTerm.trim().toLowerCase()); // Normaliza el término
+    } else {
+      console.log('El término de búsqueda está vacío.');
+    }
+  }
 
+
+  fetchPokemonData(term: string): void {
+    this.http.get(`https://pokeapi.co/api/v2/pokemon/${term}`).subscribe(
+      (data: any) => {
+        this.pokemon = data;
+        console.log('Datos del Pokémon:', data); // Verifica que recibes los datos
+      },
+      error => {
+        console.error('Error fetching data', error);
+        this.pokemon = null; // Resetea el estado en caso de error
+      }
+    );
+  }
 
   ngOnInit() : void {
+    if (this.searchTerm) {
+      this.pokemonService.getPokemon(this.searchTerm.toLowerCase()).subscribe(
+        data => {
+          this.pokemon = data;
+          console.log(this.pokemon);
+        },
+        error => {
+          console.error('Error fetching data', error);
+          this.pokemon = null;
+        }
+      );
+    }
+
+
     this.pokemonService.getPokemons().subscribe((data: { results: any[]; }) => {
       this.pokemons = data.results; // PokeAPI devuelve los datos en la propiedad 'results'
     });
@@ -91,6 +127,12 @@ export class MiAreaComponent implements OnInit{
 
   
   }
+  clearSearchTerm(): void {
+    this.searchTerm = '';
+    this.pokemon = null;
+  }
+
+    
   getPokemonImage(url: string): string {
     const id = url.split('/')[6];
     return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`;
@@ -164,9 +206,7 @@ export class MiAreaComponent implements OnInit{
     this.suggestionsVisible = null;
   }
 
-  clearSearchTerm() {
-    this.searchTerm = '';
-  }
+
 
   clearPlaceTerm() {
     this.placeTerm = '';

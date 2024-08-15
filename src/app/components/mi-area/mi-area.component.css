@@ -223,7 +223,7 @@ a {
 .box_search input {
   border: 0;
   border-radius: 30px;
-  padding: 10px 45px 10px 15px;
+  padding: 15px 170px 15px 15px;
   margin-left: 30px;
 }
 
@@ -1107,7 +1107,7 @@ article.box_offer h2.fwB {
   
   .pokemon-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+
     gap: 20px;
   }
   
@@ -1142,4 +1142,115 @@ article.box_offer h2.fwB {
   .pokemon-id {
     color: #888;
   }
+.pokemon-search-container {
+    padding: 20px;
+  }
   
+  .pokemon-title {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+  
+  .pokemon-card {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    text-align: center;
+    padding: 15px;
+  }
+  
+  .pokemon-image img {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+  }
+  
+  .pokemon-info {
+    margin-top: 10px;
+  }
+  
+  .pokemon-name {
+    font-size: 1.2rem;
+    color: #333;
+    margin: 0;
+  }
+  
+  .pokemon-id {
+    color: #888;
+  }
+  
+  .error {
+    color: red;
+    text-align: center;
+    margin-top: 10px;
+  }
+  /* Estilos generales para el contenedor de información del Pokémon */
+.pokemon-info {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 16px;
+    margin-top: 20px;
+    background-color: #f9f9f9;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .pokemon-info h2 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 12px;
+  }
+  
+  .pokemon-info img {
+    max-width: 150px;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 12px;
+  }
+  
+  .pokemon-info p {
+    font-size: 1rem;
+    color: #666;
+    margin: 8px 0;
+  }
+  
+  .pokemon-info .type-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .pokemon-info .type-list span {
+    background-color: #e0e0e0;
+    border-radius: 12px;
+    padding: 6px 12px;
+    margin: 4px;
+    font-size: 0.9rem;
+    color: #333;
+  }
+  
+  /* Estilos para el mensaje cuando no se encuentra el Pokémon */
+  .no-pokemon-message {
+    text-align: center;
+    margin-top: 20px;
+    color: #ff6b6b;
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+  .b_secondary {
+    border: 1px solid transparent;
+    border-radius: 10px;
+    cursor: pointer;
+    display: inline-block;
+    padding: 10px 18px;
+    position: relative;
+    transition: 0.2s;
+    z-index: 1;
+    background: linear-gradient(90deg, #d7a9db 0, #a0bfef 40%, #a28dd3 100%);
+    color: #fff;
+    font-weight: bold;
+    border-radius: 30px;
+  
+  }
