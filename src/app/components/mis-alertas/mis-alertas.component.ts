@@ -1,7 +1,7 @@
 import { Component, HostListener, OnInit, Renderer2 } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { debounceTime, distinctUntilChanged, switchMap, catchError } from 'rxjs/operators';
-import { Observable, Subject, of } from 'rxjs';
+import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
+import { Observable, Subject } from 'rxjs';
 
 @Component({
   selector: 'app-mis-alertas',
@@ -10,6 +10,14 @@ import { Observable, Subject, of } from 'rxjs';
 })
 export class MisAlertasComponent implements OnInit {
 
+  showSuccessPopup: boolean = false;
+  showErrorPopup: boolean = false;
+  showForm: boolean = false;
+  alertData = { cargo: '', categories: [] as string[], regions: [] as string[] };
+  categories = [{ id: '1', name: 'Administracion / Oficina' }, { id: '2', name:'CallCenter / Telemercadeo' }, { id: '3', name:'CallCenter / Telemercadeo' }, { id: '2', name:'CallCenter / Telemercadeo' } ,{ id: '2', name:'CallCenter / Telemercadeo' }, { id: '2', name:'CallCenter / Telemercadeo' }, { id: '2', name:'CallCenter / Telemercadeo' }, { id: '2', name:'CallCenter / Telemercadeo' }, { id: '2', name:'CallCenter / Telemercadeo'}, { id: '2', name:'CallCenter / Telemercadeo' }, { id: '2', name:'CallCenter / Telemercadeo' }, { id: '2', name:'CallCenter / Telemercadeo' }, { id: '2', name:'CallCenter / Telemercadeo' }, { id: '2', name:'CallCenter / Telemercadeo' }, { id: '2', name:'CallCenter / Telemercadeo' }, { id: '2', name:'CallCenter / Telemercadeo' } ,{ id: '2', name:'CallCenter / Telemercadeo' } ,{ id: '2', name:'CallCenter / Telemercadeo' },{ id: '2', name:'CallCenter / Telemercadeo' } ,{ id: '2', name:'CallCenter / Telemercadeo' } ,{ id: '2', name:'CallCenter / Telemercadeo' }, { id: '2', name:'CallCenter / Telemercadeo' },{ id: '2', name:'CallCenter / Telemercadeo' }];
+  regions = [{ id: '1', name: 'Lima' }, { id: '2', name: 'Apurimac' }, { id: '3', name: 'Apurimac' }, { id: '4', name: 'Apurimac' }, { id: '5', name: 'Apurimac' }, { id: '6', name: 'Apurimac' }, { id: '7', name: 'Apurimac' } , { id: '8', name: 'Apurimac' }, { id: '9', name: 'Apurimac' }, { id: '10', name: 'Apurimac' }, { id: '11', name: 'Apurimac' },{ id: '12', name: 'Apurimac' },{ id: '13', name: 'Apurimac' },{ id: '14', name: 'Apurimac' },{ id: '2', name: 'Apurimac' },{ id: '2', name: 'Apurimac' },{ id: '2', name: 'Apurimac' },{ id: '2', name: 'Apurimac' },{ id: '2', name: 'Apurimac' },{ id: '2', name: 'Apurimac' },{ id: '2', name: 'Apurimac' },{ id: '2', name: 'Apurimac' },{ id: '2', name: 'Apurimac' },{ id: '2', name: 'Apurimac' }];
+  hasAlerts: boolean = false;
+  
   suggestionsVisible: string | null = null;
   lastSearches = ['atencion al cliente en arequipa'];
   popularJobs = [
@@ -180,4 +188,5 @@ export class MisAlertasComponent implements OnInit {
   clearPlaceTerm() {
     this.placeTerm = '';
   }
+
 }
