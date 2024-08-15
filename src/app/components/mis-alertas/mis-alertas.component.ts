@@ -68,9 +68,6 @@ export class MisAlertasComponent implements OnInit {
   showSuggestions(type: string) {
     this.suggestionsVisible = type;
   }
-  showNewAlertForm(): void {
-    this.showForm = true;
-  }
 
   hideSuggestions() {
     setTimeout(() => {
