@@ -2,6 +2,8 @@ import { Component, HostListener, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { debounceTime, distinctUntilChanged, switchMap, catchError } from 'rxjs/operators';
 import { Observable, Subject, of } from 'rxjs';
+import {  Renderer2 } from '@angular/core';
+
 
 @Component({
   selector: 'app-mis-alertas',
@@ -9,6 +11,8 @@ import { Observable, Subject, of } from 'rxjs';
   styleUrls: ['./mis-alertas.component.css']
 })
 export class MisAlertasComponent implements OnInit {
+
+ 
 
   suggestionsVisible: string | null = null;
   lastSearches: string[] = [''];
@@ -164,4 +168,7 @@ export class MisAlertasComponent implements OnInit {
   toggleView(view: string): void {
     this.selectedView = this.selectedView === view ? '' : view;
   }
+
+  
+        
 }
