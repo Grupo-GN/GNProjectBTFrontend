@@ -14,6 +14,7 @@ import { ReclutadoresComponent } from './components/reclutadores/reclutadores.co
 import { PublicarOfertasComponent } from './components/publicar-ofertas/publicar-ofertas.component';
 import { EmpresasComponent } from './components/empresas/empresas.component';
 import { SalariosComponent } from './components/salarios/salarios.component';
+import { EditComponent } from './components/configuraciones/edit/edit.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/body', pathMatch: 'full' },
@@ -31,6 +32,7 @@ const routes: Routes = [
   { path: 'cerrar-sesion', component: CerrarSesionComponent },
   { path: 'empresas', component: EmpresasComponent },
   { path: 'salarios', component: SalariosComponent },
+  { path: 'edit', component: EditComponent },
 ];
 
 @NgModule({

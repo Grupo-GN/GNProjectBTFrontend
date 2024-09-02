@@ -1,20 +1,21 @@
-import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Injectable } from'@angular/core';
+import { HttpClient } from'@angular/common/http';
+import { Observable } from'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class OfertaService {
+  private apiUrl = 'https://jsonplaceholder.typicode.com/users'; 
+  constructor(private http: HttpClient) {}
 
 
+  changeEmail(userId: number, newEmail: string): Observable<any> {
+    return this.http.put(`${this.apiUrl}/${userId}`, { email: newEmail });
+  }
 
-    private apiUrl = 'https://pokeapi.co/api/v2/pokemon'; // URL base para la PokeAPI
-  
-    constructor(private http: HttpClient) { }
-  
-    getPokemons(): Observable<any> {
-      return this.http.get<any>(`${this.apiUrl}?limit=10`); // Obtiene los primeros 10 Pokémon, puedes ajustar el límite según necesites
-    }
+  changePassword(userId: number, newPassword: string): Observable<any> {
+    return this.http.put(`${this.apiUrl}/${userId}`, { password: newPassword });
+  }
   }
 

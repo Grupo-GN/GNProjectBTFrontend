@@ -3,6 +3,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
 import { AppComponent } from './app.component';
 import { BodyComponent } from './components/body/body.component';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
@@ -21,6 +25,9 @@ import { MisAlertasComponent } from './components/mis-alertas/mis-alertas.compon
 import { CerrarSesionComponent } from './components/cerrar-sesion/cerrar-sesion.component';
 import { SalariosComponent } from './components/salarios/salarios.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { EditComponent } from './components/configuraciones/edit/edit.component';
+import { UserService } from './user.service';
+
 
 @NgModule({
   declarations: [
@@ -38,18 +45,25 @@ import { ReactiveFormsModule } from '@angular/forms';
     VisitasPerfilComponent,
     MiAreaComponent,
     MisAlertasComponent,
+    EditComponent,
     CerrarSesionComponent,
     SalariosComponent
+    
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     FormsModule,
+    MatSnackBarModule,
     ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
     HttpClientModule
+
   ],
-  providers: [],
+  providers: [UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
