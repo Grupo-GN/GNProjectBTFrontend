@@ -52,6 +52,7 @@
         </button>
       </div>
     </div>
+    <br>
 
     <div class="tabs">
       <div class="tab" [routerLink]="'/mi-area'">
@@ -117,152 +118,415 @@
       </div>
     </div>
 
-
-
-        <div class="sidebar">
-            <div class="sidebar-item">
-              <h3>Plantillas de CV</h3>
-              <p>
-                Tienes disponibles varias plantillas para poder descargar o imprimir
-                tu currículum de manera cómoda y fácil.
-              </p>
-              <button onclick="navigateTo('disena-cv.html')">Diseña tu CV</button>
-            </div>
-            <div class="sidebar-item">
-              <h3>Cartas de presentación</h3>
-              <p>
-                Crea o edita tus cartas de presentación y adjúntalas a las ofertas en
-                las que te postulas. Las empresas valoran muy positivamente aquellas
-                aplicaciones a ofertas que incluyen una carta de presentación.
-              </p>
-              <button onclick="navigateTo('crear-carta.html')">Crear carta</button>
-            </div>
-            <div class="sidebar-item">
-              <h3>Cómo mejorar mi CV</h3>
-              <ul>
-                <li><a href="subir-cv.html">Sube tu CV</a></li>
-                <li>
-                  <a href="identificar-potencial.html"
-                    >Identifica tu potencial profesional</a
-                  >
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="curriculum">
-            <div class="header">
-                <div class="avatar-container">
-                    <img src="" >
+          <div id="MainContainer" class="conteiner">
+            <section class="cm-12 breadinfo hide" it-show-preview="">
+                <div class="cm-12 breadcrumb">
+                    <ol class="breadcrumb">
+                        <li><a class="hide" it-show-preview="" close-preview-button=""><span class="ico_cv i_back_blue mr5"></span>Volver a Edición de mi CV</a></li>
+                    </ol>
                 </div>
-                <div class="info">
-                    <h2>Milagros Villayzan Salazar</h2>
-                    <p>San Juan de Lurigancho</p>
-                    <p>
-                        <a href="mailto:milagrosheyla@gmail.com">
-                            <i class="fas fa-envelope"></i> **********</a>
-                        <br>
-                        <a href="tel:+51947659990">
-                            <i class="fas fa-phone"></i> +51-999999999
+            </section>
+            <br>
+                <h1 class="fw_n p15_r">Mi currículum</h1>
+                <br>
+            <article class="formulario_cv" box-print-style-preview="">
+                <div class="boxx" box-change-style-preview="" export-pdf="">
+                    <div class="form_fields form_header">
+                <a class="ico_cv i_edit" it-hide-preview="" data-open-popup-form="personaldataform"></a>
+                <div class="photo_user">
+                  <form action="/candidate/home/uploadphoto" enctype="multipart/form-data" method="post" novalidate="novalidate"><input name="__RequestVerificationToken" type="hidden" value="Dk28uPDaHu6RY7UDaQmccCZlVOHNpVWSS-RkGilrwM2f88lfpOw7zgxhANK3OwNB0yP0M5YWw8ov9pDkH3d1YWdM97xIsY-stUCt_olWC7Nlaqr20">                <input type="file" id="uploadpic" name="uploadpic" style="display: none">
+                        <input type="submit" id="uploadpicSubmit" style="display: none">
+                  </form>            
+                    <a>
+                      <img src="https://ii.ct-stc.com/3/logos/candidates/2024/06/24/1651323601293thumbnail.jpeg" alt="Pamela Figueroa" data-upload-image="">
+                    </a>
+                    <span  it-hide-preview="" data-upload-image="">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24px" height="24px">
+                        <circle cx="12" cy="8" r="4" fill="#4A4A4A"/>
+                        <path d="M12 12c-5 0-9 4-9 9h2c0-3.9 3.1-7 7-7s7 3.1 7 7h2c0-5-4-9-9-9z" fill="#4A4A4A"/>
+                        <path d="M17 10v-2h-2v-2h2v-2h2v2h2v2h-2v2h-2z" fill="#4A4A4A"/>
+                      </svg>
+                    </span>
+                </div>
+            <div class="info_user">
+                <div it-show-preview-add-pb20="">
+                    <p class="fs20 fw_b">Pamela Figueroa</p>
+                    <p class="fs15">Ate</p>
+                        <a class="d_i_mbli b_primary_inv mt10 hide" it-hide-preview-mobile="" show-templates-cv="" it-hide-desktop="" mobile-responsive-style="">
+                            <span class="tag new">Nuevo</span>
+                        Diseña tu CV
                         </a>
-                    </p>
                 </div>
-            </div>
-    
-            <div class="section">
-                <h3>Auxiliar, Multifuncional</h3>
-                <p>Experiencia en ventas y atención al cliente, manejo de computadoras</p>
-            </div>
-    
-            <div class="section">
-                <h3>Mis experiencias profesionales</h3>
-                <p><a href="#nueva-experiencia"><i class="fas fa-plus-circle"></i> Añadir nueva experiencia</a></p>
-            </div>
-    
-            <div class="section">
-                
-                <p><a href="#nueva-educacion"><i class="fas fa-plus-circle"></i> Añadir más estudios</a></p>
-            </div>
-    
-            <div class="section">
-                <h3>Idiomas</h3>
-                <div class="tags">
-                    <span>Español - Nativo</span>
-                    <span>Inglés - Básico</span>
-                    <a href="#agregar-idioma"><i class="fas fa-plus-circle"></i> Añadir</a>
-                </div>
-            </div>
-    
-            <div class="section">
-                <h3>Test de idioma</h3>
-                <div class="test-idioma">
-                    <select>
-                        <option>Inglés</option>
-                        <option>Español</option>
-                    </select>
-                    <button>Realizar test</button>
-                </div>
-            </div>
-    
-            <div class="section">
-                <h3>Conocimientos informáticos</h3>
-                <p><a href="#nuevos-conocimientos"><i class="fas fa-plus-circle"></i> Añadir</a></p>
-            </div>
-    
-            <div class="section">
-                <h3>Conocimientos y habilidades</h3>
-                <div class="tags">
-                    <span>actitud</span>
-                    <span>compromiso</span>
-                    <span>computacion</span>
-                    <span>comunicacion</span>
-                    <span>excel</span>
-                    <span>ingles basico</span>
-                    <span>mejora continua</span>
-                    <span>microsoft office</span>
-                    <span>ofimatica</span>
-                    <span>organizacion</span>
-                    <span>powerpoint</span>
-                    <span>proactiva</span>
-                    <span>responsable</span>
-                    <span>software</span>
-                    <span>trabajar en equipo</span>
-                    <span>word</span>
-                    <a href="#nuevas-habilidades"><i class="fas fa-plus-circle"></i> Añadir</a>
-                </div>
-            </div>
-    
-            <div class="section">
-                <h3>Desplazamiento y movilidad</h3>
                 <ul>
-                    <li>No tengo disponibilidad para viajar</li>
-                    <li>No tengo disponibilidad para cambiar de residencia</li>
-                    <li>No tengo vehículo propio</li>
+                    <li class="cols">
+                            <span class="ico_cv i_mail">
+                              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24px" height="24px">
+                                <path d="M20 4H4c-1.11 0-1.99.89-1.99 2L2 18c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" fill="#4A4A4A"/>
+                              </svg>
+                            </span>
+                        <span class="pl10px">pam2005figue&#64;hotmail.com</span>
+                    </li>
+                        <li class="cols">
+                                <span class="ico_cv i_telf">
+                                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24px" height="24px">
+                                    <path d="M6.6 10.79c1.98 3.58 5.24 6.84 8.82 8.82l1.6-1.6c.4-.4 1.02-.5 1.5-.3 1.25.5 2.6.8 4 .8.6 0 1 .4 1 1V21c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h2.5c.6 0 1 .4 1 1 0 1.4.3 2.7.8 4 .2.5.1 1.1-.3 1.5l-1.6 1.6z" fill="#4A4A4A"/>
+                                  </svg>
+                                </span>
+                            <span class="pl10px">+51-903447553</span>
+                        </li>
+                            </ul>
+            </div>
+            <button class="icon ico_close hide" it-show-preview="" close-preview-button="" hide-print=""></button>
+                    </div>
+                    <div class="form_fields">
+            <div class="dFlex">
+                <p class="title_cv">ingenieria de Software</p>
+                    <a class="ico_cv i_edit mlAuto" it-hide-preview="" data-open-popup-form="jobdescriptionform">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24px" height="24px">
+                        <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 5.63c.39-.39.39-1.02 0-1.41l-2.34-2.34a.996.996 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z" fill="#4A4A4A"/>
+                      </svg>
+                    </a>
+            </div>
+            <p>Ingeniera de software conel uso de IA para el uso optimo de la tecnologia</p>
+            <div class="info_box w100 mt20" data-advice="ecv_jd_a_3" it-hide-preview="">
+              Una descripción bien detallada y extensa de tu perfil profesional te ayudará a destacar entre otros candidatos. <a data-advice-hide="ecv_jd_a_3">Omitir</a><svg xmlns="http://www.w3.org/2000/svg" class="input-icon-foco" viewBox="0 0 24 24" width="24px" height="24px">
+                <path d="M12 1v3M12 20v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M1 12h3M20 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12" stroke="#FFD700" stroke-width="2"/>
+                <path d="M9 21h6v-2H9v2zm.5-4h5c.8 0 1.5-.7 1.5-1.5h-8C8 16.3 8.7 17 9.5 17zM12 2C8.1 2 5 5.1 5 9c0 2.2 1.1 4.3 2.9 5.6.5.4.8 1 .8 1.6v.3h6.6v-.3c0-.6.3-1.2.8-1.6C17.9 13.3 19 11.2 19 9c0-3.9-3.1-7-7-7zm0 2c2.8 0 5 2.2 5 5 0 1.6-.8 3.1-2.1 4-.3.3-.5.7-.5 1.1H9.6c0-.4-.2-.8-.5-1.1C7.8 12.1 7 10.6 7 9c0-2.8 2.2-5 5-5z" fill="#FFD700"/>
+              </svg>
+            </div>
+            
+                    </div>
+                    
+                  <div class="form_fields" it-hide-preview="">
+            <p class="title_cv">Mis experiencias profesionales</p>
+            <ul id="experiences-container" class="list_timeline">
+                            <li id="add-experience-container">
+                        <div class="w100 dFlex">
+                          <svg xmlns="http://www.w3.org/2000/svg" class="input-icon-mas" viewBox="0 0 24 24" width="24px" height="24px">
+                            <circle cx="12" cy="12" r="10" fill="#4CAF50"/>
+                            <line x1="12" y1="7" x2="12" y2="17" stroke="white" stroke-width="2"/>
+                            <line x1="7" y1="12" x2="17" y2="12" stroke="white" stroke-width="2"/>
+                          </svg>
+                            <a data-open-popup-form="experienceform_7517F155D77BACC7">Añadir nueva experiencia</a>
+                        </div>
+                    </li>
+            </ul>
+                  </div>
+                  
+                    <div class="form_fields">
+                      <p class="title_cv">Mis estudios  </p>
+                            <ul id="educations-container" class="list_timeline">
+                              
+                                <li id="217D9E7B0C828CE461373E686DCF3405">
+                                    <div class="w100 dFlex">
+                                      <svg xmlns="http://www.w3.org/2000/svg" class="input-icon-circulo" viewBox="0 0 24 24" width="24px" height="24px">
+                                        <circle cx="12" cy="12" r="8" fill="#1E90FF"/>
+                                      </svg>
+                                        <div>
+                                          <p class="fs15">Técnico</p>
+                                          <p class="fc80">SENATI</p>
+                                          <p class="fc80 mt5">Marzo 2023 - Actualmente</p>
+                                        </div>
+                                          <a class="mlAuto"><span class="ico_cv i_edit" it-hide-preview="" data-open-popup-form="educationform_217D9E7B0C828CE461373E686DCF3405"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24px" height="24px">
+                                            <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 5.63c.39-.39.39-1.02 0-1.41l-2.34-2.34a.996.996 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z" fill="#4A4A4A"/>
+                                          </svg></span></a>
+                                    </div>
+                                </li>
+                                <li id="add-education-container">
+                                    <div class="w100 dFlex">
+                                      <svg xmlns="http://www.w3.org/2000/svg" class="input-icon-mas" viewBox="0 0 24 24" width="24px" height="24px">
+                                        <circle cx="12" cy="12" r="10" fill="#4CAF50"/>
+                                        <line x1="12" y1="7" x2="12" y2="17" stroke="white" stroke-width="2"/>
+                                        <line x1="7" y1="12" x2="17" y2="12" stroke="white" stroke-width="2"/>
+                                      </svg>
+                                        <a data-open-popup-form="educationform_7517F155D77BACC7">Añadir más estudios</a>
+                                    </div>
+                                </li>
+                            </ul>
+                    </div>
+        
+        
+              <div id="Skills" class="form_fields">
+                        <p class="title_cv">Idiomas</p>
+                      <div class="mb30">
+                        <span class="item_tag" data-language-item="">
+                        Español - Nativo
+                          <a class="ico_cv i_delete  hide" it-hide-preview="" data-remove-language="E3CBFD36160C309E61373E686DCF3405"></a>
+                        </span>
+                            <a id="add-language-button" it-hide-preview="">Añadir</a>
+                    <div id="add-language-container" class="mt10 hide">
+                      <p class="fs16 mb5">Añade idiomas y el nivel</p>
+                    <div class="grid2">
+                        <div>
+                            <select class="cm-12 rounded" id="LanguageSelected" name="LanguageSelected" style="display:none">
+                              <option value="0">Idiomas</option>
+                                  <option value="47">Español</option>
+                                  <option value="77">Inglés</option>
+                                  <option value="135">Portugués</option>
+                                  <option value="140">Ruso</option>
+                            </select>
+                        <div class="nice-select cm-12 rounded">
+                            <span class="current fc_aux">Idiomas</span>
+                              <ul class="list">
+                                  <li data-value="0" class="option">Idiomas</li>
+                                  <li data-value="47" class="option">Español</li>
+                                  <li data-value="77" class="option">Inglés</li>
+                                  <li data-value="135" class="option">Portugués</li>
+                              </ul>
+                        </div>
+                        <div>
+                            <select class="cm-12 rounded" id="LevelSelected" name="LevelSelected" style="display:none">
+                              <option value="0">Nivel</option>
+                                  <option value="1">Muy Básico</option>
+                                  <option value="2">Básico</option>
+                                  <option value="3">Intermedio</option>
+                                  <option value="4">Avanzado</option>
+                                  <option value="5">Nativo</option>
+                            </select>     
+                                <div class="nice-select cm-12 rounded">
+                                    <span class="current fc_aux">Nivel</span>
+                                      <ul class="list">
+                                        <li data-value="0" class="option">Nivel</li>
+                                        <li data-value="1" class="option">Muy Básico</li>
+                                        <li data-value="2" class="option">Básico</li>
+                                        <li data-value="3" class="option">Intermedio</li>
+                                        <li data-value="4" class="option">Avanzado</li>
+                                        <li data-value="5" class="option">Nativo</li>
+                                      </ul>
+                                </div>
+                        </div>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+              
+
+                <div it-hide-preview="" class="mb30 " data-skills-container="">
+                      <p class="title_cv">Conocimientos informáticos</p>
+                    <div>
+                    </div>
+                        <a data-skill-add-button="" it-hide-preview="">Añadir</a>
+                <div class="mt10 hide" data-skill-inputcontainer="">
+                    <p class="fs16 mb5">Añade programas informáticos</p>
+                    <div class="field_input pos_rel">
+                        <input id="Computer_NewSkillId" name="NewSkillId" type="hidden" value="">
+                        <input autocomplete="off" class="rounded" data-autocomplete-extraparams="GetSkillsExtraParams" data-autocomplete-idholder="Computer_NewSkillId" data-autocomplete-item-add-extra-html="<span class='plus'></span>" data-autocomplete-method="POST" data-autocomplete-out-of-searchbox="true" data-autocomplete-select-first-ocurrence="False" data-autocomplete-url="/ajax/getcomputerskills" id="NewSkill" maxlength="100" name="NewSkill" placeholder="Escribe programas informáticos" type="text" value="">
+                    </div>
+                </div>
+                </div>
+        
+                  <div it-hide-preview="" class="" data-skills-container="">
+                      <p class="title_cv">Conocimientos y habilidades</p>
+                    <div>
+                    </div>
+                          <a data-skill-add-button="" it-hide-preview="" class="hide">Añadir</a>
+                      <div class="mt10" data-skill-inputcontainer="">
+                          <p class="fs16 mb5">Añade conocimientos</p>
+                      <div class="field_input pos_rel">
+                        <input id="NotComputer_NewSkillId" name="NewSkillId" type="hidden" value="">
+                        <input autocomplete="off" class="rounded" data-autocomplete-extraparams="GetSkillsExtraParams" data-autocomplete-idholder="NotComputer_NewSkillId" data-autocomplete-item-add-extra-html="<span class='plus'></span>" data-autocomplete-method="POST" data-autocomplete-out-of-searchbox="true" data-autocomplete-select-first-ocurrence="False" data-autocomplete-url="/ajax/getskillsv2" id="NewSkill" maxlength="100" name="NewSkill" placeholder="Escribe tus conocimientos" type="text" value="" data-listener-added_8adaa136="true">
+                      </div>
+                    </div>
+                  </div>
+        
+                  <div class="info_box w100 mt20" data-advice="ecv_sk_a_3" it-hide-preview="">
+                        Añade los conocimientos o idiomas que dominas y refleja tus habilidades en tu perfil. <a data-advice-hide="ecv_sk_a_3">Omitir</a> <svg xmlns="http://www.w3.org/2000/svg" class="input-icon-foco" viewBox="0 0 24 24" width="24px" height="24px">
+                          <path d="M12 1v3M12 20v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M1 12h3M20 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12" stroke="#FFD700" stroke-width="2"/>
+                          <path d="M9 21h6v-2H9v2zm.5-4h5c.8 0 1.5-.7 1.5-1.5h-8C8 16.3 8.7 17 9.5 17zM12 2C8.1 2 5 5.1 5 9c0 2.2 1.1 4.3 2.9 5.6.5.4.8 1 .8 1.6v.3h6.6v-.3c0-.6.3-1.2.8-1.6C17.9 13.3 19 11.2 19 9c0-3.9-3.1-7-7-7zm0 2c2.8 0 5 2.2 5 5 0 1.6-.8 3.1-2.1 4-.3.3-.5.7-.5 1.1H9.6c0-.4-.2-.8-.5-1.1C7.8 12.1 7 10.6 7 9c0-2.8 2.2-5 5-5z" fill="#FFD700"/>
+                        </svg>
+                  </div>
+            </div>
+                
+              <div class="form_fields">
+                  <div class="dFlex">
+                        <p class="title_cv">Desplazamiento y movilidad</p>
+                        <a class="mlAuto">
+                          <span class="ico_cv i_edit" data-open-popup-form="additionalinfoform" it-hide-preview="">
+                              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24px" height="24px">
+                              <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 5.63c.39-.39.39-1.02 0-1.41l-2.34-2.34a.996.996 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z" fill="#4A4A4A"/>
+                            </svg>
+                          </span> 
+                        </a>
+                  </div>
+                      <ul class="list_bullet">
+                          <li><span>Disponibilidad para viajar</span></li>
+                          <li><span>No tengo disponibilidad para cambiar de residencia</span></li>
+                          <li><span>No tengo vehículo propio</span></li>
+                      </ul>
+              </div>
+
+              <div class="form_fields" it-hide-preview="">
+                <p class="title_cv">Documentos adjuntos</p>
+                <ul class="">
+                        <li class="dFlex vt_fx">
+                            <label>Sin documento adjunto seleccionado</label>
+                        </li>
                 </ul>
+                <a href="/candidate/cv/uploadcv.aspx" id="it-btn-upload-file" class="d_ib mt20 b_primary_inv" it-hide-preview="">Subir o modificar documentos</a>
+              </div>
+                    
+        
+              <div class="form_fields" id="cover-letters-container" it-hide-preview="">
+                <p class="title_cv">
+                    Cartas de presentación
+                    
+                </p>
+                <a id="it-btn-upload-file" class="d_ib mt20 it-show-popup-crear_carta_presentacion b_primary_inv" it-hide-preview="" data-clear-open-popup="" data-open-popup-form="coverletterform_7517F155D77BACC7">
+                  Crear
+                </a>
+              </div>
+        
+            
+            
+              <div class="footer-print hide" show-print="" style="margin-bottom: -2%">
+                Creado con <img src="//cp.ct-stc.com/ac/v02.02.00.10/c/img/logos/logoct.svg?v=3.59" style="height: 15px;">
             </div>
-    
-            <div class="section">
-                <h3>Documentos adjuntos</h3>
-                <p><a href="#documento-cv"><i class="fas fa-file"></i></a></p>
-                <button>Subir o modificar documentos</button>
+            <div class="page-break"></div>
+          </div>
+            <section class="formulario_lateral w_100r ml0_r" it-hide-preview="">
+              <div class="boxx ocultar_mvl" it-hide-preview="">
+                <div class="dFlex vm_fx mbB">
+                  <h3 class="fs20 mb0">Plantillas de CV</h3>
+                    <div class="mlAuto"><span class="tag new">Nuevo</span></div>
+              </div>
+              <p class="fw_n">Tienes disponibles varias plantillas para poder descargar o imprimir tu currículum de manera cómoda y fácil.</p>
+              <a show-templates-cv="" class="b_primary rounded w_100 mt15">Diseña tu CV</a>
+              </div>
+            <div class="boxx  ocultar_mvl">
+                <div class=""></div>
+                <div>
+                    <h3 class="mt5 fs20">Cartas de presentación</h3>
+                    <p class="fw_n">Crea o edita tus cartas de presentación y adjúntalas a las ofertas en las que te postulas. <strong>Las empresas valoran muy positivamente</strong> aquellas aplicaciones a ofertas que incluyen una carta de presentación.</p>
+                    <a class="b_primary  rounded w_100 mt15 js_click_nueva_carta" href="#cover-letters-container" data-clear-open-popup="" data-open-popup-form="coverletterform_7517F155D77BACC7">Crear carta</a>
+                </div>
             </div>
-    
-            <div class="section">
-                <h3>Cartas de presentación</h3>
-                <button>Crear</button>
-            </div>
-    
+            <div class="boxx form_fields bg_bluelight">
+              <p class="fs20 mb25 dFlex vm_fx">
+                  <span class="ico_cv i_idea mr10px">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="input-icon-foco-2" viewBox="0 0 24 24" width="24px" height="24px">
+                      <path d="M12 1v3M12 20v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M1 12h3M20 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12" stroke="#FFD700" stroke-width="2"/>
+                      <path d="M9 21h6v-2H9v2zm.5-4h5c.8 0 1.5-.7 1.5-1.5h-8C8 16.3 8.7 17 9.5 17zM12 2C8.1 2 5 5.1 5 9c0 2.2 1.1 4.3 2.9 5.6.5.4.8 1 .8 1.6v.3h6.6v-.3c0-.6.3-1.2.8-1.6C17.9 13.3 19 11.2 19 9c0-3.9-3.1-7-7-7zm0 2c2.8 0 5 2.2 5 5 0 1.6-.8 3.1-2.1 4-.3.3-.5.7-.5 1.1H9.6c0-.4-.2-.8-.5-1.1C7.8 12.1 7 10.6 7 9c0-2.8 2.2-5 5-5z" fill="#FFD700"/>
+                    </svg>
+                  </span>
+                  <span>Cómo mejorar mi CV</span>
+              </p>
+              <a class="dFlex fs15 w100 mb25 td_none cp" href="/candidate/cv/uploadcv.aspx">
+                  <div>
+                      <p class="fc_base fw_b">Sube tu CV</p>
+                      <p class="fc80">Inserta tu CV en word o pdf y adjúntalo en tus postulaciones</p>
+                  </div>
+                  <div class="pl10px mlAuto">
+                      <span class="ico_cv i_arrow"></span>
+                  </div>
+              </a>
+              <a class="dFlex fs15 w100 mb25 td_none" href="https://candidato.pe.computrabajo.com/candidate/test/list?tlo=0032B402007D9E9C">
+                  <div>
+                      <p class="fc_base fw_b">Identifica tu potencial profesional</p>
+                      <p class="fc80">Descubre gratis tus competencias laborales con Talentview 3D</p>
+                  </div>
+                  <div class="pl10px mlAuto">
+                      <span class="ico_cv i_arrow"></span>
+                  </div>
+              </a>
+          </div>
+          </section>
+            
+            <section class="formulario_lateral w_100r ml0_r hide options_mobile" it-show-preview="" section-options-preview-mobile="">
+                <div class="boxx">
+                    <div class="header_box">
+                        <button class="icon ico_close" close-popup-select-style-preview-cancel=""></button>
+                        <h3 class="mt5 fs20">Diseño de CV</h3>
+                        <p class="fc80 fw_n">Selecciona uno de los diseños para descargar tu CV.</p>
+                    </div>
+                    <div class="list_options">
+                        <img src="//cp.ct-stc.com/ac/v02.02.00.10/c/img/cv1.png" class="cv1 sel" change-template-cv="" data-preview-style="1">
+                        <img src="//cp.ct-stc.com/ac/v02.02.00.10/c/img/cv2.png" class="cv2" change-template-cv="" data-preview-style="2">
+                        <img src="//cp.ct-stc.com/ac/v02.02.00.10/c/img/cv3.png" class="cv3" change-template-cv="" data-preview-style="3">
+                        <input type="hidden" change-preview-style-selected="" data-preview-style="1">
+                        <input type="hidden" change-preview-style-confirmed-selected="" data-preview-style="">
+                    </div>
+        
+                        <div class="list_options_colors">
+                            <p class="fc80 fw_n">Selecciona un color para personalizar tu CV, según el sector al que quieras postular</p>
+                            <ul>
+                                    
+                                        <li>
+                                            <span data-cvexport-color="col1" class="option col1"></span>
+                                            <span class="bubble_tooltip bottom"><strong>Gris: </strong>Neutro, salud y medicina</span>
+                                        </li>
+                                    
+                                    
+                                        <li>
+                                            <span data-cvexport-color="col2" class="option col2"></span>
+                                            <span class="bubble_tooltip bottom"><strong>Azul: </strong>Tecnología y logística</span>
+                                        </li>
+                                    
+                                    
+                                        <li>
+                                            <span data-cvexport-color="col3" class="option col3"></span>
+                                            <span class="bubble_tooltip bottom"><strong>Verde: </strong>Medio ambiente, ciencias, naturaleza, ecología</span>
+                                        </li>
+                                    
+                                    
+                                        <li>
+                                            <span data-cvexport-color="col4" class="option col4"></span>
+                                            <span class="bubble_tooltip bottom"><strong>Rojo: </strong>Ventas, finanzas, negocios y comercio internacional</span>
+                                        </li>
+                                    
+                                    
+                                        <li>
+                                            <span data-cvexport-color="col5" class="option col5"></span>
+                                            <span class="bubble_tooltip bottom"><strong>Naranja: </strong>Hostelería y turismo</span>
+                                        </li>
+                                    
+                                    
+                                        <li>
+                                            <span data-cvexport-color="col6" class="option col6"></span>
+                                            <span class="bubble_tooltip bottom"><strong>Amarillo: </strong>Diseño, marketing y comunicación</span>
+                                        </li>
+                                    
+                                    
+                                        <li>
+                                            <span data-cvexport-color="col7" class="option col7"></span>
+                                            <span class="bubble_tooltip bottom"><strong>Violeta: </strong>Cultura, arte, decoración y bienestar</span>
+                                        </li>
+                                    
+                            </ul>
+                        </div>
+        
+                    <div class="box_sticky">
+                        <span class="b_primary" close-popup-select-style-preview="">Seleccionar</span>
+                    </div>
+                    <div class="bt1 mt20 pt20 box_links_mobile box_fix_no_menu" box-links-preview-mobile="" fix_menu_bottom="">
+                        <span class="hide show_m cp" open-popup-select-style-preview="" mobile-responsive-style="">
+                            <span class="icon i_design"></span>
+                            <span>Diseños</span>
+                        </span>
+                            <a class="b_primary w100" cv-export-preview="">
+                                <span class="icon i_download_cv hide d_i_mbli"></span>
+                                <span>Descargar<span class="hide_m"> CV</span></span>
+                            </a>
+                                            <a class="b_transparent w100 mt15" cv-print-preview="">
+                                <span class="icon print"></span>
+                                <span>Imprimir<span class="hide_m"> CV</span></span>
+                            </a>
+                    </div>
+                </div>
+            </section>
+          </article>
+            <div class="item_tag_save hide" id="save-mark-tests">Cambios guardados</div>
+            <div class="overlay hide" cv-candidate-overlay=""></div>
         </div>
 
 
           <!-- Footer -->
-     <br>
-     <br>
-     <br>
-     <br>
-     <br>
-     <br>
-     <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
     <footer class="footer">
       <div class="footer-content">
         
