@@ -1,0 +1,43 @@
+<div class="form-container" *ngIf="isOpen">
+  <form (ngSubmit)="savePersonalData()">
+    <div class="title_sticky">
+      <a class="icon i_back_blue" data-close-popup-form=""></a>
+      <p class="title_cv">Sobre ti</p>
+      <p class="fc_aux_light fs15">Datos personales</p>
+      <p class="fs16 fc_error hide" data-popup-form-error-container="">Ha ocurrido un error. Por favor, inténtalo más tarde</p>
+    </div>
+    <div>
+      <label for="nombre">Nombre:</label>
+      <input id="nombre" type="text" [(ngModel)]="personalData.nombre" name="nombre" />
+    </div>
+    <div>
+      <label for="apellidos">Apellidos:</label>
+      <input id="apellidos" type="text" [(ngModel)]="personalData.apellidos" name="apellidos" />
+    </div>
+    <div>
+      <label for="correo">Correo:</label>
+      <input id="correo" type="email" [(ngModel)]="personalData.correo" name="correo" />
+    </div>
+    <div>
+      <label for="experiencia">Experiencia:</label>
+      <input id="experiencia" type="text" [(ngModel)]="personalData.experiencia" name="experiencia" />
+    </div>
+    <div>
+      <label for="estudios">Estudios:</label>
+      <input id="estudios" type="text" [(ngModel)]="personalData.id_estudio" name="estudios" />
+    </div>
+    <div>
+      <label for="archivos_cv">Documentos:</label>
+      <input id="archivos_cv" type="text" [(ngModel)]="personalData.id_archivo" name="archivos_cv" />
+    </div>
+    <div>
+      <label for="habilidades">Habilidades:</label>
+      <input id="habilidades" type="text" [(ngModel)]="personalData.id_habilidad[0]" name="habilidades" />
+    </div>
+    <div>
+      <label for="idiomas">Idiomas:</label>
+      <input id="idiomas" type="text" [(ngModel)]="personalData.id_idioma[0]" name="idiomas" />
+    </div>
+    <button type="submit">Guardar</button>
+  </form>
+</div>

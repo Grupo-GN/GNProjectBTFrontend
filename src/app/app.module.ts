@@ -27,10 +27,13 @@ import { SalariosComponent } from './components/salarios/salarios.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { EditComponent } from './components/configuraciones/edit/edit.component';
 import { UserService } from './user.service';
+import { PersonalDataFormComponent } from './components/personal-data-form/personal-data-form.component';
+
 
 
 @NgModule({
   declarations: [
+    PersonalDataFormComponent,
     AppComponent,
     BodyComponent,
     SidenavComponent,

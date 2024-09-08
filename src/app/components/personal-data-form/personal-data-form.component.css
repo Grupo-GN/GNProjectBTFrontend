@@ -1,0 +1,132 @@
+.form-container {
+    bottom: 0;
+    display: flex;
+    left: 0;
+    right: 0;
+    justify-content: center;
+    top: 0;
+    align-items: center;
+    z-index: 9999;
+    position: fixed;
+    font-size: 16px;
+    width: 35%;
+    height: 750px;
+    border-radius: 50px;
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 0 10px rgb(0 0 0 / 56%);
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  .form-container form div {
+    margin-bottom: 15px;
+    margin-left: -180px; /* Espacio entre cada fila de campos del formulario */
+  }
+  
+  .form-container label {
+    display: block; /* Asegura que la etiqueta esté en una línea separada */
+    margin-bottom: 5px; /* Espacio entre la etiqueta y el campo de entrada */
+    font-weight: bold; /* Hace que las etiquetas sean más visibles */
+  }
+  
+  .form-container input[type="text"],
+  .form-container input[type="email"],
+  .form-container select {
+    width: 160%;
+    padding: 8px;
+    border: 1px solid #6d747e;
+    border-radius: 15px;
+    box-sizing: border-box;
+    font-size: 14px;
+  }
+  
+  .form-container button[type="submit"] {
+    display: inline-block; /* Asegura que el botón se muestre en línea */
+    padding: 10px 20px; /* Espacio interno del botón */
+    background-color: #007bff; /* Color de fondo del botón (azul) */
+    color: white; /* Color del texto del botón */
+    border: none; /* Sin borde alrededor del botón */
+    border-radius: 4px; /* Bordes redondeados para el botón */
+    font-size: 16px; /* Tamaño de fuente para el botón */
+    cursor: pointer; /* Cambia el cursor al pasar por el botón */
+    transition: background-color 0.3s; /* Transición suave al cambiar de color */
+  }
+  
+  .form-container button[type="submit"]:hover {
+    background-color: #0056b3; /* Color de fondo del botón al pasar el ratón */
+  }
+  
+  .popup :not(label):not(h2):not([class*=fs]):not([class*=field-validation-error]) {
+    font-size: 16px;
+}
+.popup .title_sticky {
+    color: #313944;
+    margin: -30px -30px 0;
+    padding: 20px 20px 15px;
+    position: sticky;
+    border-bottom: 1px solid #e2e2e2;
+    top: -30px;
+    background: #fff;
+    z-index: 99;
+    border-radius: 4px 4px 0 0;
+}
+  
+.popup :not(label):not(h2):not([class*=fs]):not([class*=field-validation-error]) {
+    font-size: 16px;
+}
+.popup .title_sticky .title_cv {
+    font-size: 18px;
+    margin-bottom: 0;
+}
+.popup .title_sticky p {
+    text-align: center;
+    padding: 0 50px;
+}
+.title_cv {
+    font-size: 21px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+body p {
+    margin: 0;
+}
+.popup .title_sticky p {
+    text-align: center;
+    padding: 0 50px;
+}
+
+.fc_aux_light {
+    color: #97a3b4;
+}
+.fs15 {
+    font-size: 15px;
+}
+.popup .title_sticky p {
+    text-align: center;
+    padding: 0 50px;
+}
+.fc_error {
+    color: #da3d3d;
+}
+.fs16 {
+    font-size: 16px;
+}
+.hide {
+    display: none !important;
+}
+.fc_error {
+    color: #DA3D3D;
+}
+.d_1024, .d_mbli, .hide, .ocultar {
+    display: none !important;
+}
+.fc_error {
+    color: #DA3D3D;
+}
+.fs16 {
+    font-size: 16px;
+}
+  
