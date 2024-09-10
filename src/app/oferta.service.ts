@@ -14,8 +14,6 @@ export class OfertaService {
     return this.http.put(`${this.apiUrl}/${userId}`, { email: newEmail });
   }
 
-  changePassword(userId: number, newPassword: string): Observable<any> {
-    return this.http.put(`${this.apiUrl}/${userId}`, { password: newPassword });
-  }
+ 
   }
 
