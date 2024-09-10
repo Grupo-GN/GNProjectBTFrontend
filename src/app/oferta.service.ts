@@ -14,6 +14,6 @@ export class OfertaService {
     return this.http.put(`${this.apiUrl}/${userId}`, { email: newEmail });
   }
 
- 
+  
   }
 
