@@ -24,5 +24,7 @@ export class PersonalDataService {
   }
 
   // Método para guardar 
-  
+  savePersonalData(personalData: any): Observable<any> {
+    return this.http.post<any>(this.apiUrl, personalData);
+  }
 }
