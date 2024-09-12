@@ -6,7 +6,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class PersonalDataService {
-  private apiUrl = 'http://localhost:8080/Candidatos/create'; 
+  private apiUrl = 'http://localhost:8080/Candidatos/0'; 
 
   constructor(private http: HttpClient) { }
   private personalDataSubject = new BehaviorSubject<any>(null);

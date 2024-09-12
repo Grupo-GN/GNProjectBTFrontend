@@ -100,17 +100,6 @@ export class SidenavComponent implements OnInit {
       icon: 'fas fa-envelope fa-beat',
       label: 'Notificaciones'
     },
-
-    {
-      routeLink: '/reclutadores',
-      icon: 'fas fa-user-tie',
-      label: 'Reclutadores'
-    },
-    {
-      routeLink: '/publicar-ofertas',
-      icon: 'fas fa-bullhorn',
-      label: 'Publica ofertas gratis'
-    },
     {
       routeLink: '/configuraciones',
       icon: 'fas fa-cog',

@@ -41,7 +41,6 @@ export class CVComponent implements OnInit{
     this.isOpen = false; // Ocultar el formulario después de guardar
   }
   
-
   openForm(event: MouseEvent) {
     event.stopPropagation(); // Evita que el clic se propague al contenedor
     this.mostrarFormulario = !this.mostrarFormulario;

@@ -1,14 +1,14 @@
 .sidenav  {
-    background: #2a6297;
+    background: linear-gradient(90deg, #11c3ed 1%, #3172d5 45%, #4712c1 100%);
     width: 6rem;
-    height: 100vh; 
+    height: 100vh;
     position: fixed;
     z-index: 1;
     top: 0;
     color: #fff;
     transition: all 0.3s ease;
-    box-shadow: 0.06rem 0 1.40rem 0 #8690a3;
-    overflow-y: auto;
+    box-shadow: 0.06rem 0 1.40rem 0 #252d3c;
+
     
 
 
