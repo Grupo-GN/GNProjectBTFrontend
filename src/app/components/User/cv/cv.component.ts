@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { PersonalDataService } from 'src/app/personal-data.service';
+import { PersonalDataService } from 'src/app/Api/personal-data.service';
 
 
 @Component({

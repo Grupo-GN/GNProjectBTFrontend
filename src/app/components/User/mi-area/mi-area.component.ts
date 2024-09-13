@@ -4,7 +4,7 @@ import { FormBuilder } from '@angular/forms';
 import { debounceTime, distinctUntilChanged, of, Subject, switchMap } from 'rxjs';
 import { Observable } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
-import { PokemonService } from 'src/app/pokemon.service';
+import { PokemonService } from 'src/app/Api/pokemon.service';
 
 @Component({
   selector: 'app-mi-area',

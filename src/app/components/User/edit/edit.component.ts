@@ -2,7 +2,7 @@ import { HttpClient } from'@angular/common/http';
 import { Component, HostListener, OnInit } from'@angular/core';
 import { FormBuilder, FormGroup, Validators } from'@angular/forms';
 import { debounceTime, distinctUntilChanged, Observable, Subject, switchMap } from'rxjs';
-import { UserService } from'src/app/user.service';
+import { UserService } from'src/app/Api/user.service';
 
 
 @Component({

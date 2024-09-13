@@ -1,5 +1,5 @@
 import { Component, ElementRef, HostListener, OnInit, Renderer2 } from '@angular/core';
-import { PersonalDataService } from 'src/app/personal-data.service'; // Importar el servicio
+import { PersonalDataService } from 'src/app/Api/personal-data.service'; // Importar el servicio
 
 
 @Component({
