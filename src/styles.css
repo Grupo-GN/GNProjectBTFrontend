@@ -62,7 +62,7 @@ body {
         height: 90px;
         color: #fff;
         padding-top: 35px;
-
+        text-align: center;
         background: linear-gradient(32deg, #2e2ca3 1%, #6ca5ff 45%, #5110e7 100%);
   }
   
@@ -75,3 +75,141 @@ body {
 .main {
     padding: 20px;
   }
+
+  .title {
+    font-size: 40px;
+    font-weight: 780;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    margin-bottom: 50px;
+    text-align: center;
+    color: whitesmoke;
+
+  }
+  
+  .subtitle {
+    font-size: 25px;
+    color: #ffffff;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  .box_title_content {
+    overflow: hidden;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    right: 0;
+}
+.box_title_content+.container {
+    position: relative;
+    margin-top: 0px;
+    margin-bottom: 100px;
+}
+
+.login-form {
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 50px 70px rgb(28 22 22 / 82%);
+    width: 500px;
+    height: 400px;
+    padding: 35px;
+    text-align: center;
+    margin: 90px;
+    background: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+    
+}
+.login-form :hover{
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+  }
+  
+  .login-form img {
+    
+        width: 200px;
+        margin-bottom: 30px;
+        
+    
+  }
+  .login-form h2 {
+    margin-bottom: 40px;
+    font-weight: 700;
+    color: #161313;
+  }
+  .login-form .input-group {
+    text-align: center;
+  }
+  
+  .login-form .btn {
+    background-color: #007bff;
+    color: #ffffff;
+    width: 100%;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  .login-form .btn:hover {
+    background-color: #0056b3;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  }
+
+  .card {
+    background: #fff;
+    border-radius: 10px;
+    width: 500px;
+    height: 400px;
+    padding: 35px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+  }
+  
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Estilo para el botón */
+  .button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .button:hover {
+    background-color: #0056b3;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  }
+
+  .pbB {
+    padding-bottom: 50px;
+}
+.bb1 {
+    border-bottom: 1px solid #fefeff;
+}
+
+
+.conteiner{
+    margin: 0 auto;
+    padding-left: 20px;
+    padding-right: 20px;
+    width: 1240px;
+    display: flex;
+}
+
+ 
