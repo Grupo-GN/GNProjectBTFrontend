@@ -13,6 +13,7 @@ body {
     font-family: 'Roboto', sans-serif;
 }
 
+
 .card{
     display: flex;
     flex-direction: column;
@@ -133,7 +134,7 @@ body {
     margin-left: 120px;
 }
   
-  /* Estilo para el botón */
+
   .button {
     background: linear-gradient(262deg, #2c43e9 1%, #458dff 45%, #5125f9 100%);
     color: #fff;
