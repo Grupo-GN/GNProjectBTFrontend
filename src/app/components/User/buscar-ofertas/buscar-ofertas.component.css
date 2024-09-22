@@ -89,6 +89,8 @@ body {
     padding-left: 20px;
     padding-right: 20px;
     width: 1240px;
+    display: flex;
+    flex-direction: column;
 }
 
 .list_box {

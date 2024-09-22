@@ -15,10 +15,15 @@ import { PublicarOfertasComponent } from './components/User/publicar-ofertas/pub
 import { EmpresasComponent } from './components/User/empresas/empresas.component';
 import { SalariosComponent } from './components/User/salarios/salarios.component';
 import { EditComponent } from './components/User/edit/edit.component';
+import { AboutComponent } from './components/about/about.component';
+import { IniciarSesionComponent } from './components/Companys/iniciar-sesion/iniciar-sesion.component';
 
-const routes: Routes = [
-  { path: '', redirectTo: '/body', pathMatch: 'full' },
+
+const routes: Routes =  [
+  { path: '', redirectTo: '/Home', pathMatch: 'full' },
   { path: 'mi-area', component: MiAreaComponent },
+  { path: 'iniciar-sesion', component: IniciarSesionComponent},
+  { path: 'Home', component: AboutComponent , data: {showSidenav:false} },
   { path: 'CV', component: CVComponent },
   { path: 'buscar-ofertas', component: BuscarOfertasComponent },
   { path: 'postulaciones', component: PostulacionesComponent },

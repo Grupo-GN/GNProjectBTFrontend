@@ -135,16 +135,16 @@ a {
     cursor: pointer;
 }
 
-.header_web {
+.header-web {
   padding: 22px 0 25px;
 }
 
-.header_web .container {
+.header-web .container {
   display: flex;
   position: relative;
 }
 
-.header_web .logo {
+.header-web .logo {
   margin: 0 15px 0 0 !important;
   height: 30px;
 }
@@ -177,28 +177,27 @@ a {
   color: #333;
 }
 
-.header_web .box_search {
-  position: absolute;
-  width: 560px;
-  font-size: 14px;
-  border: 1px solid #e1e5ea;
-  background-color: #fff;
-  border-radius: 30px;
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-  padding: 8px 6px;
-  box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.07);
-  transition: width 0.3s ease-in-out;
-  margin-left: 210px;
-  margin-top: -40px;
+.header-web .box_search {
+    position: absolute;
+    width: 560px;
+    font-size: 14px;
+    border: 1px solid #e1e5ea;
+    background-color: #fff;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding: 8px 6px;
+    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.07);
+    transition: width 0.3s ease-in-out;
+    margin-top: -40px;
 }
 
 .box_search>div {
   display: flex;
 }
 
-.header_web .box_search>div .field_input_icon:first-of-type {
+.header-web .box_search>div .field_input_icon:first-of-type {
   margin-left: -5px;
 }
 
@@ -227,7 +226,7 @@ a {
   margin-left: 30px;
 }
 
-.header_web input {
+.header-web input {
   height: auto;
 }
 
@@ -235,7 +234,7 @@ a {
   display: none !important;
 }
 
-.header_web .box_search .b_primary {
+.header-web .box_search .b_primary {
   flex: 38px 0 0;
   height: 38px;
   padding: 8px;
@@ -256,7 +255,7 @@ a {
 .b_aux.rounded,
 .b_secondary.rounded,
 .btn_close_search,
-.header_web .box_search .b_primary,
+.header-web .box_search .b_primary,
 .modal-sm .b_primary,
 .modal-sm .b_secondary,
 .ui-dialog .b_primary,
@@ -275,7 +274,7 @@ input-icon{
 .box_search>div .field_input_icon:first-of-type .autocomplete {
     width: 140%;
 }
-.header_web .box_search .autocomplete {
+.header-web .box_search .autocomplete {
     top: 41px !important;
 }
 .box_search .autocomplete {
@@ -1096,6 +1095,8 @@ article.box_offer h2.fwB {
 .pokemon-container {
     padding: 20px;
     background-color: #f4f4f4;
+    width: 1000px;
+    
   }
   
   .pokemon-title {

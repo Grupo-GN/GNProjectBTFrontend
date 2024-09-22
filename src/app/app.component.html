@@ -1,4 +1,5 @@
-<app-sidenav (onToggleSideNav)="onToggleSideNav($event)"> </app-sidenav>
+<app-sidenav (onToggleSideNav)="onToggleSideNav($event)" *ngIf="isSideNavVisible">
+</app-sidenav>
 
   <app-body 
   [collapsed]="isSideNavCollapsed"
@@ -8,7 +9,7 @@
     <!-- Agrega otros enlaces aquí según sea necesario -->
   </nav>
   <router-outlet></router-outlet> 
-  
+
 
 </app-body>
 

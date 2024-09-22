@@ -28,6 +28,11 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { EditComponent } from './components/User/edit/edit.component';
 import { UserService } from './Api/user.service';
 import { PersonalDataFormComponent } from './components/User/personal-data-form/personal-data-form.component';
+import { AboutComponent } from './components/about/about.component';
+import { RouterModule, Routes } from '@angular/router';
+import { IniciarSesionComponent } from './components/Companys/iniciar-sesion/iniciar-sesion.component';
+
+
 
 
 
@@ -50,7 +55,9 @@ import { PersonalDataFormComponent } from './components/User/personal-data-form/
     MisAlertasComponent,
     EditComponent,
     CerrarSesionComponent,
-    SalariosComponent
+    SalariosComponent,
+    AboutComponent,
+    IniciarSesionComponent
     
   ],
   imports: [
@@ -63,7 +70,8 @@ import { PersonalDataFormComponent } from './components/User/personal-data-form/
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-    HttpClientModule
+    HttpClientModule, 
+    RouterModule
 
   ],
   providers: [UserService],
