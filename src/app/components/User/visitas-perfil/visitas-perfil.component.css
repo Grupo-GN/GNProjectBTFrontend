@@ -13,7 +13,7 @@ body {
   line-height: 1.4;
 }
 
-.header_web .box_search {
+.header-web .box_search {
   position: absolute;
   width: 530px;
   font-size: 14px;
@@ -27,14 +27,14 @@ body {
   box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.07);
   transition: width 0.3s ease-in-out;
   margin-left: 210px;
-  margin-top: -40px;
+  margin-top: 20px;
 }
 
 .box_search>div {
   display: flex;
 }
 
-.header_web .box_search>div .field_input_icon:first-of-type {
+.header-web .box_search>div .field_input_icon:first-of-type {
   margin-left: -5px;
 }
 
@@ -63,7 +63,7 @@ body {
   margin-left: 30px;
 }
 
-.header_web input {
+.header-web input {
   height: auto;
 }
 
@@ -71,7 +71,7 @@ body {
   display: none !important;
 }
 
-.header_web .box_search .b_primary {
+.header-web .box_search .b_primary {
   flex: 38px 0 0;
   height: 38px;
   padding: 8px;
@@ -92,7 +92,7 @@ body {
 .b_aux.rounded,
 .b_secondary.rounded,
 .btn_close_search,
-.header_web .box_search .b_primary,
+.header-web .box_search .b_primary,
 .modal-sm .b_primary,
 .modal-sm .b_secondary,
 .ui-dialog .b_primary,
@@ -111,7 +111,7 @@ input-icon{
 .box_search>div .field_input_icon:first-of-type .autocomplete {
     width: 140%;
 }
-.header_web .box_search .autocomplete {
+.header-web .box_search .autocomplete {
     top: 41px !important;
 }
 .box_search .autocomplete {
@@ -123,8 +123,8 @@ input-icon{
 
 
 .ccp_menu {
-    margin-top: 10px;
-  }
+  margin-top: 80px;
+}
   
   
   @media only screen and (min-width: 1300px) {
@@ -137,11 +137,10 @@ input-icon{
     background: #eaf3fb;
     padding: 5px 0;
     display: flex;
-    width: 116%;
+    width: 170%;
     border-radius: 60px;
     align-items: center;
     justify-content: space-evenly;
-    margin-left: 45px;
   }
   
   ul {
@@ -215,16 +214,17 @@ input-icon{
       cursor: pointer;
   }
   
-  .header_web {
+  .header-web {
     padding: 22px 0 25px;
   }
   
-  .header_web .container {
+  .header-web .container {
     display: flex;
     position: relative;
+    margin-left: 50px;
   }
   
-  .header_web .logo {
+  .header-web .logo {
     margin: 0 15px 0 0 !important;
     height: 30px;
   }
@@ -239,7 +239,7 @@ input-icon{
 .b_aux.rounded,
 .b_secondary.rounded,
 .btn_close_search,
-.header_web .box_search .b_primary,
+.header-web .box_search .b_primary,
 .modal-sm .b_primary,
 .modal-sm .b_secondary,
 .ui-dialog .b_primary,
@@ -388,6 +388,7 @@ h1 {
 }
 .fwN, .fw_n {
   font-weight: normal !important;
+  margin-top: 25px;
 }
 h2 {
   font-size: 24px;
@@ -492,6 +493,7 @@ a {
 }
 .w30, .w_30 {
   width: 45%;
+  margin-top: 42px;
 }
 .top15 {
   top: 15px;
@@ -567,7 +569,7 @@ ul {
   display: table;
 }
 .w_70.w_100r.prB {
-  margin-top: 10px; /* Ajusta el valor según la distancia que desees */
+  margin-top: 60px; /* Ajusta el valor según la distancia que desees */
 }
 
 
