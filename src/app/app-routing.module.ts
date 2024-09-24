@@ -17,12 +17,14 @@ import { SalariosComponent } from './components/User/salarios/salarios.component
 import { EditComponent } from './components/User/edit/edit.component';
 import { AboutComponent } from './components/about/about.component';
 import { IniciarSesionComponent } from './components/Companys/iniciar-sesion/iniciar-sesion.component';
+import { LoginUsersComponent } from './components/User/login-users/login-users.component';
 
 
 const routes: Routes =  [
   { path: '', redirectTo: '/Home', pathMatch: 'full' },
   { path: 'mi-area', component: MiAreaComponent },
   { path: 'iniciar-sesion', component: IniciarSesionComponent},
+  { path: 'iniciar-Usuario', component: LoginUsersComponent , data: {showSidenav: false} },
   { path: 'Home', component: AboutComponent , data: {showSidenav:false} },
   { path: 'CV', component: CVComponent },
   { path: 'buscar-ofertas', component: BuscarOfertasComponent },

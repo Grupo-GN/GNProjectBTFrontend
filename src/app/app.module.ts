@@ -5,8 +5,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+import { MatDialogModule } from '@angular/material/dialog';
 import { AppComponent } from './app.component';
 import { BodyComponent } from './components/body/body.component';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
@@ -31,7 +33,6 @@ import { PersonalDataFormComponent } from './components/User/personal-data-form/
 import { AboutComponent } from './components/about/about.component';
 import { RouterModule, Routes } from '@angular/router';
 import { IniciarSesionComponent } from './components/Companys/iniciar-sesion/iniciar-sesion.component';
-import { IniciarDataService } from './Api/iniciar-data.service'; 
 
 
 
@@ -58,7 +59,8 @@ import { IniciarDataService } from './Api/iniciar-data.service';
     CerrarSesionComponent,
     SalariosComponent,
     AboutComponent,
-    IniciarSesionComponent
+    IniciarSesionComponent,
+    LoginUsersComponent
     
   ],
   imports: [
@@ -72,7 +74,9 @@ import { IniciarDataService } from './Api/iniciar-data.service';
     MatInputModule,
     MatButtonModule,
     HttpClientModule, 
-    RouterModule
+    RouterModule,
+    MatIconModule,
+    MatDialogModule
 
   ],
   providers: [UserService,IniciarDataService],
