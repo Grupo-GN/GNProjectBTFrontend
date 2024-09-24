@@ -268,3 +268,24 @@ p {
     margin-inline-end: 0px;
     unicode-bidi: isolate;
 }
+.mt20 {
+    margin-top: 20px;
+}
+
+.tc {
+    text-align: center;
+}
+
+.bg_white_m {
+    background-color: white;
+}
+
+.alert-message {
+    margin-top: 15px;
+    padding: 10px;
+    background-color: #f8d7da; /* Color de fondo */
+    color: #721c24; /* Color de texto */
+    border: 1px solid #f5c6cb; /* Color del borde */
+    border-radius: 5px;
+}
+

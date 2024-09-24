@@ -31,6 +31,7 @@ import { PersonalDataFormComponent } from './components/User/personal-data-form/
 import { AboutComponent } from './components/about/about.component';
 import { RouterModule, Routes } from '@angular/router';
 import { IniciarSesionComponent } from './components/Companys/iniciar-sesion/iniciar-sesion.component';
+import { IniciarDataService } from './Api/iniciar-data.service'; 
 
 
 
@@ -74,7 +75,8 @@ import { IniciarSesionComponent } from './components/Companys/iniciar-sesion/ini
     RouterModule
 
   ],
-  providers: [UserService],
+  providers: [UserService,IniciarDataService],
   bootstrap: [AppComponent]
+
 })
 export class AppModule { }

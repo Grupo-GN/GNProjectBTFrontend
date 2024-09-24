@@ -7,45 +7,65 @@
             <header class="fc_base mbB mB_neg mtB_neg title mb0_m mB_neg_m title_m">
                 <h1 class="fwB">Acceso para empresas registradas</h1>
             </header>
-            <div class="field_input">
-                <label>ID</label>
-                <input class="cm-3" data-val="true" data-val-required="ID requerido" id="Id" name="Id" placeholder="ID" type="text" value="">
-                <span class="field-validation-valid field-validation-valid" data-valmsg-for="Id" data-valmsg-replace="true"></span>
-            </div>
-            <div class="field_input mb5">
-                <label>Nombre</label>
-                <input class="cm-3" data-val="true" data-val-required="Nombre requerido" id="name" name="name" placeholder="Nombre" type="text" value="">
-                <span class="field-validation-valid field-validation-valid" data-valmsg-for="name" data-valmsg-replace="true"></span>
-            </div>
-            <div class="field_input mb5">
-                <label>Tipo</label>
-                <input class="cm-3" data-val="true" data-val-required="Tipo requerido" id="type" name="type" placeholder="Tipo" type="text" value="">
-                <span class="field-validation-valid field-validation-valid" data-valmsg-for="type" data-valmsg-replace="true"></span>
-            </div>
-            <div class="field_input mb5">
-                <label>RUC</label>
-                <input class="cm-3" data-val="true" data-val-required="RUC requerido" id="ruc" name="ruc" placeholder="RUC" type="text" value="">
-                <span class="field-validation-valid field-validation-valid" data-valmsg-for="ruc" data-valmsg-replace="true"></span>
-            </div>
-            <div class="field_input">
-                <span class="field-validation-valid field-validation-valid" data-valmsg-for="DefaultError" data-valmsg-replace="true"></span>
-            </div>
-            <a href="/RecoverPassword">¿No recuerdas tu contraseña?</a>
+            
+            <!-- Formulario -->
+            <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
+                <!-- Campo id -->
+                <div class="field_input">
+                    <label for="id">ID</label>
+                    <input id="id" class="cm-3" [(ngModel)]="id" name="id" placeholder="ID" type="number" required>
+                    <span class="field-validation-valid" data-valmsg-for="id" data-valmsg-replace="true"></span>
+                </div>
 
-            <div class="field_on_off mt25">
-                <label>Permanecer conectado</label>
-                <input checked="checked" data-val="true" data-val-required="The KeepMeLoggedIn field is required." id="KeepMeLoggedIn" name="KeepMeLoggedIn" type="checkbox" value="true">
-                <input name="KeepMeLoggedIn" type="hidden" value="false">
-                <label class="switch dIB ml5" for="KeepMeLoggedIn" style="width: 50px;">
-                    <span class="disc"></span>
-                    <span class="on">Sí</span>
-                    <span class="off">No</span>
-                </label>
-            </div>
+                <!-- Campo name -->
+                <div class="field_input mb5">
+                    <label for="name">Nombre</label>
+                    <input id="name" class="cm-3" [(ngModel)]="name" name="name" placeholder="Nombre" type="text" required>
+                    <span class="field-validation-valid" data-valmsg-for="name" data-valmsg-replace="true"></span>
+                </div>
 
-            <input type="submit" value="Entrar" class="b_primary w100">
+                <!-- Campo type -->
+                <div class="field_input mb5">
+                    <label for="type">Tipo</label>
+                    <input id="type" class="cm-3" [(ngModel)]="type" name="type" placeholder="Tipo" type="text" required>
+                    <span class="field-validation-valid" data-valmsg-for="type" data-valmsg-replace="true"></span>
+                </div>
+
+                <!-- Campo ruc -->
+                <div class="field_input mb5">
+                    <label for="ruc">RUC</label>
+                    <input id="ruc" class="cm-3" [(ngModel)]="ruc" name="ruc" placeholder="RUC" type="number" required>
+                    <span class="field-validation-valid" data-valmsg-for="ruc" data-valmsg-replace="true"></span>
+                </div>
+                
+                <!-- Mensaje de error general -->
+                <div class="field_input">
+                    <span class="field-validation-valid" data-valmsg-for="DefaultError" data-valmsg-replace="true"></span>
+                </div>
+
+                <!-- Enlace de recuperación de contraseña -->
+                <a href="/RecoverPassword">¿No recuerdas tu contraseña?</a>
+
+                <!-- Permanecer conectado -->
+                <div class="field_on_off mt25">
+                    <label for="keepMeLoggedIn">Permanecer conectado</label>
+                    <input id="keepMeLoggedIn" [(ngModel)]="keepMeLoggedIn" name="KeepMeLoggedIn" type="checkbox">
+                    <label class="switch dIB ml5" for="keepMeLoggedIn" style="width: 50px;">
+                        <span class="disc"></span>
+                        <span class="on">Sí</span>
+                        <span class="off">No</span>
+                    </label>
+                </div>
+
+                <!-- Botón de envío -->
+                <input type="submit" value="Entrar" class="b_primary w100">
+            </form>
         </section>
+
+        <!-- Mensajes debajo del formulario -->
         <div class="mt20 tc bg_white_m mt0_m pAllB_m pt0_m">
+            <!-- Muestra un mensaje de error si ocurre -->
+            <p *ngIf="message">{{ message }}</p>
             <p>Si no estás registrado en Computrabajo</p>
             <p><a href="/Registro">Regístrate aquí</a></p>
         </div>
