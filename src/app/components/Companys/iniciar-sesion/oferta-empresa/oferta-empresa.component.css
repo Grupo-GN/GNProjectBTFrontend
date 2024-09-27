@@ -1,0 +1,72 @@
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+}
+
+/* Estilos del contenedor */
+.container {
+    max-width: 1000px; /* Aumentar el ancho máximo */
+    margin: 0; /* Eliminar el margen automático para alinear a la izquierda */
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+/* Estilos del encabezado */
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+/* Estilos de etiquetas */
+label {
+    margin-top: 10px;
+    display: block;
+    font-weight: bold;
+}
+
+/* Estilos de campos de entrada */
+input[type="text"],
+input[type="number"],
+input[type="datetime-local"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0 15px 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+/* Estilos del formulario en dos columnas */
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px; /* Espacio entre columnas */
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column; /* Para que la etiqueta y el campo estén en columna */
+}
+
+/* Estilos del botón */
+button {
+    width: 100%;
+    background-color: #5cb85c;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 20px; /* Espacio arriba del botón */
+}
+
+/* Efecto hover del botón */
+button:hover {
+    background-color: #4cae4c;
+}

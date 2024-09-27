@@ -33,7 +33,8 @@ import { PersonalDataFormComponent } from './components/User/personal-data-form/
 import { AboutComponent } from './components/about/about.component';
 import { RouterModule, Routes } from '@angular/router';
 import { IniciarSesionComponent } from './components/Companys/iniciar-sesion/iniciar-sesion.component';
-
+import { OfertaEmpresaComponent } from './components/Companys/iniciar-sesion/oferta-empresa/oferta-empresa.component';
+import { LoginUsersComponent } from './components/User/login-users/login-users.component';
 
 
 
@@ -60,7 +61,8 @@ import { IniciarSesionComponent } from './components/Companys/iniciar-sesion/ini
     SalariosComponent,
     AboutComponent,
     IniciarSesionComponent,
-    LoginUsersComponent
+    LoginUsersComponent,
+    OfertaEmpresaComponent, 
     
   ],
   imports: [
@@ -79,7 +81,7 @@ import { IniciarSesionComponent } from './components/Companys/iniciar-sesion/ini
     MatDialogModule
 
   ],
-  providers: [UserService,IniciarDataService],
+  providers: [UserService],
   bootstrap: [AppComponent]
 
 })

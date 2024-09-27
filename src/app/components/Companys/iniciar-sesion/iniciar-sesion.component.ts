@@ -11,7 +11,6 @@ import { Router } from '@angular/router';  // Importación de Router
   styleUrls: ['./iniciar-sesion.component.css']
 })
 export class IniciarSesionComponent {
-  
   id: number | null = null;
   name: string = '';
   type: string = '';
@@ -41,9 +40,9 @@ export class IniciarSesionComponent {
     // Llamada al servicio para enviar los datos
     this.iniciarDataService.enviarDatos(formData).subscribe({
       next: (response) => {
-        // Redirige a la URL después de recibir una respuesta exitosa
+        // Redirige a la URL interna usando Angular Router
         console.log('Respuesta del servidor:', response);
-        window.location.href = 'http://localhost:8081/company'; // Redirige a la página del servidor
+        this.router.navigate(['/oferta-empresa']);  // Redirige a la página de oferta empresa
       },
       error: (error: HttpErrorResponse) => {
         // Si hay un error, maneja el error aquí.
@@ -52,5 +51,6 @@ export class IniciarSesionComponent {
       }
     });
   }
-
+  
+  
 }
