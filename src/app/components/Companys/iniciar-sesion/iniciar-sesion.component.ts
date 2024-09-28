@@ -1,9 +1,7 @@
 import { Component } from '@angular/core';
 import { IniciarDataService } from 'src/app/Api/iniciar-data.service';
 import { HttpErrorResponse } from '@angular/common/http';
-import { Router } from '@angular/router';  // Importación de Router
-
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-iniciar-sesion',
@@ -18,39 +16,48 @@ export class IniciarSesionComponent {
   keepMeLoggedIn: boolean = false;
   message: string | null = null;
 
+  datosEmpresa: any[] = [];
+
   constructor(private router: Router, private iniciarDataService: IniciarDataService) {}
 
-  onSubmit() {
-    // Si id o ruc no son válidos (null), no se envía el formulario.
-    if (this.id === null || this.ruc === null) {
-      this.message = 'Por favor, complete los campos obligatorios correctamente.';
+  ngOnInit(): void {
+    this.getDatos();
+  }
+
+  // Obtener datos de la API
+  getDatos(): void {
+    this.iniciarDataService.getDatos().subscribe({
+      next: (response) => {
+        this.datosEmpresa = response;
+      },
+      error: (error: HttpErrorResponse) => {
+        this.message = 'Error al obtener datos: ' + error.message;
+      }
+    });
+  }
+
+  // Enviar datos con validación mejorada
+  onSubmit(loginForm: any): void {
+    if (loginForm.invalid) {
+      this.message = 'Por favor, complete todos los campos correctamente.';
       return;
     }
 
     const formData = {
-      id: this.id,    // Asegúrate de que sea un número
+      id: this.id,
       name: this.name,
       type: this.type,
-      ruc: this.ruc   // Asegúrate de que sea un número
+      ruc: this.ruc
     };
 
-    // Debug: Muestra los datos en la consola para verificar
-    console.log('Enviando datos:', formData);
-
-    // Llamada al servicio para enviar los datos
     this.iniciarDataService.enviarDatos(formData).subscribe({
       next: (response) => {
-        // Redirige a la URL interna usando Angular Router
-        console.log('Respuesta del servidor:', response);
-        this.router.navigate(['/oferta-empresa']);  // Redirige a la página de oferta empresa
+        this.getDatos();
+        this.router.navigate(['/oferta-empresa']);  // Redirigir si la operación es exitosa
       },
       error: (error: HttpErrorResponse) => {
-        // Si hay un error, maneja el error aquí.
-        console.error('Error al iniciar sesión:', error);
-        this.message = 'Error al iniciar sesión: ' + error.message;
+        this.message = 'Error al enviar datos: ' + error.message;
       }
     });
   }
-  
-  
 }
