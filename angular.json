@@ -59,17 +59,21 @@
           "defaultConfiguration": "production"
         },
         "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
-          "configurations": {
-            "production": {
-              "buildTarget": "GNProjectBT:build:production"
-            },
-            "development": {
-              "buildTarget": "GNProjectBT:build:development"
-            }
-          },
-          "defaultConfiguration": "development"
+       "builder": "@angular-devkit/build-angular:dev-server",
+       "options": {
+       "proxyConfig": "proxy.conf.json"
         },
+      "configurations": {
+      "production": {
+      "buildTarget": "GNProjectBT:build:production"
+      },
+      "development": {
+      "buildTarget": "GNProjectBT:build:development"
+     }
+     },
+    "defaultConfiguration": "development"
+     },
+        
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
@@ -101,5 +105,7 @@
   "cli": {
     "analytics": false
   }
+  
+
 }
 

@@ -7,7 +7,8 @@ import { Observable } from 'rxjs';
 })
 export class IniciarDataService {
  
-  private apiUrl = 'http://localhost:8081/company'; // URL de tu API
+  private apiUrl = "http://localhost:8081/company/7"; // URL de tu API
+
 
   constructor(private http: HttpClient) { }
    // Obtener los datos existentes
@@ -22,7 +23,4 @@ export class IniciarDataService {
     });
     return this.http.post(this.apiUrl, data, { headers });
   }
-
-  
-  
 }
